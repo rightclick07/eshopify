@@ -94,8 +94,7 @@
                    <span>Home</span>
               </a>
           </button> -->
-          <button mat-button [matMenuTriggerFor]="courseMenu">
-            <!-- <mat-icon>add_shopping_cart</mat-icon> -->
+          <button mat-button [matMenuTriggerFor]="courseMenu"  *ngIf="!(isHandset$ | async)">
             <mat-icon style="vertical-align: middle;margin-right: 5px;">category</mat-icon>
                Category</button>
             <mat-menu #courseMenu="matMenu">
@@ -103,9 +102,7 @@
                     <button routerLink="{{key.routeUrl}}" mat-menu-item>
                         <mat-icon style="vertical-align: middle;margin-right: 5px;color:#A020F0">description</mat-icon>
                         {{key.title}}</button>
-                </div>
-               
-               
+                </div>  
             </mat-menu>
           <span class="spacer"></span>
           <button mat-button fxHide.xs="true" fxHide.sm="true" >
@@ -125,6 +122,14 @@
                 </div>  
             </mat-menu>
             -->
+            <div>
+              <button  mat-button routerLink="/cart">
+                <mat-icon matBadge="0" matBadgeColor="warn">shopping_cart</mat-icon>
+              </button>
+            </div>
+
+
+
             <div *ngIf="!isUserLoggedIn">
               <button mat-mini-fab mat-button routerLink="/login">
                 <mat-icon>person</mat-icon>

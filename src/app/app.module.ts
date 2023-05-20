@@ -16,7 +16,7 @@ import { CareersComponent } from './components/careers/careers.component';
 import { LoginComponent } from './components/auth-component/login/login.component';
 import { SignupComponent } from './components/auth-component/signup/signup.component';
 import { ForgetPasswordComponent } from './components/auth-component/forget-password/forget-password.component';
-import { ProductComponent } from './components/product/product.component';
+import { CartComponent } from './components/product/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { ProductComponent } from './components/product/product.component';
     LoginComponent,
     SignupComponent,
     ForgetPasswordComponent,
-    ProductComponent
+    CartComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { BlogsComponent } from './components/blogs/blogs.component';
 import { CareersComponent } from './components/careers/careers.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { HomeComponent } from './components/home/home.component';
+import { CartComponent } from './components/product/cart/cart.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,7 @@ const routes: Routes = [
     {path:"about-us",component:AboutUsComponent},
     {path:"contact-us",component:ContactUsComponent},
     {path:"career",component:CareersComponent},
-     
+    {path:"cart",component:CartComponent},
 // {path: 'admin', component: DashboardComponent,
 //   canActivate: [RoleGuardService],
 //   data: {roles: 'ROLE_ADMIN'},
