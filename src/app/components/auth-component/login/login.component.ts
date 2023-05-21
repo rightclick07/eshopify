@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import { TokenStorageService } from 'src/app/shared/services/token-storage/token-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -9,55 +8,21 @@ import { TokenStorageService } from 'src/app/shared/services/token-storage/token
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  [x: string]: any;
 
-  form: any = {};
-  isSuccessful = false;
-  isSignInFailed = false;
-  isLoggedIn!: boolean;
-  errorMessage = 'Email or password is not correct';
+
   public loginForm: FormGroup = {} as  FormGroup;
 
-  constructor( private router: Router, private tokenStorage: TokenStorageService) {
-
-    this.router.routeReuseStrategy.shouldReuseRoute = () => {
-      return false;
-    };
+  constructor( private router: Router) {
+    this.loginForm = new FormGroup({
+      username: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+     });
   }
 
   ngOnInit(): void {
-    this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required]),
-    });
   }
+  login(){}
+  
 
-  login(): void{
-    const formData = new FormData();
-
-    const loginUser: any = {
-      // id: this.registerUser?.id,
-      email: this.loginForm.controls['email'].value,
-      password: this.loginForm.controls['password'].value
-    };
-    formData.append('loginUser', JSON.stringify(loginUser));
-
-    if (!this.tokenStorage.isAuthenticated()){
-      // this.authService.login(formData).subscribe(
-      //   (        data: { token: string; }) => {
-      //     this.tokenStorage.saveToken(data.token);
-      //     this.tokenStorage.saveUser(data);
-      //     this.isSuccessful = true;
-      //     this.isSignInFailed = false;
-      //     this.router.navigate(['']);
-      //   },
-      //   (        err: any) => {
-      //     this.isSignInFailed = true;
-      //   }
-      // );
-    } else {
-      this.isLoggedIn = true;
-    }
-
-
-  }
 }
