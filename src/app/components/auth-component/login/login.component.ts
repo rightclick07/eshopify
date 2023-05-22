@@ -10,13 +10,14 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
   [x: string]: any;
 
-
+  rememberMe = false;
   public loginForm: FormGroup = {} as  FormGroup;
 
   constructor( private router: Router) {
     this.loginForm = new FormGroup({
       username: new FormControl('', [Validators.required, Validators.minLength(6)]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      checkbox: new FormControl(false) 
      });
   }
 

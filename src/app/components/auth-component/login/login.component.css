@@ -1,12 +1,30 @@
-.login{
-  margin: 10px;
-  padding: 100px;
+
+.login-container{
+display: flex;
+  left: auto;
+  right: auto;
   justify-content: center;
-  width: 10%;
+  background-image:  url(/assets/img/banners/login-banner.jpg);
 }
-.mat-card{
-  margin-left: 600px;
+
+.login{
+ margin: 2%;
+  width: 300px;
 }
+
 .button{
   color:#A020F0;
+ margin-left: 30%;
+}
+h2 {
+  width: 100%; 
+  text-align: center; 
+  border-bottom: 1px solid #c7c1c1; 
+  line-height: 0.1em;
+  margin: 10px 0 20px; 
+} 
+
+h2 span { 
+   background:white; 
+   padding:0 10px; 
 }

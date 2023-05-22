@@ -16,7 +16,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatButtonToggle, MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatMenuModule} from '@angular/material/menu';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
 const MaterialComponents=[
  MatToolbarModule,
     MatButtonModule,
@@ -39,7 +39,7 @@ const MaterialComponents=[
     MatButtonToggleModule,
     MatAutocompleteModule,
     MatMenuModule,
-
+    MatCheckboxModule
 ]
 
 @NgModule({
