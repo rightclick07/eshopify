@@ -7,13 +7,12 @@
        <mat-card-title  >Login to Everse</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <form [formGroup]="loginForm">
+        <form [formGroup]="loginForm"(ngSubmit)="OnLogin()">
               <div fxLayout="column">
                 <div>
                     <mat-form-field style="width: 100%;" appearance="outline">
                       <mat-label>Username</mat-label>
                       <input 
-                        autocomplete="off"
                         matInput
                         formControlName="username"
                         placeholder="Enter Username">
@@ -26,12 +25,15 @@
           <mat-form-field style="width: 100%;" appearance="outline">
             <mat-label>Password</mat-label>
             <input
-              autocomplete="off"
               matInput
+              [type]="hidePassword ? 'password' : 'text'"
               formControlName="password"
               placeholder="Enter Password"
-              type="password"
               required>
+              <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
+               [attr.aria-label]="hidePassword ? 'Show password' : 'Hide password'">
+                <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+              </button>            
             <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Password is required</mat-error>
             <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">Password length is minimum 6 characters</mat-error>
           </mat-form-field>
@@ -42,7 +44,7 @@
         </div>
         </div>
             <mat-card-actions >
-              <button  mat-raised-button primary class="button" (click)="login()">Login</button>
+              <button  mat-raised-button type="submit" primary class="button" [disabled]="loginForm.invalid" >Login</button>
               <a routerLink="/forget-password" style="text-decoration: none;color: #A020F0;">&nbsp; Forget Password ?</a>
               <div style="margin: 5px;">
                 <span>Not a Member? </span><a  style="text-decoration: none;color:#A020F0 ;" routerLink="/signup">Signup</a>

@@ -17,6 +17,9 @@ import { LoginComponent } from './components/auth-component/login/login.componen
 import { SignupComponent } from './components/auth-component/signup/signup.component';
 import { ForgetPasswordComponent } from './components/auth-component/forget-password/forget-password.component';
 import { CartComponent } from './components/product/cart/cart.component';
+import {HttpClientModule} from '@angular/common/http';
+import { SpinnerComponent } from './common/spinner/spinner.component'
+
 
 @NgModule({
   declarations: [
@@ -31,7 +34,9 @@ import { CartComponent } from './components/product/cart/cart.component';
     LoginComponent,
     SignupComponent,
     ForgetPasswordComponent,
-    CartComponent
+    CartComponent,
+    SpinnerComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,7 @@ import { CartComponent } from './components/product/cart/cart.component';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    
+    HttpClientModule
   
   ],
   providers: [],

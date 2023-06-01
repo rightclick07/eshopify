@@ -131,7 +131,7 @@
 
 
             <div *ngIf="!isUserLoggedIn">
-              <button mat-mini-fab mat-button routerLink="/login">
+              <button mat-mini-fab mat-button routerLink="/login" matTooltip="Login">
                 <mat-icon>person</mat-icon>
               </button>
             </div>
@@ -140,17 +140,20 @@
                 {{this.initial}}
               </button>
               <mat-menu #menu="matMenu" >
-                <button mat-menu-item *ngFor="let option of profile" >
-                  {{ option.code }}
-                </button>
+                <div *ngFor="let option of profile">
+                  <button mat-menu-item (click)="OnclickProfile(option.code)" >
+                    {{ option.code }}
+                  </button>
+                </div>
               </mat-menu>
             </div>
            
       </mat-toolbar-row>
   </mat-toolbar>
  <router-outlet></router-outlet>
+ <!-- <app-spinner></app-spinner> -->
   <!-- WhatsApp Chat Added  -->
- <a class="float_whatsapp"  href="https://wa.me/918620038489?text=Chat With RightClick Programming" target="_blank">
+ <a class="float_whatsapp"  href="https://wa.me/918620038489?text=Chat With Everse Team" target="_blank">
   <img width="50px" src="assets/img/social-media/whatsapp-logo.png">
 </a>
     

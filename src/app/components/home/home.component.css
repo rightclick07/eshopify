@@ -1,0 +1,41 @@
+.home-header{
+    display: flex;
+    flex-wrap: wrap;
+    background-image: linear-gradient(#cb93ee,white);
+}
+  .column {
+    flex: 1;
+    align-items: center; /* Vertically align items */
+    border: 1px solid #ccc; 
+    text-align: center;
+    vertical-align: middle;
+    /* Add any additional styling for the columns */
+  }
+  
+  /* Media query for mobile devices */
+  @media (max-width: 767px) {
+    .column {
+      flex-basis: 100%;
+      margin-right: 0;
+    }
+  }
+  
+  
+  
+  
+  .section{
+    position: relative;
+  }
+  .text-center{
+    text-align: center!important;
+  }
+  @media (min-width:1200px){
+    h1{
+        font-size: 2.4rem;
+      }
+  } 
+  .homeheadline_tag{
+    margin-top: 10px;
+    margin-bottom: 5%;
+    vertical-align: middle;
+  }
