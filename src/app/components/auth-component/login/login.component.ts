@@ -49,7 +49,8 @@ export class LoginComponent implements OnInit {
    console.log(this.loginForm.value)
    this.loginSubscription$=this.authService.login(credential).subscribe(
     (response:ResponseData<any>)=>{
-      this.spinnerService.hideSpinner();
+      if(response){
+        this.spinnerService.hideSpinner();
       console.log(response);
       let token=response.payload?.token;
       if(token){
@@ -61,6 +62,8 @@ export class LoginComponent implements OnInit {
         this.toastService.showSuccess("Invalid Credential")
         this.router.navigate(['/login'])
       }
+      
+    }
       
     })
 
