@@ -2,9 +2,11 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { log } from 'console';
 
 import { map, Observable, shareReplay, startWith } from 'rxjs';
 import { UserProfile } from 'src/app/shared/model/UserProfile';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { TokenStorageService } from 'src/app/shared/services/token-storage/token-storage.service';
 
 @Component({
@@ -24,8 +26,15 @@ export class HeaderComponent implements OnInit {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private router:Router,
-   
-) {}
+    public authService:AuthService  
+) {
+  this.authService.isLoggedIn.subscribe(res=>{
+    this.isUserLoggedIn=res;
+    console.log(res);
+    
+  })
+
+}
   showSocialForMobile=false;
   showSocialForweb=true;
   myControl = new FormControl();
@@ -78,6 +87,10 @@ export class HeaderComponent implements OnInit {
   token:string="";
   initial:string="";
   ngOnInit() {
+    if(localStorage.getItem("token")){
+      this.isUserLoggedIn=true
+    }
+    console.log( this.isUserLoggedIn+"this.isUserLoggedIn");
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value)),
@@ -103,6 +116,8 @@ export class HeaderComponent implements OnInit {
         code:'Logout'
       }
     ]
+
+    
   }
 
   private _filter(value: string): string[] {
@@ -150,6 +165,16 @@ getInitial(username:string){
        default:
         this. router.navigate(['/home']);
         break;
+    }
+  }
+
+
+  OnclickProfile(key:string){
+
+    if(key=="Logout"){
+      localStorage.clear();
+      this.isUserLoggedIn=false;
+      this.router.navigate(["/login"])
     }
   }
 

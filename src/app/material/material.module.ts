@@ -17,6 +17,11 @@ import {MatButtonToggle, MatButtonToggleModule} from '@angular/material/button-t
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSliderModule} from '@angular/material/slider';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatStepperModule} from '@angular/material/stepper';
 const MaterialComponents=[
  MatToolbarModule,
     MatButtonModule,
@@ -39,7 +44,12 @@ const MaterialComponents=[
     MatButtonToggleModule,
     MatAutocompleteModule,
     MatMenuModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSliderModule,
+    MatSnackBarModule,
+    MatTooltipModule,
+    MatProgressSpinnerModule,
+    MatStepperModule
 ]
 
 @NgModule({

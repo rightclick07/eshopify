@@ -16,7 +16,17 @@ import { CareersComponent } from './components/careers/careers.component';
 import { LoginComponent } from './components/auth-component/login/login.component';
 import { SignupComponent } from './components/auth-component/signup/signup.component';
 import { ForgetPasswordComponent } from './components/auth-component/forget-password/forget-password.component';
-import { CartComponent } from './components/product/cart/cart.component';
+import {HttpClientModule} from '@angular/common/http';
+import { SpinnerComponent } from './common/spinner/spinner.component';
+import { ProductCardComponent } from './common/product-card/product-card.component';
+import { ProductQuantityComponent } from './common/product-quantity/product-quantity.component';
+import { HorizontalCategoryScrollerComponent } from './common/horizontal-category-scroller/horizontal-category-scroller.component';
+import { CategoryComponent } from './common/category/category.component';
+import { SubCategoryComponent } from './common/sub-category/sub-category.component';
+import { ProductComponent } from './common/product/product.component';
+import { CartsComponent } from './common/carts/carts.component';
+import { CheckoutComponent } from './common/checkout/checkout.component'
+
 
 @NgModule({
   declarations: [
@@ -31,7 +41,16 @@ import { CartComponent } from './components/product/cart/cart.component';
     LoginComponent,
     SignupComponent,
     ForgetPasswordComponent,
-    CartComponent
+    SpinnerComponent,
+    ProductCardComponent,
+    ProductQuantityComponent,
+    HorizontalCategoryScrollerComponent,
+    CategoryComponent,
+    SubCategoryComponent,
+    ProductComponent,
+    CartsComponent,
+    CheckoutComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -40,7 +59,7 @@ import { CartComponent } from './components/product/cart/cart.component';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    
+    HttpClientModule
   
   ],
   providers: [],

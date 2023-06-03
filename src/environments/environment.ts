@@ -5,9 +5,9 @@
 
 export const environment = {
   production: false,
-  SESSION_TIMEOUT_SECS:6000,
-  userInfoCookie: 'userInfo',
-  userIdCookie:'userid'
+  baseUrl:"http://localhost:8080",
+  baseAuthLoginUrl:"http://localhost:8080/api/auth/login",
+  baseAuthSignupUrl:"http://localhost:8080/api/auth/signup"
 };
 
 /*

@@ -1,0 +1,31 @@
+<mat-card style="margin: 2px;padding: 2px;">
+
+  <mat-chip-list class="image-chip-list">
+    <mat-chip *ngFor="let image of images"
+     [style.backgroundImage]="'url(' + image + ')'" 
+     (click)="selectImage(image)"
+     (mouseover)="zoomInImage()"
+      (mouseleave)="zoomOutImage()"
+       (mousemove)="moveImage($event)"></mat-chip>
+  </mat-chip-list>
+  <div class="selected-image-container">
+    <img [src]="selectedImage"  *ngIf="selectedImage" class="image" >
+  </div>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <h3 class="product-name">{{ name }}</h3>
+    <!-- <app-product-quantity (quantityChange)="onQuantityChange($event)"></app-product-quantity> -->
+    <p class="product-description">{{ description }}</p>
+    <p class="product-price">Price: {{ price | currency }}</p>
+    <mat-divider></mat-divider>
+  </mat-card-content>
+  <mat-card-actions class="action">
+    <div>
+      <button mat-raised-button color="primary" class="button-addToCart" (click)="addToCart()">Add to Cart</button>
+    </div>
+    <div>
+      <button mat-raised-button color="primary" class="button-buyNow" (click)="checkout()">Buy Now</button>
+    </div>
+  </mat-card-actions>
+  <br>
+</mat-card>
