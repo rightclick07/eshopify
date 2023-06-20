@@ -14,19 +14,35 @@
     margin-top: 0;
     margin-bottom: 0.5rem;
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
   }
   
   .product-description {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
+   margin:5px;
     text-align: center;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    text-align: justify;
+    font-family: Arial, Helvetica, sans-serif;
   }
-  
+  .product-description:hover{ 
+    font-family: Arial, Helvetica, sans-serif;
+    margin:5px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    text-align: justify;
+    color: rgb(39, 94, 104);
+  }
   .product-price {
+    color: rgb(134, 133, 130);
+    margin-top: 0;
+    text-decoration: line-through;
+  }
+  .compare-price{
     font-weight: bold;
     margin-top: 0;
-    margin-bottom: 0.5rem;
-    text-align: center;
+    margin-right: 0.5rem;
   }
   .image-chip-list {
     position: absolute;
@@ -83,6 +99,15 @@
     padding-left: 16px;
     padding-right: 16px;
     width: 200px;
-    background-color: #A020F0;
+    background-color: #8a15d3;
     color:white;
+  }
+  .discount-tag {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #c9c4c4; /* Set the desired background color for the discount tag */
+    color: green; /* Set the desired text color for the discount tag */
+    padding: 4px 8px; /* Set the desired padding for the discount tag */
+    font-weight: bold; /* Set the desired font weight for the discount tag */
   }

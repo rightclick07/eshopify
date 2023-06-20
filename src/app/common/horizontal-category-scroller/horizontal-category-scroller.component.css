@@ -9,3 +9,13 @@
   .list-container li {
     flex: 0 0 auto; /* Prevent flex items from growing or shrinking */
   }
+  .category-title{
+    text-align: center;
+    color: #7710b8;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight:bolder;
+    text-align: center;
+  }
+  .category-title:hover{
+    color: black;
+  }

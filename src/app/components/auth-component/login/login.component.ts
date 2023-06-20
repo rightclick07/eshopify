@@ -53,8 +53,10 @@ export class LoginComponent implements OnInit {
         this.spinnerService.hideSpinner();
       console.log(response);
       let token=response.payload?.token;
+      let username=response.payload?.username
       if(token){
         localStorage.setItem("token",token)
+        localStorage.setItem("username",username)
         location.reload();
         this.toastService.showSuccess("Logged In SuccessFully")
         this.router.navigate(['/home'])

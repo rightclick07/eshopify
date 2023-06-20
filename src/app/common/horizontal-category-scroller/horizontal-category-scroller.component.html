@@ -1,9 +1,29 @@
 <mat-card>
     <ul class="list-container">
-        <li *ngFor="let image of images">
+        <li *ngFor="let image of images" [matMenuTriggerFor]="menu">
+
             <img [src]="image.url" width="50px">
-            <h5 style="text-align: center;color: #7710b8;font-family: Arial, Helvetica, sans-serif;font-weight: bolder;text-align: center;">{{image.title}}</h5>
+            <h5 class="category-title" >{{image.title}}
+             <mat-icon style="vertical-align: middle;">keyboard_arrow_down</mat-icon>
+            </h5>
         </li>
+        <mat-menu #menu="matMenu">
+            <ng-container *ngIf="droneSubCategory">
+                <li mat-menu-item *ngFor="let key of droneSubCategory">
+                    {{key.title}}
+                 </li>
+            </ng-container>
+          
+          <li mat-menu-item *ngFor="let key of cameraSubCategory">
+            {{key.title}}
+         </li>
+         <li mat-menu-item *ngFor="let key of gamingSubCategory">
+            {{key.title}}
+         </li>
+         <li mat-menu-item *ngFor="let key of droneServiceSubCategory">
+            {{key.title}}
+         </li>
+        </mat-menu>
     </ul>
 </mat-card>
 

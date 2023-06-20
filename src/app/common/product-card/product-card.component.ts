@@ -7,11 +7,13 @@ import { log } from 'console';
   styleUrls: ['./product-card.component.css']
 })
 export class ProductCardComponent implements OnInit,OnChanges {
-
+  @Input() id!:number
   @Input() images!: string[];
   @Input() name!: string;
   @Input() description!: string;
-  @Input() price!: string;
+  @Input() price!: number;
+  @Input() compareAtPrice!:number;
+  @Input() discount!: number;
   selectedImage!: string;
   isZoomed: boolean = false;
   startX!: number;

@@ -8,23 +8,38 @@
       (mouseleave)="zoomOutImage()"
        (mousemove)="moveImage($event)"></mat-chip>
   </mat-chip-list>
+  
   <div class="selected-image-container">
     <img [src]="selectedImage"  *ngIf="selectedImage" class="image" >
   </div>
+  <span class="discount-tag">
+    <mat-icon style="vertical-align: middle;">label_important</mat-icon>
+    Discount {{discount}} %</span>
   <mat-divider></mat-divider>
   <mat-card-content>
-    <h3 class="product-name">{{ name }}</h3>
+    <h3 class="product-name"><a routerLink="/product-details/{{id}}" style="text-decoration: none;color: #810cca;"
+       matTooltip="{{name}}">{{ name }}</a></h3>
     <!-- <app-product-quantity (quantityChange)="onQuantityChange($event)"></app-product-quantity> -->
-    <p class="product-description">{{ description }}</p>
-    <p class="product-price">Price: {{ price | currency }}</p>
+    <p class="product-description" routerLink="/product-details/{{id}}">{{ description }}</p>
+    <div style="text-align: center;margin: 2px;">
+      <span class="compare-price">₹{{ compareAtPrice}}</span>
+      <span class="product-price">₹{{ price}}</span>
+      
+    </div>
     <mat-divider></mat-divider>
   </mat-card-content>
   <mat-card-actions class="action">
     <div>
-      <button mat-raised-button color="primary" class="button-addToCart" (click)="addToCart()">Add to Cart</button>
+      <button mat-raised-button color="primary" class="button-addToCart" (click)="addToCart()">
+        <mat-icon style="vertical-align: middle;">add_shopping_cart</mat-icon>
+        Add to Cart
+      </button>
     </div>
     <div>
-      <button mat-raised-button color="primary" class="button-buyNow" (click)="checkout()">Buy Now</button>
+      <button mat-raised-button color="primary" class="button-buyNow" (click)="checkout()">
+        <mat-icon style="vertical-align: middle;">shopping_basket</mat-icon>
+          Buy Now
+      </button>
     </div>
   </mat-card-actions>
   <br>
