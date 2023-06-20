@@ -38,8 +38,7 @@ export class HeaderComponent implements OnInit {
   showSocialForMobile=false;
   showSocialForweb=true;
   myControl = new FormControl();
-  categoryList = [
-    
+  categoryList = [ 
     {
       title:"Drone",
       routeUrl: 'ai',
@@ -83,7 +82,6 @@ export class HeaderComponent implements OnInit {
   selectedVal:any
   profile!: UserProfile[];
   badgeClass!: string;
-  username:string="";
   token:string="";
   initial:string="";
   ngOnInit() {
@@ -95,10 +93,10 @@ export class HeaderComponent implements OnInit {
       startWith(''),
       map(value => this._filter(value)),
     );
-   this.username="Ravi.Kumar";
+   let username=localStorage.getItem("username")   
    this.token="";
-   this.initial=this.getInitial(this.username)
-   let user=this.getUserName(this.username)
+   this.initial=this.getInitial(username!) 
+   let user=this.getUserName(username!)
    this.badgeClass=this.generateBadgeClass()
 
     this.profile=[
@@ -140,10 +138,9 @@ export class HeaderComponent implements OnInit {
     })
     return userNameArr.join(' ')
   }
-getInitial(username:string){
-   let firstName=username.split('.')[0];
-   return firstName.charAt(0).toUpperCase();
-}
+  getInitial(username:string){
+    return username.charAt(0).toUpperCase();
+  }
 
   generateBadgeClass(){
     let badgeClasses=["primary","accent","warn"]

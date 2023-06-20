@@ -1,4 +1,5 @@
-.mat-form-field{
-    width: 75px;
 
-}
+::ng-deep .mat-form-field {
+    width: 75px;
+    height: 30px; /* Set the desired height value */
+  }

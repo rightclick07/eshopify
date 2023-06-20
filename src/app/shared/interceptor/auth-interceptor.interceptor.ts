@@ -29,9 +29,9 @@ export class AuthInterceptor implements HttpInterceptor {
           this.toastService.showError("Unauthorized Login")
         } else {
           this.toastService.showError(error.message)
-          return throwError(error);
+          return throwError(error.message);
         }
-        return throwError(error); // Return the error as an observable
+        return throwError(error.message); // Return the error as an observable
       })
     );
   }

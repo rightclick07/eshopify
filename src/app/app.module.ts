@@ -26,7 +26,9 @@ import { SubCategoryComponent } from './common/sub-category/sub-category.compone
 import { ProductComponent } from './common/product/product.component';
 import { CartsComponent } from './common/carts/carts.component';
 import { CheckoutComponent } from './common/checkout/checkout.component'
+import {  HTTP_INTERCEPTORS } from '@angular/common/http';
 
+import { AuthInterceptor } from './shared/interceptor/auth-interceptor.interceptor'; 
 
 @NgModule({
   declarations: [
@@ -62,7 +64,10 @@ import { CheckoutComponent } from './common/checkout/checkout.component'
     HttpClientModule
   
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

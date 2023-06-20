@@ -38,30 +38,19 @@
       </div>
       <div class="card-container">
              
-                <app-product-card class="mat-elevation-z5" class="card"
-                    [images]="imageList"
-                    name="Example Product"
-                    description="This is an example product description."
-                    price="9.99">
+                <app-product-card  *ngFor="let key of productList" class="mat-elevation-z5" class="card"
+                    [images]="key.images"
+                    [name]="key.name"
+                    [description]="key.shortDescription"
+                    [price]="key.price"
+                    [discount]="key.discount"
+                    [compareAtPrice]="key.compareAtPrice"
+                    [id]="key.id"
+                    >
                 </app-product-card>
-                <app-product-card
-                    [images]="imageList"
-                    name="Example Product"
-                    description="This is an example product description."
-                    price="9.99">
-                </app-product-card>
-                <app-product-card
-                    [images]="imageList"
-                    name="Example Product"
-                    description="This is an example product description."
-                    price="9.99">
-                </app-product-card>
-                <app-product-card
-                    [images]="imageList"
-                    name="Example Product"
-                    description="This is an example product description."
-                    price="9.99">
-                </app-product-card>
+            
+                
+                
       </div>
     </mat-card>
 </div>            

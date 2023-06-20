@@ -1,6 +1,10 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
+import { log } from 'console';
 import { Observable, map, shareReplay } from 'rxjs';
+import { ResponseData } from 'src/app/shared/model/ResponseData';
+import { Product } from 'src/app/shared/model/product';
+import { ProductService } from 'src/app/shared/services/product-service/product.service';
 
 @Component({
   selector: 'app-home',
@@ -11,14 +15,14 @@ export class HomeComponent implements OnInit {
 
   selectedImage!: string;
 
-  
+  productList:Product[]=[]
   imageList=[
     "assets/img/product-sample-images/p0.jpg",
     "assets/img/product-sample-images/p1.jpg",
     "assets/img/product-sample-images/p2.jpg",
     "assets/img/product-sample-images/p3.jpg"
   ]
-  constructor(private breakpointObserver: BreakpointObserver,) { }
+  constructor(private breakpointObserver: BreakpointObserver,private productService:ProductService) { }
   isHandset: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Tablet)
     .pipe(
       map((result:any) => result.matches),
@@ -26,6 +30,7 @@ export class HomeComponent implements OnInit {
     );
 
   ngOnInit(): void {
+    this.getProductList();
   }
 
 categoryList=[
@@ -126,25 +131,25 @@ categoryList=[
         products:[]
       },
       {
-        id:1,
+        id:2,
         name:"Repair Drone",
         icon:"",
         products:[]
       },
       {
-        id:1,
+        id:3,
         name:"Drone Training",
         icon:"",
         products:[]
       },
       {
-        id:1,
+        id:4,
         name:"Gey Your UIN",
         icon:"",
         products:[]
       },
       {
-        id:1,
+        id:5,
         name:"Drone Piolet License",
         icon:"",
         products:[]
@@ -153,6 +158,29 @@ categoryList=[
   }
   
 ]
+
+getProductList(){
+  this.productService.getAllProductList().subscribe((res:any)=>{
+     if(res){
+      this.productList=res?.payload
+       console.log(this.productList);
+       for(let p of this.productList){
+         let img=p.images
+         console.log(img);
+         let k=this.createListFromString(img.toString())
+         console.log(k);
+         p.images=k;
+       }
+       
+     }
+      
+  })
+}
+
+createListFromString(imgString:string){
+  const arrayOfElements = imgString.split(',');
+  return arrayOfElements;
+}
 
 selectImage(image: string): void {
   this.selectedImage = image;
