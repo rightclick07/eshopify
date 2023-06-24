@@ -1,0 +1,131 @@
+.image-chip-list {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 8px;
+    z-index: 1;
+  }
+  .image-chip-list-large {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 8px;
+    z-index: 1;
+  
+  }
+  .mat-chip {
+    width: 48px;
+    height: 48px;
+    background-size: cover;
+    margin-right: 8px;
+    cursor: pointer;
+    
+  }
+ 
+  .selected-image-container {
+    width: 450px; /* Set the desired width of the container */
+    height: 350px;/* Set the desired height of the container */
+    margin: 0 5px; 
+    padding: 0 5px;
+    position: relative;
+    overflow: hidden; /* Ensure that images exceeding container dimensions are clipped */
+  }
+  
+  .image {
+    width: 100%; /* Make the image fill the width of the container */
+    height: 100%; /* Make the image fill the height of the container */
+    transition: transform 0.3s ease;
+    object-fit: cover; /* Maintain the aspect ratio of the image while filling the container */
+  }
+  
+  .zoomed {
+    transform: scale(1.5);
+    cursor: move;
+  }
+  .product-name{
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+  }
+  .product-short-description{
+    text-align: justify;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 25px;
+  }
+  .pointer-text {
+    margin-bottom: 10px; /* Add desired spacing after each pointer */
+    font-size: 16px; /* Increase the font size to your desired value */
+    /* Add additional custom styling here */
+    color: black; /* Example: set the text color to blue */
+   font-family:  Arial,sans-serif;
+    text-align: justify;
+  }
+  .product-price {
+    color: rgb(134, 133, 130);
+    margin-top: 0;
+    font-size: 20px;
+    text-decoration: line-through;
+  }
+  .compare-price{
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 0;
+    margin-right: 0.5rem;
+  }
+  .action{
+    text-align: center;
+  }
+
+  .button-addToCart{
+     border-radius: 999px;
+    padding-left: 16px;
+    padding-right: 16px;
+    background-color: #A020F0;
+    width:200px;
+    margin-bottom: 5px;
+    color:white;
+  }
+  .button-buyNow{
+    border-radius: 999px;
+    padding-left: 16px;
+    padding-right: 16px;
+    width: 200px;
+    background-color: #8a15d3;
+    color:white;
+  }
+  .product-discount{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #c9c4c4; /* Set the desired background color for the discount tag */
+    color: green; /* Set the desired text color for the discount tag */
+    padding: 4px 8px; /* Set the desired padding for the discount tag */
+    font-weight: bold; 
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns with equal width */
+    grid-gap: 1px; /* Add desired spacing between columns */
+  }
+  
+  /* .column {
+    /* Additional styling for each column */
+    .product-discount-large{
+        background-color: #c5c2c2;
+        color: green;
+        margin-left: 5px;
+        border-radius: 5%;
+        padding: 5px;
+    }
+    .deal{
+        background-color:#8a15d3;
+        color: white;
+        margin-left: 5px;
+        border-radius: 5%;
+        padding: 5px;
+        font-size: 18px;
+        margin: 5px;
+    }

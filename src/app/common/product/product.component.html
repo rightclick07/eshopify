@@ -1,1 +1,169 @@
-<p>product works!</p>
+<div *ngIf="isSmallScreen$ | async">
+    <div>
+        <h1 class="product-name">
+            <a  style="text-decoration: none;color: #810cca;text-align: center;"
+                  matTooltip="{{productdetails?.name}}">{{ productdetails?.name }}
+            </a>
+        </h1>
+    </div>
+    <mat-card>
+        
+        <mat-chip-list class="image-chip-list">
+            <mat-chip *ngFor="let image of productdetails?.images"
+             [style.backgroundImage]="'url(' + image + ')'" 
+             (click)="selectImage(image)"
+             (mouseover)="zoomInImage()"
+             (mouseleave)="zoomOutImage()"
+             (mousemove)="moveImage($event)"></mat-chip>
+        </mat-chip-list>
+          
+          <div class="selected-image-container">
+            <img [src]="selectedImage"  *ngIf="selectedImage" class="image" >
+          </div> 
+          <mat-divider></mat-divider>
+          <div style="margin: 5px;text-align: center;">
+            <span class="deal">
+                <mat-icon style="vertical-align: middle;">loyalty</mat-icon>
+                Deal of the Day
+            </span>
+         </div>
+          <div style="text-align: center;margin: 5px;">
+            <span class="compare-price">₹{{ productdetails?.compareAtPrice}}</span>
+            <span class="product-price">₹{{ productdetails?.price}}</span>
+            <span class="product-discount">
+                <mat-icon style="vertical-align: middle;">label_important</mat-icon>
+                {{ productdetails?.discount}} % Discount</span>
+            <mat-card-actions class="action">
+                <div>
+                  <button mat-raised-button color="primary" class="button-addToCart" (click)="addToCart(productdetails?.id)">
+                    <mat-icon style="vertical-align: middle;">add_shopping_cart</mat-icon>
+                    Add to Cart
+                  </button>
+                </div>
+                <div>
+                  <button mat-raised-button color="primary" class="button-buyNow" (click)="checkout(productdetails)">
+                    <mat-icon style="vertical-align: middle;">shopping_basket</mat-icon>
+                      Buy Now
+                  </button>
+                </div>
+              </mat-card-actions>
+          </div>
+        <div>
+
+        </div>
+    </mat-card>
+    <mat-accordion class="example-headers-align" multi>
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <mat-icon style="vertical-align: middle; color:#810cca ;margin-right: 2px;">receipt</mat-icon>
+                  <b style="color: #810cca;">Product Description</b>
+                </mat-panel-title>      
+          </mat-expansion-panel-header>  
+          <mat-panel-description>
+            <div  [innerHTML]="convertToPointers(productdetails?.description)" class="pointer-text"></div>
+          </mat-panel-description> 
+        </mat-expansion-panel>            
+    </mat-accordion>
+    <mat-accordion class="example-headers-align" multi>
+        <mat-expansion-panel >
+          <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <mat-icon style="vertical-align: middle; color:#810cca ;margin-right: 2px;"><mat-icon>feedback</mat-icon></mat-icon>
+                  <b style="color: #810cca;">Product Reviews</b>
+                </mat-panel-title>      
+          </mat-expansion-panel-header>  
+          <mat-panel-description>
+            See Reviews
+          </mat-panel-description> 
+        </mat-expansion-panel>            
+    </mat-accordion>
+</div> 
+  
+<div *ngIf="!(isSmallScreen$ | async)" class="row" style="background-image: linear-gradient(#bf7ee7,white)">
+    <div class="column">
+        <mat-card mat-elevation-z3 style="display: flex;">
+                <div>
+                    <mat-chip-list class="image-chip-list-large column" >
+                        <mat-chip *ngFor="let image of productdetails?.images"
+                         [style.backgroundImage]="'url(' + image + ')'" 
+                         (click)="selectImage(image)"
+                         (mouseover)="zoomInImage()"
+                          (mouseleave)="zoomOutImage()"
+                           (mousemove)="moveImage($event)"></mat-chip>
+                    </mat-chip-list>
+                      
+                </div>
+                
+                <div class="selected-image-container">
+                    <img [src]="selectedImage"  *ngIf="selectedImage" class="image" >
+                </div> 
+        </mat-card>
+        <mat-accordion class="example-headers-align" multi>
+            <mat-expansion-panel [expanded]="true">
+              <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-icon style="vertical-align: middle; color:#810cca ;margin-right: 2px;">receipt</mat-icon>
+                      <b style="color: #810cca;">Product Description</b>
+                    </mat-panel-title>      
+              </mat-expansion-panel-header>  
+              <mat-panel-description>
+                <div  [innerHTML]="convertToPointers(productdetails?.description)" class="pointer-text"></div>
+              </mat-panel-description> 
+            </mat-expansion-panel>            
+        </mat-accordion>
+        <mat-accordion class="example-headers-align" multi>
+            <mat-expansion-panel >
+              <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-icon style="vertical-align: middle; color:#810cca ;margin-right: 2px;"><mat-icon>feedback</mat-icon></mat-icon>
+                      <b style="color: #810cca;">Product Reviews</b>
+                    </mat-panel-title>      
+              </mat-expansion-panel-header>  
+              <mat-panel-description>
+                See Reviews
+              </mat-panel-description> 
+            </mat-expansion-panel>            
+        </mat-accordion>
+    </div>
+    <div class="column"  style="text-align: center;">
+        <mat-card  mat-elevation-z3>
+            <h1 class="product-name"><a  style="text-decoration: none;color: #810cca;"
+                matTooltip="{{productdetails?.name}}">{{ productdetails?.name }}</a></h1>
+             <!-- <app-product-quantity (quantityChange)="onQuantityChange($event)"></app-product-quantity> -->
+             <p class="product-short-description" >{{ productdetails?.shortDescription }}</p>
+             <p class="product-short-description" >{{ productdetails?.variants }}</p>
+             <div style="margin: 5px;">
+                <span class="deal">
+                    <mat-icon style="vertical-align: middle;">loyalty</mat-icon>
+                    Deal of the Day
+                </span>
+             </div>
+             <div style="margin-top: 10px;">
+                <span class="compare-price">₹{{ productdetails?.compareAtPrice}}</span>
+                <span class="product-price">₹{{ productdetails?.price}}</span>
+                <span class="product-discount-large">
+                    <mat-icon style="vertical-align: middle;">label_important</mat-icon>
+                    {{ productdetails?.discount}} % Discount
+                </span>
+             </div>
+           
+            <mat-card-actions class="action">
+                <div>
+                  <button mat-raised-button color="primary" class="button-addToCart" (click)="addToCart(productdetails)">
+                    <mat-icon style="vertical-align: middle;">add_shopping_cart</mat-icon>
+                    Add to Cart
+                  </button>
+                </div>
+                <div>
+                  <button mat-raised-button color="primary" class="button-buyNow" (click)="checkout(productdetails)">
+                    <mat-icon style="vertical-align: middle;">shopping_basket</mat-icon>
+                      Buy Now
+                  </button>
+                </div>
+            </mat-card-actions> 
+        </mat-card>
+        
+        
+    </div>
+</div>

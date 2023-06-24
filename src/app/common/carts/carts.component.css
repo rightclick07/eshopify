@@ -7,3 +7,35 @@
     padding: 20px;
     text-align: center;
 }
+.shop-now-button{
+    border-radius: 999px;
+    padding-left: 16px;
+    padding-right: 16px;
+    width: 200px;
+    background-color: #8a15d3;
+    color:white;
+}
+.mat-table{
+    width: 100%;
+}
+table {
+    table-layout: fixed; /* Ensure consistent column width */
+  }
+  
+  th.mat-header-cell {
+    text-align: center; /* Align header cells to the center */
+  }
+  
+  td.mat-cell {
+    text-align: center; /* Align data cells to the center */
+  }
+ .checkout-button{
+    margin-top: 5px;
+    border-radius: 999px;
+    padding-left: 16px;
+    padding-right: 16px;
+    background-color: green;
+    width:300px;
+    margin-bottom: 5px;
+    color:white;
+  }

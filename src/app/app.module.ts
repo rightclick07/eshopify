@@ -29,6 +29,8 @@ import { CheckoutComponent } from './common/checkout/checkout.component'
 import {  HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AuthInterceptor } from './shared/interceptor/auth-interceptor.interceptor'; 
+import { CartDataResolverResolver } from './shared/resolver/cart-data-resolver.resolver';
+import { TableComponent } from './common/table/table.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,7 @@ import { AuthInterceptor } from './shared/interceptor/auth-interceptor.intercept
     ProductComponent,
     CartsComponent,
     CheckoutComponent,
+    TableComponent
    
   ],
   imports: [
@@ -64,7 +67,7 @@ import { AuthInterceptor } from './shared/interceptor/auth-interceptor.intercept
     HttpClientModule
   
   ],
-  providers: [
+  providers: [CartDataResolverResolver,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   
   ],

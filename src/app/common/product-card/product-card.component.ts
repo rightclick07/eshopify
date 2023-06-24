@@ -1,5 +1,9 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { log } from 'console';
+import { CartService } from 'src/app/shared/services/cart-service/cart.service';
+import { ProductService } from 'src/app/shared/services/product-service/product.service';
+import { ToastService } from 'src/app/shared/services/toast-service/toast.service';
 
 @Component({
   selector: 'app-product-card',
@@ -15,6 +19,7 @@ export class ProductCardComponent implements OnInit,OnChanges {
   @Input() compareAtPrice!:number;
   @Input() discount!: number;
   selectedImage!: string;
+  cartArray:any[]=[];
   isZoomed: boolean = false;
   startX!: number;
   startY!: number;
@@ -24,15 +29,14 @@ export class ProductCardComponent implements OnInit,OnChanges {
   quantity: number = 1;
 
  
-  constructor(){
+  constructor(private productService:ProductService,private router:Router,private toastService:ToastService,
+    private cartService:CartService){
   }
 
   ngOnInit(): void {
-    console.log(this.selectedImage);
     
   }
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
     if (this.images && this.images.length > 0) {
       this.selectedImage = this.images[0];
     }
@@ -43,9 +47,15 @@ export class ProductCardComponent implements OnInit,OnChanges {
     this.selectedImage = image;
   }
 
-  addToCart(): void {
+  addToCart(id:number): void {
     // Implement your logic for adding the product to the cart
-    console.log('Product added to cart');
+   this.productService.getproductById(id).subscribe((res:any)=>{
+       if(res){
+           this.cartService.addToCart(res?.payload);
+           this.toastService.showSuccess("Item Added To Cart SuccessFully!")
+       }
+   })
+    
   }
 
 

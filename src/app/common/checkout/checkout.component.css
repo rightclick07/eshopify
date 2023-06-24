@@ -1,0 +1,16 @@
+.example-stepper {
+    margin-top: 8px;
+  }
+  
+  .mat-mdc-form-field {
+    margin-top: 16px;
+    margin:5px;
+  }
+  .proceed-to-pay-button{
+    border-radius: 999px;
+    padding-left: 16px;
+    padding-right: 16px;
+    width: 200px;
+    background-color: #8a15d3;
+    color:white;
+ }

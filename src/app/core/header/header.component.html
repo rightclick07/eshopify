@@ -123,8 +123,8 @@
             </mat-menu>
             -->
             <div>
-              <button  mat-button routerLink="/cart">
-                <mat-icon matBadge="0" matBadgeColor="warn">shopping_cart</mat-icon>
+              <button  mat-button (click)="opencart()">
+                <mat-icon [matBadge]="cartItemCount" matBadgeColor="warn">shopping_cart</mat-icon>
               </button>
             </div>
 

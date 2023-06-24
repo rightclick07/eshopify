@@ -7,6 +7,9 @@ import { log } from 'console';
 import { map, Observable, shareReplay, startWith } from 'rxjs';
 import { UserProfile } from 'src/app/shared/model/UserProfile';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { CartService } from 'src/app/shared/services/cart-service/cart.service';
+import { ProductService } from 'src/app/shared/services/product-service/product.service';
+import { ToastService } from 'src/app/shared/services/toast-service/toast.service';
 import { TokenStorageService } from 'src/app/shared/services/token-storage/token-storage.service';
 
 @Component({
@@ -17,6 +20,8 @@ import { TokenStorageService } from 'src/app/shared/services/token-storage/token
 export class HeaderComponent implements OnInit {
   FullName:any;
   isUserLoggedIn:boolean=false;
+  cartArray:any[]=[];
+  cartItemCount=0;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -26,7 +31,10 @@ export class HeaderComponent implements OnInit {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private router:Router,
-    public authService:AuthService  
+    public authService:AuthService ,
+    private productService:ProductService,
+    private toastService:ToastService ,
+    private cartService:CartService
 ) {
   this.authService.isLoggedIn.subscribe(res=>{
     this.isUserLoggedIn=res;
@@ -115,7 +123,13 @@ export class HeaderComponent implements OnInit {
       }
     ]
 
-    
+    this.cartService.getProduct().subscribe(res=>{
+      console.log(res);
+     this.cartArray=res;
+     console.log(this.cartArray);
+     
+      this.cartItemCount=this.cartArray.length;
+    })
   }
 
   private _filter(value: string): string[] {
@@ -175,4 +189,8 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+
+  opencart(){
+    this.router.navigate(["/cart"])
+  }
 }

@@ -16,12 +16,6 @@ export class HomeComponent implements OnInit {
   selectedImage!: string;
 
   productList:Product[]=[]
-  imageList=[
-    "assets/img/product-sample-images/p0.jpg",
-    "assets/img/product-sample-images/p1.jpg",
-    "assets/img/product-sample-images/p2.jpg",
-    "assets/img/product-sample-images/p3.jpg"
-  ]
   constructor(private breakpointObserver: BreakpointObserver,private productService:ProductService) { }
   isHandset: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Tablet)
     .pipe(
@@ -166,9 +160,7 @@ getProductList(){
        console.log(this.productList);
        for(let p of this.productList){
          let img=p.images
-         console.log(img);
          let k=this.createListFromString(img.toString())
-         console.log(k);
          p.images=k;
        }
        
