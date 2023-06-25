@@ -13,8 +13,19 @@ display: flex;
 }
 
 .button{
-  color:#A020F0;
- margin-left: 30%;
+  border-radius: 999px;
+  padding-left: 16px;
+  padding-right: 16px;
+  width: 200px;
+  background-color: #8a15d3;
+  color:white;
+}
+.button-google{
+  border-radius: 999px;
+  padding-left: 16px;
+  padding-right: 16px;
+  width: 200px;
+  background-color: white;
 }
 h2 {
   width: 100%; 

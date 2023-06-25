@@ -44,23 +44,24 @@
         </div>
         </div>   
         </form>
-        <mat-card-actions >
+        <mat-card-actions style="text-align: center;" >
           <button  mat-raised-button type="submit" primary class="button" [disabled]="loginForm.invalid" (click)="OnLogin()" >Login</button>
+          <br>
           <a routerLink="/forget-password" style="text-decoration: none;color: #A020F0;">&nbsp; Forget Password ?</a>
           <div style="margin: 5px;">
             <span>Not a Member? </span><a  style="text-decoration: none;color:#A020F0 ;" routerLink="/signup">Signup</a>
           </div>
         </mat-card-actions>
       </mat-card-content>
-      <h2><span>OR</span></h2>
+      <!-- <h2><span>OR</span></h2>
       <mat-card-actions>
         <button style="margin-left: 20%;" mat-raised-button primary class="button">
           <mat-icon style="color:black">smartphone</mat-icon>
           Login with Phone No.</button>
-      </mat-card-actions>
+      </mat-card-actions> -->
       <h2><span>OR</span></h2>
       <mat-card-actions>
-        <button style="margin-left: 20%;" mat-raised-button primary class="button">
+        <button style="margin-left: 20%;" mat-raised-button primary class="button-google" (click)=" signInWithGoogle()">
           <img src="assets/img/banners/google-icon.png" width="30px">
           Login with Google</button>
       </mat-card-actions>

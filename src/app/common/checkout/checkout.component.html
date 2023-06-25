@@ -9,32 +9,37 @@
     
     <mat-step [stepControl]="addressFormGroup" label="Fill out your address">
       <form [formGroup]="addressFormGroup">    
-              <mat-form-field class="example-full-width" appearance="outline">
+              <mat-form-field class="form-field" appearance="outline">
                 <mat-label>Address Line 1</mat-label>
                 <textarea matInput formControlName="addressLine1" placeholder="Ex. 100 Main St"></textarea>
               </mat-form-field>
               <br>
 
-             <mat-form-field class="example-full-width" appearance="outline">
+             <mat-form-field class="form-field" appearance="outline">
                 <mat-label>City</mat-label>
                 <input matInput formControlName="city" placeholder="Ex. San Francisco">
              </mat-form-field>
-             <mat-form-field class="example-full-width" appearance="outline">
+             <mat-form-field class="form-field" appearance="outline">
                 <mat-label>State</mat-label>
                 <input matInput formControlName="state" placeholder="Ex. California">
             </mat-form-field>               
             <br>
-            <mat-form-field class="example-full-width" appearance="outline">
+            <mat-form-field class="form-field" appearance="outline">
                 <mat-label>Postal Code</mat-label>
                 <input matInput formControlName="postalCode" #postalCode maxlength="5" placeholder="Ex. 94105" value="94043">
             </mat-form-field>
-                    
+            <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Phone Number</mat-label>
+                <input matInput formControlName="postalCode" #postalCode maxlength="5" placeholder="Ex. 94105" value="94043">
+            </mat-form-field>      
         </form>                    
         <div>
-          <button mat-button matStepperNext class="proceed-to-pay-button">Proceed To Pay</button>
+          <button mat-button matStepperNext class="proceed-to-pay-button"
+          [disabled]="addressFormGroup.invalid"
+          >Proceed To Pay</button>
         </div>
     </mat-step>
-    <mat-step [stepControl]="paymentFormGroup" label="Fill out your phone number">
+    <mat-step [stepControl]="paymentFormGroup" label="Payment">
       <form [formGroup]="paymentFormGroup">
         <section class="example-section">
             <div style="margin-bottom: 10px;margin-top: 5px;">
@@ -47,7 +52,8 @@
           </section>
         <div>
           <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext class="proceed-to-pay-button" (click)="placeOrder()">Place Order</button>
+          <button mat-button matStepperNext class="proceed-to-pay-button"
+           (click)="placeOrder()" [disabled]="paymentFormGroup.invalid">Place Order</button>
         </div>
       </form>
     </mat-step>

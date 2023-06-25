@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import { GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { log } from 'console';
 import { Subscription } from 'rxjs';
 import { ResponseData } from 'src/app/shared/model/ResponseData';
@@ -18,11 +19,12 @@ export class LoginComponent implements OnInit {
   rememberMe = false;
   public loginForm: FormGroup = {} as  FormGroup;
   loginSubscription$:Subscription={} as Subscription 
-
+  userInfo!:SocialUser
   constructor( private router: Router,
      private authService:AuthService,
      private spinnerService:SpinnerService,
-     private toastService:ToastService
+     private toastService:ToastService,
+     private authGoogleService:SocialAuthService
      ){}
 
   ngOnInit(): void {
@@ -70,5 +72,21 @@ export class LoginComponent implements OnInit {
     })
 
   }
+  signInWithGoogle(): void {
+    console.log("hello");
+    
+    this.authGoogleService?.signIn(GoogleLoginProvider.PROVIDER_ID)
+      .then((user) => {
+        // Handle successful sign-in
+        console.log(user);
+        
+      })
+      .catch((error) => {
+        // Handle error
+        console.log(error);
+        
+      });
+  }
+  
 
 }

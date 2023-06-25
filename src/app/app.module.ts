@@ -31,6 +31,11 @@ import {  HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/interceptor/auth-interceptor.interceptor'; 
 import { CartDataResolverResolver } from './shared/resolver/cart-data-resolver.resolver';
 import { TableComponent } from './common/table/table.component';
+import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import {
+  GoogleLoginProvider,
+  FacebookLoginProvider
+} from '@abacritt/angularx-social-login';
 
 @NgModule({
   declarations: [
@@ -64,11 +69,29 @@ import { TableComponent } from './common/table/table.component';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SocialLoginModule
   
   ],
   providers: [CartDataResolverResolver,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: true,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              "653248834992-v8lj1ij1rebi2c6huil8u9lbqalh6jur.apps.googleusercontent.com"
+            )
+          }
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
+    }
   
   ],
   bootstrap: [AppComponent]
