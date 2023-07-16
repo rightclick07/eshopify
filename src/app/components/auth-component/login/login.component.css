@@ -39,3 +39,16 @@ h2 span {
    background:white; 
    padding:0 10px; 
 }
+.container {
+  
+}
+
+.button-google {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Adjust the gap as needed */
+}
+

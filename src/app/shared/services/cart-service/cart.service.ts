@@ -7,9 +7,13 @@ import { ToastService } from '../toast-service/toast.service';
 })
 export class CartService {
 
+  private cart: any[] = [];
   public cartItemList:any[]=[];
   public productList=new BehaviorSubject<any>([])
-  constructor(private toastService:ToastService) { }
+  constructor(private toastService:ToastService) { 
+    this.loadCartFromLocalStorage();
+  }
+
 
   getProduct(){
     return this.productList.asObservable();
@@ -18,19 +22,18 @@ export class CartService {
   setProduct(product:any){
      this.cartItemList.push(...product);
      this.productList.next(product)
+     this.saveCartToLocalStorage();
   }
 
   addToCart(product:any){
     if(!this.cartItemList.includes(product)){
-      console.log("Hello");
-      
       this.cartItemList.push(product)
       this.productList.next(this.cartItemList);
+      this.saveCartToLocalStorage();
       this.getTotalPrice();
     }else{
       this.toastService.showError("Already Added to Cart")
     }
-   
     console.log(" this.cartItemList", this.cartItemList);
     
   }
@@ -49,11 +52,24 @@ export class CartService {
         this.cartItemList.splice(index,1)
       }
     })
+    localStorage.setItem('cart', JSON.stringify(this.cartItemList));
   }
 
   removeAllCartItem(){
     this.cartItemList=[];
     this.productList.next(this.cartItemList)
+    localStorage.setItem('cart', JSON.stringify(this.cartItemList));
+  }
+
+  private saveCartToLocalStorage(): void {
+    localStorage.setItem('cart', JSON.stringify(this.cartItemList));
+  }
+  private loadCartFromLocalStorage(): void {
+    const savedCart = localStorage.getItem('cart');
+    if (savedCart) {
+      this.cartItemList = JSON.parse(savedCart);
+      this.productList.next(this.cartItemList);
+    }
   }
 
 }

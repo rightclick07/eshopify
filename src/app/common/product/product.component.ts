@@ -79,9 +79,14 @@ export class ProductComponent implements OnInit,OnChanges {
   }
 
   addToCart(productDetails:any): void {
-    // Implement your logic for adding the product to the cart
-    console.log('Product added to cart');
-    this.cartService.addToCart(productDetails)
+    if(localStorage.getItem("token")){
+        // Implement your logic for adding the product to the cart
+       console.log('Product added to cart');
+       this.cartService.addToCart(productDetails)
+    }else{
+       this.router.navigate(["/login"])
+    }
+  
   }
 
 
@@ -128,7 +133,12 @@ export class ProductComponent implements OnInit,OnChanges {
   }
 
  checkout(productDetails:any){
-  this.cartService.addToCart(productDetails);
-  this.router.navigate(["/checkout"])
- }
+    if(localStorage.getItem("token")){
+
+      this.cartService.addToCart(productDetails);
+      this.router.navigate(["/checkout"])
+    }else{
+      this.router.navigate(["/login"])
+    }
+  }
 }

@@ -36,6 +36,11 @@ import {
   GoogleLoginProvider,
   FacebookLoginProvider
 } from '@abacritt/angularx-social-login';
+import { MenuSubmenuComponent } from './common/menu-submenu/menu-submenu.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { FaqComponent } from './components/faq/faq.component';
+import { ImageSliderComponent } from './common/image-slider/image-slider.component';
+
 
 @NgModule({
   declarations: [
@@ -59,7 +64,11 @@ import {
     ProductComponent,
     CartsComponent,
     CheckoutComponent,
-    TableComponent
+    TableComponent,
+    MenuSubmenuComponent,
+    PrivacyPolicyComponent,
+    FaqComponent,
+    ImageSliderComponent,
    
   ],
   imports: [

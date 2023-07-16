@@ -1,11 +1,11 @@
-<div *ngIf="iscartEmpty">
+<div *ngIf="dataSource.data.length==0">
     <mat-card class="empty-cart">
         <mat-card-title>Cart is Empty</mat-card-title>
         <img  src="assets/img/utility/empty-cart.avif" width="250px" >
         <button  mat-raised-button class="shop-now-button" routerLink="/home">Shop Now</button>
     </mat-card>
 </div>
-<div *ngIf="!iscartEmpty" style="margin: 5px;text-align: center;">
+<div *ngIf="dataSource.data.length!=0" style="margin: 5px;text-align: center;">
     <h1 style="text-align: center;color: #8a15d3;">Shopping Cart</h1>
     <table mat-table [dataSource]="dataSource">
         <ng-container *ngIf="dataSource.data.length==0">
@@ -43,8 +43,11 @@
         <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: tableColumns;"></tr>
       </table>
-      
-      <button mat-button (click)="checkout()" class="checkout-button">
+      <!-- <button mat-button (click)="clearAll()" class="checkout-button" [disabled]="dataSource.data.length==0">
+        <mat-icon style="vertical-align: middle;">shopping_basket</mat-icon>
+        Clear Cart
+      </button> -->
+      <button mat-button (click)="checkout()" class="checkout-button" [disabled]="dataSource.data.length==0">
         <mat-icon style="vertical-align: middle;">shopping_basket</mat-icon>
         Checkout
       </button>

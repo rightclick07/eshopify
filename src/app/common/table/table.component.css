@@ -1,3 +1,17 @@
 .table{
     width: 100%;
 }
+.mat-table{
+    width: 100%;
+}
+table {
+    table-layout: fixed; /* Ensure consistent column width */
+  }
+  
+  th.mat-header-cell {
+    text-align: center; /* Align header cells to the center */
+  }
+  
+  td.mat-cell {
+    text-align: center; /* Align data cells to the center */
+  }

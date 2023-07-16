@@ -1,6 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { log } from 'console';
 
@@ -45,7 +45,7 @@ export class HeaderComponent implements OnInit {
 }
   showSocialForMobile=false;
   showSocialForweb=true;
-  myControl = new FormControl();
+  myControl = new UntypedFormControl();
   categoryList = [ 
     {
       title:"Drone",
@@ -118,6 +118,10 @@ export class HeaderComponent implements OnInit {
       //   code:'Change Password'
       // },
       {
+        name:'option 2',
+        code:"Account",
+      },
+      {
         name:'option 3',
         code:'Logout'
       }
@@ -169,6 +173,9 @@ export class HeaderComponent implements OnInit {
       case 'Change Password':
         break;
 
+      case 'Account':
+        break;
+
       case 'Logout':
        // this.logout() 
         break; 
@@ -186,6 +193,9 @@ export class HeaderComponent implements OnInit {
       localStorage.clear();
       this.isUserLoggedIn=false;
       this.router.navigate(["/login"])
+    }else if(key=="Account")
+    {  
+      this.router.navigate(["/account"])
     }
   }
 

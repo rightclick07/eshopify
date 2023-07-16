@@ -15,11 +15,13 @@ import { CartsComponent } from './common/carts/carts.component';
 import { ProductComponent } from './common/product/product.component';
 import { CartDataResolverResolver } from './shared/resolver/cart-data-resolver.resolver';
 import { CheckoutComponent } from './common/checkout/checkout.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { FaqComponent } from './components/faq/faq.component';
 
 
 const routes: Routes = [
-    {path: '', component: LoginComponent,canActivate: [LoginGuard]},
-    {path: 'home', component: HomeComponent,canActivate: [AuthGuard],},
+    {path: '', component: HomeComponent},
+    {path: 'home', component: HomeComponent},
     {path: 'signup', component: SignupComponent},
     {path: 'login', component: LoginComponent,canActivate: [LoginGuard]},
     {path: 'forget-password', component: ForgetPasswordComponent},
@@ -27,9 +29,13 @@ const routes: Routes = [
     {path:"about-us",component:AboutUsComponent},
     {path:"contact-us",component:ContactUsComponent},
     {path:"career",component:CareersComponent},
+    {path:"privacy-policy",component:PrivacyPolicyComponent},
+    {path:"faq",component:FaqComponent},
     {path:"cart",component:CartsComponent},
     {path:"checkout",component:CheckoutComponent},
-    {path:"product-details/:id",component:ProductComponent}
+    {path:"product-details/:id",component:ProductComponent},
+    {path:"account",loadChildren: () => import('./modules/account-module/account/account.module').then(m => m.AccountModule)},
+    {path:"admin",loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)}
 // {path: 'admin', component: DashboardComponent,
 //   canActivate: [RoleGuardService],
 //   data: {roles: 'ROLE_ADMIN'},

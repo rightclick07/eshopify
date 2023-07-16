@@ -61,7 +61,18 @@ export class CartsComponent implements OnInit,OnChanges {
     }
   }
 
+
   checkout(){
-    this.router.navigate(["/checkout"])
+    if(localStorage.getItem("token")){
+      this.router.navigate(["/checkout"])
+    }else{
+      this.router.navigate(["/login"])
+    }
+    
+  }
+
+  clearAll(){
+    this.cartService.removeAllCartItem();
+    this.dataSource._updateChangeSubscription();
   }
 }

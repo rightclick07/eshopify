@@ -10,19 +10,17 @@
    </div>
 
 </div> -->
-<div>
+<!-- <div>
     <app-horizontal-category-scroller></app-horizontal-category-scroller>
-</div>
+</div> -->
 <section>
     <div class="container">
-        <h2 class="homeheadline_tag text-center">
-            <span class="headline_superheadline">DJI <b>DRONE</b>
-                <button mat-raised-button class="shop-now-button" >SHOP NOW</button></span>
-                
-        </h2>
-        <div class="image-container">
-            <img src="assets/img/banners/drone2-1.gif" alt="GIF Image" class="responsive-image">
-          </div>
+      <div class="image-container">
+        <app-image-slider [images]="imageList" [height]="height"></app-image-slider>
+
+      </div>
+        
+        
         <!-- <div class="col-12 text-center" *ngIf="isHandset" width="50%">
             <img src="assets/img/banners/drone-mobile.png" class="droninner_sec">
         </div> -->
@@ -33,24 +31,71 @@
 <div class="home-page">
  
     <mat-card class="mat-elevation-z3" style="margin: 5px;">
-      <div>
-        <h2 style="color: #A020F0;font-family: Arial, Helvetica, sans-serif;font-weight: bolder;text-align: center;">Best Seller Products</h2>
-      </div>
-      <div class="card-container">
-             
-                <app-product-card  *ngFor="let key of productList" class="mat-elevation-z5" class="card"
-                    [images]="key.images"
-                    [name]="key.name"
-                    [description]="key.shortDescription"
-                    [price]="key.price"
-                    [discount]="key.discount"
-                    [compareAtPrice]="key.compareAtPrice"
-                    [id]="key.id"
-                    >
-                </app-product-card>
-            
-                
-                
+      <h2 class="homeheadline_tag text-center">
+        <span class="headline_superheadline">DJI <b>DRONE</b>
+            <button mat-raised-button class="shop-now-button" >SHOP NOW</button></span>       
+    </h2>
+      <div >
+        <mat-tab-group>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <mat-icon class="example-tab-icon">favorite</mat-icon>
+              BestSeller
+            </ng-template>
+            <div class="card-container">
+              <app-product-card  *ngFor="let key of productList" class="mat-elevation-z5" class="card"
+              [images]="key.images"
+              [name]="key.name"
+              [description]="key.shortDescription"
+              [price]="key.price"
+              [discount]="key.discount"
+              [compareAtPrice]="key.compareAtPrice"
+              [id]="key.id"
+              >
+               </app-product-card>
+            </div>
+           
+          </mat-tab>
+        
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <mat-icon class="example-tab-icon">shop_two</mat-icon>
+              On Sale
+            </ng-template>
+            <div class="card-container">
+              <app-product-card  *ngFor="let key of productList" class="mat-elevation-z5" class="card"
+              [images]="key.images"
+              [name]="key.name"
+              [description]="key.shortDescription"
+              [price]="key.price"
+              [discount]="key.discount"
+              [compareAtPrice]="key.compareAtPrice"
+              [id]="key.id"
+              >
+               </app-product-card>
+            </div>
+          </mat-tab>
+        
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+              Top Rated
+            </ng-template>
+        
+            <div class="card-container">
+              <app-product-card  *ngFor="let key of productList" class="mat-elevation-z5" class="card"
+              [images]="key.images"
+              [name]="key.name"
+              [description]="key.shortDescription"
+              [price]="key.price"
+              [discount]="key.discount"
+              [compareAtPrice]="key.compareAtPrice"
+              [id]="key.id"
+              >
+               </app-product-card>
+            </div>
+          </mat-tab>
+        </mat-tab-group>         
       </div>
     </mat-card>
 </div>            

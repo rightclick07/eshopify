@@ -1,0 +1,52 @@
+/* contact-us.component.scss */
+.contact-us-container {
+    padding: 40px;
+  }
+  
+  .contact-us-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contact-us-left,
+  .contact-us-right {
+    width: 100%;
+  }
+  
+  .contact-info-card,
+  .message-card {
+    margin-bottom: 20px;
+  }
+  
+  .message-card form {
+    max-width: 400px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  @media (min-width: 768px) {
+    .contact-us-content {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+  
+    .contact-us-left,
+    .contact-us-right {
+      width: 50%;
+    }
+  }
+  
+  button {
+    margin-top: 5px;
+    border-radius: 999px;
+    padding-left: 16px;
+    padding-right: 16px;
+    background-color: rgb(126, 12, 172);
+    width:200px;
+    margin-bottom: 5px;
+    color:white;
+  }
+  

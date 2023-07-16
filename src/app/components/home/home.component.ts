@@ -12,7 +12,8 @@ import { ProductService } from 'src/app/shared/services/product-service/product.
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  imageList=["assets/img/banners/1.jpg","assets/img/banners/2.jpg","assets/img/banners/3.jpg"]
+  height=0;
   selectedImage!: string;
 
   productList:Product[]=[]

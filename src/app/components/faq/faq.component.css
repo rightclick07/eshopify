@@ -1,0 +1,26 @@
+/* faq.component.scss */
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  
+  mat-expansion-panel {
+    margin-bottom: 20px;
+  }
+  
+  mat-panel-title {
+    font-size: 20px;
+  }
+  
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  

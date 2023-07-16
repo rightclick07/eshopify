@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,11 +10,11 @@ import { Router } from '@angular/router';
 export class ForgetPasswordComponent implements OnInit {
 
   rememberMe = false;
-  public forgetPasswordForm: FormGroup = {} as  FormGroup;
+  public forgetPasswordForm: UntypedFormGroup = {} as  UntypedFormGroup;
 
   constructor( private router: Router) {
-    this.forgetPasswordForm = new FormGroup({
-      emailId: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    this.forgetPasswordForm = new UntypedFormGroup({
+      emailId: new UntypedFormControl('', [Validators.required, Validators.minLength(6)]),
      });
   }
 

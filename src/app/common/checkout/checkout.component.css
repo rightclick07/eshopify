@@ -13,7 +13,34 @@
     width: 200px;
     background-color: #8a15d3;
     color:white;
+    margin: 5px;
  }
  .form-field{
     margin: 5px;
  }
+ .custom-list-option {
+  width: 70%;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
+  padding: 10px;
+  margin: 10px;
+  margin-right: 50px;
+}
+
+@media screen and (max-width: 768px) {
+  .custom-list-option {
+    width: 70%;
+    border: 1px solid #ccc;
+    background-color: #f5f5f5;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 10px;
+  }
+}
+.selected {
+  background-color: #d5abee;
+}
+.shop-table{
+  
+  margin: 5px;
+}

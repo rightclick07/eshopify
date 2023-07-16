@@ -61,9 +61,22 @@
       </mat-card-actions> -->
       <h2><span>OR</span></h2>
       <mat-card-actions>
-        <button style="margin-left: 20%;" mat-raised-button primary class="button-google" (click)=" signInWithGoogle()">
+        <!-- <button style="margin-left: 20%;" mat-raised-button primary class="button-google" >
           <img src="assets/img/banners/google-icon.png" width="30px">
-          Login with Google</button>
+
+          Login with Google</button> -->
+          
+            <asl-google-signin-button
+              type="standard"
+              size="large"
+              theme="outline"
+              text="signin_with"
+              shape="circle"
+              logo_alignment="center"
+              >
+              Login with Google
+            </asl-google-signin-button>
+         
       </mat-card-actions>
       
     </mat-card>

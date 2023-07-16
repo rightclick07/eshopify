@@ -48,13 +48,18 @@ export class ProductCardComponent implements OnInit,OnChanges {
   }
 
   addToCart(id:number): void {
-    // Implement your logic for adding the product to the cart
-   this.productService.getproductById(id).subscribe((res:any)=>{
-       if(res){
-           this.cartService.addToCart(res?.payload);
-           this.toastService.showSuccess("Item Added To Cart SuccessFully!")
-       }
-   })
+    if(localStorage.getItem("token")){
+      // Implement your logic for adding the product to the cart
+      this.productService.getproductById(id).subscribe((res:any)=>{
+        if(res){
+            this.cartService.addToCart(res?.payload);
+            this.toastService.showSuccess("Item Added To Cart SuccessFully!")
+        }
+      })
+    }else{
+      this.router.navigate(["/login"])
+    }
+    
     
   }
 
@@ -86,6 +91,17 @@ export class ProductCardComponent implements OnInit,OnChanges {
   onQuantityChange(quantity: number): void {
     this.quantity = quantity;
   }
-  checkout(){}
+  checkout(id:number){
+    if(localStorage.getItem("token")){
+      this.productService.getproductById(id).subscribe((res:any)=>{
+        if(res){
+            this.cartService.addToCart(res?.payload);
+            this.toastService.showSuccess("Item Added To Cart SuccessFully!")
+        }
+      })
+    }else{
+      this.router.navigate(["/login"])
+    }
+  }
 }
 

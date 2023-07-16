@@ -24,10 +24,12 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatAccordion, MatExpansionModule} from '@angular/material/expansion';
 import {MatGridListModule} from '@angular/material/grid-list';
-
-
+import {MatRadioModule} from '@angular/material/radio';
+import {MatRippleModule} from '@angular/material/core';
+import {MatTabsModule} from '@angular/material/tabs';
 const MaterialComponents=[
  MatToolbarModule,
+ MatTabsModule,
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
@@ -55,7 +57,9 @@ const MaterialComponents=[
     MatProgressSpinnerModule,
     MatStepperModule,
     MatExpansionModule,
-    MatGridListModule
+    MatGridListModule,
+    MatRadioModule,
+    MatRippleModule
 ]
 
 @NgModule({

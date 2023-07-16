@@ -1,0 +1,33 @@
+
+<mat-drawer-container class="container mat-elevation-z3">
+    <mat-drawer #drawer mode="side" opened >
+        <div style="text-align: center;margin: 5px;padding: 5px;">
+            <!-- <img   width="75px" src="assets/img/course-icon/angular-material.png" alt="Course image">
+             -->
+            <h3 style="color:rgb(126, 21, 187) ; font-family: Arial, Helvetica, sans-serif;font-weight: bolder;">Admin Console</h3>
+        </div>
+        <mat-divider></mat-divider>
+        <mat-list *ngFor="let key of topics">
+            <mat-list-item  class="item">
+                <a  class="link" routerLink="{{key.routeName}}" routerLinkActive="is-active">{{key.topic}}</a>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-list>    
+    </mat-drawer>
+    <mat-drawer-content>
+        <mat-toolbar-row style="background-color: rgb(174, 235, 214);text-align: center;">
+            <button
+                matTooltip="Click to Close Sidebar"
+                type="button"
+                aria-label="Toggle sidenav"
+                mat-icon-button
+                (click)="drawer.toggle()"
+                *ngIf="isHandset$ | async">
+                <mat-icon aria-label="Side nav toggle icon">view_list</mat-icon>
+                Administration Console
+           </button>
+
+        </mat-toolbar-row>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
