@@ -13,9 +13,15 @@
         <mat-selection-list #address [multiple]="false" [(ngModel)]="selectedAddresses" name="selectedAddresses">
           <mat-list-option *ngFor="let key of addressList" [value]="key" 
           [ngClass]="{'selected': key.isSelected}" class="custom-list-option" (click)="toggleSelected(key)">
-            <p >
-              {{ key?.address }}, {{ key?.city }}, {{ key?.state }}, {{ key?.country }}-{{ key?.postalCode }}
-            </p> Mobile No-{{ key?.phoneNumber }}
+            <div>
+              <span>
+                {{ key?.address }}, {{ key?.city }}, {{ key?.state }}, {{ key?.country }}-{{ key?.postalCode }}
+              </span>
+              <span>
+                Mobile No-{{ key?.phoneNumber }}
+              </span> 
+            </div>
+            
             <br>
           </mat-list-option>
         </mat-selection-list>
@@ -131,9 +137,32 @@
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Order Details</ng-template>
-      <mat-card>
-        <span>Order Id : {{orderDetails?.id}}</span>
-      </mat-card>
+      <mat-card *ngIf="orderDetails">
+        <div>
+          <span style="margin: 2px;"><b>Order Id :</b> {{orderDetails?.id}}</span>
+        </div>
+        <div>
+          <span style="margin: 2px;"><b>Delivery Date :</b> {{orderDetails?.deliveryDate}}</span>
+        </div>
+        <div>
+          <span style="margin: 2px;"><b>Order Date :</b> {{orderDetails?.orderDate}}</span>
+        </div>
+         <div>
+          <span style="margin: 2px;"><b>Payment Method :</b> {{orderDetails?.paymentMethod}}</span>
+         </div>
+         <div>
+           <span style="margin: 2px;"><b>Payment Status :</b> {{orderDetails?.paymentStatus}}</span>
+         </div>
+         <div>
+          <span style="margin: 2px;"><b>Total Amount :</b> {{orderDetails?.totalAmount}}</span>
+         </div>
+         <div>
+          <span style="margin: 2px;"><b>Tracking Number :</b> {{orderDetails?.trackingNumber}}</span>
+         </div>
+         <div>
+           <span style="margin: 2px;"><b>Shipping Address :</b> {{orderDetails?.shippingAddress}}</span>
+         </div>
+        </mat-card>
 
       <h1 style="color: #8a15d3;">Congratulations!! Order Completed</h1>
       <div>

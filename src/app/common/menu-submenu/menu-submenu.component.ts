@@ -67,6 +67,7 @@ export class MenuSubmenuComponent implements OnInit {
       },
     ]
     },
+
     {
     title:"Gaming",
     url:"assets/img/utility/gaming.png",
@@ -90,6 +91,11 @@ export class MenuSubmenuComponent implements OnInit {
         products:[]
       },
     ]
+    },
+    {
+      title:"Bulk Order",
+       url:"assets/img/utility/drone-service.png",
+       subCategory:[]
     },
     {
     title:"Services",

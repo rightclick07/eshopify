@@ -1,10 +1,23 @@
+/* Align the chip list to the left */
 .image-chip-list {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 8px;
-    z-index: 1;
-  }
+  position: absolute;
+  top: 0;
+  left: 0; /* Change 'right' to 'left' */
+  margin: 8px;
+  z-index: 1;
+  display: flex; /* Add this line to display chips vertically */
+  flex-direction: column; /* Add this line to display chips vertically */
+}
+
+/* Additional styles if needed */
+.mat-chip {
+  width: 48px;
+  height: 48px;
+  background-size: cover;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
   .image-chip-list-large {
     position: absolute;
     top: 0;
@@ -13,19 +26,10 @@
     z-index: 1;
   
   }
-  .mat-chip {
-    width: 48px;
-    height: 48px;
-    background-size: cover;
-    margin-right: 8px;
-    cursor: pointer;
-    
-  }
- 
   .selected-image-container {
-    width: 450px; /* Set the desired width of the container */
-    height: 350px;/* Set the desired height of the container */
-    margin: 0 5px; 
+    width: 280px; /* Set the desired width of the container */
+    height: 250px;
+    margin-top:50px;/* Set the desired height of the container */ 
     padding: 0 5px;
     position: relative;
     overflow: hidden; /* Ensure that images exceeding container dimensions are clipped */
@@ -83,7 +87,7 @@
      border-radius: 999px;
     padding-left: 16px;
     padding-right: 16px;
-    background-color: #A020F0;
+    background-color: #27292B;
     width:200px;
     margin-bottom: 5px;
     color:white;
@@ -93,7 +97,7 @@
     padding-left: 16px;
     padding-right: 16px;
     width: 200px;
-    background-color: #8a15d3;
+    background-color: #27292B;
     color:white;
   }
   .product-discount{
@@ -121,7 +125,7 @@
         padding: 5px;
     }
     .deal{
-        background-color:#8a15d3;
+        background-color:#27292B;
         color: white;
         margin-left: 5px;
         border-radius: 5%;

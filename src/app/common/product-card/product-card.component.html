@@ -1,4 +1,4 @@
-<mat-card style="margin: 2px;padding: 2px;">
+<mat-card style="margin: 2px;padding: 2px; ">
 
   <mat-chip-list class="image-chip-list">
     <mat-chip *ngFor="let image of images"
@@ -12,15 +12,16 @@
   <div class="selected-image-container">
     <img [src]="selectedImage"  *ngIf="selectedImage" class="image" >
   </div>
-  <span class="discount-tag">
+  <!-- <span class="discount-tag">
     <mat-icon style="vertical-align: middle;">label_important</mat-icon>
-    Discount {{discount}} %</span>
+    {{discount}} % OFF</span> -->
   <mat-divider></mat-divider>
   <mat-card-content>
-    <h3 class="product-name"><a routerLink="/product-details/{{id}}" style="text-decoration: none;color: #810cca;"
+    <h3 class="product-name"><a routerLink="/product-details/{{id}}" style="text-decoration: none;color: #27292B;"
        matTooltip="{{name}}">{{ name }}</a></h3>
     <!-- <app-product-quantity (quantityChange)="onQuantityChange($event)"></app-product-quantity> -->
-    <p class="product-description" routerLink="/product-details/{{id}}">{{ description }}</p>
+    <!-- <p class="product-description" routerLink="/product-details/{{id}}">{{ description }}</p>
+     -->
     <div style="text-align: center;margin: 2px;">
       <span class="compare-price">₹{{ compareAtPrice}}</span>
       <span class="product-price">₹{{ price}}</span>

@@ -17,7 +17,7 @@ display: flex;
   padding-left: 16px;
   padding-right: 16px;
   width: 200px;
-  background-color: #8a15d3;
+  background-color: #27292B;
   color:white;
 }
 .button-google{
@@ -38,9 +38,6 @@ h2 {
 h2 span { 
    background:white; 
    padding:0 10px; 
-}
-.container {
-  
 }
 
 .button-google {

@@ -17,6 +17,7 @@ import { CartDataResolverResolver } from './shared/resolver/cart-data-resolver.r
 import { CheckoutComponent } from './common/checkout/checkout.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { FaqComponent } from './components/faq/faq.component';
+import { BlogContentComponent } from './components/blogs/blog-content/blog-content.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,7 @@ const routes: Routes = [
     {path:"faq",component:FaqComponent},
     {path:"cart",component:CartsComponent},
     {path:"checkout",component:CheckoutComponent},
+    {path:"content",component:BlogContentComponent},
     {path:"product-details/:id",component:ProductComponent},
     {path:"account",loadChildren: () => import('./modules/account-module/account/account.module').then(m => m.AccountModule)},
     {path:"admin",loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)}

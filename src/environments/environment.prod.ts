@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  baseUrl:"http://18.213.137.104:8080",
-  baseAuthLoginUrl:"http://18.213.137.104:8080/api/auth/login",
-  baseAuthSignupUrl:"http://18.213.137.104:8080/api/auth/signup"
+  baseUrl:"https://everse.co.in",
+  baseAuthLoginUrl:"https://everse.co.in/api/auth/login",
+  baseAuthSignupUrl:"https://everse.co.in/api/auth/signup"
 };

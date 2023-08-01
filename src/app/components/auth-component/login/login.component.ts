@@ -47,12 +47,12 @@ export class LoginComponent implements OnInit {
       username:this.loginForm?.value?.username,
       password:this.loginForm?.value?.password
    }
-   this.spinnerService.showSpinner();
+   this.spinnerService.show();
    console.log(this.loginForm.value)
    this.loginSubscription$=this.authService.login(credential).subscribe(
     (response:ResponseData<any>)=>{
       if(response){
-        this.spinnerService.hideSpinner();
+        this.spinnerService.hide();
       console.log(response);
       let token=response.payload?.token;
       let username=response.payload?.username;

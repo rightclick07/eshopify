@@ -1,10 +1,10 @@
 <div class="login-container">
     <mat-card class="login" mat-elevation-z3  >
-      <div>
-        <img  width="100px"  src="assets/img/logo.jpg">
-      </div> 
       <mat-card-header>  
-       <mat-card-title  >Login to Everse</mat-card-title>
+        <mat-card-title  >
+          <img  style="vertical-align: middle; margin: 2px;" width="40px"  src="assets/img/everse-logo.png">
+          Login to Everse
+        </mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <form [formGroup]="loginForm">
@@ -47,9 +47,9 @@
         <mat-card-actions style="text-align: center;" >
           <button  mat-raised-button type="submit" primary class="button" [disabled]="loginForm.invalid" (click)="OnLogin()" >Login</button>
           <br>
-          <a routerLink="/forget-password" style="text-decoration: none;color: #A020F0;">&nbsp; Forget Password ?</a>
+          <a routerLink="/forget-password" style="text-decoration: none;color: #27292B">&nbsp; Forget Password ?</a>
           <div style="margin: 5px;">
-            <span>Not a Member? </span><a  style="text-decoration: none;color:#A020F0 ;" routerLink="/signup">Signup</a>
+            <span>Not a Member? </span><a  style="text-decoration: none;color:black;" routerLink="/signup"><b>Signup</b></a>
           </div>
         </mat-card-actions>
       </mat-card-content>

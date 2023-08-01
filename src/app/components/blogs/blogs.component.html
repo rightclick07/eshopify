@@ -1,1 +1,14 @@
-<p>welcome to blog</p>
+<div class="flex-container">
+    <div class="mat-elevation-z3" style="margin: 5px;" *ngFor="let blog of trendingBlogs">
+      <div>
+        <div>
+          <h3 style="padding: 5px;text-align: center;color: #262727;font-weight: lighter;">{{blog.title}}</h3>
+        </div>
+        <img  src="{{blog.img}}" width="250px" height="120px" alt="blog image">
+        
+      </div>
+      <button (click)="OpenTrendingBlog(blog.id)" style="background-color: #20c997;color: white;width: 100%;text-align: center;padding: 5px;" mat-button>Read Blog</button>
+ 
+    </div>
+  
+</div>

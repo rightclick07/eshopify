@@ -151,13 +151,13 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl(routeString)
   }
   getUserName(username:string){
-    let userNameArr=username.split('.').map((elt:string)=>{
-      return elt.charAt(0).toUpperCase() + elt.substr(1).toLowerCase()
+    let userNameArr=username?.split('.').map((elt:string)=>{
+      return elt?.charAt(0).toUpperCase() + elt?.substr(1).toLowerCase()
     })
-    return userNameArr.join(' ')
+    return userNameArr?.join(' ')
   }
   getInitial(username:string){
-    return username.charAt(0).toUpperCase();
+    return username?.charAt(0).toUpperCase();
   }
 
   generateBadgeClass(){

@@ -13,12 +13,14 @@ import { ProductService } from 'src/app/shared/services/product-service/product.
 export class CartsComponent implements OnInit,OnChanges {
   iscartEmpty:boolean=true
   grandTotal=0;
-  tableColumns=["image","name","price","action"];
+  tableColumns=["image","name","price"];
   dataSource!: MatTableDataSource<any>;
   constructor(private productService:ProductService, private cartService:CartService,private router:Router) {}
   cartItemsArray:any[]=[];
   ngOnInit(): void {
     this.cartService.getProduct().subscribe(res=>{
+      console.log("res",res);
+      
       this.cartItemsArray=res;
       if(this.cartItemsArray.length==0 && this.dataSource?.data?.length==0){
         this.iscartEmpty=true;

@@ -5,6 +5,7 @@ import { Observable, map, shareReplay } from 'rxjs';
 import { Product } from 'src/app/shared/model/product';
 import { CartService } from 'src/app/shared/services/cart-service/cart.service';
 import { ProductService } from 'src/app/shared/services/product-service/product.service';
+import { SpinnerService } from 'src/app/shared/services/spinner-service/spinner.service';
 
 @Component({
   selector: 'app-product',
@@ -25,7 +26,8 @@ export class ProductComponent implements OnInit,OnChanges {
     private productService:ProductService,
     private breakpointObserver: BreakpointObserver,
     private router:Router,
-    private cartService:CartService) {}
+    private cartService:CartService,
+    private spinnerService:SpinnerService) {}
 
   
 
@@ -51,7 +53,10 @@ export class ProductComponent implements OnInit,OnChanges {
   }
 
   getProductById(id:number){
+    this.spinnerService.show();
       this.productService.getproductById(id).subscribe((res:any)=>{
+        if(res){
+          this.spinnerService.hide();
           this.productdetails=res?.payload;
           console.log(this.productdetails);
           let imgString=this.productdetails.images;
@@ -59,6 +64,7 @@ export class ProductComponent implements OnInit,OnChanges {
           this.productdetails.images=imageList
           console.log(this.productdetails);
           this.selectedImage = this.productdetails?.images[0];
+        }
           
       })
   }

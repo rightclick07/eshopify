@@ -1,10 +1,10 @@
   <div class="signup-container">
   <mat-card class="signup" mat-elevation-z3  >
-    <div>
-      <img  width="100px"  src="assets/img/logo.jpg">
-    </div> 
     <mat-card-header>  
-     <mat-card-title  >Signup to Everse</mat-card-title>
+     <mat-card-title  >
+        <img  style="vertical-align: middle; margin: 2px;" width="40px"  src="assets/img/everse-logo.png">
+        Signup to Everse
+      </mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <form [formGroup]="signupForm" >
@@ -100,7 +100,7 @@
         [disabled]="signupForm.invalid" type="submit" (click)="onSignup()"
         >Signup</button>
         <div style="margin: 5px;">
-          <span>Already a User? </span><a  style="text-decoration: none;color:#A020F0 ;" routerLink="/login">Login</a>
+          <span>Already a User? </span><a  style="text-decoration: none;color:black;" routerLink="/login"><b>Login</b></a>
         </div>
       </mat-card-actions>
     </mat-card-content>

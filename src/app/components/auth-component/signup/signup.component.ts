@@ -95,7 +95,7 @@ export class SignupComponent implements OnInit {
     
     this.signupSubscription$=this.authService.signup(signupRequest).subscribe(
       (response:ResponseData<any>)=>{
-        this.spinnerService.hideSpinner();
+        this.spinnerService.hide();
         console.log(response);
         if(response){
           this.toastService.showSuccess(response.payload)

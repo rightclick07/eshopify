@@ -40,6 +40,7 @@ import { MenuSubmenuComponent } from './common/menu-submenu/menu-submenu.compone
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { ImageSliderComponent } from './common/image-slider/image-slider.component';
+import { BlogContentComponent } from './components/blogs/blog-content/blog-content.component';
 
 
 @NgModule({
@@ -69,6 +70,7 @@ import { ImageSliderComponent } from './common/image-slider/image-slider.compone
     PrivacyPolicyComponent,
     FaqComponent,
     ImageSliderComponent,
+    BlogContentComponent,
    
   ],
   imports: [

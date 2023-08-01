@@ -1,6 +1,10 @@
 <div>
     <app-header></app-header>
-    
+    <div class="overlay" *ngIf="spinnerService.isLoading">
+        <div class="center">
+          <mat-progress-spinner diameter="75" mode="indeterminate" color="accent"></mat-progress-spinner>
+        </div>
+    </div>
     <app-footer></app-footer>
     
    

@@ -18,6 +18,7 @@ import { Order } from 'src/app/shared/model/Order';
 import { OrderService } from 'src/app/shared/services/order-service/order.service';
 import { OrderItems } from 'src/app/shared/model/OrderItems';
 import { Router } from '@angular/router';
+import { SpinnerService } from 'src/app/shared/services/spinner-service/spinner.service';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -67,7 +68,8 @@ export class CheckoutComponent implements OnInit {
      private addressService:AddressService,
      private cartService:CartService,
      private orderService:OrderService,
-     private router:Router
+     private router:Router,
+     private spinnerService:SpinnerService
      ) {
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
@@ -89,8 +91,10 @@ export class CheckoutComponent implements OnInit {
       phoneNumber:addressFormGroup?.value?.phoneNumber
     }
 
+    this.spinnerService.show();
     this.addressService.saveAddress(addressObject).subscribe(res=>{
       if(res){
+        this.spinnerService.hide();
         this.addressList.push(addressObject)
         this.saveAddressFlag=true;
         this.toastService.showSuccess(res?.payload)
@@ -114,12 +118,13 @@ export class CheckoutComponent implements OnInit {
     }
     let orderItemsArray:any[]=[]
     console.log("orderObj",orderObj);
+    this.spinnerService.show();
     this.orderService.saveOrders(orderObj!).subscribe(res=>{
       if(res){
         let orderId=res?.payload?.orderId;
         this.orderService.getOrder(orderId).subscribe(res=>{
             this.orderDetails=res?.payload;
-            console.log();
+            console.log("this.orderDetails",this.orderDetails);
             
         })
         for(let key of this.cartItemList){
@@ -140,9 +145,9 @@ export class CheckoutComponent implements OnInit {
         
         this.orderService.saveOrderItems(orderItemsArray).subscribe(res=>{
           if(res){
+            this.spinnerService.hide();
             this.toastService.showSuccess("Order Placed Successfully!!!");
             this.cartService.removeAllCartItem();
-            this.router.navigate(["home"])
           }
         })
       }
@@ -154,8 +159,10 @@ export class CheckoutComponent implements OnInit {
 
   getAddressByUser(){
     let id=localStorage.getItem("userId");
+    this.spinnerService.show();
     this.addressService.getAddressByUserId(parseInt(id!)).subscribe(
       res=>{
+        this.spinnerService.hide();
         console.log(res?.payload);
         this.addressList=res?.payload
       }
