@@ -7,19 +7,18 @@
         </h1>
     </div>
     <mat-card>
-        
-        <mat-chip-list class="image-chip-list">
+          <div class="selected-image-container">
+            <img [src]="selectedImage"  *ngIf="selectedImage" class="image" >
+          </div> 
+          <mat-divider></mat-divider>
+          <mat-chip-list class="image-chip-list">
             <mat-chip *ngFor="let image of productdetails?.images"
              [style.backgroundImage]="'url(' + image + ')'" 
              (click)="selectImage(image)"
              (mouseover)="zoomInImage()"
              (mouseleave)="zoomOutImage()"
              (mousemove)="moveImage($event)"></mat-chip>
-        </mat-chip-list>
-          
-          <div class="selected-image-container">
-            <img [src]="selectedImage"  *ngIf="selectedImage" class="image" >
-          </div> 
+          </mat-chip-list>
           <mat-divider></mat-divider>
           <div style="margin: 5px;text-align: center;">
             <span class="deal">
@@ -81,24 +80,23 @@
 </div> 
   
 <div *ngIf="!(isSmallScreen$ | async)" class="row" style="background-image: linear-gradient(#27292B,white)">
-    <div class="column">
-        <mat-card mat-elevation-z3 style="display: flex;">
-                <div>
-                    <mat-chip-list class="image-chip-list-large column" >
-                        <mat-chip *ngFor="let image of productdetails?.images"
-                         [style.backgroundImage]="'url(' + image + ')'" 
-                         (click)="selectImage(image)"
-                         (mouseover)="zoomInImage()"
-                          (mouseleave)="zoomOutImage()"
-                           (mousemove)="moveImage($event)"></mat-chip>
-                    </mat-chip-list>
-                      
-                </div>
-                
+    <div>
+        <div  style="display: flex;">
                 <div class="selected-image-container">
                     <img [src]="selectedImage"  *ngIf="selectedImage" class="image" >
                 </div> 
-        </mat-card>
+                <div>
+                  <mat-chip-list class="image-chip-list-large" >
+                      <mat-chip *ngFor="let image of productdetails?.images"
+                       [style.backgroundImage]="'url(' + image + ')'" 
+                       (click)="selectImage(image)"
+                       (mouseover)="zoomInImage()"
+                        (mouseleave)="zoomOutImage()"
+                         (mousemove)="moveImage($event)"></mat-chip>
+                  </mat-chip-list>
+                    
+              </div>
+          </div>
         <mat-accordion class="example-headers-align" multi>
             <mat-expansion-panel [expanded]="true">
               <mat-expansion-panel-header>
@@ -164,7 +162,19 @@
                 </div>
             </mat-card-actions> 
         </mat-card>
-        
+        <mat-accordion class="example-headers-align" multi>
+          <mat-expansion-panel [expanded]="true">
+            <mat-expansion-panel-header>
+                  <mat-panel-title>
+                      <mat-icon style="vertical-align: middle; color:#27292B ;margin-right: 2px;">receipt</mat-icon>
+                    <b style="color: #27292B">In The Box</b>
+                  </mat-panel-title>      
+            </mat-expansion-panel-header>  
+            <mat-panel-description>
+              <div  [innerHTML]="convertToPointers(productdetails?.inTheBox)" class="pointer-text"></div>
+            </mat-panel-description> 
+          </mat-expansion-panel>            
+      </mat-accordion>
         
     </div>
 </div>

@@ -1,5 +1,5 @@
-<mat-card style="margin: 2px;padding: 2px; ">
-
+<div style="margin: 2px;padding: 2px;background-color: white; ">
+<!-- 
   <mat-chip-list class="image-chip-list">
     <mat-chip *ngFor="let image of images"
      [style.backgroundImage]="'url(' + image + ')'" 
@@ -7,10 +7,14 @@
      (mouseover)="zoomInImage()"
       (mouseleave)="zoomOutImage()"
        (mousemove)="moveImage($event)"></mat-chip>
-  </mat-chip-list>
-  
+  </mat-chip-list> -->
+  <!-- <button mat-button style="float: right;"><img src="assets/img/video/share-button.png"  style="width:40px;vertical-align: middle;margin: 2px;"> Share</button>
+   -->
   <div class="selected-image-container">
-    <img [src]="selectedImage"  *ngIf="selectedImage" class="image" >
+    <a routerLink="/product-details/{{id}}">
+      <img [src]="selectedImage"  *ngIf="selectedImage" class="image" >
+    </a>
+    
   </div>
   <!-- <span class="discount-tag">
     <mat-icon style="vertical-align: middle;">label_important</mat-icon>
@@ -44,4 +48,4 @@
     </div>
   </mat-card-actions>
   <br>
-</mat-card>
+</div>

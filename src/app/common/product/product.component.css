@@ -28,8 +28,7 @@
   }
   .selected-image-container {
     width: 280px; /* Set the desired width of the container */
-    height: 250px;
-    margin-top:50px;/* Set the desired height of the container */ 
+    height: 250px;/* Set the desired height of the container */ 
     padding: 0 5px;
     position: relative;
     overflow: hidden; /* Ensure that images exceeding container dimensions are clipped */

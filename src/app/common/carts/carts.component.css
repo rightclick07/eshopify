@@ -12,7 +12,7 @@
     padding-left: 16px;
     padding-right: 16px;
     width: 200px;
-    background-color: #8a15d3;
+    background-color: #46484a;
     color:white;
 }
 .mat-table{
@@ -34,7 +34,7 @@ table {
     border-radius: 999px;
     padding-left: 16px;
     padding-right: 16px;
-    background-color: green;
+    background-color: #46484a;
     width:300px;
     margin-bottom: 5px;
     color:white;

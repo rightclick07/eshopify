@@ -41,6 +41,7 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
 import { FaqComponent } from './components/faq/faq.component';
 import { ImageSliderComponent } from './common/image-slider/image-slider.component';
 import { BlogContentComponent } from './components/blogs/blog-content/blog-content.component';
+import { SolarSystemComponent } from './components/solar-system/solar-system.component';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { BlogContentComponent } from './components/blogs/blog-content/blog-conte
     FaqComponent,
     ImageSliderComponent,
     BlogContentComponent,
+    SolarSystemComponent,
    
   ],
   imports: [

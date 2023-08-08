@@ -10,10 +10,9 @@
     <mat-toolbar>
       <div>
         <a routerLink="/" routerlink-active="active-link" class="logo-link">
-            <img src="assets/img/everse-logo.png" class="logo"  alt="logo"/>
-            <!-- <span style="color:#20c997;">Everse</span> -->
+            <img src="assets/img/everse-logo.png"  class="logo"  alt="logo"/>
         </a>
-    </div>
+      </div>
     </mat-toolbar>
     <mat-divider></mat-divider>
     <mat-nav-list>
@@ -47,12 +46,11 @@
                            matInput
                            [formControl]="myControl"
                            [matAutocomplete]="auto">
-                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
                       <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                         {{option}}
-                      </mat-option>
-                      
-                  </mat-autocomplete>
+                      </mat-option>  
+                    </mat-autocomplete>
                   
                   </mat-form-field>
                   <button (click)="OnSearchCourse(this.myControl.value)" mat-button type="submit" style="vertical-align: middle;text-align: center;padding: 0;margin: 0;margin-bottom: 10px;">
@@ -144,7 +142,7 @@
  <router-outlet></router-outlet>
  <!-- <app-spinner></app-spinner> -->
   <!-- WhatsApp Chat Added  -->
- <a class="float_whatsapp"  href="https://wa.me/919429691484?text=Chat With Everse Team" target="_blank">
+ <a class="float_whatsapp"  href="https://wa.me/919429691484?text=Chat With Everse Sales & Tech Team" target="_blank">
   <img width="50px" src="assets/img/social-media/whatsapp-logo.png">
 </a>
     

@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
   isUserLoggedIn:boolean=false;
   cartArray:any[]=[];
   cartItemCount=0;
+  productList:any;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -85,7 +86,7 @@ export class HeaderComponent implements OnInit {
           icon:"exit_to_app"
         }
         ];
-  options: string[] = ['Drone','Camera','DJI Products'];
+  options: string[] = [];
   filteredOptions: Observable<string[]> = new Observable<string[]>();
   selectedVal:any
   profile!: UserProfile[];
@@ -97,6 +98,10 @@ export class HeaderComponent implements OnInit {
       this.isUserLoggedIn=true
     }
     console.log( this.isUserLoggedIn+"this.isUserLoggedIn");
+
+    this.getProductOptions();
+    console.log(this.options,"this.options");
+
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value)),
@@ -138,7 +143,7 @@ export class HeaderComponent implements OnInit {
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-
+    console.log(this.options,"this.option23s");
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
   OnSearchCourse(element:string){
@@ -202,5 +207,27 @@ export class HeaderComponent implements OnInit {
 
   opencart(){
     this.router.navigate(["/cart"])
+  }
+
+  getProductOptions(){
+    this.productService.getAllProductList().subscribe((res:any)=>{
+      if(res){
+        this.productList=res?.payload
+        for(let key of res?.payload){    
+          this.options.push(key.name)
+        }
+        console.log("his.options"+this.options);
+        
+      }    
+   })
+  }
+
+  onOptionSelected($event:any){
+       console.log("event",$event?.option?.value);
+       for(let key of this.productList){ 
+            if(key.name==$event?.option?.value){
+              this.router.navigate(["product-details",key?.id])
+            }
+        }
   }
 }

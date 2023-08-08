@@ -1,5 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { log } from 'console';
 import { Observable, map, shareReplay } from 'rxjs';
 import { ResponseData } from 'src/app/shared/model/ResponseData';
@@ -11,19 +12,22 @@ import { ProductService } from 'src/app/shared/services/product-service/product.
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit,AfterViewInit {
   imageList=["assets/img/banners/1.jpg","assets/img/banners/2.jpg","assets/img/banners/3.jpg"]
   height=0;
   selectedImage!: string;
-
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   productList:Product[]=[]
+  
   constructor(private breakpointObserver: BreakpointObserver,private productService:ProductService) { }
   isHandset: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Tablet)
     .pipe(
       map((result:any) => result.matches),
       shareReplay()
     );
-
+    ngAfterViewInit(): void {
+      //this.paginator.pageIndex = 0; // Set initial page index to 0
+    }
   ngOnInit(): void {
     this.getProductList();
   }

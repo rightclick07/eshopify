@@ -37,11 +37,17 @@
   padding: 5px;
 }
 .logo{
-  padding-left: 10px;
   display: flex;
   justify-content: flex-start;
   outline: none;
   height: 44px;
+}
+.logo-mobile{
+  display: flex;
+  justify-content: flex-start;
+  outline: none;
+  height: auto;
+  width:44px;
 }
 .login-link{
   text-decoration: none;

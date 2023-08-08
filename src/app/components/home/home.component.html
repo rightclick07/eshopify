@@ -15,11 +15,14 @@
 </div> -->
 <section>
     <div class="container">
-      <div class="image-container">
+      <div class="image-container" *ngIf="isHandset | async">
         <app-image-slider [images]="imageList" [height]="height"></app-image-slider>
 
       </div>
-        
+      <div class="image-container" *ngIf="!(isHandset | async)">
+        <app-image-slider [images]="imageList" [height]="height"></app-image-slider>
+
+      </div>
         
         <!-- <div class="col-12 text-center" *ngIf="isHandset" width="50%">
             <img src="assets/img/banners/drone-mobile.png" class="droninner_sec">
@@ -30,11 +33,11 @@
 
 <div class="home-page">
  
-    <mat-card class="mat-elevation-z3" style="margin: 5px;">
-      <h2 class="homeheadline_tag text-center">
+    <div  style="margin: 5px;">
+      <!-- <h2 class="homeheadline_tag text-center">
         <span class="headline_superheadline">DJI <b>DRONE</b>
             <button mat-raised-button class="shop-now-button" >SHOP NOW</button></span>       
-    </h2>
+    </h2> -->
       <div >
         <mat-tab-group>
           <mat-tab>
@@ -42,18 +45,18 @@
               <mat-icon class="example-tab-icon">favorite</mat-icon>
               BestSeller
             </ng-template>
-            <div class="card-container">
-              <app-product-card  *ngFor="let key of productList" class="mat-elevation-z5" class="card"
+           
+          <div class="card-container">
+            <app-product-card *ngFor="let key of productList"
+              class="mat-elevation-z5 card"
               [images]="key.images"
               [name]="key.name"
               [price]="key.price"
               [discount]="key.discount"
               [compareAtPrice]="key.compareAtPrice"
-              [id]="key.id"
-              >
-               </app-product-card>
-            </div>
-           
+              [id]="key.id">
+            </app-product-card>
+          </div>
           </mat-tab>
         
           <mat-tab>
@@ -81,7 +84,7 @@
             </ng-template>
         
             <div class="card-container">
-              <app-product-card  *ngFor="let key of productList" class="mat-elevation-z5" class="card"
+              <app-product-card  *ngFor="let key of productList" class="card"
               [images]="key.images"
               [name]="key.name"
               [price]="key.price"
@@ -94,5 +97,188 @@
           </mat-tab>
         </mat-tab-group>         
       </div>
-    </mat-card>
-</div>            
+    </div>
+</div>  
+<!-- <div>
+  <app-solar-system></app-solar-system>
+</div>           -->
+
+<h2 class="section-title">
+  <button mat-button class="button-do">What We Provide</button>
+</h2>
+<div class="card-container">
+  <mat-card class="what-we-do-card">
+    <mat-card-header>
+      <div mat-card-avatar class="card-icon">
+        <mat-icon>local_shipping</mat-icon>
+      </div>
+      <mat-card-title class="card-title">Efficient Delivery</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="card-content">
+      <p>
+        We specialize in swift and efficient drone-based delivery services. Our advanced logistics system ensures
+        seamless delivery of packages, enabling you to receive your orders faster than ever.
+      </p>
+    </mat-card-content>
+  </mat-card>
+  
+  <mat-card class="what-we-do-card">
+    <mat-card-header>
+      <div mat-card-avatar class="card-icon">
+        <mat-icon>public</mat-icon>
+      </div>
+      <mat-card-title class="card-title">Global Coverage</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="card-content">
+      <p>
+        With a widespread network of drone stations, we cover even the most remote locations, providing access to our
+        exceptional e-commerce services on a global scale.
+      </p>
+    </mat-card-content>
+  </mat-card>
+  
+  <mat-card class="what-we-do-card">
+    <mat-card-header>
+      <div mat-card-avatar class="card-icon">
+        <mat-icon>build</mat-icon>
+      </div>
+      <mat-card-title class="card-title">Drone Repair</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="card-content">
+      <p>
+        Accidents happen! Don't worry; we've got you covered. Our expert technicians are ready to repair and restore your
+        drone to its optimal condition.
+      </p>
+    </mat-card-content>
+  </mat-card>
+  
+  
+  <mat-card class="what-we-do-card">
+    <mat-card-header>
+      <div mat-card-avatar class="card-icon">
+        <mat-icon>access_time</mat-icon>
+      </div>
+      <mat-card-title class="card-title">24/7 Support</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="card-content">
+      <p>
+        Our dedicated support team is available round the clock to assist you with any queries or concerns. Whether it's
+        order tracking or general inquiries, we're here to help.
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div class="content-container">
+  <div class="happy-clients-card">
+    <mat-card-content class="happy-clients-content">
+      <h2 class="section-title">
+        <button mat-button class="button-do">Happy Client Happy Us</button>
+      </h2>
+      <ul class="pointers-list">
+        <li>
+          <mat-icon class="check-icon">check_circle</mat-icon>
+          At Everse E-commerce Drone, our clients' satisfaction is our top priority.
+        </li>
+        <li>
+          <mat-icon class="check-icon">check_circle</mat-icon>
+          We take pride in providing seamless drone delivery services that exceed expectations.
+        </li>
+        <li>
+          <mat-icon class="check-icon">check_circle</mat-icon>
+          The smiles on our clients' faces are what drive us to go the extra mile.
+        </li>
+        <li>
+          <mat-icon class="check-icon">check_circle</mat-icon>
+          With every successful delivery, we celebrate the joy of making our clients' lives easier.
+        </li>
+        <li>
+          <mat-icon class="check-icon">check_circle</mat-icon>
+          Their trust in our services motivates us to keep innovating and improving our offerings.
+        </li>
+      </ul>
+    </mat-card-content>
+  </div>
+
+  <div class="image-container" style="background-color: white;">
+    <!-- <div>
+      <h2 class="section-title">
+        <button mat-button class="button-do"> Transforming the future of Drone</button>
+      </h2>
+    </div> -->
+    <img src="assets/img/video/drone-list.gif" alt="GIF Image">
+  </div>
+</div>
+<section>
+  <h2 class="section-title">
+    <button mat-button class="button-do">Customer Reviews</button>
+  </h2>
+  <div class="review-container">
+ 
+    <div class="review">
+      <div class="platform">
+        <img src="assets/img/video/g-logo.png" style="vertical-align: middle;" width="40px">
+        Google</div>
+      <div class="stars">
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+      </div>
+      <p class="comment">
+        "Amazing drone delivery service! Fast and efficient. Highly recommended!"
+      </p>
+    </div>
+  
+    <div class="review">
+      <div class="platform">
+        <img src="assets/img/video/j-logo.png" style="vertical-align: middle;" width="40px" >
+        Just Dial</div>
+      <div class="stars">
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9734;</span>
+      </div>
+      <p class="comment">
+        "Great drone repair service overall, they have complete clarity of customer requirements."
+      </p>
+    </div>
+
+    <div class="review">
+      <div class="platform">
+        <img src="assets/img/video/f-logo.png" style="vertical-align: middle;" width="40px">
+        Facebook</div>
+      <div class="stars">
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+      </div>
+      <p class="comment">
+        "I purchased drone from this place and got authentic product. Super happy with the service. Thank you Everse team"
+      </p>
+    </div>
+
+    <div class="review">
+      <div class="platform">
+        <img src="assets/img/video/i-logo.png" style="vertical-align: middle;" width="40px">
+        IndiaMart</div>
+      <div class="stars">
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+      </div>
+      <p class="comment">
+        "Best dji drone dealer in banglore as I visited multiple places but no one was enough technical to explain all the technicalities of different models.
+        Got helped for choosing my first drone too."
+      </p>
+    </div> 
+
+
+  </div>
+</section>
