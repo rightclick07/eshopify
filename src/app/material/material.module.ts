@@ -22,8 +22,14 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatAccordion, MatExpansionModule} from '@angular/material/expansion';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatRippleModule} from '@angular/material/core';
+import {MatTabsModule} from '@angular/material/tabs';
 const MaterialComponents=[
  MatToolbarModule,
+ MatTabsModule,
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
@@ -49,7 +55,11 @@ const MaterialComponents=[
     MatSnackBarModule,
     MatTooltipModule,
     MatProgressSpinnerModule,
-    MatStepperModule
+    MatStepperModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatRadioModule,
+    MatRippleModule
 ]
 
 @NgModule({

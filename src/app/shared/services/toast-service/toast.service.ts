@@ -16,11 +16,11 @@ export class ToastService {
     this.snackBar.open(message, 'Close', config);
   }
 
-  showSuccess(message: string, duration: number = 6000): void {
+  showSuccess(message: string, duration: number = 3000): void {
     this.show(message, 'toast-success', duration);
   }
 
-  showError(message: string, duration: number = 6000): void {
+  showError(message: string, duration: number = 3000): void {
     this.show(message, 'toast-error', duration);
   }
   

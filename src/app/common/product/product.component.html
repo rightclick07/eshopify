@@ -1,1 +1,150 @@
-<p>product works!</p>
+<mat-card>
+  <mat-card-header style="justify-content: center;">
+    <h4 class="section-title">
+      <button mat-button class="button-do">{{productdetails?.name}}</button>
+    </h4>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="image-container">
+      <img [src]="selectedImage" alt="Selected Image">
+    </div>
+    <mat-chip-list class="chip-list">
+      <mat-chip *ngFor="let image of this.productdetails?.images" (click)="changeImage(image)">
+        <img [src]="image" alt="Selected Image" width="50px" height="auto" > 
+      </mat-chip>
+    </mat-chip-list>
+    <mat-divider></mat-divider>
+    <div style="text-align: center;margin: 2px;">
+      <span class="compare-price">₹{{productdetails?.compareAtPrice}}</span>
+      <span class="product-price">₹{{productdetails?.price}}</span>
+      
+    </div>
+    <mat-card-actions class="action">
+      <div>
+        <button mat-raised-button color="primary" class="button-addToCart" (click)="addToCart(productdetails)">
+          <mat-icon style="vertical-align: middle;">add_shopping_cart</mat-icon>
+          Add to Cart
+        </button>
+      </div>
+      <div>
+        <button mat-raised-button color="primary" class="button-buyNow" (click)="checkout(productdetails)">
+          <mat-icon style="vertical-align: middle;">shopping_basket</mat-icon>
+            Buy Now
+        </button>
+      </div>
+    </mat-card-actions>
+    <mat-divider></mat-divider>
+    <div class="warranty-shipping-container">
+      <div  class="warranty">
+        <mat-icon>security</mat-icon>
+       <button mat-button><span>1 Year Warranty Covered With GST Bill</span></button> 
+      </div>
+      
+      <div  class="shipping">
+        <mat-icon>local_shipping</mat-icon>
+        <button mat-button><span>Fast Shipping Available</span></button>
+      </div>
+      
+      <div  class="return-policy">
+        <mat-icon>verified</mat-icon>
+       <button mat-button><span>7-Days Easy Return Policy</span></button>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div >
+      <mat-tab-group>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="tab-icon">description</mat-icon>
+            Description
+          </ng-template>
+          <div class="card-container">
+            <h4 class="section-title">
+              <button mat-button class="button-do">
+                <mat-icon>move_to_inbox</mat-icon>
+                In the Box
+              </button>
+            </h4>
+            <div  [innerHTML]="convertToPointers(productdetails?.inTheBox)" class="pointer-text"></div>
+          </div>
+          <div class="card-container">
+            <h4 class="section-title">
+              <button mat-button class="button-do">
+                <mat-icon>details</mat-icon>
+                Product Details
+              </button>
+            </h4>
+            <div  [innerHTML]="convertToPointers(productdetails?.description)" class="pointer-text"></div>
+          </div>
+          <div class="card-container">
+            <h4 class="section-title">
+              <button mat-button class="button-do">
+                <mat-icon>folder_special</mat-icon>
+                Specification
+              </button>
+            </h4>
+            <div  [innerHTML]="convertToPointers(productdetails?.shortDescription)" class="pointer-text"></div>
+          </div>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="tab-icon">note_add</mat-icon>
+            Additional Info
+          </ng-template>
+          <div class="card-container">
+            <h4 class="section-title">
+              <button mat-button class="button-do">
+                <mat-icon>library_add</mat-icon>
+                Additional Details
+              </button>
+            </h4>
+            <div  [innerHTML]="convertToPointers(productdetails?.shortDescription)" class="pointer-text"></div>
+          </div>
+          
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="tab-icon">rate_review</mat-icon>
+            Review
+          </ng-template>
+         
+          <div class="card-container">
+            <div class="review-container">
+              <div class="review-title">Leave a Google Review</div>
+              <div class="review-text">We value your feedback. Please take a moment to leave a review on our Google page.</div>
+              <button mat-button class="button-do">
+                <a href="https://g.page/r/CVcBKlb_WswoEBE/review" style="text-decoration: none;color:white;" >Write a  Google Review</a>
+           
+              </button>
+               </div>
+          </div>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="tab-icon">assignment_return</mat-icon>
+            Return Policy
+          </ng-template>
+         
+          <div class="card-container">
+            <div class="policy-section">
+              <h2>Returns Policy</h2>
+              <p>Replacement of 7 days is covered for manufacturing defect only.</p>
+              <p>You should expect to receive your refund within...</p>
+              <p>If you need to return an item, simply login to your account...</p>
+              <p>All terms of returns & refunds can be found on the <a href="shipping-return-policy">Return Policy</a>.</p>
+              <p>Drones & Robots cover no warranty, returns or replacement...</p>
+            </div>
+            
+            <div class="policy-section">
+              <h2>Shipping Policy</h2>
+              <p>We can ship to virtually any address in the world...</p>
+              <p>When you place an order, we will estimate shipping...</p>
+              <p>Please also note that the shipping rates for many items...</p>
+              <p>All conditions for shipping can be found on the <a href="/shipping-return-policy">Shipping Policy</a>.</p>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>    
+  </mat-card-content>
+</mat-card>

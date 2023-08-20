@@ -8,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class AboutUsComponent implements OnInit {
 
   constructor() { }
-
+  height=0;
   ngOnInit(): void {
   }
+  imageList=["assets/img/banners/1.jpg","assets/img/banners/2.jpg","assets/img/banners/3.jpg"]
 
 }

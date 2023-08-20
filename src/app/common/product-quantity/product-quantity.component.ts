@@ -1,5 +1,5 @@
 import { Component, OnInit, Output,EventEmitter } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-product-quantity',
@@ -10,12 +10,12 @@ export class ProductQuantityComponent implements OnInit {
   @Output() quantityChange = new EventEmitter<number>();
 
 
-  quantityForm:FormGroup={} as FormGroup
+  quantityForm:UntypedFormGroup={} as UntypedFormGroup
   constructor() { }
 
   ngOnInit(): void {
-    this.quantityForm=new FormGroup({
-      quantity:new FormControl(1,[])
+    this.quantityForm=new UntypedFormGroup({
+      quantity:new UntypedFormControl(1,[])
     })
   }
 

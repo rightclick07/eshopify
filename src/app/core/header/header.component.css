@@ -37,11 +37,17 @@
   padding: 5px;
 }
 .logo{
-  padding-left: 10px;
   display: flex;
   justify-content: flex-start;
   outline: none;
   height: 44px;
+}
+.logo-mobile{
+  display: flex;
+  justify-content: flex-start;
+  outline: none;
+  height: auto;
+  width:44px;
 }
 .login-link{
   text-decoration: none;
@@ -51,7 +57,7 @@
   float: right;
 }
 .toolbar{
-  background-color:#A020F0;
+  background-color:#27292B;
   color: white;
 }
 .form {
@@ -60,6 +66,7 @@
   width: 100%;
   font-size: 12px;
   padding: -6px;
+  
 }
 .about{
     text-decoration: none;
@@ -70,7 +77,16 @@
 }
 .mat-form-field{
     width: 80%;
-   
+   vertical-align: middle;
+   background-color: transparent;
+   margin-bottom: 0;
+}
+
+.mat-form-field-subscript-wrapper {
+  display: none;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
 }
 .mat-form-field > mat-form-field-wrapper {
   padding-bottom: 0;
@@ -83,4 +99,50 @@
   padding: 5px;
   font-weight: bold;
  
+}
+
+.sub-category-title{
+  margin-left: 10px;
+}
+.category-item {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.category-item.clicked {
+  background-color: #e0e0e0; /* Change this to your desired highlight color */
+}
+
+.plus-minus-icon {
+  color: rgb(25, 189, 189);
+  margin: 2px;
+  vertical-align: middle;
+  font-size: 24px;
+}
+
+.plus-icon:before {
+  content: '+';
+}
+
+.minus-icon:before {
+  content: '-';
+}
+.search-container {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+}
+
+.search-input {
+  flex: 1;
+  background-color: #27292B;
+}
+
+.search-icon {
+  color: #27292B;
+  font-size: 26px;
+  cursor: pointer;
 }

@@ -62,17 +62,18 @@
   }
  
   .selected-image-container {
-    width: 350px; /* Set the desired width of the container */
+    width: 280px; /* Set the desired width of the container */
     height: 250px;/* Set the desired height of the container */
-    margin: 0 5px; 
     padding: 0 5px;
     position: relative;
     overflow: hidden; /* Ensure that images exceeding container dimensions are clipped */
   }
   
   .image {
-    width: 100%; /* Make the image fill the width of the container */
-    height: 100%; /* Make the image fill the height of the container */
+    width: 70%; /* Make the image fill the width of the container */
+    height: 70%; 
+    margin-left: 20%;
+    margin-top: 10%;/* Make the image fill the height of the container */
     transition: transform 0.3s ease;
     object-fit: cover; /* Maintain the aspect ratio of the image while filling the container */
   }
@@ -89,9 +90,9 @@
      border-radius: 999px;
     padding-left: 16px;
     padding-right: 16px;
-    background-color: #A020F0;
     width:200px;
     margin-bottom: 5px;
+    background-color: #67696a;
     color:white;
   }
   .button-buyNow{
@@ -99,7 +100,7 @@
     padding-left: 16px;
     padding-right: 16px;
     width: 200px;
-    background-color: #8a15d3;
+    background-color: #46484a;
     color:white;
   }
   .discount-tag {
@@ -111,3 +112,15 @@
     padding: 4px 8px; /* Set the desired padding for the discount tag */
     font-weight: bold; /* Set the desired font weight for the discount tag */
   }
+ 
+@media screen and (max-width: 768px) {
+  .custom-list-item {
+    width: 80%;
+    height: auto;
+      border: 1px solid #ccc;
+      background-color: #f5f5f5;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      margin: 10px;
+  }
+}

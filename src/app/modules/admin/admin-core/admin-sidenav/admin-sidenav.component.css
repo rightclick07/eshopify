@@ -1,0 +1,27 @@
+.mat-sidenav-container{
+    height: calc(205vh - 115vh);
+}
+mat-sidenav{
+    width:200px;
+    background-color: #eee;
+    position: absolute;
+}
+
+.link{
+    text-decoration: none;
+     color:rgb(51, 53, 52) ;
+}
+.item:hover{
+    background-color: rgb(86, 223, 193);
+    color: white;
+}
+.container {
+    width: auto;
+    height: 1500px;
+    margin: 10px;
+    padding: 10px;
+    
+  }
+  .is-active{
+    color: red;
+  }

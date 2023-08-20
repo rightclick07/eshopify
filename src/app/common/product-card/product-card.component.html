@@ -1,5 +1,5 @@
-<mat-card style="margin: 2px;padding: 2px;">
-
+<div style="margin: 2px;padding: 2px;background-color: white; ">
+<!-- 
   <mat-chip-list class="image-chip-list">
     <mat-chip *ngFor="let image of images"
      [style.backgroundImage]="'url(' + image + ')'" 
@@ -7,20 +7,27 @@
      (mouseover)="zoomInImage()"
       (mouseleave)="zoomOutImage()"
        (mousemove)="moveImage($event)"></mat-chip>
-  </mat-chip-list>
-  
+  </mat-chip-list> -->
+  <!-- <button mat-button style="float: right;"><img src="assets/img/video/share-button.png"  style="width:40px;vertical-align: middle;margin: 2px;"> Share</button>
+   -->
   <div class="selected-image-container">
-    <img [src]="selectedImage"  *ngIf="selectedImage" class="image" >
+    <a routerLink="/product-details/{{id}}">
+      <div class="image-wrapper">
+        <img [src]="selectedImage"  *ngIf="selectedImage" class="image" >
+      </div>
+    </a>
+    
   </div>
-  <span class="discount-tag">
+  <!-- <span class="discount-tag">
     <mat-icon style="vertical-align: middle;">label_important</mat-icon>
-    Discount {{discount}} %</span>
+    {{discount}} % OFF</span> -->
   <mat-divider></mat-divider>
   <mat-card-content>
-    <h3 class="product-name"><a routerLink="/product-details/{{id}}" style="text-decoration: none;color: #810cca;"
+    <h3 class="product-name"><a routerLink="/product-details/{{id}}" style="text-decoration: none;color: #27292B;"
        matTooltip="{{name}}">{{ name }}</a></h3>
     <!-- <app-product-quantity (quantityChange)="onQuantityChange($event)"></app-product-quantity> -->
-    <p class="product-description" routerLink="/product-details/{{id}}">{{ description }}</p>
+    <!-- <p class="product-description" routerLink="/product-details/{{id}}">{{ description }}</p>
+     -->
     <div style="text-align: center;margin: 2px;">
       <span class="compare-price">₹{{ compareAtPrice}}</span>
       <span class="product-price">₹{{ price}}</span>
@@ -30,17 +37,17 @@
   </mat-card-content>
   <mat-card-actions class="action">
     <div>
-      <button mat-raised-button color="primary" class="button-addToCart" (click)="addToCart()">
+      <button mat-raised-button color="primary" class="button-addToCart" (click)="addToCart(id)">
         <mat-icon style="vertical-align: middle;">add_shopping_cart</mat-icon>
         Add to Cart
       </button>
     </div>
     <div>
-      <button mat-raised-button color="primary" class="button-buyNow" (click)="checkout()">
+      <button mat-raised-button color="primary" class="button-buyNow" (click)="checkout(id)">
         <mat-icon style="vertical-align: middle;">shopping_basket</mat-icon>
           Buy Now
       </button>
     </div>
   </mat-card-actions>
   <br>
-</mat-card>
+</div>

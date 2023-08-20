@@ -1,5 +1,10 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { log } from 'console';
+import { CartService } from 'src/app/shared/services/cart-service/cart.service';
+import { ProductService } from 'src/app/shared/services/product-service/product.service';
+import { SpinnerService } from 'src/app/shared/services/spinner-service/spinner.service';
+import { ToastService } from 'src/app/shared/services/toast-service/toast.service';
 
 @Component({
   selector: 'app-product-card',
@@ -10,11 +15,12 @@ export class ProductCardComponent implements OnInit,OnChanges {
   @Input() id!:number
   @Input() images!: string[];
   @Input() name!: string;
-  @Input() description!: string;
+  // @Input() description!: string;
   @Input() price!: number;
   @Input() compareAtPrice!:number;
   @Input() discount!: number;
   selectedImage!: string;
+  cartArray:any[]=[];
   isZoomed: boolean = false;
   startX!: number;
   startY!: number;
@@ -24,15 +30,16 @@ export class ProductCardComponent implements OnInit,OnChanges {
   quantity: number = 1;
 
  
-  constructor(){
+  constructor(private productService:ProductService,private router:Router,private toastService:ToastService,
+    private cartService:CartService,private spinnerService:SpinnerService){
   }
 
   ngOnInit(): void {
-    console.log(this.selectedImage);
     
   }
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
+    console.log(this.images);
+    
     if (this.images && this.images.length > 0) {
       this.selectedImage = this.images[0];
     }
@@ -43,9 +50,24 @@ export class ProductCardComponent implements OnInit,OnChanges {
     this.selectedImage = image;
   }
 
-  addToCart(): void {
-    // Implement your logic for adding the product to the cart
-    console.log('Product added to cart');
+  addToCart(id:number): void {
+    if(localStorage.getItem("token")){
+      // Implement your logic for adding the product to the cart
+      this.spinnerService.show();
+      this.productService.getproductById(id).subscribe((res:any)=>{
+        if(res){
+          this.spinnerService.hide();
+          console.log("res?.payload",res?.payload);
+          
+            this.cartService.addToCart(res?.payload);
+            this.toastService.showSuccess("Item Added To Cart SuccessFully!")
+        }
+      })
+    }else{
+      this.router.navigate(["/login"])
+    }
+    
+    
   }
 
 
@@ -76,6 +98,19 @@ export class ProductCardComponent implements OnInit,OnChanges {
   onQuantityChange(quantity: number): void {
     this.quantity = quantity;
   }
-  checkout(){}
+  checkout(id:number){
+    if(localStorage.getItem("token")){
+      this.spinnerService.show();
+      this.productService.getproductById(id).subscribe((res:any)=>{
+        if(res){
+          this.spinnerService.hide();
+            this.cartService.addToCart(res?.payload);
+            this.toastService.showSuccess("Item Added To Cart SuccessFully!")
+        }
+      })
+    }else{
+      this.router.navigate(["/login"])
+    }
+  }
 }
 

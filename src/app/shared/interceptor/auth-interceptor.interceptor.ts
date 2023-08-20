@@ -4,10 +4,11 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators'; 
 import { AuthService } from '../services/auth/auth.service';
 import { ToastService } from '../services/toast-service/toast.service';
+import { SpinnerService } from '../services/spinner-service/spinner.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private authService: AuthService,private toastService:ToastService) {}
+  constructor(private authService: AuthService,private toastService:ToastService,private spinnerService:SpinnerService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // Add the bearer token to the request headers
@@ -23,6 +24,7 @@ export class AuthInterceptor implements HttpInterceptor {
     // Handle errors
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
+        this.spinnerService.hide();
         if (error.status === 401) {
           this.toastService.showError("Unauthorized Login")
         } else if (error.status === 403) {

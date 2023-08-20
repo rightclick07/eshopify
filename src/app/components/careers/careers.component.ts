@@ -11,5 +11,6 @@ export class CareersComponent implements OnInit {
 
   ngOnInit(): void {
   }
+imageList=["assets/img/banners/1.jpg","assets/img/banners/1.jpg"]
 
 }

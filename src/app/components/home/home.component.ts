@@ -1,5 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { log } from 'console';
 import { Observable, map, shareReplay } from 'rxjs';
 import { ResponseData } from 'src/app/shared/model/ResponseData';
@@ -11,24 +12,61 @@ import { ProductService } from 'src/app/shared/services/product-service/product.
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit,AfterViewInit {
+  imageList=["assets/img/banners/1.jpg","assets/img/banners/2.jpg","assets/img/banners/3.jpg"]
+  height=0;
+  category=[
+    {
+    title:"Drone",
+    url:"assets/img/utility/drone.png"
+    },
+    {
+      title:"Services",
+      url:"assets/img/utility/drone.png"
+    },
+    {
+      title:"Camera",
+      url:"assets/img/utility/drone.png"
+    },
+    {
+      title:"Gaming",
+      url:"assets/img/utility/drone.png"
+    }
 
-  selectedImage!: string;
-
-  productList:Product[]=[]
-  imageList=[
-    "assets/img/product-sample-images/p0.jpg",
-    "assets/img/product-sample-images/p1.jpg",
-    "assets/img/product-sample-images/p2.jpg",
-    "assets/img/product-sample-images/p3.jpg"
   ]
+
+  sliderConfig = {
+    slidesToShow: 3, // Number of slides to show at a time
+    slidesToScroll: 1,
+    infinite: true,
+    responsive: [
+      {
+        breakpoint: 768, // Adjust breakpoints as needed
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1
+        }
+      }
+    ]
+  };
+  selectedImage!: string;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  productList:Product[]=[]
+  
   constructor(private breakpointObserver: BreakpointObserver,private productService:ProductService) { }
   isHandset: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Tablet)
     .pipe(
       map((result:any) => result.matches),
       shareReplay()
     );
-
+    ngAfterViewInit(): void {
+      //this.paginator.pageIndex = 0; // Set initial page index to 0
+    }
   ngOnInit(): void {
     this.getProductList();
   }
@@ -166,9 +204,7 @@ getProductList(){
        console.log(this.productList);
        for(let p of this.productList){
          let img=p.images
-         console.log(img);
          let k=this.createListFromString(img.toString())
-         console.log(k);
          p.images=k;
        }
        

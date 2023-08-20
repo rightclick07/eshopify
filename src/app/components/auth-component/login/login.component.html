@@ -1,21 +1,21 @@
 <div class="login-container">
     <mat-card class="login" mat-elevation-z3  >
-      <div>
-        <img  width="100px"  src="assets/img/logo.jpg">
-      </div> 
       <mat-card-header>  
-       <mat-card-title  >Login to Everse</mat-card-title>
+        <mat-card-title  >
+          <img  style="vertical-align: middle; margin: 2px;" width="40px"  src="assets/img/everse-logo.png">
+          Login to Everse
+        </mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <form [formGroup]="loginForm">
               <div fxLayout="column">
                 <div>
                     <mat-form-field style="width: 100%;" appearance="outline">
-                      <mat-label>Username</mat-label>
+                      <mat-label>Email</mat-label>
                       <input 
                         matInput
                         formControlName="username"
-                        placeholder="Enter Username">
+                        placeholder="Enter Email">
                       <mat-error *ngIf="loginForm.get('username')?.hasError('required')">Username is required</mat-error>
                       <mat-error *ngIf="loginForm.get('username')?.hasError('minlength')">Username length is minimum 6 characters</mat-error>
                     </mat-form-field>
@@ -44,25 +44,39 @@
         </div>
         </div>   
         </form>
-        <mat-card-actions >
+        <mat-card-actions style="text-align: center;" >
           <button  mat-raised-button type="submit" primary class="button" [disabled]="loginForm.invalid" (click)="OnLogin()" >Login</button>
-          <a routerLink="/forget-password" style="text-decoration: none;color: #A020F0;">&nbsp; Forget Password ?</a>
+          <br>
+          <a routerLink="/forget-password" style="text-decoration: none;color: #27292B">&nbsp; Forget Password ?</a>
           <div style="margin: 5px;">
-            <span>Not a Member? </span><a  style="text-decoration: none;color:#A020F0 ;" routerLink="/signup">Signup</a>
+            <span>Not a Member? </span><a  style="text-decoration: none;color:black;" routerLink="/signup"><b>Signup</b></a>
           </div>
         </mat-card-actions>
       </mat-card-content>
-      <h2><span>OR</span></h2>
+      <!-- <h2><span>OR</span></h2>
       <mat-card-actions>
         <button style="margin-left: 20%;" mat-raised-button primary class="button">
           <mat-icon style="color:black">smartphone</mat-icon>
           Login with Phone No.</button>
-      </mat-card-actions>
+      </mat-card-actions> -->
       <h2><span>OR</span></h2>
       <mat-card-actions>
-        <button style="margin-left: 20%;" mat-raised-button primary class="button">
+        <!-- <button style="margin-left: 20%;" mat-raised-button primary class="button-google" >
           <img src="assets/img/banners/google-icon.png" width="30px">
-          Login with Google</button>
+
+          Login with Google</button> -->
+          
+            <asl-google-signin-button
+              type="standard"
+              size="large"
+              theme="outline"
+              text="signin_with"
+              shape="circle"
+              logo_alignment="center"
+              >
+              Login with Google
+            </asl-google-signin-button>
+         
       </mat-card-actions>
       
     </mat-card>

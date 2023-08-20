@@ -1,0 +1,13 @@
+<div class="solar-system">
+    <div class="center-logo">
+      <!-- Company Logo image -->
+      <img src="assets/img/everse-logo.png" width="30px" alt="Company Logo">
+    </div>
+    <div class="planet-ring">
+      <!-- Use *ngFor to generate drones as planets -->
+      <div class="planet" *ngFor="let drone of drones; let i = index" [style.transform]="getPlanetTransform(i)">
+        <img [src]="drone.image" width="30px" alt="Drone">
+      </div>
+    </div>
+  </div>
+  

@@ -1,1 +1,10 @@
-<p>welcome to blog</p>
+<mat-card *ngFor="let blog of blogs" class="blog-card">
+  <a routerLink="{{blog.id}}">
+    <img [src]="blog.images" alt="Blog Image" class="blog-image">
+  </a>
+  <mat-card-content>
+    <a class="blog-title" routerLink="{{blog.id}}">{{ blog.title }}</a>
+    <p class="blog-description">{{ blog.shortDescription }}</p>
+ 
+  </mat-card-content>
+</mat-card>

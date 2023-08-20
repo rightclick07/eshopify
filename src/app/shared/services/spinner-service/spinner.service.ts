@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SpinnerService {
-  private spinnerSubject = new Subject<boolean>();
-  public spinnerState = this.spinnerSubject.asObservable();
+  isLoading = false;
 
-  showSpinner(): void {
-    this.spinnerSubject.next(true);
+  constructor() {}
+
+  show(): void {
+    this.isLoading = true;
   }
 
-  hideSpinner(): void {
-    this.spinnerSubject.next(false);
+  hide(): void {
+    this.isLoading = false;
   }
 }

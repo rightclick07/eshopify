@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 
-import {AbstractControl, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, ValidatorFn, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, UntypedFormControl, UntypedFormGroup, FormGroupDirective, NgForm, ValidatorFn, Validators} from '@angular/forms';
 
 import {Router} from '@angular/router';
 import {ErrorStateMatcher} from '@angular/material/core';
@@ -14,7 +14,7 @@ import { ResponseData } from 'src/app/shared/model/ResponseData';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+  isErrorState(control: UntypedFormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const invalidCtrl = !!(control && control.invalid && control.parent?.dirty);
     const invalidParent = !!(control && control.parent && control.parent.invalid && control.parent.dirty);
 
@@ -29,7 +29,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class SignupComponent implements OnInit {
   hidePassword = true;
   signupSubscription$:Subscription={} as Subscription;
-  public signupForm: FormGroup = {} as  FormGroup;
+  public signupForm: UntypedFormGroup = {} as  UntypedFormGroup;
  // Regular expression pattern for email validation
  emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   // Regular expression pattern for mobile number validation
@@ -43,13 +43,13 @@ export class SignupComponent implements OnInit {
   }
 
   intializeForm(){
-    this.signupForm = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.minLength(6)]),
-      emailId: new FormControl('', [Validators.required, Validators.minLength(8),Validators.pattern(this.emailPattern)]),
-      mobileNumber: new FormControl('', [Validators.required, Validators.minLength(10),Validators.pattern(this.mobilePattern)]),
-      address: new FormControl('', [ Validators.minLength(6)]),
-      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-      confirmPassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    this.signupForm = new UntypedFormGroup({
+      name: new UntypedFormControl('', [Validators.required, Validators.minLength(3)]),
+      emailId: new UntypedFormControl('', [Validators.required, Validators.minLength(8),Validators.pattern(this.emailPattern)]),
+      mobileNumber: new UntypedFormControl('', [Validators.required, Validators.minLength(10),Validators.pattern(this.mobilePattern)]),
+      address: new UntypedFormControl('', [ Validators.minLength(6)]),
+      password: new UntypedFormControl('', [Validators.required, Validators.minLength(8)]),
+      confirmPassword: new UntypedFormControl('', [Validators.required, Validators.minLength(8)]),
     },{ validators: this.passwordMatchValidator }
     );
   }
@@ -95,7 +95,7 @@ export class SignupComponent implements OnInit {
     
     this.signupSubscription$=this.authService.signup(signupRequest).subscribe(
       (response:ResponseData<any>)=>{
-        this.spinnerService.hideSpinner();
+        this.spinnerService.hide();
         console.log(response);
         if(response){
           this.toastService.showSuccess(response.payload)

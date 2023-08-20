@@ -1,0 +1,21 @@
+<button mat-button [matMenuTriggerFor]="mainMenu">
+    <mat-icon style="vertical-align: middle;margin-right: 5px;">apps</mat-icon>
+    Category
+</button>
+<mat-menu #mainMenu="matMenu">
+  <ng-container *ngFor="let item of menuList">
+    <button mat-menu-item *ngIf="!item.subCategory" (click)="menuItemClicked(item)">
+      {{ item.title }}
+    </button>
+    <button mat-menu-item *ngIf="item.subCategory" [matMenuTriggerFor]="subMenu" [matMenuTriggerData]="{subItems:item.subCategory}">
+      {{ item.title }}
+    </button>
+  </ng-container>
+</mat-menu>
+<mat-menu #subMenu="matMenu">
+    <ng-template matMenuContent let-subItems="subItems">
+        <button mat-menu-item *ngFor="let subItem of subItems" (click)="subMenuItemClicked(subItem)">
+            {{ subItem.title }}
+          </button>
+    </ng-template>
+ </mat-menu>

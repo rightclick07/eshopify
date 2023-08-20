@@ -29,6 +29,22 @@ import { CheckoutComponent } from './common/checkout/checkout.component'
 import {  HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AuthInterceptor } from './shared/interceptor/auth-interceptor.interceptor'; 
+import { CartDataResolverResolver } from './shared/resolver/cart-data-resolver.resolver';
+import { TableComponent } from './common/table/table.component';
+import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import {
+  GoogleLoginProvider,
+  FacebookLoginProvider
+} from '@abacritt/angularx-social-login';
+import { MenuSubmenuComponent } from './common/menu-submenu/menu-submenu.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { FaqComponent } from './components/faq/faq.component';
+import { ImageSliderComponent } from './common/image-slider/image-slider.component';
+import { BlogContentComponent } from './components/blogs/blog-content/blog-content.component';
+import { SolarSystemComponent } from './components/solar-system/solar-system.component';
+import { ShippingReturnPolicyComponent } from './components/shipping-return-policy/shipping-return-policy.component';
+import { FilterProductComponent } from './common/filter-product/filter-product.component';
+
 
 @NgModule({
   declarations: [
@@ -52,6 +68,15 @@ import { AuthInterceptor } from './shared/interceptor/auth-interceptor.intercept
     ProductComponent,
     CartsComponent,
     CheckoutComponent,
+    TableComponent,
+    MenuSubmenuComponent,
+    PrivacyPolicyComponent,
+    FaqComponent,
+    ImageSliderComponent,
+    BlogContentComponent,
+    SolarSystemComponent,
+    ShippingReturnPolicyComponent,
+    FilterProductComponent,
    
   ],
   imports: [
@@ -61,11 +86,29 @@ import { AuthInterceptor } from './shared/interceptor/auth-interceptor.intercept
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SocialLoginModule
   
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  providers: [CartDataResolverResolver,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: true,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              "653248834992-v8lj1ij1rebi2c6huil8u9lbqalh6jur.apps.googleusercontent.com"
+            )
+          }
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
+    }
   
   ],
   bootstrap: [AppComponent]
