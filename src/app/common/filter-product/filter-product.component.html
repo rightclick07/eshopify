@@ -1,0 +1,11 @@
+<div class="card-container">
+    <app-product-card *ngFor="let key of this.filteredProductList"
+      class="mat-elevation-z5 card"
+      [images]="key.images"
+      [name]="key.name"
+      [price]="key.price"
+      [discount]="key.discount"
+      [compareAtPrice]="key.compareAtPrice"
+      [id]="key.id">
+    </app-product-card>
+  </div>

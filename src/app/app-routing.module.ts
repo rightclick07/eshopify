@@ -18,6 +18,8 @@ import { CheckoutComponent } from './common/checkout/checkout.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { BlogContentComponent } from './components/blogs/blog-content/blog-content.component';
+import { ShippingReturnPolicyComponent } from './components/shipping-return-policy/shipping-return-policy.component';
+import { FilterProductComponent } from './common/filter-product/filter-product.component';
 
 
 const routes: Routes = [
@@ -26,11 +28,14 @@ const routes: Routes = [
     {path: 'signup', component: SignupComponent},
     {path: 'login', component: LoginComponent,canActivate: [LoginGuard]},
     {path: 'forget-password', component: ForgetPasswordComponent},
+    {path:"blogs/:id",component:BlogContentComponent},
     {path:"blogs",component:BlogsComponent},
     {path:"about-us",component:AboutUsComponent},
     {path:"contact-us",component:ContactUsComponent},
+    {path:"filter-product",component:FilterProductComponent},
     {path:"career",component:CareersComponent},
     {path:"privacy-policy",component:PrivacyPolicyComponent},
+    {path:"shipping-return-policy",component:ShippingReturnPolicyComponent},
     {path:"faq",component:FaqComponent},
     {path:"cart",component:CartsComponent},
     {path:"checkout",component:CheckoutComponent},

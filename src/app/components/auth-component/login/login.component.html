@@ -11,11 +11,11 @@
               <div fxLayout="column">
                 <div>
                     <mat-form-field style="width: 100%;" appearance="outline">
-                      <mat-label>Username</mat-label>
+                      <mat-label>Email</mat-label>
                       <input 
                         matInput
                         formControlName="username"
-                        placeholder="Enter Username">
+                        placeholder="Enter Email">
                       <mat-error *ngIf="loginForm.get('username')?.hasError('required')">Username is required</mat-error>
                       <mat-error *ngIf="loginForm.get('username')?.hasError('minlength')">Username length is minimum 6 characters</mat-error>
                     </mat-form-field>

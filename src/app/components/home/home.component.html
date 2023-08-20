@@ -10,9 +10,7 @@
    </div>
 
 </div> -->
-<!-- <div>
-    <app-horizontal-category-scroller></app-horizontal-category-scroller>
-</div> -->
+
 <section>
     <div class="container">
       <div class="image-container" *ngIf="isHandset | async">
@@ -37,7 +35,7 @@
       <!-- <h2 class="homeheadline_tag text-center">
         <span class="headline_superheadline">DJI <b>DRONE</b>
             <button mat-raised-button class="shop-now-button" >SHOP NOW</button></span>       
-    </h2> -->
+      </h2> -->
       <div >
         <mat-tab-group>
           <mat-tab>
@@ -46,17 +44,19 @@
               BestSeller
             </ng-template>
            
-          <div class="card-container">
-            <app-product-card *ngFor="let key of productList"
-              class="mat-elevation-z5 card"
-              [images]="key.images"
-              [name]="key.name"
-              [price]="key.price"
-              [discount]="key.discount"
-              [compareAtPrice]="key.compareAtPrice"
-              [id]="key.id">
-            </app-product-card>
-          </div>
+            <div class="product-list">
+              <div class="product-card" *ngFor="let key of productList">
+                <app-product-card
+                  class="mat-elevation-z5 card"
+                  [images]="key.images"
+                  [name]="key.name"
+                  [price]="key.price"
+                  [discount]="key.discount"
+                  [compareAtPrice]="key.compareAtPrice"
+                  [id]="key.id">
+                </app-product-card>
+              </div>
+            </div>
           </mat-tab>
         
           <mat-tab>
@@ -280,5 +280,12 @@
     </div> 
 
 
+  </div>
+  <div style="text-align: center;">
+    <button mat-button class="button-review">
+      <img src="assets/img/video/g-logo.png" style="vertical-align: middle;" width="40px">
+      <a href="https://g.page/r/CVcBKlb_WswoEBE/review" style="text-decoration: none;color:#444;background-color: white;" >Write a  Google Review</a>
+ 
+    </button>
   </div>
 </section>

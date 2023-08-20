@@ -9,6 +9,7 @@ import { UserProfile } from 'src/app/shared/model/UserProfile';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { CartService } from 'src/app/shared/services/cart-service/cart.service';
 import { ProductService } from 'src/app/shared/services/product-service/product.service';
+import { SpinnerService } from 'src/app/shared/services/spinner-service/spinner.service';
 import { ToastService } from 'src/app/shared/services/toast-service/toast.service';
 import { TokenStorageService } from 'src/app/shared/services/token-storage/token-storage.service';
 
@@ -23,11 +24,121 @@ export class HeaderComponent implements OnInit {
   cartArray:any[]=[];
   cartItemCount=0;
   productList:any;
+  filteredProductList:any;
+  showSearchIcon = true;
+
+  category=[
+  {
+    title: "Drone",
+    subCategory: [
+      {
+        id:1,
+        title:"Nano Drone",
+        icon:"",
+      },
+      {
+        id:2,
+        title:"Micro Drone",
+        icon:"",
+      },
+      {
+        id:3,
+        title:"Enterprise Drone",
+        icon:"",
+      },
+      {
+        id:4,
+        title:"Toy Drone",
+        icon:""
+      }
+    ]
+  },
+  {
+    title:"Services",
+    url:"assets/img/utility/drone-service.png",
+    subCategory:[
+      {
+        id:1,
+        title:"Rent a Drone",
+        icon:"",
+        products:[]
+      },
+      {
+        id:2,
+        title:"Drone Repair",
+        icon:"",
+        products:[]
+      },
+      {
+        id:3,
+        title:"Drone Training",
+        icon:"",
+        
+      },
+      {
+        id:4,
+        title:"Get Your UIN",
+        icon:"",
+        
+      },
+      {
+        id:4,
+        title:"Drone Piolet License",
+        icon:"",
+        
+      }
+    ]
+    },
+    {
+      title:"Camera",
+      url:"assets/img/utility/camera.png",
+      subCategory:[
+        {
+          id:1,
+          title:"Action Camera",
+          icon:"",
+        },
+        {
+          id:2,
+          title:"DSLR",
+          icon:""
+        },
+        {
+          id:3,
+          title:"Gimbles",
+          icon:""
+        },
+      ]
+      },
+  
+      {
+      title:"Gaming",
+      url:"assets/img/utility/gaming.png",
+      subCategory:[
+        {
+          id:1,
+          title:"XBOX",
+          icon:""
+        },
+        {
+          id:2,
+          title:"VR Headsets",
+          icon:""
+        },
+        {
+          id:3,
+          title:"Play Stations",
+          icon:""
+        },
+      ]
+      },
+  ]
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
       shareReplay()
     );
+
 
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -35,7 +146,8 @@ export class HeaderComponent implements OnInit {
     public authService:AuthService ,
     private productService:ProductService,
     private toastService:ToastService ,
-    private cartService:CartService
+    private cartService:CartService,
+    private spinnerService:SpinnerService
 ) {
   this.authService.isLoggedIn.subscribe(res=>{
     this.isUserLoggedIn=res;
@@ -230,4 +342,50 @@ export class HeaderComponent implements OnInit {
             }
         }
   }
+  selectedCategories: boolean[] = new Array(this.category.length).fill(false);
+
+  toggleSubcategories(index: number) {
+    this.selectedCategories[index] = !this.selectedCategories[index];
+  }
+
+  isCategorySelected(index: number): boolean {
+    return this.selectedCategories[index];
+  }
+onClickCategory(searchString:string){
+  const obj=this.searchCategoryFromList(searchString)
+  console.log("obj",obj);
+  const categoryString=obj?.category?.title;
+  const subCategoryString=obj?.subCategory[0].title;
+  this.spinnerService.show()
+   this.productService.getProductByCategorySubcategory(categoryString,subCategoryString).subscribe(
+    res=>{
+      if(res){
+        this.spinnerService.hide();
+        this.filteredProductList=res?.payload
+        const queryParams = { data: JSON.stringify(this.filteredProductList) };
+        this.router.navigate(['/filter-product'], { queryParams });
+      }
+    }
+   )
+  
+}
+  searchCategoryFromList(searchString: string): { category: any, subCategory: any[] } | null {
+    searchString = searchString.toLowerCase(); // Convert search string to lowercase
+  
+    for (const cat of this.category) {
+      const matchingSubCategory = cat.subCategory.find(subCat =>
+        subCat.title.toLowerCase().includes(searchString)
+      );
+      
+      if (matchingSubCategory) {
+        return {
+          category: cat,
+          subCategory: [matchingSubCategory]
+        };
+      }
+    }
+  
+    return null;
+  }
+  
 }

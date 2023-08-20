@@ -15,6 +15,45 @@ import { ProductService } from 'src/app/shared/services/product-service/product.
 export class HomeComponent implements OnInit,AfterViewInit {
   imageList=["assets/img/banners/1.jpg","assets/img/banners/2.jpg","assets/img/banners/3.jpg"]
   height=0;
+  category=[
+    {
+    title:"Drone",
+    url:"assets/img/utility/drone.png"
+    },
+    {
+      title:"Services",
+      url:"assets/img/utility/drone.png"
+    },
+    {
+      title:"Camera",
+      url:"assets/img/utility/drone.png"
+    },
+    {
+      title:"Gaming",
+      url:"assets/img/utility/drone.png"
+    }
+
+  ]
+
+  sliderConfig = {
+    slidesToShow: 3, // Number of slides to show at a time
+    slidesToScroll: 1,
+    infinite: true,
+    responsive: [
+      {
+        breakpoint: 768, // Adjust breakpoints as needed
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1
+        }
+      }
+    ]
+  };
   selectedImage!: string;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   productList:Product[]=[]

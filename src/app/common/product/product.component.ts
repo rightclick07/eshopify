@@ -77,10 +77,10 @@ export class ProductComponent implements OnInit,OnChanges {
       console.log("this.selectedImage",this.selectedImage);
       
     }
-    
   }
+   // Initialize with the first image
 
-  selectImage(image: string): void {
+  changeImage(image: string): void {
     this.selectedImage = image;
   }
 

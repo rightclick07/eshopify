@@ -42,6 +42,8 @@ import { FaqComponent } from './components/faq/faq.component';
 import { ImageSliderComponent } from './common/image-slider/image-slider.component';
 import { BlogContentComponent } from './components/blogs/blog-content/blog-content.component';
 import { SolarSystemComponent } from './components/solar-system/solar-system.component';
+import { ShippingReturnPolicyComponent } from './components/shipping-return-policy/shipping-return-policy.component';
+import { FilterProductComponent } from './common/filter-product/filter-product.component';
 
 
 @NgModule({
@@ -73,6 +75,8 @@ import { SolarSystemComponent } from './components/solar-system/solar-system.com
     ImageSliderComponent,
     BlogContentComponent,
     SolarSystemComponent,
+    ShippingReturnPolicyComponent,
+    FilterProductComponent,
    
   ],
   imports: [

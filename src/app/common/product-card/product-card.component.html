@@ -12,7 +12,9 @@
    -->
   <div class="selected-image-container">
     <a routerLink="/product-details/{{id}}">
-      <img [src]="selectedImage"  *ngIf="selectedImage" class="image" >
+      <div class="image-wrapper">
+        <img [src]="selectedImage"  *ngIf="selectedImage" class="image" >
+      </div>
     </a>
     
   </div>

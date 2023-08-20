@@ -20,4 +20,10 @@ export class ProductService {
     return this.http.get<Product>(url);
  }
 
+getProductByCategorySubcategory(productType?:string,category?:string ):Observable<any>{
+   const url = `${environment.baseUrl}/getProductsByCategoryAndSubCategory`;
+   const queryParams = `?productType=${productType}&category=${category}`;
+   return this.http.get<any>(url+queryParams);
+}
+
 }
