@@ -1,11 +1,25 @@
-<div class="card-container">
-    <app-product-card *ngFor="let key of this.filteredProductList"
-      class="mat-elevation-z5 card"
-      [images]="key.images"
-      [name]="key.name"
-      [price]="key.price"
-      [discount]="key.discount"
-      [compareAtPrice]="key.compareAtPrice"
-      [id]="key.id">
-    </app-product-card>
+
+  <div class="product-list">
+    <div class="product-card" *ngFor="let key of this.filteredProductList">
+      <app-product-card
+        class="mat-elevation-z5 card"
+        [images]="key.images"
+        [name]="key.name"
+        [price]="key.price"
+        [discount]="key.discount"
+        [compareAtPrice]="key.compareAtPrice"
+        [id]="key.id">
+      </app-product-card>
+    </div>
   </div>
+
+  <div *ngIf="!this.filteredProductList.length">
+
+  </div>
+  <div *ngIf="!this.filteredProductList.length">
+    <mat-card class="no-result">
+        <mat-card-title>No result Found!</mat-card-title>
+        <img  src="assets/img/utility/search_no_result.png" width="250px" >
+        <button  mat-raised-button class="shop-now-button" routerLink="/home">Shop Now</button>
+    </mat-card>
+</div>

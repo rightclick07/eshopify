@@ -184,7 +184,7 @@
                 <mat-menu #menu="matMenu" >
                   <div *ngFor="let option of profile">
                     <button mat-menu-item (click)="OnclickProfile(option.code)" >
-                      {{ option.code }}
+                     <mat-icon style="vertical-align: middle;color: #1ea7a0;">{{option.icon}}</mat-icon> {{ option.code }}
                     </button>
                   </div>
                 </mat-menu>

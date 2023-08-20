@@ -64,16 +64,18 @@
               <mat-icon class="example-tab-icon">shop_two</mat-icon>
               On Sale
             </ng-template>
-            <div class="card-container">
-              <app-product-card  *ngFor="let key of productList" class="mat-elevation-z5" class="card"
-              [images]="key.images"
-              [name]="key.name"
-              [price]="key.price"
-              [discount]="key.discount"
-              [compareAtPrice]="key.compareAtPrice"
-              [id]="key.id"
-              >
-               </app-product-card>
+            <div class="product-list">
+              <div class="product-card" *ngFor="let key of productList">
+                <app-product-card
+                  class="mat-elevation-z5 card"
+                  [images]="key.images"
+                  [name]="key.name"
+                  [price]="key.price"
+                  [discount]="key.discount"
+                  [compareAtPrice]="key.compareAtPrice"
+                  [id]="key.id">
+                </app-product-card>
+              </div>
             </div>
           </mat-tab>
         
@@ -83,16 +85,18 @@
               Top Rated
             </ng-template>
         
-            <div class="card-container">
-              <app-product-card  *ngFor="let key of productList" class="card"
-              [images]="key.images"
-              [name]="key.name"
-              [price]="key.price"
-              [discount]="key.discount"
-              [compareAtPrice]="key.compareAtPrice"
-              [id]="key.id"
-              >
-               </app-product-card>
+            <div class="product-list">
+              <div class="product-card" *ngFor="let key of productList">
+                <app-product-card
+                  class="mat-elevation-z5 card"
+                  [images]="key.images"
+                  [name]="key.name"
+                  [price]="key.price"
+                  [discount]="key.discount"
+                  [compareAtPrice]="key.compareAtPrice"
+                  [id]="key.id">
+                </app-product-card>
+              </div>
             </div>
           </mat-tab>
         </mat-tab-group>         
@@ -281,11 +285,11 @@
 
 
   </div>
-  <div style="text-align: center;">
+  <!-- <div style="text-align: center;">
     <button mat-button class="button-review">
       <img src="assets/img/video/g-logo.png" style="vertical-align: middle;" width="40px">
       <a href="https://g.page/r/CVcBKlb_WswoEBE/review" style="text-decoration: none;color:#444;background-color: white;" >Write a  Google Review</a>
  
     </button>
-  </div>
+  </div> -->
 </section>
