@@ -15,8 +15,17 @@ ngOnInit() {
     this.filteredProductList = JSON.parse(params['data']); // Parse the JSON string back to an array
     // Now you can use 'data' array in your component
     console.log("this.filteredProductList",this.filteredProductList);
-    
+    for(let p of this.filteredProductList){
+      let img=p.images
+      let k=this.createListFromString(img.toString())
+      p.images=k;
+    }
   });
 }
 
+
+createListFromString(imgString:string){
+  const arrayOfElements = imgString.split(',');
+  return arrayOfElements;
+}
 }

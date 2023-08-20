@@ -228,7 +228,8 @@ export class HeaderComponent implements OnInit {
       {
         name:'option 1',
         code:user,
-        badge:this.badgeClass
+        badge:this.badgeClass,
+        icon:'verified_user'
       },
       // {
       //   name:'option 2',
@@ -237,10 +238,12 @@ export class HeaderComponent implements OnInit {
       {
         name:'option 2',
         code:"Account",
+        icon:"account_circle"
       },
       {
         name:'option 3',
-        code:'Logout'
+        code:'Logout',
+        icon:"logout"
       }
     ]
 
