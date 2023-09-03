@@ -5,7 +5,7 @@
         Dashboard
     </h2>
 </div>
-<mat-accordion>
+<mat-accordion multi="true">
     <mat-expansion-panel [expanded]="true">
       <mat-expansion-panel-header >
         <div >
@@ -64,6 +64,15 @@
               </button>
           </div>
         </mat-expansion-panel-header>
+        <div>
+
+            <mat-form-field>
+                <mat-label>Select Date:</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
         <highcharts-chart [Highcharts]="Highcharts" [options]="lineChartOptions"></highcharts-chart>
         <highcharts-chart [Highcharts]="Highcharts" [options]="barChartOptions"></highcharts-chart>
     

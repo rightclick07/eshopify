@@ -1,5 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import * as Highcharts from 'highcharts';
 
 @Component({
@@ -9,7 +10,7 @@ import * as Highcharts from 'highcharts';
 })
 export class AdminDashboardComponent implements OnInit {
   Highcharts: typeof Highcharts = Highcharts;
-
+  selectedDate: Date | null = null;
   lineChartOptions: Highcharts.Options = {
     title: {
       text: 'Line Chart',
@@ -38,4 +39,15 @@ export class AdminDashboardComponent implements OnInit {
     
   }
 
+  updateChartData(selectedDate: Date | null) {
+    // Fetch data based on the selectedDate and update the chart
+  }
+
+  // Event handler for date picker change
+  onDateChange(event: MatDatepickerInputEvent<Date>) {
+    const selectedDate = event.value;
+    this.updateChartData(selectedDate);
+  }
 }
+
+

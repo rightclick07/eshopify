@@ -17,6 +17,7 @@ import { MaterialModule } from 'src/app/material/material.module';
 import { AdminComponent } from './admin.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -38,7 +39,9 @@ import { HighchartsChartModule } from 'highcharts-angular';
     CommonModule,
     AdminRoutingModule,
     MaterialModule,
-    HighchartsChartModule
+    HighchartsChartModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }
