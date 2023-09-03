@@ -66,7 +66,7 @@ export class CartsComponent implements OnInit,OnChanges {
 
   checkout(){
     if(localStorage.getItem("token")){
-      this.router.navigate(["/checkout"])
+      this.router.navigate(["/checkout-module"])
     }else{
       this.router.navigate(["/login"])
     }

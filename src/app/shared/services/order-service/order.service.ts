@@ -28,6 +28,12 @@ export class OrderService {
     let url=environment.baseUrl + "/getOrder/"+id;
     return this.http.get<any>(url);
   }
+  
 
+  getAllOrdersByUser():Observable<any>{
+    let id=localStorage.getItem("userId");
+    const url=environment.baseUrl + "/getAllOrdersByUser/"+id
+    return this.http.get<any>(url)
+  }
 
 }

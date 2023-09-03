@@ -1,4 +1,6 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
+import * as Highcharts from 'highcharts';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -6,10 +8,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent implements OnInit {
+  Highcharts: typeof Highcharts = Highcharts;
 
-  constructor() { }
+  lineChartOptions: Highcharts.Options = {
+    title: {
+      text: 'Line Chart',
+    },
+    series: [
+      {
+        type: 'line',
+        data: [1, 2, 3, 4, 5],
+      },
+    ],
+  };
 
+  barChartOptions: Highcharts.Options = {
+    title: {
+      text: 'Bar Chart',
+    },
+    series: [
+      {
+        type: 'bar',
+        data: [5, 4, 3, 2, 1],
+      },
+    ],
+  };
+  constructor(){}
   ngOnInit(): void {
+    
   }
 
 }

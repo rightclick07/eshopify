@@ -16,6 +16,7 @@ import { SellsManagementComponent } from './admin-components/sells-management/se
 import { MaterialModule } from 'src/app/material/material.module';
 import { AdminComponent } from './admin.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    MaterialModule
+    MaterialModule,
+    HighchartsChartModule
   ]
 })
 export class AdminModule { }

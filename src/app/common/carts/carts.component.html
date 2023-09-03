@@ -7,7 +7,7 @@
 </div>
 <div *ngIf="dataSource.data.length!=0" style="margin: 5px;text-align: center;height: 600px;">
   <h2 class="section-title">
-    <button mat-button class="button-do">Card Checkout</button>
+    <button mat-button class="button-do">Cart Checkout</button>
   </h2>
     <table mat-table [dataSource]="dataSource">
         <ng-container *ngIf="dataSource.data.length==0">
@@ -49,7 +49,7 @@
         <mat-icon style="vertical-align: middle;">shopping_basket</mat-icon>
         Clear Cart
       </button> -->
-      <button mat-button (click)="checkout()" class="checkout-button" [disabled]="dataSource.data.length==0">
+      <button mat-button  (click)="checkout()" class="checkout-button" [disabled]="dataSource.data.length==0">
         <mat-icon style="vertical-align: middle;">shopping_basket</mat-icon>
         Checkout
       </button>

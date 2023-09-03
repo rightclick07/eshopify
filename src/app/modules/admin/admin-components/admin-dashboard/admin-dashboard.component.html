@@ -1,1 +1,71 @@
-<p>admin-dashboard works!</p>
+<!-- card-list.component.html -->
+<div class="heading-container">
+    <h2 class="heading">
+        <mat-icon style="vertical-align: middle;">dashboard</mat-icon> <!-- User profile icon -->
+        Dashboard
+    </h2>
+</div>
+<mat-accordion>
+    <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel-header >
+        <div >
+            <button mat-button class="summary-btn">
+                Summary
+            </button>
+        </div>
+      </mat-expansion-panel-header>
+      <div class="summary-container">
+        <mat-card class="sales-card">
+          <mat-card-header>
+            <div class="header-content">
+              <img style="margin: 5px;padding: 5px;vertical-align: middle;"
+               src="assets/img/sales-icon.png" width="40px">
+              <mat-card-title>Total Sales</mat-card-title>
+            </div>
+          </mat-card-header>
+          <mat-card-content style="text-align: center;">
+            <button mat-button class="btn"> ₹1500000</button>
+          </mat-card-content>
+        </mat-card>
+      
+        <mat-card class="order-card">
+          <mat-card-header>
+            <div class="header-content">
+              <img src="assets/img/order-icon.png"
+              style="margin: 5px;padding: 5px;vertical-align: middle;" 
+               width="40px">
+              <mat-card-title>Total Orders</mat-card-title>
+            </div>
+          </mat-card-header>
+          <mat-card-content style="text-align: center;">
+            <button mat-button class="btn">1000</button>
+          </mat-card-content>
+        </mat-card>
+      
+        <mat-card class="customer-card">
+          <mat-card-header>
+            <div class="header-content">
+              <img  style="margin: 5px;padding: 5px;vertical-align: middle;" 
+              src="assets/img/customer-icon.png" width="40px">
+              <mat-card-title>Total Customers</mat-card-title>
+            </div>
+          </mat-card-header>
+          <mat-card-content style="text-align: center;">
+            <button mat-button class="btn">100</button>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header >
+          <div >
+              <button mat-button class="summary-btn">
+                  Report
+              </button>
+          </div>
+        </mat-expansion-panel-header>
+        <highcharts-chart [Highcharts]="Highcharts" [options]="lineChartOptions"></highcharts-chart>
+        <highcharts-chart [Highcharts]="Highcharts" [options]="barChartOptions"></highcharts-chart>
+    
+    </mat-expansion-panel>
+</mat-accordion>

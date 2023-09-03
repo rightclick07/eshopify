@@ -9,7 +9,10 @@
         <mat-divider></mat-divider>
         <mat-list *ngFor="let key of topics">
             <mat-list-item  class="item">
-                <a  class="link" routerLink="{{key.routeName}}" routerLinkActive="is-active">{{key.topic}}</a>
+                <a  class="link" routerLink="{{key.routeName}}" routerLinkActive="is-active">
+                    <mat-icon style="vertical-align: middle;">{{key.icon}}</mat-icon>
+                    {{key.topic}}
+                </a>
             </mat-list-item>
             <mat-divider></mat-divider>
         </mat-list>    
