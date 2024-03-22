@@ -44,6 +44,8 @@ import { BlogContentComponent } from './components/blogs/blog-content/blog-conte
 import { SolarSystemComponent } from './components/solar-system/solar-system.component';
 import { ShippingReturnPolicyComponent } from './components/shipping-return-policy/shipping-return-policy.component';
 import { FilterProductComponent } from './common/filter-product/filter-product.component';
+import { NextDirective } from './common/directives/next.directive';
+import { PrevDirective } from './common/directives/prev.directive';
 
 
 @NgModule({
@@ -77,6 +79,8 @@ import { FilterProductComponent } from './common/filter-product/filter-product.c
     SolarSystemComponent,
     ShippingReturnPolicyComponent,
     FilterProductComponent,
+    NextDirective,
+    PrevDirective,
    
   ],
   imports: [

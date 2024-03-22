@@ -4,12 +4,14 @@
      <h1 style="margin-top: 100px;">
         DJI DRONE
      </h1>
-   </div> 
+   </div>
    <div class="column">
     <img width="500px" src="assets/img/banners/drone2-1.gif">
    </div>
 
 </div> -->
+
+
 
 <section>
     <div class="container">
@@ -21,7 +23,7 @@
         <app-image-slider [images]="imageList" [height]="height"></app-image-slider>
 
       </div>
-        
+
         <!-- <div class="col-12 text-center" *ngIf="isHandset" width="50%">
             <img src="assets/img/banners/drone-mobile.png" class="droninner_sec">
         </div> -->
@@ -29,13 +31,117 @@
 </section>
 
 
+
+
+<!-- this is  testing code from dipak project -->
+
+<!-- this is for best seller  -->
+<mat-card class="slider-container-org">
+  <div class="slider-heading-org">
+    <h2>
+      <mat-icon class="example-tab-icon">favorite</mat-icon>BestSeller</h2>
+    <div class="slider-wrap-org">
+      <div class="slider-main-org  ">
+        <div class="item  item-sed " *ngFor="let key of productList">
+          <div class="item5-org ">
+            <app-product-card
+
+                  [images]="key.images"
+                  [name]="key.name"
+                  [price]="key.price"
+                  [discount]="key.discount"
+                  [compareAtPrice]="key.compareAtPrice"
+                  [id]="key.id">
+                </app-product-card>
+          </div>
+        </div>
+      </div>
+      <div class="button-area-org">
+        <button mat-mini-fab class="prev-org  " appPrev><mat-icon class="icon">keyboard_arrow_left</mat-icon></button>
+        <button mat-mini-fab class="next-org  "appNext> <mat-icon class="icon" >keyboard_arrow_right</mat-icon></button>
+      </div>
+    </div>
+  </div>
+</mat-card>
+
+
+
+<!-- this is for  ON sell  -->
+<mat-card class="slider-container-org">
+  <div class="slider-heading-org">
+    <h2>
+      <mat-icon class="example-tab-icon">shop_two</mat-icon>
+      On Sale</h2>
+    <div class="slider-wrap-org">
+      <div class="slider-main-org  ">
+        <div class="item  item-sed " *ngFor="let key of productList">
+          <div class="item5-org ">
+            <app-product-card
+
+                  [images]="key.images"
+                  [name]="key.name"
+                  [price]="key.price"
+                  [discount]="key.discount"
+                  [compareAtPrice]="key.compareAtPrice"
+                  [id]="key.id">
+                </app-product-card>
+          </div>
+        </div>
+      </div>
+      <div class="button-area-org">
+        <button mat-icon-button class="prev-org  " appPrev><mat-icon>keyboard_arrow_left</mat-icon></button>
+        <button mat-icon-button class="next-org  "appNext> <mat-icon>keyboard_arrow_right</mat-icon></button>
+      </div>
+    </div>
+  </div>
+</mat-card>
+
+
+
+<mat-card class="slider-container-org">
+  <div class="slider-heading-org">
+    <h2>
+      <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+      Top Rated</h2>
+    <div class="slider-wrap-org">
+      <div class="slider-main-org  ">
+        <div class="item  item-sed " *ngFor="let key of productList">
+          <div class="item5-org ">
+            <app-product-card
+
+                  [images]="key.images"
+                  [name]="key.name"
+                  [price]="key.price"
+                  [discount]="key.discount"
+                  [compareAtPrice]="key.compareAtPrice"
+                  [id]="key.id">
+                </app-product-card>
+          </div>
+        </div>
+      </div>
+      <div class="button-area-org">
+        <button mat-icon-button class="prev-org  " appPrev><mat-icon>keyboard_arrow_left</mat-icon></button>
+        <button mat-icon-button class="next-org  "appNext> <mat-icon>keyboard_arrow_right</mat-icon></button>
+      </div>
+    </div>
+  </div>
+</mat-card>
+
+
+
+
+
+
+<!--
+
+
 <div class="home-page">
- 
+
     <div  style="margin: 5px;">
-      <!-- <h2 class="homeheadline_tag text-center">
+      <h2 class="homeheadline_tag text-center">
         <span class="headline_superheadline">DJI <b>DRONE</b>
-            <button mat-raised-button class="shop-now-button" >SHOP NOW</button></span>       
-      </h2> -->
+            <button mat-raised-button class="shop-now-button" >SHOP NOW</button></span>
+      </h2>
       <div >
         <mat-tab-group>
           <mat-tab>
@@ -43,7 +149,7 @@
               <mat-icon class="example-tab-icon">favorite</mat-icon>
               BestSeller
             </ng-template>
-           
+
             <div class="product-list">
               <div class="product-card" *ngFor="let key of productList">
                 <app-product-card
@@ -58,7 +164,7 @@
               </div>
             </div>
           </mat-tab>
-        
+
           <mat-tab>
             <ng-template mat-tab-label>
               <mat-icon class="example-tab-icon">shop_two</mat-icon>
@@ -78,13 +184,13 @@
               </div>
             </div>
           </mat-tab>
-        
+
           <mat-tab>
             <ng-template mat-tab-label>
               <mat-icon class="example-tab-icon">thumb_up</mat-icon>
               Top Rated
             </ng-template>
-        
+
             <div class="product-list">
               <div class="product-card" *ngFor="let key of productList">
                 <app-product-card
@@ -99,13 +205,13 @@
               </div>
             </div>
           </mat-tab>
-        </mat-tab-group>         
+        </mat-tab-group>
       </div>
     </div>
-</div>  
+</div> -->
 <!-- <div>
   <app-solar-system></app-solar-system>
-</div>           -->
+</div> -->
 
 <h2 class="section-title">
   <button mat-button class="button-do">What We Provide</button>
@@ -125,7 +231,7 @@
       </p>
     </mat-card-content>
   </mat-card>
-  
+
   <mat-card class="what-we-do-card">
     <mat-card-header>
       <div mat-card-avatar class="card-icon">
@@ -140,7 +246,7 @@
       </p>
     </mat-card-content>
   </mat-card>
-  
+
   <mat-card class="what-we-do-card">
     <mat-card-header>
       <div mat-card-avatar class="card-icon">
@@ -155,8 +261,8 @@
       </p>
     </mat-card-content>
   </mat-card>
-  
-  
+
+
   <mat-card class="what-we-do-card">
     <mat-card-header>
       <div mat-card-avatar class="card-icon">
@@ -217,7 +323,7 @@
     <button mat-button class="button-do">Customer Reviews</button>
   </h2>
   <div class="review-container">
- 
+
     <div class="review">
       <div class="platform">
         <img src="assets/img/video/g-logo.png" style="vertical-align: middle;" width="40px">
@@ -233,7 +339,7 @@
         "Amazing drone delivery service! Fast and efficient. Highly recommended!"
       </p>
     </div>
-  
+
     <div class="review">
       <div class="platform">
         <img src="assets/img/video/j-logo.png" style="vertical-align: middle;" width="40px" >
@@ -281,7 +387,7 @@
         "Best dji drone dealer in banglore as I visited multiple places but no one was enough technical to explain all the technicalities of different models.
         Got helped for choosing my first drone too."
       </p>
-    </div> 
+    </div>
 
 
   </div>
@@ -289,7 +395,7 @@
     <button mat-button class="button-review">
       <img src="assets/img/video/g-logo.png" style="vertical-align: middle;" width="40px">
       <a href="https://g.page/r/CVcBKlb_WswoEBE/review" style="text-decoration: none;color:#444;background-color: white;" >Write a  Google Review</a>
- 
+
     </button>
   </div> -->
 </section>

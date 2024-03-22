@@ -11,7 +11,7 @@
     *ngFor="let img of images; let i = index; let first = first"
     [@animImageSlider]="slideControl[i]"
   >
-    <img #slide (load)="first && onLoad(slide)" [src]="img" />
+    <img  #slide (load)="first && onLoad(slide)" [src]="img" alt="" />
   </div>
   <button mat-button type="button" class="btn-prev" (click)="change('right')">
     <span class="prev-icon"></span>
