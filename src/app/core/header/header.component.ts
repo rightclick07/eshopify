@@ -341,7 +341,7 @@ export class HeaderComponent implements OnInit {
         // console.log("his.options"+this.options);
 
       }
-   })
+   )
   }
 
   onOptionSelected($event:any){
