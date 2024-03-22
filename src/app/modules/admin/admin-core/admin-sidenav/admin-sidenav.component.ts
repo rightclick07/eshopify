@@ -24,16 +24,15 @@ export class AdminSidenavComponent implements OnInit,AfterViewInit {
   opened=false;
   id:any;
 topics=[
-    {routeName: 'dashboard',topic:"Dashboard"},
-    {routeName: 'orders',topic:"Orders"},
-    {routeName: 'sells',topic:"Sells"},
-    {routeName: 'users',topic:"Users"},
-    {routeName: 'products',topic:"Products"},
-    {routeName: 'brands',topic:"Brands"},
-    {routeName: 'categories',topic:"Category"},
-    {routeName: 'coupons',topic:"Coupons"},
-    {routeName: 'contact-query',topic:"Contact Query"},
-    {routeName: 'job-portal',topic:"Job Protal"},
+    {routeName: 'dashboard',topic:"Dashboard",icon:"dashboard"},
+    {routeName: 'orders',topic:"Orders",icon:"receipt"},
+    {routeName: 'users',topic:"Users",icon:"verified_user"},
+    {routeName: 'products',topic:"Products",icon:"store"},
+    {routeName: 'brands',topic:"Brands",icon:"branding_watermark"},
+    {routeName: 'categories',topic:"Category",icon:"apps"},
+    {routeName: 'coupons',topic:"Coupons",icon:"redeem"},
+    {routeName: 'contact-query',topic:"Contact Query",icon:"query_builder"},
+    {routeName: 'job-portal',topic:"Job Protal",icon:"work"},
 ]
 isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(

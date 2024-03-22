@@ -1,1 +1,23 @@
-<p>account-user-details works!</p>
+<mat-accordion>
+    
+    <mat-expansion-panel [expanded]="true" >
+        <mat-expansion-panel-header class="custom-header">
+            
+             <div class="heading-container">
+                <h2 class="heading">
+                    <mat-icon style="vertical-align: middle;">account_circle</mat-icon> <!-- User profile icon -->
+                    User Profile
+                </h2>
+            </div>
+        </mat-expansion-panel-header>
+       
+      <div>
+        <p><strong>Full Name:</strong> {{ userDetails?.fullName }}</p>
+        <p><strong>Email:</strong> {{ userDetails?.email }}</p>
+        <p><strong>Mobile Number:</strong> {{ userDetails?.mobileNumber }}</p>
+        <p><strong>Address:</strong> {{ userDetails?.address }}</p>
+        <p><strong>Role:</strong> {{ userDetails?.role }}</p>
+        <p><strong>Active:</strong> {{ userDetails?.active ? 'Yes' : 'No' }}</p>
+      </div>
+    </mat-expansion-panel>
+</mat-accordion> 

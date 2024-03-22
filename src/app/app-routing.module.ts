@@ -9,17 +9,15 @@ import { CareersComponent } from './components/careers/careers.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { HomeComponent } from './components/home/home.component';
 
-import { AuthGuard } from './shared/guard/auth-guard/auth.guard';
 import { LoginGuard } from './shared/guard/login-guard/login.guard';
 import { CartsComponent } from './common/carts/carts.component';
 import { ProductComponent } from './common/product/product.component';
-import { CartDataResolverResolver } from './shared/resolver/cart-data-resolver.resolver';
-import { CheckoutComponent } from './common/checkout/checkout.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { BlogContentComponent } from './components/blogs/blog-content/blog-content.component';
 import { ShippingReturnPolicyComponent } from './components/shipping-return-policy/shipping-return-policy.component';
 import { FilterProductComponent } from './common/filter-product/filter-product.component';
+import { DeliveryShippingPolicyComponent } from './components/delivery-shipping-policy/delivery-shipping-policy.component';
 
 
 const routes: Routes = [
@@ -36,13 +34,16 @@ const routes: Routes = [
     {path:"career",component:CareersComponent},
     {path:"privacy-policy",component:PrivacyPolicyComponent},
     {path:"shipping-return-policy",component:ShippingReturnPolicyComponent},
+    {path:"delivery-shipping-policy",component:DeliveryShippingPolicyComponent},
     {path:"faq",component:FaqComponent},
     {path:"cart",component:CartsComponent},
-    {path:"checkout",component:CheckoutComponent},
+    // {path:"checkout",component:CheckoutComponent},
     {path:"content",component:BlogContentComponent},
     {path:"product-details/:id",component:ProductComponent},
     {path:"account",loadChildren: () => import('./modules/account-module/account/account.module').then(m => m.AccountModule)},
-    {path:"admin",loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)}
+    {path:"admin",loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)},
+    {path:"checkout-module",loadChildren: () => import('./modules/checkout-module/checkout/checkout.module').then(m => m.CheckoutModule)}
+
 // {path: 'admin', component: DashboardComponent,
 //   canActivate: [RoleGuardService],
 //   data: {roles: 'ROLE_ADMIN'},

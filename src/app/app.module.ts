@@ -44,6 +44,10 @@ import { BlogContentComponent } from './components/blogs/blog-content/blog-conte
 import { SolarSystemComponent } from './components/solar-system/solar-system.component';
 import { ShippingReturnPolicyComponent } from './components/shipping-return-policy/shipping-return-policy.component';
 import { FilterProductComponent } from './common/filter-product/filter-product.component';
+import { DeliveryShippingPolicyComponent } from './components/delivery-shipping-policy/delivery-shipping-policy.component';
+import { HighchartsComponent } from './common/highcharts/highcharts.component';
+import * as Highcharts from 'highcharts';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 
 @NgModule({
@@ -77,6 +81,8 @@ import { FilterProductComponent } from './common/filter-product/filter-product.c
     SolarSystemComponent,
     ShippingReturnPolicyComponent,
     FilterProductComponent,
+    DeliveryShippingPolicyComponent,
+    HighchartsComponent
    
   ],
   imports: [
@@ -87,8 +93,8 @@ import { FilterProductComponent } from './common/filter-product/filter-product.c
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SocialLoginModule
-  
+    SocialLoginModule,
+    HighchartsChartModule
   ],
   providers: [CartDataResolverResolver,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

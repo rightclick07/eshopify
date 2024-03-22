@@ -1,0 +1,182 @@
+.heading-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .heading {
+    position: relative;
+    padding-left: 16px; /* Add spacing to the left of the heading */
+    padding-right: 16px;
+    background-color: #f0f0f0; /* Light background color for the heading */
+    display: inline-block;
+  }
+  
+  .heading:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 6px;
+    background-color: #fed700;
+  }
+
+  .summary-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  /* .sales-card{
+    width: 25%;
+    margin: 2px;
+    background: linear-gradient(135deg,#4472da 0,#48b4df 100%) !important;
+  }
+  .order-card{
+    width: 25%;
+    margin: 2px;
+    background: linear-gradient(135deg,#8260f1 0,#8b48f8 100%) !important;
+   } */
+  /* .customer-card{
+    width: 25%;
+    margin: 2px;
+    background: linear-gradient(135deg,#1f916f 0,#59bcd5 100%) !important;
+  } */
+.container{
+    margin: 8px;
+    padding: 8px;
+}
+.summary-container {
+   
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  
+  }
+  
+  /* Style the sales card */
+  .sales-card {
+    margin: 10px;
+    padding: 10px;
+    background: linear-gradient(135deg, #4472da 0, #48b4df 100%) !important;
+  }
+  
+  /* Style the order card */
+  .order-card {
+    margin: 10px;
+    padding: 10px;
+    background: linear-gradient(135deg, #8260f1 0, #8b48f8 100%) !important;
+  }
+  
+  /* Style the customer card */
+  .customer-card {
+    margin: 10px;
+    padding: 10px;
+    background: linear-gradient(135deg, #1f916f 0, #59bcd5 100%) !important;
+  }
+  
+  /* Style the header content */
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     
+   
+  }
+  
+  /* Style the card titles */
+  mat-card-title {
+    margin: 2px;
+  }
+  
+  /* Style the values */
+  .value {
+    justify-content: center;
+  }
+  
+  /* Responsive styles for small screens */
+  @media screen and (max-width: 767px) {
+    .sales-card,
+    .order-card,
+    .customer-card {
+      width: 100%;
+      margin: 10px 0;
+      left: auto;
+      right: auto;
+      justify-content: center;
+    }
+  
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+  .btn{
+    border-radius: 999px;
+    padding-left: 16px;
+    padding-right: 16px;
+    font-size: 25px;
+    margin:10px;
+    color:#27292B;
+    background-color: white;
+  }
+  .summary-btn{
+    border-radius: 999px;
+    padding-left: 16px;
+    padding-right: 16px;
+    font-size: 25px;
+    margin:10px;
+    color:white;
+    background-color: #444;
+    text-align: center;
+  }
+/* Style for the filters container */
+.filters {
+    display: flex;
+    flex-direction: column; /* Change to column layout for smaller screens */
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Style for the chart container */
+  .chart-container {
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto; /* Add horizontal scroll for smaller screens if needed */
+    padding-bottom: 10px; /* Add some bottom padding for space to scroll */
+    justify-content: center;
+  }
+  
+  /* Style for each chart wrapper */
+  .chart-wrapper {
+    flex-grow: 1;
+    padding: 5px; /* Add padding for spacing inside the border */
+    margin: 5px; /* Add margin around each chart */
+    width: calc(100% - 20px); /* Adjust width for both smaller and larger screens */
+   
+  }
+  
+  /* Adjust container layout for larger screens */
+  @media screen and (min-width: 768px) {
+    .filters {
+      flex-direction: row; /* Revert to row layout for larger screens */
+      margin-bottom: 10px;
+    }
+  
+    .chart-container {
+      flex-direction: row; /* Revert to row layout for larger screens */
+      justify-content: center; /* Separate the charts with space */
+      align-items: flex-start; /* Align charts to the top */
+      overflow-x: unset; /* Remove horizontal scroll for larger screens */
+      padding-bottom: 0; /* Remove bottom padding for larger screens */
+    }
+  
+    /* Change width to 40% for each chart on larger screens */
+    .chart-wrapper {
+      margin: 5px; /* Add margin around each chart */
+      width: calc(50% - 10px); /* Adjust width for larger screens with margin and border */
+    }
+  }
+  

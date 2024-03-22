@@ -1,1 +1,26 @@
-<p>account-orders works!</p>
+<div class="heading-container">
+    <h2 class="heading">
+        <mat-icon style="vertical-align: middle;">shopping_cart</mat-icon> <!-- User profile icon -->
+        Your Orders
+    </h2>
+   
+</div>
+ 
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let order of orderList">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            <p><strong>Order ID:</strong>   {{ order?.id }}</p>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+       <!-- Display order details here -->
+       
+       <p><strong>Order Date:</strong> {{ order?.orderDate | date }}</p>
+       <p><strong>Total Amount:</strong> ₹{{ order?.totalAmount}}</p>
+       <p><strong>Shipping Address:</strong> {{ order?.shippingAddress }}</p>
+       <p><strong>Payment Status:</strong> {{ order?.paymentStatus }}</p>
+       <p><strong>Tracking Number:</strong> {{ order?.trackingNumber }}</p>
+       <!-- Add more order details if needed -->
+    </mat-expansion-panel>
+  </mat-accordion>
+  

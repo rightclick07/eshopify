@@ -12,7 +12,7 @@ export class AppComponent {
   private idleTimer: any;
 
   constructor(public spinnerService: SpinnerService,private router:Router) {
-    this.resetTimer();
+    //this.resetTimer();
   }
 
   // Listen for user activity events to reset the idle timer.

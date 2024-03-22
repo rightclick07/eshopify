@@ -1,0 +1,46 @@
+/* Basic styling for the card */
+.policy-card {
+    margin: 20px;
+    padding: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.policy-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.policy-content {
+    font-size: 16px;
+}
+
+.policy-text {
+    margin-top: 10px;
+}
+
+.section-title {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.policy-list {
+    list-style: none;
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+    .policy-card {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .policy-title {
+        font-size: 20px;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+}
