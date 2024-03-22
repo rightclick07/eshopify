@@ -19,6 +19,8 @@
       <mat-nav-list>
         <a mat-list-item routerLink="/" routerlink-active="active-link">Home</a>
 
+        <a *ngIf="isAdmin" mat-list-item routerLink="/admin" routerlink-active="active-link">Admin</a>
+
         <mat-nav-list *ngFor="let key of category; let i = index">
           <mat-list-item class="category-item" [class.clicked]="isCategorySelected(i)" (click)="toggleSubcategories(i)">
             {{ key.title }}
@@ -164,6 +166,12 @@
                   </div>
               </mat-menu>
               -->
+              <div *ngIf="isAdmin">
+                <button  mat-button routerLink="admin" *ngIf="!(isHandset$ | async)">
+                  <mat-icon >account_balance</mat-icon>
+                  Admin
+                </button>
+              </div>
               <div>
                 <button  mat-button (click)="opencart()">
                   <mat-icon [matBadge]="cartItemCount" matBadgeColor="warn">shopping_cart</mat-icon>
@@ -173,8 +181,8 @@
 
 
               <div *ngIf="!isUserLoggedIn">
-                <button mat-mini-fab mat-button routerLink="/login" matTooltip="Login">
-                  <mat-icon>person</mat-icon>
+                <button  mat-button routerLink="/login" matTooltip="Login">
+                  Login
                 </button>
               </div>
               <div *ngIf="isUserLoggedIn">

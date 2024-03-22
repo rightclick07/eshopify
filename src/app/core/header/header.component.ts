@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
   productList:any;
   filteredProductList:any;
   showSearchIcon = true;
-
+  isAdmin:boolean=false;
   category=[
   {
     title: "Drone",
@@ -208,11 +208,13 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     if(localStorage.getItem("token")){
       this.isUserLoggedIn=true
+      this.getUserDetail();
     }
-    console.log( this.isUserLoggedIn+"this.isUserLoggedIn");
+
+    // console.log( this.isUserLoggedIn+"this.isUserLoggedIn");
 
     this.getProductOptions();
-    console.log(this.options,"this.options");
+    // console.log(this.options,"this.options");
 
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
@@ -248,9 +250,11 @@ export class HeaderComponent implements OnInit {
     ]
 
     this.cartService.getProduct().subscribe(res=>{
-      console.log(res);
+      // console.log(res);
      this.cartArray=res;
      console.log(this.cartArray);
+
+    //  console.log(this.cartArray);
 
       this.cartItemCount=this.cartArray.length;
     })
@@ -334,11 +338,15 @@ export class HeaderComponent implements OnInit {
         console.log("his.options"+this.options);
 
       }
+        // console.log("his.options"+this.options);
+
+      }
    })
   }
 
   onOptionSelected($event:any){
        console.log("event",$event?.option?.value);
+
        for(let key of this.productList){
             if(key.name==$event?.option?.value){
               this.router.navigate(["product-details",key?.id])
@@ -356,7 +364,7 @@ export class HeaderComponent implements OnInit {
   }
 onClickCategory(searchString:string){
   const obj=this.searchCategoryFromList(searchString)
-  console.log("obj",obj);
+  // console.log("obj",obj);
   const categoryString=obj?.category?.title;
   const subCategoryString=obj?.subCategory[0].title;
   this.spinnerService.show()
@@ -391,4 +399,14 @@ onClickCategory(searchString:string){
     return null;
   }
 
+  getUserDetail(){
+    this.authService.getUserById().subscribe(res=>{
+      if(res){
+        if(res?.payload?.role=="admin"){
+          this.isAdmin=true
+        }
+      }
+
+    })
+  }
 }

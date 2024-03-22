@@ -25,8 +25,9 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatAccordion, MatExpansionModule} from '@angular/material/expansion';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatRadioModule} from '@angular/material/radio';
-import {MatRippleModule} from '@angular/material/core';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import {MatTabsModule} from '@angular/material/tabs';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 const MaterialComponents=[
  MatToolbarModule,
  MatTabsModule,
@@ -59,7 +60,9 @@ const MaterialComponents=[
     MatExpansionModule,
     MatGridListModule,
     MatRadioModule,
-    MatRippleModule
+    MatRippleModule,
+    MatDatepickerModule,
+    MatNativeDateModule
 ]
 
 @NgModule({

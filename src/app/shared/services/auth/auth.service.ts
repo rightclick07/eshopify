@@ -35,4 +35,11 @@ export class AuthService {
 
   }
 
+  getUserById():Observable<any>{
+     let id=localStorage.getItem("userId")
+     const url=environment.baseUrl + "/getUser/"+ id;
+     return this.http.get<any>(url)
+
+  }
+
 }
