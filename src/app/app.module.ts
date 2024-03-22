@@ -28,7 +28,7 @@ import { CartsComponent } from './common/carts/carts.component';
 import { CheckoutComponent } from './common/checkout/checkout.component'
 import {  HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { AuthInterceptor } from './shared/interceptor/auth-interceptor.interceptor'; 
+import { AuthInterceptor } from './shared/interceptor/auth-interceptor.interceptor';
 import { CartDataResolverResolver } from './shared/resolver/cart-data-resolver.resolver';
 import { TableComponent } from './common/table/table.component';
 import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
@@ -44,6 +44,8 @@ import { BlogContentComponent } from './components/blogs/blog-content/blog-conte
 import { SolarSystemComponent } from './components/solar-system/solar-system.component';
 import { ShippingReturnPolicyComponent } from './components/shipping-return-policy/shipping-return-policy.component';
 import { FilterProductComponent } from './common/filter-product/filter-product.component';
+import { NextDirective } from './common/directives/next.directive';
+import { PrevDirective } from './common/directives/prev.directive';
 import { DeliveryShippingPolicyComponent } from './components/delivery-shipping-policy/delivery-shipping-policy.component';
 import { HighchartsComponent } from './common/highcharts/highcharts.component';
 import * as Highcharts from 'highcharts';
@@ -81,9 +83,11 @@ import { HighchartsChartModule } from 'highcharts-angular';
     SolarSystemComponent,
     ShippingReturnPolicyComponent,
     FilterProductComponent,
+    NextDirective,
+    PrevDirective,
     DeliveryShippingPolicyComponent,
     HighchartsComponent
-   
+
   ],
   imports: [
     BrowserModule,
@@ -115,7 +119,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
         }
       } as SocialAuthServiceConfig,
     }
-  
+
   ],
   bootstrap: [AppComponent]
 })

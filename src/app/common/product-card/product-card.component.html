@@ -1,8 +1,8 @@
 <div style="margin: 2px;padding: 2px;background-color: white; ">
-<!-- 
-  <mat-chip-list class="image-chip-list">
+
+  <!-- <mat-chip-list class="image-chip-list">
     <mat-chip *ngFor="let image of images"
-     [style.backgroundImage]="'url(' + image + ')'" 
+     [style.backgroundImage]="'url(' + image + ')'"
      (click)="selectImage(image)"
      (mouseover)="zoomInImage()"
       (mouseleave)="zoomOutImage()"
@@ -13,29 +13,32 @@
   <div class="selected-image-container">
     <a routerLink="/product-details/{{id}}">
       <div class="image-wrapper">
-        <img [src]="selectedImage"  *ngIf="selectedImage" class="image" >
+        <img [src]="selectedImage" *ngIf="selectedImage" class="image" alt="image-wrapper">
       </div>
     </a>
-    
+
   </div>
   <!-- <span class="discount-tag">
     <mat-icon style="vertical-align: middle;">label_important</mat-icon>
     {{discount}} % OFF</span> -->
   <mat-divider></mat-divider>
   <mat-card-content>
-    <h3 class="product-name"><a routerLink="/product-details/{{id}}" style="text-decoration: none;color: #27292B;"
-       matTooltip="{{name}}">{{ name }}</a></h3>
+    <div class="product_name_space">
+      <h3 class="product-name"><a routerLink="/product-details/{{id}}" style="text-decoration: none;color: #27292B;"
+          matTooltip="{{name}}">{{ name }}</a></h3>
+    </div>
+
     <!-- <app-product-quantity (quantityChange)="onQuantityChange($event)"></app-product-quantity> -->
     <!-- <p class="product-description" routerLink="/product-details/{{id}}">{{ description }}</p>
      -->
-    <div style="text-align: center;margin: 2px;">
+    <div style="text-align: center;margin: 2px; height: 25px;">
       <span class="compare-price">₹{{ compareAtPrice}}</span>
       <span class="product-price">₹{{ price}}</span>
-      
+
     </div>
-    <mat-divider></mat-divider>
+    <!-- <mat-divider></mat-divider> -->
   </mat-card-content>
-  <mat-card-actions class="action">
+  <!-- <mat-card-actions class="action">
     <div>
       <button mat-raised-button color="primary" class="button-addToCart" (click)="addToCart(id)">
         <mat-icon style="vertical-align: middle;">add_shopping_cart</mat-icon>
@@ -49,5 +52,5 @@
       </button>
     </div>
   </mat-card-actions>
-  <br>
+  <br> -->
 </div>

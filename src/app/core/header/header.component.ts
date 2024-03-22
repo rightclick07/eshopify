@@ -73,19 +73,19 @@ export class HeaderComponent implements OnInit {
         id:3,
         title:"Drone Training",
         icon:"",
-        
+
       },
       {
         id:4,
         title:"Get Your UIN",
         icon:"",
-        
+
       },
       {
         id:4,
         title:"Drone Piolet License",
         icon:"",
-        
+
       }
     ]
     },
@@ -110,7 +110,7 @@ export class HeaderComponent implements OnInit {
         },
       ]
       },
-  
+
       {
       title:"Gaming",
       url:"assets/img/utility/gaming.png",
@@ -152,14 +152,14 @@ export class HeaderComponent implements OnInit {
   this.authService.isLoggedIn.subscribe(res=>{
     this.isUserLoggedIn=res;
     console.log(res);
-    
+
   })
 
 }
   showSocialForMobile=false;
   showSocialForweb=true;
   myControl = new UntypedFormControl();
-  categoryList = [ 
+  categoryList = [
     {
       title:"Drone",
       routeUrl: 'ai',
@@ -167,7 +167,7 @@ export class HeaderComponent implements OnInit {
     {
       title:"Camera",
       routeUrl: 'ai',
-    }, 
+    },
     ];
     companyMenuList = [
       {
@@ -210,7 +210,7 @@ export class HeaderComponent implements OnInit {
       this.isUserLoggedIn=true
       this.getUserDetail();
     }
-    
+
     // console.log( this.isUserLoggedIn+"this.isUserLoggedIn");
 
     this.getProductOptions();
@@ -220,9 +220,9 @@ export class HeaderComponent implements OnInit {
       startWith(''),
       map(value => this._filter(value)),
     );
-   let username=localStorage.getItem("username")   
+   let username=localStorage.getItem("username")
    this.token="";
-   this.initial=this.getInitial(username!) 
+   this.initial=this.getInitial(username!)
    let user=this.getUserName(username!)
    this.badgeClass=this.generateBadgeClass()
 
@@ -252,8 +252,10 @@ export class HeaderComponent implements OnInit {
     this.cartService.getProduct().subscribe(res=>{
       // console.log(res);
      this.cartArray=res;
+     console.log(this.cartArray);
+
     //  console.log(this.cartArray);
-     
+
       this.cartItemCount=this.cartArray.length;
     })
   }
@@ -299,9 +301,9 @@ export class HeaderComponent implements OnInit {
         break;
 
       case 'Logout':
-       // this.logout() 
-        break; 
-       
+       // this.logout()
+        break;
+
        default:
         this. router.navigate(['/home']);
         break;
@@ -316,7 +318,7 @@ export class HeaderComponent implements OnInit {
       this.isUserLoggedIn=false;
       this.router.navigate(["/login"])
     }else if(key=="Account")
-    {  
+    {
       this.router.navigate(["/account"])
     }
   }
@@ -330,18 +332,22 @@ export class HeaderComponent implements OnInit {
     this.productService.getAllProductList().subscribe((res:any)=>{
       if(res){
         this.productList=res?.payload
-        for(let key of res?.payload){    
+        for(let key of res?.payload){
           this.options.push(key.name)
         }
+        console.log("his.options"+this.options);
+
+      }
         // console.log("his.options"+this.options);
-        
-      }    
+
+      }
    })
   }
 
   onOptionSelected($event:any){
-       // console.log("event",$event?.option?.value);
-       for(let key of this.productList){ 
+       console.log("event",$event?.option?.value);
+
+       for(let key of this.productList){
             if(key.name==$event?.option?.value){
               this.router.navigate(["product-details",key?.id])
             }
@@ -372,16 +378,16 @@ onClickCategory(searchString:string){
       }
     }
    )
-  
+
 }
   searchCategoryFromList(searchString: string): { category: any, subCategory: any[] } | null {
     searchString = searchString.toLowerCase(); // Convert search string to lowercase
-  
+
     for (const cat of this.category) {
       const matchingSubCategory = cat.subCategory.find(subCat =>
         subCat.title.toLowerCase().includes(searchString)
       );
-      
+
       if (matchingSubCategory) {
         return {
           category: cat,
@@ -389,9 +395,10 @@ onClickCategory(searchString:string){
         };
       }
     }
-  
+
     return null;
   }
+
   getUserDetail(){
     this.authService.getUserById().subscribe(res=>{
       if(res){
@@ -399,7 +406,7 @@ onClickCategory(searchString:string){
           this.isAdmin=true
         }
       }
-      
+
     })
   }
 }
