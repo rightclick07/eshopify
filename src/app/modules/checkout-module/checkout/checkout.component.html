@@ -205,7 +205,45 @@
                 <mat-icon style="margin: 2px;vertical-align: middle;color:#444;">payment</mat-icon> <!-- Change icon here -->
             </mat-panel-title>
         </mat-expansion-panel-header>
-        <app-payment></app-payment>
+        <mat-card>
+            <h1>Payment Page</h1>
+            
+            <mat-radio-group [(ngModel)]="selectedPaymentMethod">
+              <mat-radio-button value="online">Online Payment</mat-radio-button>
+              <br>
+              <mat-radio-button value="cod">Cash On Delivery</mat-radio-button>
+            </mat-radio-group>
+            <br>
+            
+            <div *ngIf="selectedPaymentMethod === 'online'">
+              <!-- Online Payment Options -->
+              <h2>Online Payment Options:</h2>
+              <form [formGroup]="paymentForm" (ngSubmit)="submitPayment()">
+                <mat-form-field appearance="outline">
+                  <mat-label>Payment Amount</mat-label>
+                  <input matInput type="number" formControlName="amount" required>
+                  <mat-error *ngIf="paymentForm.get('amount')?.hasError('required')">Amount is required</mat-error>
+                  <mat-error *ngIf="paymentForm.get('amount')?.hasError('min')">Minimum amount is {{ minAmount }}</mat-error>
+                  <mat-error *ngIf="paymentForm.get('amount')?.hasError('max')">Maximum amount is {{ maxAmount }}</mat-error>
+                </mat-form-field>
+                <br>
+                <button mat-raised-button class="click-to-continue-button" type="submit" [disabled]="paymentForm.invalid">
+                  Pay Now
+                  <mat-icon style="vertical-align: middle;">trending_flat</mat-icon>
+                </button>
+              </form>
+            </div>
+            
+            <br>
+            
+            <!-- Place Order button only appears if "offline" is selected -->
+            <button mat-button class="click-to-continue-button" *ngIf="selectedPaymentMethod === 'cod'" (click)="submitPayment()">
+              Place Order
+              <mat-icon style="vertical-align: middle;">trending_flat</mat-icon>
+            </button>
+        </mat-card>
+          
+          
       </mat-expansion-panel>
   
       <!-- Order Confirmation -->
@@ -218,7 +256,35 @@
                 <mat-icon style="margin: 2px;vertical-align: middle;color:#444;">check_circle</mat-icon> <!-- Change icon here -->
             </mat-panel-title>
         </mat-expansion-panel-header>
-        <app-order-confirmation></app-order-confirmation>
+        <ng-template matStepLabel>Order Details</ng-template>
+        <mat-card *ngIf="orderDetails">
+          <div>
+            <span style="margin: 2px;"><b>Order Id :</b> {{orderDetails?.id}}</span>
+          </div>
+          <div>
+            <span style="margin: 2px;"><b>Delivery Date :</b> {{orderDetails?.deliveryDate | date}}</span>
+          </div>
+          <div>
+            <span style="margin: 2px;"><b>Order Date :</b> {{orderDetails?.orderDate | date}}</span>
+          </div>
+           <div>
+            <span style="margin: 2px;"><b>Payment Method :</b> {{orderDetails?.paymentMethod}}</span>
+           </div>
+           <div>
+             <span style="margin: 2px;"><b>Payment Status :</b> {{orderDetails?.paymentStatus}}</span>
+           </div>
+           <div>
+            <span style="margin: 2px;"><b>Total Amount :</b> ₹{{orderDetails?.totalAmount}}</span>
+           </div>
+           <div>
+            <span style="margin: 2px;"><b>Tracking Number :</b> {{orderDetails?.trackingNumber}}</span>
+           </div>
+           <div>
+             <span style="margin: 2px;"><b>Shipping Address :</b> {{orderDetails?.shippingAddress}}</span>
+           </div>
+          </mat-card>
+  
+        <h1 style="color: #46484a">Congratulations!! Order Completed</h1>
       </mat-expansion-panel>
     </mat-accordion>
   </div>

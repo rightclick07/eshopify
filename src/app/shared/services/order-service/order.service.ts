@@ -36,4 +36,9 @@ export class OrderService {
     return this.http.get<any>(url)
   }
 
+  getOrderItemsByOrderId(orderId:number):Observable<any>{
+    let url= environment.baseUrl +"/getOrderItems/"+ orderId
+    return this.http.get<any>(url)
+  }
+
 }

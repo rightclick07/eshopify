@@ -132,3 +132,51 @@
     background-color: #444;
     text-align: center;
   }
+/* Style for the filters container */
+.filters {
+    display: flex;
+    flex-direction: column; /* Change to column layout for smaller screens */
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Style for the chart container */
+  .chart-container {
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto; /* Add horizontal scroll for smaller screens if needed */
+    padding-bottom: 10px; /* Add some bottom padding for space to scroll */
+    justify-content: center;
+  }
+  
+  /* Style for each chart wrapper */
+  .chart-wrapper {
+    flex-grow: 1;
+    padding: 5px; /* Add padding for spacing inside the border */
+    margin: 5px; /* Add margin around each chart */
+    width: calc(100% - 20px); /* Adjust width for both smaller and larger screens */
+   
+  }
+  
+  /* Adjust container layout for larger screens */
+  @media screen and (min-width: 768px) {
+    .filters {
+      flex-direction: row; /* Revert to row layout for larger screens */
+      margin-bottom: 10px;
+    }
+  
+    .chart-container {
+      flex-direction: row; /* Revert to row layout for larger screens */
+      justify-content: center; /* Separate the charts with space */
+      align-items: flex-start; /* Align charts to the top */
+      overflow-x: unset; /* Remove horizontal scroll for larger screens */
+      padding-bottom: 0; /* Remove bottom padding for larger screens */
+    }
+  
+    /* Change width to 40% for each chart on larger screens */
+    .chart-wrapper {
+      margin: 5px; /* Add margin around each chart */
+      width: calc(50% - 10px); /* Adjust width for larger screens with margin and border */
+    }
+  }
+  

@@ -3,12 +3,16 @@ import { StepperOrientation } from '@angular/cdk/stepper';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { FormGroup, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { log } from 'console';
 import { Observable, map } from 'rxjs';
 import { Order } from 'src/app/shared/model/Order';
 import { OrderItems } from 'src/app/shared/model/OrderItems';
 import { AddressService } from 'src/app/shared/services/address-service/address.service';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { CartService } from 'src/app/shared/services/cart-service/cart.service';
+import { MailService } from 'src/app/shared/services/mail-service/mail.service';
 import { OrderService } from 'src/app/shared/services/order-service/order.service';
+import { PaymentService } from 'src/app/shared/services/payment-service/payment.service';
 import { SpinnerService } from 'src/app/shared/services/spinner-service/spinner.service';
 import { ToastService } from 'src/app/shared/services/toast-service/toast.service';
 
@@ -23,13 +27,21 @@ export class CheckoutComponent implements OnInit {
   isPaymentPanelOpen:boolean=false;
   isOrderConfirmationPanelOpen=false;
   isMobileSize: boolean | undefined;
+  receiverEmail: any;
+  custName: any;
+  userId: any;
+  minAmount = 1; // Minimum payment amount
+  maxAmount = 1000000; // Maximum payment amount
 
   @HostListener('window:resize', ['$event'])
   onResize(event:any) {
     this.isMobileSize = window.innerWidth < 768; // Adjust breakpoint as needed
   }
+  selectedPaymentMethod: string = ''; // Initialize with an empty string
+
+  
   addressFormGroup:UntypedFormGroup={} as UntypedFormGroup
-  paymentFormGroup:UntypedFormGroup={} as UntypedFormGroup;
+  paymentForm:UntypedFormGroup={} as UntypedFormGroup;
   saveAddressFlag=false;
   addressList:any[]=[];
   selectedAddresses: any[] = [];
@@ -37,6 +49,7 @@ export class CheckoutComponent implements OnInit {
   cartItemList:any[]=[]
   usedNumbers:any[]=[]
   orderDetails:any;
+  orderItemsForMailArray:any[]=[];
   displayColumns=["name","price","quantity","brand"]
   ngOnInit(): void {
 
@@ -49,9 +62,8 @@ export class CheckoutComponent implements OnInit {
       postalCode: new UntypedFormControl("",[Validators.required,Validators.pattern('[0-9]{6}')]),
       phoneNumber: new UntypedFormControl("",[Validators.required,Validators.pattern('[0-9]{10}')]),
     });
-    this.paymentFormGroup= new UntypedFormGroup({
-      cashOnDelivery:new UntypedFormControl("",[Validators.required]),
-      online:new UntypedFormControl("",[]),
+    this.paymentForm= new UntypedFormGroup({
+      amount:new UntypedFormControl("",[Validators.required,Validators.min(this.minAmount), Validators.max(this.maxAmount)])
     });
 
     this.getAddressByUser();
@@ -71,7 +83,10 @@ export class CheckoutComponent implements OnInit {
      private cartService:CartService,
      private orderService:OrderService,
      private router:Router,
-     private spinnerService:SpinnerService
+     private authService:AuthService,
+     private spinnerService:SpinnerService,
+     private mailService:MailService,
+     private paymentService:PaymentService
      ) {
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
@@ -105,7 +120,7 @@ export class CheckoutComponent implements OnInit {
 
   }
 
-  placeOrder(){
+  placeOfflineOrder(){
     console.log(this.addressFormGroup);
     let custId=parseInt(localStorage.getItem("userId")!)
     const orderObj:Order={
@@ -133,6 +148,7 @@ export class CheckoutComponent implements OnInit {
           let orderItemObj:OrderItems={
             orderId: orderId,
             productId: key.id,
+            productName: key.name,
             quantity: 1,
             unitPrice: key.price,
             discount: key.discount,
@@ -148,6 +164,20 @@ export class CheckoutComponent implements OnInit {
         this.orderService.saveOrderItems(orderItemsArray).subscribe(res=>{
           if(res){
             this.spinnerService.hide();
+            this.orderService.getOrderItemsByOrderId(orderId).subscribe(res=>{
+              if(res){
+                 this.orderItemsForMailArray=res?.payload;
+                 if(this.orderItemsForMailArray){
+                  this.sendMailToCustomer();
+                  this.sendMailToEverse();
+                 }
+
+              }
+            })
+            this.isAddressPanelOpen=false;
+            this.isOrderSummaryPanelOpen=false;
+            this.isPaymentPanelOpen=false;
+            this.isOrderConfirmationPanelOpen=true;
             this.toastService.showSuccess("Order Placed Successfully!!!");
             this.cartService.removeAllCartItem();
           }
@@ -158,6 +188,36 @@ export class CheckoutComponent implements OnInit {
     
     
   }
+
+  placeOnlineOrder(){
+    // Generate merchantTransactionId and merchantUserId
+    const merchantTransactionId = 'EV' + Math.floor(Math.random() * 10000000000).toString();
+    const merchantUserId = 'EVID' + Math.floor(Math.random() * 1000000).toString();
+
+    const payRequest={
+    "merchantId": "PGTESTPAYUAT91",
+    "merchantTransactionId": "MT7850590068188114",
+    "merchantUserId": "MUID123",
+    "amount": 10000,
+    "redirectUrl": "https://webhook.site/redirect-url",
+    "redirectMode": "POST",
+    "callbackUrl": "https://webhook.site/callback-url",
+    "mobileNumber": "9999999999",
+    "paymentInstrument": {
+      "type": "PAY_PAGE"
+    }
+  }
+    console.log(payRequest);
+    
+     this.paymentService.sendPayment(payRequest).subscribe(
+      res=>{
+        console.log(res);
+        
+      }
+     )
+
+  }
+
 
   getAddressByUser(){
     let id=localStorage.getItem("userId");
@@ -217,10 +277,10 @@ export class CheckoutComponent implements OnInit {
   }
   getPaymentMethod(){
     let paymentMethod=""
-    if(this.paymentFormGroup.value.cashOnDelivery){
-      paymentMethod="offline";
-    }else if(this.paymentFormGroup.value.online){
+    if (this.selectedPaymentMethod === 'online') {
       paymentMethod="online";
+    } else if (this.selectedPaymentMethod === 'cod') {
+      paymentMethod="offline";
     }
     return paymentMethod;
   }
@@ -265,9 +325,10 @@ export class CheckoutComponent implements OnInit {
 
   getPaymentStatus(){
     let paymentStatus="";
-    if(this.paymentFormGroup.value.cashOnDelivery){
+    if(this.selectedPaymentMethod === 'cod'){
         paymentStatus="pending";
     }
+    
     return paymentStatus;
   }
 
@@ -281,4 +342,98 @@ export class CheckoutComponent implements OnInit {
     return total - tax;
   }
 
+
+
+  submitPayment() {
+    if (this.selectedPaymentMethod === 'online') {
+      // Handle online payment submission
+      this.placeOnlineOrder();
+      alert('Processing online payment...');
+    } else if (this.selectedPaymentMethod === 'cod') {
+      // Handle offline payment submission
+      this.placeOfflineOrder();
+    } else {
+      alert('Please select a payment method.');
+    }
+  }
+ 
+  sendMailToCustomer(){
+    let senderMail="everse.order@gmail.com"
+    this.authService.getUserById().subscribe(
+      res=>{
+        if(res){
+          console.log("rss",res?.payload);
+          
+          this.receiverEmail=res?.payload?.email;
+          console.log("this.receiverEmail",this.receiverEmail);
+          
+          this.custName=res?.payload?.fullName;
+          console.log("this.custName",this.custName);
+          
+          this.userId=res?.payload?.id;
+          console.log("this.userId",this.userId);
+          const mailRequest={
+            senderEmail:senderMail,
+            receiverEmail:this.receiverEmail,
+            subject:"Order Confirmation From Everse",
+            customerName:this.custName,
+            customerId:this.userId,
+            orderRequest:this.orderDetails,
+            orderItemsRequestList:this.orderItemsForMailArray
+          }
+          console.log("this.cartItemList",this.orderItemsForMailArray);
+          
+          console.log("mail",mailRequest);
+          
+         this.mailService.sendMail(mailRequest).subscribe(res=>{
+          if(res){
+            this.toastService.showSuccess(res?.payload)
+          }
+         })
+        }
+      }
+    )
+   
+
+  }
+  sendMailToEverse(){
+    let senderMail="everse.order@gmail.com"
+    this.authService.getUserById().subscribe(
+      res=>{
+        if(res){
+          console.log("rss",res?.payload);
+          
+          this.receiverEmail="sales.everse@gmail.com";
+          console.log("this.receiverEmail",this.receiverEmail);
+          
+          this.custName="Everse Sales team";
+          console.log("this.custName",this.custName);
+          
+          this.userId=res?.payload?.id;
+          console.log("this.userId",this.userId);
+          const mailRequest={
+            senderEmail:senderMail,
+            receiverEmail:this.receiverEmail,
+            subject:"Order Confirmation From Everse",
+            customerName:this.custName,
+            customerId:this.userId,
+            orderRequest:this.orderDetails,
+            orderItemsRequestList:this.orderItemsForMailArray
+          }
+          console.log("this.cartItemList",this.orderItemsForMailArray);
+          
+          console.log("mail",mailRequest);
+          
+         this.mailService.sendMail(mailRequest).subscribe(res=>{
+          if(res){
+            if(res?.payload)
+            this.toastService.showSuccess("Mail Sent to Everse Team")
+          }
+         })
+        }
+      }
+    )
+   
+
+  }
 }
