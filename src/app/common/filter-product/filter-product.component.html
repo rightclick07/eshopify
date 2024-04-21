@@ -1,25 +1,36 @@
+  <section style="margin-top: 0;">
+      <img src="https://everse-assets.s3.amazonaws.com/shop-by-categoty/consumer-drone-banner.png" alt="Banner Image" class="banner-image" *ngIf='id==="Consumer Drone"'>
+      <img src="https://everse-assets.s3.amazonaws.com/shop-by-categoty/enterprise-drone-banner.png" alt="Banner Image" class="banner-image" *ngIf='id==="Enterprise Drone"'>
+      <img src="https://everse-assets.s3.amazonaws.com/shop-by-categoty/agricultural-drone-banner.png" alt="Banner Image" class="banner-image" *ngIf='id==="Agricultural Drone"'>
+      <img src="https://everse-assets.s3.amazonaws.com/shop-by-categoty/thermal-drone-banner.png" alt="Banner Image" class="banner-image" *ngIf='id==="Thermal Drone"'>
+      <img src="https://everse-assets.s3.amazonaws.com/shop-by-categoty/toy-drone-banner.png" alt="Banner Image" class="banner-image" *ngIf='id==="Toy Drone"'>
+      <h2 style="margin: 2px;font-family:sans-serif;font-weight:500 ;">
+        {{id | uppercase}}
+      </h2>
 
-  <div class="product-list">
-    <div class="product-card" *ngFor="let key of this.filteredProductList">
-      <app-product-card
-        class="mat-elevation-z5 card"
-        [images]="key.images"
-        [name]="key.name"
-        [price]="key.price"
-        [discount]="key.discount"
-        [compareAtPrice]="key.compareAtPrice"
-        [id]="key.id">
-      </app-product-card>
+    <div class="product-list">
+      <div class="product-card" *ngFor="let key of this.filteredProductList">
+        <app-bestseller-product-card
+          class="mat-elevation-z5 card"
+          [images]="key.images"
+          [name]="key.name"
+          [price]="key.price"
+          [discount]="key.discount"
+          [compareAtPrice]="key.compareAtPrice"
+          [id]="key.id">
+        </app-bestseller-product-card>
+      </div>
     </div>
+  
+    <div *ngIf="!this.filteredProductList.length">
+  
+    </div>
+    <div *ngIf="!this.filteredProductList.length">
+      <mat-card class="no-result">
+          <mat-card-title>No result Found!</mat-card-title>
+          <img  src="assets/img/utility/search_no_result.png" width="250px" >
+          <button  mat-raised-button class="shop-now-button" routerLink="/home">Shop Now</button>
+      </mat-card>
   </div>
-
-  <div *ngIf="!this.filteredProductList.length">
-
-  </div>
-  <div *ngIf="!this.filteredProductList.length">
-    <mat-card class="no-result">
-        <mat-card-title>No result Found!</mat-card-title>
-        <img  src="assets/img/utility/search_no_result.png" width="250px" >
-        <button  mat-raised-button class="shop-now-button" routerLink="/home">Shop Now</button>
-    </mat-card>
-</div>
+  </section>
+ 

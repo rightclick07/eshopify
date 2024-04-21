@@ -1,0 +1,15 @@
+<div class="best_Seller_Drone_Image" (click)="navigateToProductDetails(id)">
+    <img [src]="selectedImage" alt="image not found">
+</div>
+<div class="best_Seller_Drone_Tittle">
+    <div class="best_seller_drone_info">
+        <div class="best_seller_drone_name">
+            <p>{{ name }}</p>
+        </div>
+        <div class="best_seller_drone_Shop_Button">
+            <p style="text-decoration: line-through; margin-right: 5px;" >₹{{ price }}</p>
+            <p style="font-weight: bold;">₹{{ compareAtPrice}}</p>
+            <a class="shop-now-button" mat-button routerLink="/product-details/{{id}}">SHOP NOW</a>
+        </div>
+    </div>
+</div>

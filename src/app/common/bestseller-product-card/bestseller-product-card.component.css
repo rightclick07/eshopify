@@ -1,0 +1,54 @@
+.best_Seller_Drone_Image {
+    box-sizing: border-box;
+   
+    height: 200px;
+    width: 310px;
+    margin: 0;
+    padding: 0;
+  }
+   
+  .best_Seller_Drone_Image>img {
+   
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+   
+   
+  .best_Seller_Drone_Tittle {
+    display: flex;
+    justify-content: space-between;
+    align-items: last baseline;
+    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+    /* margin: 0px -16px -16px -16px; */
+    height: 100px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+   
+  .best_seller_drone_name {
+    margin-left: 15px;
+    margin-top: 5px;
+  }
+
+  .best_seller_drone_name p {
+    font-size: 17px;
+    line-height: 1;
+  }
+   
+  .best_seller_drone_Shop_Button {
+    display: flex;
+    place-items: center;
+    margin: 10px 15px;
+  }
+  .shop-now-button{
+    left: 30%;
+    z-index: 1;
+    border-radius: 10px !important;
+    font-size: 12px;
+    background: #fcc50b;
+    color: #000;
+    letter-spacing: -0.48px;
+  }

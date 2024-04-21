@@ -1,0 +1,23 @@
+<section>
+    <div class="container">
+
+      <!-- Banner Image -->
+      <img src="https://everse-assets.s3.amazonaws.com/dji-series/mini-series.png" alt="Banner Image" class="banner-image" *ngIf="isDjiMiniSeries">
+      <img src="https://everse-assets.s3.amazonaws.com/dji-series/mavic-series.png" alt="Banner Image" class="banner-image" *ngIf="isDjiMavicSeries">
+      <img src="https://everse-assets.s3.amazonaws.com/dji-series/avata-series.png" alt="Banner Image" class="banner-image" *ngIf="isDjiAvataSeries">
+      <img src="https://everse-assets.s3.amazonaws.com/dji-series/air-series.png" alt="Banner Image" class="banner-image" *ngIf="isDjiAirSeries">
+      <div class="bestSellerDrone">
+        <mat-card class="bestSellerDroneCard" *ngFor="let key of productListOnSeries">
+          <app-bestseller-product-card
+            [images]="key.images"
+            [name]="key.name"
+            [price]="key.price"
+            [discount]="key.discount"
+            [compareAtPrice]="key.compareAtPrice"
+            [id]="key.id">
+          </app-bestseller-product-card>
+        </mat-card>
+      </div>
+    </div>
+  </section>
+  

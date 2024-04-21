@@ -1,4 +1,6 @@
 .mat-card {
+  margin-top: 10px ;
+  margin-bottom: 10px ;
   max-width: 800px;
   margin: 0 auto;
   box-shadow: 0 0 0 white; /* Adding a subtle shadow */
@@ -113,7 +115,7 @@
   padding-right: 16px;
   width:200px;
   margin-bottom: 5px;
-  background-color:#fed700;
+  background: #fcc50b;
   color:#444;
 }
 .button-buyNow{

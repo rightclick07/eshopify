@@ -1,0 +1,40 @@
+
+.container{
+    margin-top: 2%;
+}
+.bestSellerDrone {
+ 
+    box-sizing: border-box;
+    display: flex;
+   
+    justify-content: space-between;
+    padding: 20px 0;
+    border-radius: 10px;
+    overflow: auto;
+   
+   
+  }
+   
+  .bestSellerDrone::-webkit-scrollbar {
+    display: none;
+  }
+   
+  .bestSellerDroneCard {
+    height: auto;
+    width: 350px;
+    margin: 0px 20px;
+    border-radius: 15px 15px 15px 15px;
+    box-shadow: 0 2px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    padding: 0;
+    transition: transform 0.3s ease;
+   
+  }
+  .bestSellerDroneCard:hover {
+    transform: scale(1.1);
+  }
+  .banner-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px; /* Adjust margin as needed */
+  }
+  

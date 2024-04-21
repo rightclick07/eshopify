@@ -15,7 +15,7 @@ import { OrderService } from 'src/app/shared/services/order-service/order.servic
 import { PaymentService } from 'src/app/shared/services/payment-service/payment.service';
 import { SpinnerService } from 'src/app/shared/services/spinner-service/spinner.service';
 import { ToastService } from 'src/app/shared/services/toast-service/toast.service';
-
+declare var Razorpay:any;
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -188,7 +188,39 @@ export class CheckoutComponent implements OnInit {
     
     
   }
+  payNow() {
+    const RozarpayOptions = {
+      description: 'Sample Razorpay demo',
+      currency: 'INR',
+      amount: 100000,
+      name: 'Ravi',
+      key: 'rzp_test_wm6DKIKnevLEU8',
+      image: 'https://i.imgur.com/FApqk3D.jpeg',
+      prefill: {
+        name: 'sai kumar',
+        email: 'sai@gmail.com',
+        phone: '9898989898'
+      },
+      theme: {
+        color: '#6466e3'
+      },
+      modal: {
+        ondismiss:  () => {
+          console.log('dismissed')
+        }
+      }
+    }
 
+    const successCallback = (paymentid: any) => {
+      console.log(paymentid);
+    }
+
+    const failureCallback = (e: any) => {
+      console.log(e);
+    }
+
+    Razorpay.open(RozarpayOptions,successCallback, failureCallback)
+  }
   placeOnlineOrder(){
     // Generate merchantTransactionId and merchantUserId
     const merchantTransactionId = 'EV' + Math.floor(Math.random() * 10000000000).toString();
@@ -347,7 +379,7 @@ export class CheckoutComponent implements OnInit {
   submitPayment() {
     if (this.selectedPaymentMethod === 'online') {
       // Handle online payment submission
-      this.placeOnlineOrder();
+      this.payNow();
       alert('Processing online payment...');
     } else if (this.selectedPaymentMethod === 'cod') {
       // Handle offline payment submission

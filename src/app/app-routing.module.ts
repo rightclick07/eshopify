@@ -18,6 +18,13 @@ import { BlogContentComponent } from './components/blogs/blog-content/blog-conte
 import { ShippingReturnPolicyComponent } from './components/shipping-return-policy/shipping-return-policy.component';
 import { FilterProductComponent } from './common/filter-product/filter-product.component';
 import { DeliveryShippingPolicyComponent } from './components/delivery-shipping-policy/delivery-shipping-policy.component';
+import { SeriesComponent } from './common/series/series.component';
+import { GlobalSearchComponent } from './common/global-search/global-search.component';
+import { DroneRepairComponent } from './components/drone-services-component/drone-repair/drone-repair.component';
+import { DroneRentComponent } from './components/drone-services-component/drone-rent/drone-rent.component';
+import { DroneTrainingComponent } from './components/drone-services-component/drone-training/drone-training.component';
+import { DronePioletLicenseComponent } from './components/drone-services-component/drone-piolet-license/drone-piolet-license.component';
+import { DroneGetUinComponent } from './components/drone-services-component/drone-get-uin/drone-get-uin.component';
 
 
 const routes: Routes = [
@@ -30,7 +37,7 @@ const routes: Routes = [
     {path:"blogs",component:BlogsComponent},
     {path:"about-us",component:AboutUsComponent},
     {path:"contact-us",component:ContactUsComponent},
-    {path:"filter-product",component:FilterProductComponent},
+    {path:"filter-product/:id",component:FilterProductComponent},
     {path:"career",component:CareersComponent},
     {path:"privacy-policy",component:PrivacyPolicyComponent},
     {path:"shipping-return-policy",component:ShippingReturnPolicyComponent},
@@ -39,7 +46,14 @@ const routes: Routes = [
     {path:"cart",component:CartsComponent},
     // {path:"checkout",component:CheckoutComponent},
     {path:"content",component:BlogContentComponent},
+    {path:"search",component:GlobalSearchComponent},
     {path:"product-details/:id",component:ProductComponent},
+    {path:"series/:id",component:SeriesComponent},
+    {path:"drone-repair",component:DroneRepairComponent},
+    {path:"drone-rent",component:DroneRentComponent},
+    {path:"drone-training",component:DroneTrainingComponent},
+    {path:"drone-piolet-license",component:DronePioletLicenseComponent},
+    {path:"drone-get-uin",component:DroneGetUinComponent},
     {path:"account",loadChildren: () => import('./modules/account-module/account/account.module').then(m => m.AccountModule)},
     {path:"admin",loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)},
     {path:"checkout-module",loadChildren: () => import('./modules/checkout-module/checkout/checkout.module').then(m => m.CheckoutModule)}

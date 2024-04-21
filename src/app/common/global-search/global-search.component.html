@@ -1,0 +1,32 @@
+<mat-toolbar class="search-block mat-elevation-z4" *ngIf="(toolbarService.showSearchToolbar$ | async)">
+    <mat-toolbar-row class="search-row">
+      <button class="search-icon" mat-icon-button disabled>
+        <mat-icon>search</mat-icon>
+      </button>
+      <input mat-input class="search-control" type="text" placeholder="Search" [(ngModel)]="searchText" #searchbar>
+      <button mat-button mat-icon-button class="close-button" (click)="searchClose()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+<div>
+	<div *ngFor="let item of productList | filter: searchText">
+        <div class="container" (click)="navigateToProduct(item.id)">
+                <div class="image-container">
+                    <img src="{{item.images[0]}}" width="50px">
+                </div>
+                <div class="info-container">
+                    <div>{{item.name}}</div>
+                    <div>{{item.price}}</div>
+                </div>
+        </div>
+  
+	</div>
+  <div *ngIf="(productList | filter: searchText).length === 0" >
+    <div class="no-result">
+        <img  src="assets/img/utility/search_no_result.png" width="250px" >
+        <button  mat-raised-button class="shop-now-button" routerLink="/home">Shop Now</button>
+    </div>
+</div>
+</div>

@@ -1,38 +1,105 @@
-.blog-card {
-  width: calc(33.33% - 20px); /* Three cards per row */
-  margin: 10px;
-  display: inline-block;
-  vertical-align: top;
+ 
+.blog_main_div {
+  padding: 15px;
+  margin-bottom: 15px;
+}
+ 
+ 
+.blog_main_div h2 {
+  font-size: 24px;
+  font-family: sans-serif;
+  font-weight: 800;
+}
+ 
+.blog_button button {
+  margin-right: 20px;
+  width: 120px;
+  color: #3333339a;
+}
+ 
+.blog_button button:hover,
+.blog_button button:active {
+  background-color: rgba(128, 128, 128, 0.292);
+  color: #333;
+  cursor: pointer;
+  border-radius: 30px;
+}
+ 
+.blog_mat_card_div {
+  display: flex;
+  padding: 5px;
   box-sizing: border-box;
+  overflow: auto;
 }
-
-.blog-image {
-  width: 100%;
+ 
+.blog_mat_card_div::-webkit-scrollbar {
+ 
+  display: none;
+}
+ 
+.blog_mat_card {
   height: auto;
+  width: 355px;
+  margin: 5px;
+  border-radius: 15px;
 }
-
-.blog-title {
-  font-size: 18px;
-  margin-top: 10px;
+ 
+.blog_mat_card_image_div {
+  width: 355px;
+  height: 180px;
+ 
+}
+ 
+.blog_mat_card_image_div a{
   text-decoration: none;
-  color: #444;
+ 
 }
-
-.blog-description {
+ 
+.blog_mat_card_image_div a img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+ 
+.blog_mat_card_tittle_div {
+  padding: 12px;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+ 
+ 
+}
+ 
+.blog_mat_card_tittle_div a{
+  text-decoration: none;
+}
+ 
+ 
+.blog_mat_card_tittle_div a P {
+  font-size: 14px;
+  font-family: sans-serif;
+  line-height: 1.5;
+  margin-bottom: 7px;
+  color: #333333c4;
+}
+ 
+.blog_mat_card_tittle_div h2 {
   font-size: 16px;
-  color: #666;
-  margin-top: 8px;
-  line-height: 1.4;
+ font-weight: 700;
+  font-family: sans-serif;
+  line-height: 1.5;
+  margin-bottom: 7px;
+  color: black;
+ 
 }
-
-@media (max-width: 1200px) {
-  .blog-card {
-    width: calc(50% - 20px); /* Two cards per row */
-  }
-}
-
-@media (max-width: 768px) {
-  .blog-card {
-    width: calc(100% - 20px); /* One card per row */
-  }
+ 
+.blog_mat_card_tittle_div button {
+  margin-top: 10px;
+  font-size: 14px;
+  width: 100%;
+  height: 50px;
+  border-radius: 30px;
+  background-color: white;
 }

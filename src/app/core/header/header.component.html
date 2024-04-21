@@ -44,58 +44,7 @@
     </mat-sidenav>
     <mat-sidenav-content>
 
-        <mat-toolbar class="toolbar mat-elevation-z3">
-
-          <mat-toolbar-row style="background-color: white;">
-            <div *ngIf="!(isHandset$ | async)">
-                <a routerLink="/" routerlink-active="active-link" class="logo-link">
-                    <img src="assets/img/everse-logo.png" class="logo"   alt="logo"/>
-                    <!-- <span style="color:#20c997;">Everse</span> -->
-                </a>
-            </div>
-
-            <div style="font-size:10px;margin: auto;width: 80%;padding-bottom:0;vertical-align: middle;">
-                <form class="form">
-                    <mat-form-field class="mat-form-field"  appearance="outline">
-                      <mat-icon *ngIf="showSearchIcon" style="color:#27292B;;font-size: 26px;vertical-align: middle;margin-right: 10px;">search</mat-icon>
-                      <input type="text"
-                            style="color: #27292B"
-                             placeholder="Search Drones"
-                             aria-label="Number"
-                             matInput
-                             [formControl]="myControl"
-                             [matAutocomplete]="auto"
-                             (focus)="showSearchIcon = false"
-                             (blur)="showSearchIcon = true"
-                             >
-                      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
-                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                          {{option}}
-                        </mat-option>
-                      </mat-autocomplete>
-
-                    </mat-form-field>
-                </form>
-            </div>
-           <!-- <div  fxHide.sm="true" fxHide.md="true" fxHide.xs="true" >
-            <a style="vertical-align: middle;" href="https://www.youtube.com/channel/UCI_5b08hocM7hXh5JK8fJ7w">
-                <img src="assets/img/social-media/youtube-logo.png" width="40">
-            </a>
-            <a style="vertical-align: middle;" href="">
-                <img src="assets/img/social-media/instagram-logo.png" width="40">
-            </a>
-            <a style="vertical-align: middle;" href="">
-                <img src="assets/img/social-media/twitter-logo.png" width="40">
-            </a>
-            <a style="vertical-align: middle;" href="">
-                <img src="assets/img/social-media/facebook-logo.png" width="40">
-            </a>
-            <a style="vertical-align: middle;" href="">
-                <img src="assets/img/social-media/linkedin-logo.png" width="40">
-            </a>
-           </div> -->
-        </mat-toolbar-row>
-
+      <mat-toolbar class="toolbar mat-elevation-z3" *ngIf="toolbarService.showMainToolbar$ | async">
         <mat-toolbar-row>
           <button
           type="button"
@@ -112,6 +61,12 @@
                 </a>
             </button> -->
            <!-- <app-menu-submenu></app-menu-submenu> -->
+           <div *ngIf="!(isHandset$ | async)">
+            <a routerLink="/" routerlink-active="active-link" class="logo-link">
+              <img src="assets/img/everse-logo.png" class="logo"   alt="logo"/>
+              <!-- <span style="color:#20c997;">Everse</span> -->
+          </a>
+           </div>
            <div *ngIf="!(isHandset$ | async)">
             <button mat-button routerLink="/home" routerlink-active="active-link" class="logo-link">
               <mat-icon style="vertical-align: middle;" aria-label="Side nav toggle icon">home</mat-icon> Home
@@ -143,7 +98,7 @@
           </mat-menu>
         </div>
         <div *ngIf="!(isHandset$ | async)">
-          <button mat-button routerLink="/blogs" style="text-decoration: none;color: white;" routerlink-active="active-link">
+          <button mat-button routerLink="/blogs" style="text-decoration: none;" routerlink-active="active-link">
             Blogs
           </button>
         </div>
@@ -166,15 +121,31 @@
                   </div>
               </mat-menu>
               -->
+              <!-- <div *ngIf="!(isHandset$ | async)">
+                <input type="search" placeholder="Search" class="mat-elevation-z2" [matAutocomplete]="auto" [formControl]="myControl">
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
+                  <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                    {{option}}
+                  </mat-option>
+                </mat-autocomplete>
+              </div> -->
+              <div>
+                 <button mat-button  (click)="goToSearchPage()">
+                   <mat-icon>
+                    search
+                   </mat-icon>
+                 </button>
+              </div>
               <div *ngIf="isAdmin">
                 <button  mat-button routerLink="admin" *ngIf="!(isHandset$ | async)">
                   <mat-icon >account_balance</mat-icon>
                   Admin
                 </button>
               </div>
+             
               <div>
                 <button  mat-button (click)="opencart()">
-                  <mat-icon [matBadge]="cartItemCount" matBadgeColor="warn">shopping_cart</mat-icon>
+                  <mat-icon [matBadge]="cartItemCount" matBadgeColor="warn">shopping_basket</mat-icon>
                 </button>
               </div>
 
@@ -200,10 +171,6 @@
 
         </mat-toolbar-row>
     </mat-toolbar>
-    <div>
-      <router-outlet></router-outlet>
-    </div>
-
    <!-- <app-spinner></app-spinner> -->
     <!-- WhatsApp Chat Added  -->
    <a class="float_whatsapp"  href="https://wa.me/919429691484?text=Chat With Everse Sales & Tech Team" target="_blank">

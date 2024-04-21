@@ -15,6 +15,8 @@ export interface Product{
     shortDescription:string;
     variants:string;
     images:Array<string>;
+    series:string;
+    tags:string;
 
 }
  

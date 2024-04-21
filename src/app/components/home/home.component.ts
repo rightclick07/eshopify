@@ -6,6 +6,7 @@ import { Observable, map, shareReplay } from 'rxjs';
 import { ResponseData } from 'src/app/shared/model/ResponseData';
 import { Product } from 'src/app/shared/model/product';
 import { ProductService } from 'src/app/shared/services/product-service/product.service';
+import { ToolbarService } from 'src/app/shared/services/toolbar/toolbar.service';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +15,26 @@ import { ProductService } from 'src/app/shared/services/product-service/product.
 })
 export class HomeComponent implements OnInit,AfterViewInit {
   imageList=["assets/img/banners/1.jpg","assets/img/banners/2.jpg","assets/img/banners/3.jpg"]
+  imageListMobileView=["https://everse-assets.s3.amazonaws.com/moble-view-slider-templates/mobile+template.jpg",
+  "https://everse-assets.s3.amazonaws.com/moble-view-slider-templates/mobile+template-1.png",
+  "https://everse-assets.s3.amazonaws.com/moble-view-slider-templates/mobile+template-3.png",
+  "https://everse-assets.s3.amazonaws.com/moble-view-slider-templates/mobile+template-4.png"
+]
+djiSeriesimageList = [
+  { src: 'https://everse-assets.s3.amazonaws.com/dji-series/DJI+MINI+SERIES.png',
+   alt: 'mini-series', 
+   link: 'dji-mini-series' },
+  { src: 'https://everse-assets.s3.amazonaws.com/dji-series/DJI+MAVIC+SERIES.png',
+   alt: 'mavic-series',
+    link: 'dji-mavic-series' },
+  { src: 'https://everse-assets.s3.amazonaws.com/dji-series/DJI+AIR+SERIES.png',
+   alt: 'air-series',
+    link: 'dji-air-series' },
+  { src: 'https://everse-assets.s3.amazonaws.com/dji-series/DJI+AVATA+SERIES.png',
+   alt: 'avata-series',
+    link: 'dji-avata-series' },
+  // Add more images as needed
+];
   height=0;
   category=[
     {
@@ -58,7 +79,7 @@ export class HomeComponent implements OnInit,AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   productList:Product[]=[]
   
-  constructor(private breakpointObserver: BreakpointObserver,private productService:ProductService) { }
+  constructor(private breakpointObserver: BreakpointObserver,private productService:ProductService,public toolbarService:ToolbarService) { }
   isHandset: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Tablet)
     .pipe(
       map((result:any) => result.matches),
@@ -68,6 +89,8 @@ export class HomeComponent implements OnInit,AfterViewInit {
       //this.paginator.pageIndex = 0; // Set initial page index to 0
     }
   ngOnInit(): void {
+    this.toolbarService.setShowMainToolbar(true);
+    this.toolbarService.setShowSearchToolbar(false);
     this.getProductList();
   }
 

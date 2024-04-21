@@ -50,6 +50,22 @@ import { DeliveryShippingPolicyComponent } from './components/delivery-shipping-
 import { HighchartsComponent } from './common/highcharts/highcharts.component';
 import * as Highcharts from 'highcharts';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { BestsellerProductCardComponent } from './common/bestseller-product-card/bestseller-product-card.component';
+import { TrendingProductCardComponent } from './common/trending-product-card/trending-product-card.component';
+import { ShopByCategoryComponent } from './common/shop-by-category/shop-by-category.component';
+import { SeriesComponent } from './common/series/series.component';
+import { BannerComponent } from './common/banner/banner.component';
+import { DatePipe } from '@angular/common';
+import { ReviewContainerComponent } from './common/review-container/review-container.component';
+import { WhatWeProvideComponent } from './common/what-we-provide/what-we-provide.component';
+import { GlobalSearchComponent } from './common/global-search/global-search.component';
+import { FilterPipe } from './shared/pipe/filter.pipe';
+import { DroneRepairComponent } from './components/drone-services-component/drone-repair/drone-repair.component';
+import { DroneRentComponent } from './components/drone-services-component/drone-rent/drone-rent.component';
+import { DroneTrainingComponent } from './components/drone-services-component/drone-training/drone-training.component';
+import { DronePioletLicenseComponent } from './components/drone-services-component/drone-piolet-license/drone-piolet-license.component';
+import { DroneGetUinComponent } from './components/drone-services-component/drone-get-uin/drone-get-uin.component';
+
 
 
 @NgModule({
@@ -86,7 +102,21 @@ import { HighchartsChartModule } from 'highcharts-angular';
     NextDirective,
     PrevDirective,
     DeliveryShippingPolicyComponent,
-    HighchartsComponent
+    HighchartsComponent,
+    BestsellerProductCardComponent,
+    TrendingProductCardComponent,
+    ShopByCategoryComponent,
+    SeriesComponent,
+    BannerComponent,
+    ReviewContainerComponent,
+    WhatWeProvideComponent,
+    GlobalSearchComponent,
+    FilterPipe,
+    DroneRepairComponent,
+    DroneRentComponent,
+    DroneTrainingComponent,
+    DronePioletLicenseComponent,
+    DroneGetUinComponent
 
   ],
   imports: [
@@ -100,7 +130,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
     SocialLoginModule,
     HighchartsChartModule
   ],
-  providers: [CartDataResolverResolver,
+  providers: [CartDataResolverResolver,DatePipe ,FilterPipe,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     {
       provide: 'SocialAuthServiceConfig',
