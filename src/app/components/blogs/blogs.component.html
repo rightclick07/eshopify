@@ -1,10 +1,24 @@
-<mat-card *ngFor="let blog of blogs" class="blog-card">
-  <a routerLink="{{blog.id}}">
-    <img [src]="blog.images" alt="Blog Image" class="blog-image">
-  </a>
-  <mat-card-content>
-    <a class="blog-title" routerLink="{{blog.id}}">{{ blog.title }}</a>
-    <p class="blog-description">{{ blog.shortDescription }}</p>
+<div class="blog_main_div">
+  <div class="blog_mat_card_div">
+    <div class="blog_mat_card" *ngFor="let blogItem of blogs">
+      <div class="blog_mat_card_image_div">
+        <a routerLink="{{blogItem.id}}"> <img [src]="blogItem.images" alt=""></a>
+      </div>
+      <div class="blog_mat_card_tittle_div">
+        <a >
+          <p>{{ blogItem.date }}</p>
+        </a>
+        <a routerLink="{{blogItem.id}}">
+          <h2>{{ blogItem.title }}</h2>
+        </a>
+        <a routerLink="{{blogItem.id}}">
+          <p>{{blogItem.shortDescription}}</p>
+        </a>
  
-  </mat-card-content>
-</mat-card>
+        <button routerLink="{{blogItem.id}}" mat-button>Read More</button>
+      </div>
+    </div>
+  </div>
+ 
+ 
+</div>

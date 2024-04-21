@@ -10,7 +10,7 @@ export class BlogService {
 
   constructor(private http:HttpClient) { }
 
-  getAllProductList():Observable<any>{
+  getAllBlogList():Observable<any>{
     let url=environment.baseUrl +"/getAllBlogs";
     return this.http.get<any>(url);
  }

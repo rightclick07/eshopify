@@ -1,5 +1,6 @@
 .sidenav-container {
   height: 100%;
+  width: 100%;
 }
 .float_whatsapp{
   position: fixed;
@@ -9,9 +10,18 @@
 }
 .sidenav {
   width: 200px;
-  z-index: 1000;
 }
-
+.mat-drawer{
+  position:fixed;
+  height: 100%;
+}
+.mat-drawer-content {
+  position: relative;
+  z-index: 1;
+  display: block;
+  height: 100%;
+  overflow: hidden;
+}
 .hidden{
   display: none;
 }
@@ -19,14 +29,19 @@
   background: inherit;
 }
 
+/* Fix the toolbar at the top */
 .mat-toolbar.mat-primary {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 1;
+  width: 100%;
+/* Adjust z-index as needed */
 }
+
+/* Add margin-top to content area */
+
+
 .home-link{
   text-decoration: none;
-  color: white;
   margin-left: 10px;
   margin-left: 10px;
   padding: 5px;
@@ -51,14 +66,12 @@
 }
 .login-link{
   text-decoration: none;
-  color: white;
 }
 .login-button{
   float: right;
 }
 .toolbar{
-  background-color:#27292B;
-  color: white;
+ background-color: #fdfcfc;
 }
 .form {
  
@@ -70,7 +83,6 @@
 }
 .about{
     text-decoration: none;
-    color: white;
 }
 .spacer{
   flex: 1 1 auto;
@@ -145,4 +157,17 @@
   color: #27292B;
   font-size: 26px;
   cursor: pointer;
+}
+
+input {
+  border: solid 1px rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  outline: none;
+  padding: 6px 16px;
+
+  width: 100%;
+  max-width: 375px;
+
+  font-size: 16px;
+  line-height: 34px;
 }

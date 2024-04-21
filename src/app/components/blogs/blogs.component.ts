@@ -17,7 +17,7 @@ export class BlogsComponent implements OnInit {
   
   getAllBlogs(){
     this.spinnerService.show();
-   this.blogService.getAllProductList().subscribe(
+   this.blogService.getAllBlogList().subscribe(
     res=>{
       if(res)
       this.spinnerService.hide();

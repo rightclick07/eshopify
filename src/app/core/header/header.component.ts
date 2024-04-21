@@ -1,7 +1,7 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { log } from 'console';
 
 import { map, Observable, shareReplay, startWith } from 'rxjs';
@@ -12,6 +12,7 @@ import { ProductService } from 'src/app/shared/services/product-service/product.
 import { SpinnerService } from 'src/app/shared/services/spinner-service/spinner.service';
 import { ToastService } from 'src/app/shared/services/toast-service/toast.service';
 import { TokenStorageService } from 'src/app/shared/services/token-storage/token-storage.service';
+import { ToolbarService } from 'src/app/shared/services/toolbar/toolbar.service';
 
 @Component({
   selector: 'app-header',
@@ -27,27 +28,38 @@ export class HeaderComponent implements OnInit {
   filteredProductList:any;
   showSearchIcon = true;
   isAdmin:boolean=false;
+  searchMode: boolean = false;
+  @ViewChild('searchbar') searchbar!: ElementRef;
+  searchText = '';
+
+  toggleSearch: boolean = false;
+  id:any;
   category=[
   {
     title: "Drone",
     subCategory: [
       {
         id:1,
-        title:"Nano Drone",
+        title:"Consumer Drone",
         icon:"",
       },
       {
         id:2,
-        title:"Micro Drone",
-        icon:"",
-      },
-      {
-        id:3,
         title:"Enterprise Drone",
         icon:"",
       },
       {
+        id:3,
+        title:"Agricultural Drone",
+        icon:"",
+      },
+      {
         id:4,
+        title:"Thermal Drone",
+        icon:"",
+      },
+      {
+        id:5,
         title:"Toy Drone",
         icon:""
       }
@@ -61,31 +73,34 @@ export class HeaderComponent implements OnInit {
         id:1,
         title:"Rent a Drone",
         icon:"",
+        routeurl:"/drone-rent",
         products:[]
       },
       {
         id:2,
         title:"Drone Repair",
         icon:"",
+        routeurl:"/drone-repair",
         products:[]
       },
       {
         id:3,
         title:"Drone Training",
         icon:"",
-
+        routeurl:"/drone-training",
       },
       {
         id:4,
         title:"Get Your UIN",
         icon:"",
+        routeurl:"/drone-piolet-license"
 
       },
       {
         id:4,
         title:"Drone Piolet License",
         icon:"",
-
+        routeurl:"/drone-get-uin"
       }
     ]
     },
@@ -147,13 +162,15 @@ export class HeaderComponent implements OnInit {
     private productService:ProductService,
     private toastService:ToastService ,
     private cartService:CartService,
-    private spinnerService:SpinnerService
+    private spinnerService:SpinnerService,
+    public  toolbarService:ToolbarService,
+    private route:ActivatedRoute
 ) {
   this.authService.isLoggedIn.subscribe(res=>{
     this.isUserLoggedIn=res;
     console.log(res);
-
   })
+ this.togglemaintoolbar();
 
 }
   showSocialForMobile=false;
@@ -206,6 +223,7 @@ export class HeaderComponent implements OnInit {
   token:string="";
   initial:string="";
   ngOnInit() {
+    this.togglemaintoolbar();
     if(localStorage.getItem("token")){
       this.isUserLoggedIn=true
       this.getUserDetail();
@@ -214,6 +232,7 @@ export class HeaderComponent implements OnInit {
     // console.log( this.isUserLoggedIn+"this.isUserLoggedIn");
 
     this.getProductOptions();
+
     // console.log(this.options,"this.options");
 
     this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -366,7 +385,9 @@ onClickCategory(searchString:string){
   const obj=this.searchCategoryFromList(searchString)
   // console.log("obj",obj);
   const categoryString=obj?.category?.title;
+  console.log("categoryString",categoryString);
   const subCategoryString=obj?.subCategory[0].title;
+  console.log("subCategoryString",subCategoryString);
   this.spinnerService.show()
    this.productService.getProductByCategorySubcategory(categoryString,subCategoryString).subscribe(
     res=>{
@@ -374,10 +395,27 @@ onClickCategory(searchString:string){
         this.spinnerService.hide();
         this.filteredProductList=res?.payload
         const queryParams = { data: JSON.stringify(this.filteredProductList) };
-        this.router.navigate(['/filter-product'], { queryParams });
+        if(subCategoryString=='Drone Repair'){
+          console.log("categoryString",categoryString); 
+          this.router.navigate(['/drone-repair']);
+         }else if(subCategoryString=='Rent a Drone'){
+          this.router.navigate(['/drone-rent']);
+         }else if(subCategoryString=='Drone Training'){
+          this.router.navigate(['/drone-training']);
+         }else if(subCategoryString=='Drone Piolet License'){
+          this.router.navigate(['/drone-piolet-license']);
+         }else if(subCategoryString=='Get Your UIN'){
+          this.router.navigate(['/drone-get-uin']);
+         }
+         else{
+          this.router.navigate(['/filter-product',subCategoryString]);
+         }
+        
       }
     }
-   )
+    
+   );
+   
 
 }
   searchCategoryFromList(searchString: string): { category: any, subCategory: any[] } | null {
@@ -408,5 +446,30 @@ onClickCategory(searchString:string){
       }
 
     })
+  }
+  openSearch() {
+    this.toggleSearch = true;
+    this.searchbar.nativeElement.focus();
+  }
+  searchClose() {
+    this.searchText = '';
+    this.toggleSearch = false;
+  }
+  
+  goToSearchPage() {
+    this.toolbarService.setShowMainToolbar(false);
+    this.toolbarService.setShowSearchToolbar(true)
+    this.router.navigate(['/search']); 
+    this.searchbar.nativeElement.focus();
+   
+  }
+  togglemaintoolbar(){
+    this.route.params.subscribe(params => {
+      this.id = params['id'];})
+    if(this.id=='search'){
+      this.toolbarService.setShowMainToolbar(false);
+    }else{
+      this.toolbarService.setShowMainToolbar(true);
+    }
   }
 }

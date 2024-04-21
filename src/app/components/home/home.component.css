@@ -1,3 +1,4 @@
+
 .home-header{
     display: flex;
     flex-wrap: wrap;
@@ -133,11 +134,12 @@
     color: white;
   }
   .card-container {
+    box-sizing: border-box;
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    gap: 20px;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-radius: 10px;
+    overflow: auto;
   }
 
   .what-we-do-card {
@@ -254,13 +256,28 @@
   }
   .review-container {
     display: flex;
-    flex-wrap:wrap ;
     flex-direction: row;
-    margin: 0 auto;
-    padding: 10px;
-    left: auto;
-    right: auto;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-radius: 10px;
+    overflow-x: auto;
+  }
+  .review-container::-webkit-scrollbar {
+    display: none;
+  }
+   
+  .review {
+    height: auto;
+    width: 550px;
+    margin: 0px 20px;
+    border-radius: 15px 15px 15px 15px;
+    box-shadow: 0 2px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    padding: 0;
+    transition: transform 0.3s ease;
+   
+  }
+  .review:hover {
+    transform: scale(1.1);
   }
 
   .section-title {
@@ -271,14 +288,6 @@
     margin-bottom: 20px;
   }
 
-  .review {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 15px;
-    margin: 5px;
-    max-width: 250px;
-
-  }
 
   .platform {
     font-size: 18px;
@@ -428,4 +437,71 @@
   .icon{
 
     color: #27292B;
+  }
+  .series-card-container {
+    display: flex;
+    margin: 2%;
+    margin-bottom: 0;
+    margin-top: 1%;
+    gap: 20px;
+  }
+  
+  .series-card {
+    width: 200px;
+    height: auto; /* Adjust the height of the card */
+    overflow: hidden;
+    border-radius: 15px;
+   
+  }
+  
+  .series-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center; /* Ensure the center of the image is visible */
+    border-radius: 25px;
+  }
+  
+  @media (max-width: 768px) {
+    .series-card-container {
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+  
+    .series-card {
+      width: 150px;
+      margin-bottom: 20px;
+      border-radius: 25px;
+    }
+  }
+  .bestSellerDrone {
+ 
+    box-sizing: border-box;
+    display: flex;
+   
+    justify-content: space-between;
+    padding: 20px 0;
+    border-radius: 10px;
+    overflow: auto;
+   
+   
+  }
+   
+  .bestSellerDrone::-webkit-scrollbar {
+    display: none;
+  }
+   
+  .bestSellerDroneCard {
+    height: auto;
+    width: 350px;
+    margin: 0px 20px;
+    border-radius: 15px 15px 15px 15px;
+    box-shadow: 0 2px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    padding: 0;
+    transition: transform 0.3s ease;
+   
+  }
+  .bestSellerDroneCard:hover {
+    transform: scale(1.1);
   }

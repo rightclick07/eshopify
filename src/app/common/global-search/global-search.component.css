@@ -1,0 +1,55 @@
+.container {
+    display: flex;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    margin: 20px;
+    padding:20px;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+  
+  .image-container {
+    margin-right: 10px; /* Adjust as needed */
+  }
+ 
+  .info-container {
+    display: flex;
+    flex-direction: column;
+  }
+  header{
+    position: fixed;
+    background-color: white;
+  }
+
+  .search-control{
+    flex: 1;
+    font-size: 1rem;
+    border: 0;
+    outline: none;
+  }
+  
+  .close-button {
+    margin-left: auto;
+  }
+  .mat-toolbar{
+    background: white;
+  }
+  .no-result{
+    width: auto;
+    height: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+}
+.shop-now-button{
+    border-radius: 999px;
+    width: 200px;
+
+    background-color: #fcc50b;
+    color: rgb(33, 31, 31);
+}
+  
+  
