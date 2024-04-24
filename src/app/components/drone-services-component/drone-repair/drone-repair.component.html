@@ -1,1 +1,147 @@
-<p>drone-repair works!</p>
+<section class="drone_repair_section">
+
+  <div class="drone_repair_section_image_div">
+    <img src="\assets\img\banners\Drone-Repair-banner-1-2048x512.png" alt="Drone repair image ">
+  </div>
+
+
+  <div class="drone_repair_section_heading">
+    <h1>Get Your Drone Inspected at a Low Price</h1>
+    <h3>Starting at Rs 999</h3>
+  </div>
+
+  <div class="drone_repair_section_form_div">
+
+    <mat-card class="drone_repair_section_form_mat_card">
+      <h2>Drone Repair</h2>
+
+
+
+
+      <form [formGroup]="droneRepairForm" class="example_form" (submit)="onSubmit()">
+
+        <div class="example_form_section">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Full name</mat-label>
+            <input matInput formControlName="fullName">
+            <mat-error
+              *ngIf="droneRepairForm.get('fullName')?.hasError('required') && droneRepairForm.get('fullName')?.touched">
+              Full Name is required
+            </mat-error>
+            <mat-error
+              *ngIf="droneRepairForm.get('fullName')?.hasError('minlength') && droneRepairForm.get('fullName')?.touched">
+              Full Name must be at least 2 characters long
+            </mat-error>
+            <mat-error
+              *ngIf="droneRepairForm.get('fullName')?.hasError('maxlength') && droneRepairForm.get('fullName')?.touched">
+              Full Name cannot exceed 25 characters
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="example_form_section">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Mobile Number</mat-label>
+            <input matInput formControlName="mobileNumber">
+            <mat-error
+              *ngIf="droneRepairForm.get('mobileNumber')?.hasError('required') && droneRepairForm.get('mobileNumber')?.touched">
+              Mobile Number is required
+            </mat-error>
+            <mat-error
+              *ngIf="droneRepairForm.get('mobileNumber')?.hasError('minlength') && droneRepairForm.get('mobileNumber')?.touched">
+              Mobile Number must be at least 10 characters long
+            </mat-error>
+            <mat-error
+              *ngIf="droneRepairForm.get('mobileNumber')?.hasError('pattern') && droneRepairForm.get('mobileNumber')?.touched">
+              Invalid Mobile Number format
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="example_form_section">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email">
+            <mat-error
+              *ngIf="droneRepairForm.get('email')?.hasError('required') && droneRepairForm.get('email')?.touched">
+              Email is required
+            </mat-error>
+            <mat-error *ngIf="droneRepairForm.get('email')?.hasError('email') && droneRepairForm.get('email')?.touched">
+              Invalid Email format
+            </mat-error>
+            <mat-error
+              *ngIf="droneRepairForm.get('email')?.hasError('maxlength') && droneRepairForm.get('email')?.touched">
+              Email cannot exceed 40 characters
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="example_form_section">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Model Name</mat-label>
+            <input matInput formControlName="modelName">
+            <mat-error
+              *ngIf="droneRepairForm.get('modelName')?.hasError('required') && droneRepairForm.get('modelName')?.touched">
+              Model Name is required
+            </mat-error>
+            <mat-error
+              *ngIf="droneRepairForm.get('modelName')?.hasError('minlength') && droneRepairForm.get('modelName')?.touched">
+              Model Name must be at least 2 characters long
+            </mat-error>
+            <mat-error
+              *ngIf="droneRepairForm.get('modelName')?.hasError('maxlength') && droneRepairForm.get('modelName')?.touched">
+              Model Name cannot exceed 50 characters
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="example_form_section">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Model Series Number</mat-label>
+            <input matInput formControlName="modelSeriesNumber">
+            <mat-error
+              *ngIf="droneRepairForm.get('modelSeriesNumber')?.hasError('required') && droneRepairForm.get('modelSeriesNumber')?.touched">
+              Model Series Number is required
+            </mat-error>
+            <mat-error
+              *ngIf="droneRepairForm.get('modelSeriesNumber')?.hasError('minlength') && droneRepairForm.get('modelSeriesNumber')?.touched">
+              Model Series Number must be at least 2 characters long
+            </mat-error>
+            <mat-error
+              *ngIf="droneRepairForm.get('modelSeriesNumber')?.hasError('maxlength') && droneRepairForm.get('modelSeriesNumber')?.touched">
+              Model Series Number cannot exceed 50 characters
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+
+        <div class="example_form_section">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Message</mat-label>
+            <textarea matInput formControlName="message"></textarea>
+            <mat-error
+              *ngIf="droneRepairForm.get('message')?.hasError('required') && droneRepairForm.get('message')?.touched">
+              Message is required
+            </mat-error>
+            <mat-error
+              *ngIf="droneRepairForm.get('message')?.hasError('minlength') && droneRepairForm.get('message')?.touched">
+              Message must be at least 10 characters long
+            </mat-error>
+            <mat-error
+              *ngIf="droneRepairForm.get('message')?.hasError('maxlength') && droneRepairForm.get('message')?.touched">
+              Message cannot exceed 500 characters
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+
+      </form>
+
+
+    </mat-card>
+
+  </div>
+
+
+</section>
