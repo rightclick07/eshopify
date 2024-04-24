@@ -5,20 +5,17 @@
         <a routerLink="{{blogItem.id}}"> <img [src]="blogItem.images" alt=""></a>
       </div>
       <div class="blog_mat_card_tittle_div">
-        <a >
-          <p>{{ blogItem.date }}</p>
-        </a>
         <a routerLink="{{blogItem.id}}">
           <h2>{{ blogItem.title }}</h2>
         </a>
-        <a routerLink="{{blogItem.id}}">
+        <a class="alt__description" routerLink="{{blogItem.id}}">
           <p>{{blogItem.shortDescription}}</p>
         </a>
- 
+
         <button routerLink="{{blogItem.id}}" mat-button>Read More</button>
       </div>
     </div>
   </div>
- 
- 
+
+
 </div>

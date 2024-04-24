@@ -1,28 +1,23 @@
-<div class="review-container">
+<div>
     <h2>
-        <mat-icon style="vertical-align: middle;">person_outline</mat-icon>
+        <mat-icon>person_outline</mat-icon>
         CUSTOMER <b>REVIEWS</b>
     </h2>
-
     <div class="review-container_main_div">
         <div class="review-container_card mat-elevation-z1" *ngFor="let review of review_list">
-            <div class="review-container_content">
-                <div class="review-container_info">
-                    <div class="platform-title">
-                        <img [src]="review.imageUrl" style="vertical-align: middle;" alt="Platform Logo" width="40px">
-                        {{ review.name }}
-                    </div>
-                    <div class="stars">
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                    </div>
-                    <p class="review-comment" [ngClass]="{'expandable': isCommentExpanded}">{{ review.reviewComment }}</p>
-
-                </div>
+            <div class="platform-title">
+                <img [src]="review.imageUrl">
+                {{ review.name }}
             </div>
+            <div class="stars">
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+            </div>
+            <p class="review-comment" [ngClass]="{'expandable': isCommentExpanded}">{{ review.reviewComment }}
+            </p>
         </div>
     </div>
 </div>
