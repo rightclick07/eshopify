@@ -1,21 +1,16 @@
-<div class="shop_by_categories">
-  
-    <h2 style="margin: 2px;font-family:sans-serif;font-weight:500 ;">
-        <mat-icon style="vertical-align: middle;">stars</mat-icon>
-        SHOP BY <b>CATEGORIES</b></h2>
-   
-    <div class="shop_by_categories_main_div">
-   
-      <div class="shop_by_categories_card" *ngFor="let drone of drones_list">
-        <div class="shop_by_categories_Image" (click)="navigateToProductDetails(drone.name)">
-          <img [src]="drone.images" >
-        </div>
-        <div class="shop_by_categories_Tittle">
-          <p>{{drone.name}}</p>
-        </div>
-   
+<div>
+  <h2 style="margin: 2px;font-family:sans-serif;font-weight:500 ;">
+    <mat-icon>stars</mat-icon>
+    SHOP BY <b>CATEGORIES</b>
+  </h2>
+  <div class="shop_by_categories_main_div">
+    <div class="shop_by_categories_card" *ngFor="let drone of drones_list">
+      <div class="shop_by_categories_Image" (click)="navigateToProductDetails(drone.name)">
+        <img [src]="drone.images">
       </div>
-   
-   
+      <div class="shop_by_categories_Tittle">
+        <p>{{drone.name}}</p>
+      </div>
     </div>
+  </div>
 </div>
