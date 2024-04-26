@@ -2,23 +2,23 @@
   <div class="blog_mat_card_div">
     <div class="blog_mat_card" *ngFor="let blogItem of blogs">
       <div class="blog_mat_card_image_div">
-        <a routerLink="{{blogItem.id}}"> <img [src]="blogItem.images" alt=""></a>
+blogs         <a routerLink="/blogs/{{blogItem.id}}"> <img [src]="blogItem.images" alt=""></a>
       </div>
       <div class="blog_mat_card_tittle_div">
         <a >
           <p>{{ blogItem.date }}</p>
         </a>
-        <a routerLink="{{blogItem.id}}">
+        <a routerLink="/blogs/{{blogItem.id}}">
           <h2>{{ blogItem.title }}</h2>
         </a>
-        <a routerLink="{{blogItem.id}}">
+        <a routerLink="/blogs/{{blogItem.id}}">
           <p>{{blogItem.shortDescription}}</p>
         </a>
- 
-        <button routerLink="{{blogItem.id}}" mat-button>Read More</button>
+
+        <button routerLink="/blogs/{{blogItem.id}}" mat-button>Read More</button>
       </div>
     </div>
   </div>
- 
- 
+
+
 </div>
