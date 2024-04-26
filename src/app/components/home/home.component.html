@@ -1,101 +1,95 @@
-
-
 <section style="margin-bottom: 2%;top: 0;">
-    <div class="container">
-      <div class="image-container" *ngIf="isHandset | async">
-        <app-image-slider [images]="imageList" [height]="height"></app-image-slider>
-
-      </div>
-      <div class="image-container" *ngIf="!(isHandset | async)">
-        <app-image-slider [images]="imageListMobileView" [height]="height"></app-image-slider>
-
-      </div>
+  <div class="banner__container">
+    <div class="image-container" *ngIf="isHandset | async">
+      <app-image-slider [images]="imageList" [height]="700"></app-image-slider>
     </div>
+    <div class="image-container" *ngIf="!(isHandset | async)">
+      <app-image-slider [images]="imageListMobileView" [height]="600"></app-image-slider>
+    </div>
+  </div>
 </section>
 
 <!-- this is for best seller  -->
-<section style="margin-bottom: 1%;">
+<section class="alt__container" style="margin-bottom: 1%;">
   <div>
     <h2 style="margin: 2px;font-family:sans-serif;font-weight:500 ;">
-      <mat-icon style="vertical-align: middle;">favorite</mat-icon>
-      Explore <b>Bestsellers</b> </h2>
+      <mat-icon>favorite</mat-icon>
+      Explore <b>Bestsellers</b>
+    </h2>
     <div class="bestSellerDrone">
       <mat-card class="bestSellerDroneCard" *ngFor="let key of productList">
-        <app-bestseller-product-card
-
-          [images]="key.images"
-          [name]="key.name"
-          [price]="key.price"
-          [discount]="key.discount"
-          [compareAtPrice]="key.compareAtPrice"
-          [id]="key.id">
-       </app-bestseller-product-card>
+        <app-bestseller-product-card [images]="key.images" [name]="key.name" [price]="key.price"
+          [discount]="key.discount" [compareAtPrice]="key.compareAtPrice" [id]="key.id">
+        </app-bestseller-product-card>
       </mat-card>
     </div>
-</div>
+  </div>
 </section>
-  
-<section style="margin-bottom: 1%;">
+
+<section class="alt__container" style="margin-bottom: 1%;">
   <div>
     <h2 style="margin: 2px;font-family:sans-serif;font-weight:500 ;">
-      <mat-icon style="vertical-align: middle;">local_offer</mat-icon>
-      Everse <b>Offers</b> </h2>
+      <mat-icon>local_offer</mat-icon>
+      Everse <b>Offers</b>
+    </h2>
   </div>
   <app-banner></app-banner>
 </section>
 
 
 
-<section style="margin-bottom: 1%;">
+<section class="alt__container" style="margin-bottom: 1%;">
   <h2 style="margin: 2px;font-family:sans-serif;font-weight:500 ;">
-    <mat-icon style="vertical-align: middle;">flight_takeoff</mat-icon>
-    DJI <b>DRONES</b></h2>
+    <mat-icon>flight_takeoff</mat-icon>
+    DJI <b>DRONES</b>
+  </h2>
   <div class="series-card-container">
     <div class="series-card" *ngFor="let image of djiSeriesimageList">
       <a routerLink="/series/{{image.link}}">
         <img [src]="image.src" [alt]="image.alt">
       </a>
     </div>
-  </div> 
+    <div class="series-card" *ngFor="let image of djiSeriesimageList">
+      <a routerLink="/series/{{image.link}}">
+        <img [src]="image.src" [alt]="image.alt">
+      </a>
+    </div>
+  </div>
 </section>
 <!-- this is for Trending Drones  -->
-<section style="margin-bottom: 1%;">
+<section class="alt__container" style="margin-bottom: 1%;">
   <div>
     <h2 style="margin: 2px;font-family:sans-serif;font-weight:500 ;">
-      <mat-icon style="vertical-align: middle;">check_circle</mat-icon>
-      TRENDING <b>DRONES</b></h2>
+      <mat-icon>check_circle</mat-icon>
+      TRENDING <b>DRONES</b>
+    </h2>
     <div class="bestSellerDrone">
       <mat-card class="bestSellerDroneCard" *ngFor="let key of productList">
-        <app-bestseller-product-card
-          [images]="key.images"
-          [name]="key.name"
-          [price]="key.price"
-          [discount]="key.discount"
-          [compareAtPrice]="key.compareAtPrice"
-          [id]="key.id">
-       </app-bestseller-product-card>
+        <app-bestseller-product-card [images]="key.images" [name]="key.name" [price]="key.price"
+          [discount]="key.discount" [compareAtPrice]="key.compareAtPrice" [id]="key.id">
+        </app-bestseller-product-card>
       </mat-card>
     </div>
-</div>
+  </div>
 </section>
-<section style="margin-bottom: 1%;">
+<section class="alt__container" style="margin-bottom: 1%;">
   <app-shop-by-category></app-shop-by-category>
 </section>
-<section style="margin-bottom: 1%;">
- <h2 style="margin: 2px;font-family:sans-serif;font-weight:500 ;">
-  <mat-icon style="vertical-align: middle; margin-left: 2px;">business_center</mat-icon>
-  WHAT WE <b>PROVIDE</b>
- </h2>
- <app-what-we-provide></app-what-we-provide>
-</section>
-<section style="margin-bottom: 1%;">
-  <app-review-container>
-
-  </app-review-container>
-</section>
-<section style="margin-bottom: 1%;">
+<app-accessories></app-accessories>
+<section class="alt__container" style="margin-bottom: 1%;">
   <h2 style="margin: 2px;font-family:sans-serif;font-weight:500 ;">
-    <mat-icon style="vertical-align: middle;">collections_bookmark</mat-icon>
-    Popular <b>Blogs</b></h2>
+    <mat-icon>business_center</mat-icon>
+    WHAT WE <b>PROVIDE</b>
+  </h2>
+  <app-what-we-provide></app-what-we-provide>
+</section>
+<section class="alt__container">
+  <app-review-container></app-review-container>
+</section>
+<section class="alt__container" style="margin-bottom: 1%;">
+  <h2 style="margin: 2px;font-family:sans-serif;font-weight:500 ;">
+    <mat-icon>collections_bookmark</mat-icon>
+    Popular <b>Blogs</b>
+  </h2>
   <app-blogs></app-blogs>
 </section>

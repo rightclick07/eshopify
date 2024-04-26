@@ -5,13 +5,10 @@
 blogs         <a routerLink="/blogs/{{blogItem.id}}"> <img [src]="blogItem.images" alt=""></a>
       </div>
       <div class="blog_mat_card_tittle_div">
-        <a >
-          <p>{{ blogItem.date }}</p>
-        </a>
         <a routerLink="/blogs/{{blogItem.id}}">
           <h2>{{ blogItem.title }}</h2>
         </a>
-        <a routerLink="/blogs/{{blogItem.id}}">
+        <a class="alt__description" routerLink="/blogs/{{blogItem.id}}">
           <p>{{blogItem.shortDescription}}</p>
         </a>
 
