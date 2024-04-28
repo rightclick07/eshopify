@@ -16,7 +16,7 @@ import { CareersComponent } from './components/careers/careers.component';
 import { LoginComponent } from './components/auth-component/login/login.component';
 import { SignupComponent } from './components/auth-component/signup/signup.component';
 import { ForgetPasswordComponent } from './components/auth-component/forget-password/forget-password.component';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { SpinnerComponent } from './common/spinner/spinner.component';
 import { ProductCardComponent } from './common/product-card/product-card.component';
 import { ProductQuantityComponent } from './common/product-quantity/product-quantity.component';
@@ -26,7 +26,7 @@ import { SubCategoryComponent } from './common/sub-category/sub-category.compone
 import { ProductComponent } from './common/product/product.component';
 import { CartsComponent } from './common/carts/carts.component';
 import { CheckoutComponent } from './common/checkout/checkout.component'
-import {  HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AuthInterceptor } from './shared/interceptor/auth-interceptor.interceptor';
 import { CartDataResolverResolver } from './shared/resolver/cart-data-resolver.resolver';
@@ -118,7 +118,7 @@ import { AccessoriesComponent } from './components/accessories/accessories.compo
     DroneTrainingComponent,
     DronePioletLicenseComponent,
     DroneGetUinComponent,
-    AccessoriesComponent
+    AccessoriesComponent,
 
   ],
   imports: [
@@ -132,7 +132,7 @@ import { AccessoriesComponent } from './components/accessories/accessories.compo
     SocialLoginModule,
     HighchartsChartModule
   ],
-  providers: [CartDataResolverResolver,DatePipe ,FilterPipe,
+  providers: [CartDataResolverResolver, DatePipe, FilterPipe,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     {
       provide: 'SocialAuthServiceConfig',

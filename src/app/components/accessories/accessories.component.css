@@ -1,5 +1,5 @@
 mat-icon {
-    font-size: 18px;
+    font-size: 15px;
     vertical-align: bottom;
     color: #ffc107;
 }
@@ -18,9 +18,9 @@ mat-icon {
     background-color: #ffc107;
     color: black;
     font-size: 30px;
-    font-weight: 900;
-    height: 50px;
-    width: 50px;
+    font-weight: 600;
+    height: 40px;
+    width: 40px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -29,17 +29,17 @@ mat-icon {
 
 .alt__accessoriesCard {
     flex: 0 0 auto;
-    width: 325px;
+    width: 300px;
     height: 300px;
     border-radius: 15px;
-    margin: 10px 30px;
+    margin: 10px 20px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .card {
     position: relative;
     display: block;
-    height: 100%;
+    height: 90%;
     border-radius: 40px;
     overflow: hidden;
     text-decoration: none;
@@ -53,9 +53,10 @@ mat-icon {
 }
 
 .alt__accessoriesImage {
+    box-sizing: border-box;
     text-align: center;
     width: 100%;
-    height: 66%;
+    height: 73.5%;
 }
 
 .alt__accessoriesImage>img {
@@ -106,9 +107,10 @@ mat-icon {
 }
 
 .card__title {
-    font-size: 1.2em;
-    font-weight: 700;
-    letter-spacing: 2px;
+    font-size: 0.9em;
+    font-weight: 500;
+    line-height: 1.2em;
+    letter-spacing: 1px;
     margin: 0 0 .3em;
     color: #6A515E;
     text-transform: uppercase;

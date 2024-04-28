@@ -1,51 +1,72 @@
+.alt__whatWeProvideSection {
+  background-color: #1d1e22;
+  margin: 20px 0;
+}
 
-.replcement_categories_main_div {
+.alt__whatWeProvideContainer {
   display: flex;
-  height: 200px;
-  padding: 7.5px 15px;
-  margin: 15px;
+  gap: 2%;
+  padding: 20px 0;
+  overflow-y: hidden;
 }
- 
- 
-.replcement_categories_tittle {
+
+.alt__whatWeProvideContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.alt__whatWeProvideCard {
+  position: relative;
+  height: 190px;
+  flex: 0 0 auto;
+  width: 217.5px;
+  border-width: 2px;
+  border-style: solid;
+  border-image: linear-gradient(to bottom, #0092cc, #97c961);
+  border-image-slice: 1;
+  box-sizing: border-box;
+  padding: 10px;
   text-align: center;
-  height: auto;
-  width: 200px;
 }
- 
-.replcement_categories_tittle img {
-  width: 70px;
+
+.alt__whatWeProvideCard::after {
+  position: absolute;
+  content: '';
+  width: 0.7em;
+  height: 0.7em;
+  border-radius: 50%;
+  background: #0092cc;
+  background: radial-gradient(circle, #97c961 0%, #0092cc 100%);
+  top: 7px;
+  left: 7px;
+}
+
+.alt__ImgArea {
   height: 70px;
+  width: 70px;
+  display: inline-block;
+}
+
+.alt__ImgArea>img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
- 
-.replcement_categories_tittle p {
-  margin-top: 5px;
-  font-size: 18px;
-  letter-spacing: 1;
-  word-spacing: 2px;
-  font-family: sans-serif;
-  text-wrap:wrap ;
-}
- 
-.replcement_categories_tittle p span {
+
+.alt__TitleArea>h3 {
+  color: #0092cc;
+  font-size: 15px;
   font-weight: 800;
- 
 }
-@media screen and (max-width: 760px) {
-  .replcement_categories_tittle p {
-    margin-top: 5px;
-    font-size: 14px;
-    letter-spacing: 1;
-    word-spacing: 2px;
-    font-family: sans-serif;
-    text-wrap: wrap;
-    line-height: 1.5;
-    white-space: pre-wrap;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+.alt__DiscriptionArea {
+  color: #97c961;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+  .alt__whatWeProvideCard {
+    margin-left: 20px;
+    margin-right: 20px;
   }
 }
- 
- 
