@@ -170,12 +170,12 @@ export class DronePioletLicenseComponent {
   submitForm() {
     if (this.dronePioletLicenseForm.valid) {
       console.log('drone Piolet License Form Data', this.dronePioletLicenseForm.value);
-      this.snackBar.open('Your Comment is submitted', 'Close', {
+      this.snackBar.open('Your form  is submitted', 'Close', {
         duration: 3000
       });
 
-      this.dronePioletLicenseForm.reset();
-      // window.location.reload();
+      // this.dronePioletLicenseForm.reset();
+      window.location.reload();
     } else {
       console.error('Form is invalid. Please fill in all required fields.');
       alert('Form is invalid. Please fill in all required fields.');
