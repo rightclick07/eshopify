@@ -32,12 +32,16 @@ export class DroneRepairComponent implements OnInit {
 
   onSubmit() {
     if (this.droneRepairForm.valid) {
-      console.log('Form values:', this.droneRepairForm.value);
+      console.log('drone Repair Form Data:', this.droneRepairForm.value);
       this.snackBar.open('Your form has been submitted!', 'Close', {
         duration: 3000
       });
+
+      this.droneRepairForm.reset();
+      // window.location.reload();
     } else {
       console.error('Form is invalid. Please fill in all required fields.');
+      alert('Form is invalid. Please fill in all required fields.');
     }
   }
 }

@@ -1,0 +1,157 @@
+section {
+  margin: 50px 0px;
+  font-family: sans-serif;
+}
+
+.drone_uin_div {
+  margin: 0px 300px;
+}
+
+.drone_uin_div h1 {
+  text-align: center;
+  font-size: 40px;
+  line-height: 1.3;
+  color: #03bfd7;
+}
+
+.drone_uin_div span {
+  text-align: center;
+  display: block;
+  font-size: 40px;
+  line-height: 1.3;
+  color: #03bfd7;
+  margin-bottom: 25px;
+}
+
+.drone_uin_div p {
+  font-size: 16px;
+  letter-spacing: 1px;
+  line-height: 2;
+  color: rgba(0, 0, 0, 0.724);
+}
+
+.drone_uin_div ol li {
+  font-size: 14px;
+  letter-spacing: 1px;
+  line-height: 2;
+  color: rgba(0, 0, 0, 0.724);
+}
+
+.drone_uin_div ol li strong {
+  font-size: 14px;
+  letter-spacing: 1px;
+  line-height: 2;
+  color: rgba(0, 0, 0, 0.724);
+}
+
+.drone_uin_input_div {
+  margin: 0px 300px;
+}
+
+.drone_uin_input_div h2 {
+  font-size: 28px;
+  margin: 15px 0px;
+  color: #03bfd7;
+  ;
+}
+
+
+
+.drone_uin_form {
+  max-width: 80%;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.example-full-width {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.drone_uin_form p {
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: rgba(0, 0, 0, 0.724);
+}
+
+.example-full-width {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+
+mat-error {
+  color: red;
+}
+
+.drone_uin_form>button {
+  font-size: 16px;
+  align-self: flex-start;
+  margin-top: 20px;
+  width: 150px;
+  height: 50px;
+  background-color: #03bfd7;
+
+
+}
+
+.back_to_blog_buttons_div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back_to_blog_buttons_div button {
+  font-size: 16px;
+  margin-top: 20px;
+  width: 250px;
+  height: 60px;
+  color: white;
+  background-color: rgb(0, 0, 0);
+
+
+}
+
+.back_to_blog_buttons_div button:hover {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.74);
+}
+
+.back_to_blog_buttons_div button div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: inline-block;
+}
+
+.back_to_blog_buttons_div button div span {
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+
+@media (max-Width:768px){
+  .drone_uin_div {
+    margin: 0px 10px;
+  }
+
+  .drone_uin_div h1 {
+    font-size: 22px;
+
+  }
+
+  .drone_uin_div span {
+    font-size: 20px;
+  }
+  .drone_uin_div p {
+    font-size: 14px;
+  }
+  .drone_uin_input_div {
+    margin: 0px 10px;
+  }
+  .drone_uin_div h2{
+    font-size: 16px;
+  }
+}

@@ -53,10 +53,17 @@ export class DroneRentComponent implements OnInit {
 
   onSubmit() {
     if (this.rentDroneForm.valid) {
-      console.log('Form Data:', this.rentDroneForm.value);
+      console.log('rent Drone Form Data:', this.rentDroneForm.value);
       this.snackBar.open('Your form is submitted', 'Close', {
         duration: 3000
       });
+      this.rentDroneForm.reset();
+      // window.location.reload();
+    } else {
+      console.error('Form is invalid. Please fill in all required fields.');
+      alert('Form is invalid. Please fill in all required fields.');
     }
+
+
   }
 }
