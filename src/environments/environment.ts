@@ -5,13 +5,15 @@
 
 export const environment = {
   production: false,
+
   baseUrl: "http://97.74.86.95:8080",
-  baseAuthLoginUrl: "http://97.74.86.95:8080/api/auth/login",
-  baseAuthSignupUrl: "http://97.74.86.95:8080api/auth/signup",
-  // baseUrl: "http://localhost:8080",
-  // baseAuthLoginUrl: "http://localhost:8080/api/auth/login",
-  // baseAuthSignupUrl: "http://localhost:8080/api/auth/signup",
-  basePaymentPayUrl: "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay"
+  baseAuthLoginUrl:"http://97.74.86.95:8080/api/auth/login",
+  baseAuthSignupUrl:"http://97.74.86.95:8080api/auth/signup",
+
+  // baseUrl:"http://localhost:8080",
+  // baseAuthLoginUrl:"http://localhost:8080/api/auth/login",
+  // baseAuthSignupUrl:"http://localhost:8080/api/auth/signup",
+  basePaymentPayUrl:"https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay"
   // baseUrl:"https://api.everse.co.in",
   // baseAuthLoginUrl:"https://api.everse.co.in/api/auth/login",
   // baseAuthSignupUrl:"https://api.everse.co.in/api/auth/signup"

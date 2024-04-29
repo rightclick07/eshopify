@@ -23,7 +23,7 @@
         </app-bestseller-product-card>
       </mat-card>
     </div>
-  </div>
+</div>
 </section>
 
 <section class="alt__container" style="margin-bottom: 1%;">
@@ -52,22 +52,26 @@
   </div>
 </section>
 <!-- this is for Trending Drones  -->
-<section class="alt__container" style="margin-bottom: 1%;">
+<section style="margin-bottom: 1%;">
   <div>
     <h2 style="margin: 2px;font-family:sans-serif;font-weight:500 ;">
-      <mat-icon>check_circle</mat-icon>
-      TRENDING <b>DRONES</b>
-    </h2>
+      <mat-icon style="vertical-align: middle;">check_circle</mat-icon>
+      TRENDING <b>DRONES</b></h2>
     <div class="bestSellerDrone">
       <mat-card class="bestSellerDroneCard" *ngFor="let key of productList">
-        <app-bestseller-product-card [images]="key.images" [name]="key.name" [price]="key.price"
-          [discount]="key.discount" [compareAtPrice]="key.compareAtPrice" [id]="key.id">
-        </app-bestseller-product-card>
+        <app-bestseller-product-card
+          [images]="key.images"
+          [name]="key.name"
+          [price]="key.price"
+          [discount]="key.discount"
+          [compareAtPrice]="key.compareAtPrice"
+          [id]="key.id">
+       </app-bestseller-product-card>
       </mat-card>
     </div>
-  </div>
+</div>
 </section>
-<section class="alt__container" style="margin-bottom: 1%;">
+<section style="margin-bottom: 1%;">
   <app-shop-by-category></app-shop-by-category>
 </section>
 <app-accessories></app-accessories>
