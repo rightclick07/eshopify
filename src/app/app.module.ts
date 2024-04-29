@@ -66,6 +66,7 @@ import { DroneTrainingComponent } from './components/drone-services-component/dr
 import { DronePioletLicenseComponent } from './components/drone-services-component/drone-piolet-license/drone-piolet-license.component';
 import { DroneGetUinComponent } from './components/drone-services-component/drone-get-uin/drone-get-uin.component';
 import { DroneTrainingFormComponent } from './components/drone-services-component/drone-training/drone-training-form/drone-training-form.component';
+import { AccessoriesComponent } from './components/accessories/accessories.component';
 
 
 
@@ -119,8 +120,10 @@ import { DroneTrainingFormComponent } from './components/drone-services-componen
     DronePioletLicenseComponent,
     DroneGetUinComponent,
     DroneTrainingFormComponent,
-   
 
+
+    DroneGetUinComponent,
+    AccessoriesComponent
 
   ],
   imports: [

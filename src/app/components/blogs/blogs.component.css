@@ -75,7 +75,10 @@
 .blog_mat_card_tittle_div a{
   text-decoration: none;
 }
-
+  .alt__description {
+    overflow-y: hidden;
+    height: 100px;
+  }
 
 .blog_mat_card_tittle_div a P {
   font-size: 14px;
