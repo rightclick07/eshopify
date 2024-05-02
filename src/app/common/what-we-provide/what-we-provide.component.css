@@ -1,5 +1,5 @@
 .alt__whatWeProvideSection {
-  background-color: #1d1e22;
+  /* background-color: #1d1e22; */
   margin: 20px 0;
 }
 
@@ -16,12 +16,11 @@
 
 .alt__whatWeProvideCard {
   position: relative;
-  height: 190px;
+  height: 160px;
   flex: 0 0 auto;
   width: 217.5px;
-  border-width: 2px;
-  border-style: solid;
-  border-image: linear-gradient(to bottom, #0092cc, #97c961);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 12px;
   border-image-slice: 1;
   box-sizing: border-box;
   padding: 10px;
@@ -31,18 +30,24 @@
 .alt__whatWeProvideCard::after {
   position: absolute;
   content: '';
-  width: 0.7em;
-  height: 0.7em;
-  border-radius: 50%;
-  background: #0092cc;
-  background: radial-gradient(circle, #97c961 0%, #0092cc 100%);
+  width: 1em;
+  height: 1em;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 50%;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 0;
+  background: #212121;
   top: 7px;
   left: 7px;
 }
 
 .alt__ImgArea {
-  height: 70px;
-  width: 70px;
+  box-sizing: border-box;
+  padding: 10px;
+  height: 60px;
+  width: 60px;
+  background-color: black;
+  border-radius: 50%;
   display: inline-block;
 }
 
@@ -53,15 +58,17 @@
 }
 
 .alt__TitleArea>h3 {
-  color: #0092cc;
-  font-size: 15px;
-  font-weight: 800;
+  color: #212121;
+  margin-top: 5px;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .alt__DiscriptionArea {
-  color: #97c961;
+  color: black;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500;
+  line-height: 13px;
 }
 
 @media screen and (max-width: 768px) {

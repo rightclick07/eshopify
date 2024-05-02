@@ -66,6 +66,8 @@ import { DroneTrainingComponent } from './components/drone-services-component/dr
 import { DronePioletLicenseComponent } from './components/drone-services-component/drone-piolet-license/drone-piolet-license.component';
 import { DroneGetUinComponent } from './components/drone-services-component/drone-get-uin/drone-get-uin.component';
 import { AccessoriesComponent } from './components/accessories/accessories.component';
+import { ShopByBrandsComponent } from './common/shop-by-brands/shop-by-brands.component';
+import { ExtendedFooterLinksComponent } from './common/extended-footer-links/extended-footer-links.component';
 
 
 
@@ -119,6 +121,8 @@ import { AccessoriesComponent } from './components/accessories/accessories.compo
     DronePioletLicenseComponent,
     DroneGetUinComponent,
     AccessoriesComponent,
+    ShopByBrandsComponent,
+    ExtendedFooterLinksComponent,
 
   ],
   imports: [
