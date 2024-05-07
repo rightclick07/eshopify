@@ -74,12 +74,12 @@
  background-color: #fdfcfc;
 }
 .form {
- 
+
   display: flex;
   width: 100%;
   font-size: 12px;
   padding: -6px;
-  
+
 }
 .about{
     text-decoration: none;
@@ -110,7 +110,7 @@
   margin: 5px;
   padding: 5px;
   font-weight: bold;
- 
+
 }
 
 .sub-category-title{

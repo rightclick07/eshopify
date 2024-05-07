@@ -3,12 +3,20 @@
     "development"
   ],
   "hints": {
-    "no-inline-styles": "off",
     "axe/text-alternatives": [
       "default",
       {
         "image-alt": "off",
         "frame-title": "off"
+      }
+    ],
+    "axe/name-role-value": "off",
+    "no-inline-styles": "off",
+    "disown-opener": "off",
+    "axe/structure": [
+      "default",
+      {
+        "list": "off"
       }
     ],
     "axe/forms": [
@@ -17,18 +25,6 @@
         "label": "off"
       }
     ],
-    "button-type": "off",
-    "axe/name-role-value": [
-      "default",
-      {
-        "link-name": "off"
-      }
-    ],
-    "axe/structure": [
-      "default",
-      {
-        "list": "off"
-      }
-    ]
+    "button-type": "off"
   }
 }

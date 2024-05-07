@@ -1,6 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 import { SpinnerService } from './shared/services/spinner-service/spinner.service';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
@@ -8,12 +10,26 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private idleTimeout = 60 * 60 * 1000; // 30 minutes in milliseconds
-  private idleTimer: any;
 
-  constructor(public spinnerService: SpinnerService,private router:Router) {
+  private idleTimeout = 60 * 60 * 1000;
+  private idleTimer: any;
+  title: any;
+
+  constructor(public spinnerService: SpinnerService, private router: Router) {
     //this.resetTimer();
   }
+
+
+  ngOnInit() {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      // window.scrollTo(0, document.body.scrollHeight);
+      window.scrollTo(0, 0);
+    });
+  }
+
+
 
   // Listen for user activity events to reset the idle timer.
   @HostListener('document:mousemove', ['$event'])
@@ -30,6 +46,5 @@ export class AppComponent {
     // Implement your logout logic here.
     localStorage.clear();
     this.router.navigate(["/login"])
-    // For example, you can clear session data and redirect to the login page.
   }
 }
