@@ -40,7 +40,6 @@ mat-card{
 
 .footer {
   background-color: #e6e4eb;
-  padding: 30px 0;
   bottom: 0;
   width: 100%;
 }
@@ -59,8 +58,8 @@ ul{
 }
 .footer{
 	background-color: #e6e4eb;
-    padding: 70px 0;
-    
+    padding: 20px 0;
+  
 }
 .footer-col{
    width: 25%;

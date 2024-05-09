@@ -1,0 +1,13 @@
+<section class="alt__container">
+    <h2 style=" margin: 2px;font-family:sans-serif;font-weight:500 ;">
+        <mat-icon>assistant</mat-icon>
+        Shop By <b>Brands</b>
+    </h2>
+    <div class="alt__brandsContainer">
+        <div class="alt__brandcard" *ngFor="let brands of brands_list">
+            <a href="#">
+                <img [src]="brands.imgUrl" alt="{{brands.alt}}">
+            </a>
+        </div>
+    </div>
+</section>

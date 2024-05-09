@@ -6,10 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./what-we-provide.component.css']
 })
 export class WhatWeProvideComponent {
-  replacement_list = [
-    { logo: 'https://everse-assets.s3.amazonaws.com/what-we-provide/warranty.png', title: '1 year ', word: 'Warranty' },
-    { logo: 'https://everse-assets.s3.amazonaws.com/what-we-provide/replacement.png', title: '7-day', word: 'Replacement' },
-    { logo: 'https://everse-assets.s3.amazonaws.com/what-we-provide/delivery.png', title: 'Free', word: 'Shipping' },
-    { logo: 'https://everse-assets.s3.amazonaws.com/what-we-provide/billing.png', title: 'GST ', word: 'Billing' }
+  provided_list = [
+    { logo: 'assets/we-provide/Service.png', title: 'Guaranteed Peace of Mind', discription: 'Our 1-Year Warranty Promise' },
+    { logo: 'assets/we-provide/Refund.png', title: 'Risk-Free Purchase', discription: 'Enjoy Our 1-Week Refund Policy' },
+    { logo: 'assets/we-provide/Free-shipping.png', title: 'Shipping Made Simple', discription: 'Enjoy Free Shipping on Every Order' },
+    { logo: 'assets/we-provide/Online-support.png', title: '24/7 Assistance', discription: 'Access Online Support Anytime, Anywhere' },
+    { logo: 'assets/we-provide/After-sale-service.png', title: 'After-Sale Service', discription: 'Our Commitment Beyond Purchase' },
+    { logo: 'assets/we-provide/Drone-Training.png', title: 'Empowering Your Flight', discription: 'Training Included with Every Drone Purchase' },
   ];
 }
