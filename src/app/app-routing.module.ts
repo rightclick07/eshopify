@@ -25,6 +25,7 @@ import { DroneRentComponent } from './components/drone-services-component/drone-
 import { DroneTrainingComponent } from './components/drone-services-component/drone-training/drone-training.component';
 import { DronePioletLicenseComponent } from './components/drone-services-component/drone-piolet-license/drone-piolet-license.component';
 import { DroneGetUinComponent } from './components/drone-services-component/drone-get-uin/drone-get-uin.component';
+import { DroneTrainingFormComponent } from './components/drone-services-component/drone-training/drone-training-form/drone-training-form.component';
 
 
 const routes: Routes = [
@@ -52,6 +53,7 @@ const routes: Routes = [
     {path:"drone-repair",component:DroneRepairComponent},
     {path:"drone-rent",component:DroneRentComponent},
     {path:"drone-training",component:DroneTrainingComponent},
+    {path:"drone-training-form", component:DroneTrainingFormComponent},
     {path:"drone-piolet-license",component:DronePioletLicenseComponent},
     {path:"drone-get-uin",component:DroneGetUinComponent},
     {path:"account",loadChildren: () => import('./modules/account-module/account/account.module').then(m => m.AccountModule)},

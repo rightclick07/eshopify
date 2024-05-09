@@ -1,0 +1,150 @@
+<section class="drone_training_form_section">
+
+  <h1>Please fill the form below to send your application</h1>
+  <div class="drone_training_form-div">
+    <mat-card class="drone_training_form_mat_card">
+      <h2> Register Now</h2>
+
+      <form class="drone_training_form" [formGroup]="droneTrainingForm" (ngSubmit)="submitForm()">
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Enter Your Name</mat-label>
+          <input matInput formControlName="fullName">
+          <mat-error *ngIf="droneTrainingForm.get('fullName')?.errors?.['required'] && droneTrainingForm.get('fullName')?.touched">
+            Full Name is required
+          </mat-error>
+          <mat-error *ngIf="droneTrainingForm.get('fullName')?.errors?.['minlength']">
+            Full Name must be at least 2 characters long
+          </mat-error>
+          <mat-error *ngIf="droneTrainingForm.get('fullName')?.errors?.['maxlength']">
+            Full Name cannot exceed 50 characters
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Mobile Number -->
+
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Mobile Number</mat-label>
+          <input matInput formControlName="mobileNumber" pattern="^((\\+91-?)|0)?[0-9]{10}$">
+          <mat-error *ngIf="droneTrainingForm.get('mobileNumber')?.errors?.['required']">
+            Mobile Number is required
+          </mat-error>
+          <mat-error *ngIf="droneTrainingForm.get('mobileNumber')?.errors?.['pattern']">
+            Invalid Mobile Number format
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Email -->
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email">
+          <mat-error *ngIf="droneTrainingForm.get('email')?.errors?.['required']">
+            Email is required
+          </mat-error>
+          <mat-error *ngIf="droneTrainingForm.get('email')?.errors?.['email']">
+            Invalid Email format
+          </mat-error>
+          <mat-error *ngIf="droneTrainingForm.get('email')?.errors?.['maxlength']">
+            Email cannot exceed 40 characters
+          </mat-error>
+        </mat-form-field>
+
+
+
+        <!-- Select Model -->
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Experience/Fresher</mat-label>
+          <mat-select formControlName="experience">
+            <mat-option value="option2">Fresher</mat-option>
+            <mat-option value="option1">Experience</mat-option>
+          </mat-select>
+          <mat-error *ngIf="droneTrainingForm.get('experience')?.errors?.['required']">
+            Select Model is required
+          </mat-error>
+        </mat-form-field>
+
+
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>State</mat-label>
+          <input matInput formControlName="state">
+          <mat-error *ngIf="droneTrainingForm.get('state')?.errors?.['required']">
+            State is required
+          </mat-error>
+          <mat-error *ngIf="droneTrainingForm.get('state')?.errors?.['minlength']">
+            State must be at least 2 characters long
+          </mat-error>
+          <mat-error *ngIf="droneTrainingForm.get('state')?.errors?.['maxlength']">
+            State cannot exceed 40 characters
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>City</mat-label>
+          <input matInput formControlName="city">
+          <mat-error *ngIf="droneTrainingForm.get('city')?.errors?.['required']">
+            Location is required
+          </mat-error>
+          <mat-error *ngIf="droneTrainingForm.get('city')?.errors?.['minlength']">
+            Location must be at least 2 characters long
+          </mat-error>
+          <mat-error *ngIf="droneTrainingForm.get('city')?.errors?.['maxlength']">
+            Location cannot exceed 40 characters
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Address Input -->
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="address">
+          <mat-error *ngIf="droneTrainingForm.get('address')?.errors?.['required']">
+            Address is required
+          </mat-error>
+          <mat-error *ngIf="droneTrainingForm.get('address')?.errors?.['minlength']">
+            Address must be at least 2 characters long
+          </mat-error>
+          <mat-error *ngIf="droneTrainingForm.get('address')?.errors?.['maxlength']">
+            Address cannot exceed 100 characters
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Landmark Input -->
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Landmark</mat-label>
+          <input matInput formControlName="landmark">
+          <mat-error *ngIf="droneTrainingForm.get('landmark')?.errors?.['required']">
+            Landmark is required
+          </mat-error>
+          <mat-error *ngIf="droneTrainingForm.get('landmark')?.errors?.['minlength']">
+            Landmark must be at least 2 characters long
+          </mat-error>
+          <mat-error *ngIf="droneTrainingForm.get('landmark')?.errors?.['maxlength']">
+            Landmark cannot exceed 100 characters
+          </mat-error>
+        </mat-form-field>
+
+
+        <!-- Message -->
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Message</mat-label>
+          <textarea matInput formControlName="message"></textarea>
+          <mat-error *ngIf="droneTrainingForm.get('message')?.errors?.['required']">
+            Message is required
+          </mat-error>
+          <mat-error *ngIf="droneTrainingForm.get('message')?.errors?.['minlength']">
+            Message must be at least 10 characters long
+          </mat-error>
+          <mat-error *ngIf="droneTrainingForm.get('message')?.errors?.['maxlength']">
+            Message cannot exceed 500 characters
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Submit Button -->
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+
+      </form>
+
+    </mat-card>
+  </div>
+</section>
