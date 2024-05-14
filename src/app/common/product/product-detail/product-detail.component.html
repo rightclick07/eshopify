@@ -1,36 +1,120 @@
 <section id="Product__Detail__Section">
+
   <p>Home>Smartwatches>Big Display Smart... ><strong>Wave Pro 47</strong></p>
+
+
+  <!-- <div id="Product__Detail__div" [style.height.px]="getImageHeight()"> -->
   <div id="Product__Detail__div">
-    <div id="Product__Detail__image__div">
-      <mat-card id="Product__Detail__button__image">
-        <div class="Product__Detail__button__image__div">
-          <img src="https://cdn.pixabay.com/photo/2018/01/22/14/13/animal-3099035_1280.jpg" alt="image not found">
+
+    <div id="Product__Detail__image__div" [style.height.px]="getImageHeight()">
+      <div id="Product__Detail__button__image" [style.height.px]="getImageHeight()">
+        <div class="Product__Detail__button__image__div" *ngFor="let image of images">
+          <img [src]="image" alt="image not found" (mouseenter)="updateSelectedImage(image)">
         </div>
-        <div class="Product__Detail__button__image__div">
-          <img src="https://cdn.pixabay.com/photo/2018/01/22/14/13/animal-3099035_1280.jpg" alt="image not found">
-        </div>
-
-
-
-
-      </mat-card>
-
+      </div>
       <mat-card id="Product__Detail__show__image">
-        <img src="https://cdn.pixabay.com/photo/2018/01/22/14/13/animal-3099035_1280.jpg" alt="image not found">
-        <!-- <img src="https://cdn.pixabay.com/photo/2018/01/22/14/13/animal-3099035_1280.jpg" alt="image not found"> -->
+        <div class="slider-main">
+          <div class="items" *ngFor="let image of images;" [style.height.px]="getImageHeight()">
+            <img [src]="selectedImage ? selectedImage : image" alt="image not found">
+          </div>
+        </div>
+        <div class="button-area-org">
+          <button mat-icon-button class="prev-org  " (click)="updateSelectedImage('prev')">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+          </button>
+          <button mat-icon-button class="next-org  " (click)="updateSelectedImage('next')">
+            <mat-icon>keyboard_arrow_right</mat-icon>
+          </button>
+        </div>
       </mat-card>
 
     </div>
 
 
+    <div id="Product__Detail__content__div">
+
+      <div class=" Product__Detail__rating">
+        <div class=" Product__Detail__rating__caption">
+          <img src="\assets\img\banners\star-image.png" alt="image not found">
+          <span style="display: inline-block;">4.9 | 50 reviews</span>
+          <img src="\assets\img\banners\right-image-icon.png" alt="image not found" style="display: inline-block;">
+        </div>
+
+        <span>Get a flat ₹300 OFF by using BIG300</span>
+
+        <div class="shre__image__icon" (mouseenter)="showPopup()" (mouseleave)="hidePopup()"
+          (mouseenter)="clearPopupTimeout()">
+          <img src="\assets\img\banners\share_icon_1.png" alt="">
+          <div class="popup" *ngIf="isPopupVisible">
+
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Gmail</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class=" Product__Detail__name">
+        <h2>Wave call</h2>
+        <p>Bluetooth Calling Smartwatch with 1.69" (4.29 cm) HD Curved Display, 150+ Watch Faces, Heart Rate & SPO2
+          Monitoring</p>
+      </div>
+
+      <div class="product__detail__price">
+        <p>₹1,699<sup>00</sup> <span>₹ 7,990.00</span><strong> 79 % off</strong></p>
+        <div class="offer__timer">
+          <p><img src="\assets\img\banners\lightning-fill.svg" alt=""> <span>Ending in &nbsp; :</span> <strong>{{ hours
+              }} hours</strong><strong>{{ minutes }} min </strong><strong>{{seconds}} sec</strong></p>
+        </div>
+
+      </div>
 
 
+      <div class="product__detail__color">
+        <p><strong>Choose your colour :</strong> &nbsp; &nbsp; &nbsp; {{ selectedColor }}</p>
+        <div class="product__detail__choose__color">
+          <div *ngFor="let color of colors; let i = index" [style.background-color]="color"
+            [class.active]="isSelected(i)" (click)="setActiveColor(color, i)">
+          </div>
+        </div>
+      </div>
 
 
-    <div id="Product__Detail__content__div">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima libero
-      tenetur voluptatibus saepe modi
-      officiis dolore, iste atque et facere mollitia consequatur aut nesciunt dolorum in quae pariatur. Hic, illum?
+      <div class="product__detail_delivery">
+        <p>Check Delivery</p>
+        <div class="product__detail_delivery__input_box">
+          <form class="drone_check__delivery_form" #deliveryForm="ngForm" (ngSubmit)="handleSubmit(deliveryForm)">
+            <input type="text" name="pin" ngModel placeholder="Enter Your Pin" required>
+            <button mat-button type="submit">Submit</button>
+          </form>
+
+          <p class=" product__detail_delivery__param1"><strong><span>Free delivery </span>| By Monday, 13 May</strong>
+          </p>
+          <p class=" product__detail_delivery__param2">If ordered within <span>18 hrs 21 mins</span></p>
+        </div>
+
+      </div>
+
+
+      <div class="product__deatail__user">
+        <p>Users' Love</p>
+
+        <div class="product__deatail__user__tittle">
+          <div class="product__deatail__user__image__div">
+            <img src="\assets\img\banners\amazon__logo_icon.png" alt="image not found">
+          </div>
+          <div class="product__deatail__user_param">
+            <p class="product__deatail__user__param1"> <strong>1.5Lacs+ units sold on Amazon</strong></p>
+            <!-- <hr class="dotted-hr"> -->
+            <p class="product__deatail__user__param2"><strong>16k+ 5 ⭐ reviews</strong></p>
+          </div>
+        </div>
+      </div>
+
+
     </div>
+
   </div>
 
 
@@ -39,3 +123,57 @@
 
 
 </section>
+<!--
+.product__deatail__user>p {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin-top: 30px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #1a2024;
+}
+
+.product__deatail__user__tittle {
+  width: 400px;
+  margin-top: 12px;
+  padding: 16px;
+  border-radius: 15px;
+
+  display: flex;
+}
+
+.product__deatail__user__image__div {
+  padding: 10px 20px;
+  height: 42px;
+  width: 42px;
+  object-fit: cover;
+  background-color: #F2F5F9;
+}
+
+.product__deatail__user__image__div img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.product__deatail__user_param{
+  padding: 0px 0px 5px 28px;
+  background-color: #E7EFFB;
+}
+.product__deatail__user__param1 {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #070707;
+
+}
+.dotted-hr {
+  border-top: 1px dotted #ccc;
+
+}
+.product__deatail__user__param2 {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #070707;
+
+} -->
