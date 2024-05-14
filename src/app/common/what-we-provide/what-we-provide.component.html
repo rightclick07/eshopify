@@ -1,5 +1,15 @@
-<div class="replcement_categories_main_div">
-    <div  class="replcement_categories_tittle"    *ngFor="let replacement of replacement_list">
-    <img [src]="replacement.logo" alt="" width="70px">
-    <p> <span>{{replacement.title}}</span> {{replacement.word}}</p>
+<div class="alt__whatWeProvideSection">
+    <div class="alt__whatWeProvideContainer alt__container">
+        <div class="alt__whatWeProvideCard" *ngFor="let provided of provided_list">
+            <div class="alt__ImgArea">
+                <img [src]="provided.logo">
+            </div>
+            <div class="alt__TitleArea">
+                <h3>{{provided.title}}</h3>
+            </div>
+            <div class="alt__DiscriptionArea">
+                <p>{{provided.discription}}</p>
+            </div>
+        </div>
+    </div>
 </div>

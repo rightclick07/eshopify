@@ -99,35 +99,7 @@ mat-icon {
   background-color: #444;
   color: white;
 }
-.series-card {
-  width: 200px;
-  height: auto; /* Adjust the height of the card */
-  overflow: hidden;
-  border-radius: 15px;
- 
-}
 
-.series-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center; /* Ensure the center of the image is visible */
-  border-radius: 25px;
-}
-
-@media (max-width: 768px) {
-  .series-card-container {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  .series-card {
-    width: 150px;
-    margin-bottom: 20px;
-    border-radius: 25px;
-  }
-}
 .what-we-do-card {
   max-width: 200px;
   margin: 5px;
@@ -392,15 +364,13 @@ p {
 
 .series-card-container {
   display: flex;
+  flex-direction: row;
+  overflow-x: auto;
   margin: 10px 30px;
   margin-bottom: 0;
   gap: 30px;
-  overflow-y: hidden;
 }
 
-.series-card-container::-webkit-scrollbar {
-  display: none;
-}
 
 .series-card {
   flex: 0 0 auto;
@@ -476,18 +446,6 @@ p {
 
   .comment {
     font-size: 14px;
-  }
-
-  .series-card-container {
-    display: flex;
-    overflow-x: hidden;
-  }
-
-  .series-card {
-    flex: 0 0 auto;
-    width: 150px;
-    margin-bottom: 20px;
-    border-radius: 25px;
   }
 
   .home-page {

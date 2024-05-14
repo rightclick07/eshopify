@@ -48,7 +48,7 @@ mat-card{
 	margin:0;
 	padding:0;
 	box-sizing: border-box;
-    
+
 }
 .row{
 	display: flex;
@@ -60,7 +60,7 @@ ul{
 .footer{
 	background-color: #e6e4eb;
     padding: 70px 0;
-    
+
 }
 .footer-col{
    width: 25%;

@@ -1,0 +1,43 @@
+mat-icon {
+    font-size: 15px;
+    vertical-align: bottom;
+    color: #ffc107;
+}
+
+.alt__brandsContainer {
+    margin: 10px 5px;
+    display: flex;
+    gap: 3%;
+    box-sizing: border-box;
+    padding: 20px;
+    overflow-y: hidden;
+    justify-content: space-between;
+}
+
+.alt__brandsContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.alt__brandcard {
+    flex: 0 0 auto;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    padding: 30px;
+    border-radius: 50%;
+    box-shadow: 0 2px 40px 0 rgba(110, 130, 208, 0.18);
+}
+
+.alt__brandcard>a>img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+@media only screen and (max-width: 600px) {
+    .alt__brandcard {
+        width: 100px;
+        height: 100px;
+    }
+}

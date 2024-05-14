@@ -1,17 +1,12 @@
 <div>
   <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav
-        #drawer
-        class="sidenav"
-        [ngClass]="{hidden:!(isHandset$ | async)===true}"
-        fixedInViewport="false"
-        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-        [mode]="(isHandset$ | async) ? 'over' : 'side'"
-        [opened]="(isHandset$ | async) === false">
+    <mat-sidenav #drawer class="sidenav" [ngClass]="{hidden:!(isHandset$ | async)===true}" fixedInViewport="false"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
       <mat-toolbar>
         <div>
           <a routerLink="/" routerlink-active="active-link" class="logo-link">
-              <img src="assets/img/everse-logo.png"  class="logo"  alt="logo"/>
+            <img src="assets/img/everse-logo.png" class="logo" alt="logo" />
           </a>
         </div>
       </mat-toolbar>
@@ -46,70 +41,66 @@
 
       <mat-toolbar class="toolbar mat-elevation-z3" *ngIf="toolbarService.showMainToolbar$ | async">
         <mat-toolbar-row>
-          <button
-          type="button"
-          aria-label="Toggle sidenav"
-          mat-icon-button
-          (click)="drawer.toggle()"
-          *ngIf="isHandset$ | async">
-          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-        </button>
-            <!-- <button mat-button >
+          <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+            *ngIf="isHandset$ | async">
+            <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+          </button>
+          <!-- <button mat-button >
                 <a routerLink="/"  class="home-link">
                     <mat-icon style="vertical-align: middle; margin-right: 2px;">home</mat-icon>
                      <span>Home</span>
                 </a>
             </button> -->
-           <!-- <app-menu-submenu></app-menu-submenu> -->
-           <div *ngIf="!(isHandset$ | async)">
+          <!-- <app-menu-submenu></app-menu-submenu> -->
+          <div *ngIf="!(isHandset$ | async)">
             <a routerLink="/" routerlink-active="active-link" class="logo-link">
-              <img src="assets/img/everse-logo.png" class="logo"   alt="logo"/>
+              <img src="assets/img/everse-logo.png" class="logo" alt="logo" />
               <!-- <span style="color:#20c997;">Everse</span> -->
-          </a>
-           </div>
-           <div *ngIf="!(isHandset$ | async)">
+            </a>
+          </div>
+          <div *ngIf="!(isHandset$ | async)">
             <button mat-button routerLink="/home" routerlink-active="active-link" class="logo-link">
               <mat-icon style="vertical-align: middle;" aria-label="Side nav toggle icon">home</mat-icon> Home
             </button>
-           </div>
-           <div *ngIf="(isHandset$ | async)">
+          </div>
+          <div *ngIf="(isHandset$ | async)">
             <a routerLink="/" routerlink-active="active-link" class="logo-link">
-                <img src="assets/img/everse-logo.png" class="logo"   alt="logo"/>
-                <!-- <span style="color:#20c997;">Everse</span> -->
+              <img src="assets/img/everse-logo.png" class="logo" alt="logo" />
+              <!-- <span style="color:#20c997;">Everse</span> -->
             </a>
-           </div>
-        <div *ngIf="!(isHandset$ | async)">
-          <button mat-button [matMenuTriggerFor]="menu">Drone</button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item *ngFor="let subItem of category[0].subCategory" >
-              <span (click)="onClickCategory(subItem.title)">
-                {{ subItem.title }}
-              </span>
+          </div>
+          <div *ngIf="!(isHandset$ | async)">
+            <button mat-button [matMenuTriggerFor]="menu">Drone</button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item *ngFor="let subItem of category[0].subCategory">
+                <span (click)="onClickCategory(subItem.title)">
+                  {{ subItem.title }}
+                </span>
 
+              </button>
+            </mat-menu>
+            <button mat-button [matMenuTriggerFor]="menu1">Services</button>
+            <mat-menu #menu1="matMenu">
+              <button mat-menu-item *ngFor="let subItem of category[1].subCategory">
+                <span (click)="onClickCategory(subItem.title)">
+                  {{ subItem.title }}
+                </span>
+              </button>
+            </mat-menu>
+          </div>
+          <div *ngIf="!(isHandset$ | async)">
+            <button mat-button routerLink="/blogs" style="text-decoration: none;" routerlink-active="active-link">
+              Blogs
             </button>
-          </mat-menu>
-          <button mat-button [matMenuTriggerFor]="menu1">Services</button>
-          <mat-menu #menu1="matMenu">
-            <button mat-menu-item *ngFor="let subItem of category[1].subCategory">
-              <span (click)="onClickServices(subItem.routeurl)">
-                {{ subItem.title }}
-              </span>
-            </button>
-          </mat-menu>
-        </div>
-        <div *ngIf="!(isHandset$ | async)">
-          <button mat-button routerLink="/blogs" style="text-decoration: none;" routerlink-active="active-link">
-            Blogs
-          </button>
-        </div>
-            <span class="spacer"></span>
+          </div>
+          <span class="spacer"></span>
 
-            <!-- <button mat-button fxHide.xs="true" fxHide.sm="true" >
+          <!-- <button mat-button fxHide.xs="true" fxHide.sm="true" >
               <a class="about" routerLink="/admin">
                <mat-icon style="vertical-align: middle;">chrome_reader_mode</mat-icon>
                   Admin</a>
            </button> -->
-            <!-- <button mat-button [matMenuTriggerFor]="companyMenu"  *ngIf="isHandset$ | async" >
+          <!-- <button mat-button [matMenuTriggerFor]="companyMenu"  *ngIf="isHandset$ | async" >
               <mat-icon style="vertical-align: middle;margin-right: 5px;">business</mat-icon>
                  Company
             </button>
@@ -121,7 +112,7 @@
                   </div>
               </mat-menu>
               -->
-              <!-- <div *ngIf="!(isHandset$ | async)">
+          <!-- <div *ngIf="!(isHandset$ | async)">
                 <input type="search" placeholder="Search" class="mat-elevation-z2" [matAutocomplete]="auto" [formControl]="myControl">
                 <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
                   <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
@@ -129,53 +120,54 @@
                   </mat-option>
                 </mat-autocomplete>
               </div> -->
-              <div>
-                 <button mat-button  (click)="goToSearchPage()">
-                   <mat-icon>
-                    search
-                   </mat-icon>
-                 </button>
-              </div>
-              <div *ngIf="isAdmin">
-                <button  mat-button routerLink="admin" *ngIf="!(isHandset$ | async)">
-                  <mat-icon >account_balance</mat-icon>
-                  Admin
+          <div>
+            <button mat-button (click)="goToSearchPage()">
+              <mat-icon>
+                search
+              </mat-icon>
+            </button>
+          </div>
+          <div *ngIf="isAdmin">
+            <button mat-button routerLink="admin" *ngIf="!(isHandset$ | async)">
+              <mat-icon>account_balance</mat-icon>
+              Admin
+            </button>
+          </div>
+
+          <div>
+            <button mat-button (click)="opencart()">
+              <mat-icon [matBadge]="cartItemCount" matBadgeColor="warn">shopping_basket</mat-icon>
+            </button>
+          </div>
+
+
+
+          <div *ngIf="!isUserLoggedIn">
+            <button mat-button routerLink="/login" matTooltip="Login">
+              Login
+            </button>
+          </div>
+          <div *ngIf="isUserLoggedIn">
+            <button mat-mini-fab mat-button [matMenuTriggerFor]="menu" color="this.badgeClass">
+              {{this.initial}}
+            </button>
+            <mat-menu #menu="matMenu">
+              <div *ngFor="let option of profile">
+                <button mat-menu-item (click)="OnclickProfile(option.code)">
+                  <mat-icon style="vertical-align: middle;color: #1ea7a0;">{{option.icon}}</mat-icon> {{ option.code }}
                 </button>
               </div>
-
-              <div>
-                <button  mat-button (click)="opencart()">
-                  <mat-icon [matBadge]="cartItemCount" matBadgeColor="warn">shopping_basket</mat-icon>
-                </button>
-              </div>
-
-
-
-              <div *ngIf="!isUserLoggedIn">
-                <button  mat-button routerLink="/login" matTooltip="Login">
-                  Login
-                </button>
-              </div>
-              <div *ngIf="isUserLoggedIn">
-                <button mat-mini-fab mat-button [matMenuTriggerFor]="menu" color="this.badgeClass" >
-                  {{this.initial}}
-                </button>
-                <mat-menu #menu="matMenu" >
-                  <div *ngFor="let option of profile">
-                    <button mat-menu-item (click)="OnclickProfile(option.code)" >
-                     <mat-icon style="vertical-align: middle;color: #1ea7a0;">{{option.icon}}</mat-icon> {{ option.code }}
-                    </button>
-                  </div>
-                </mat-menu>
-              </div>
+            </mat-menu>
+          </div>
 
         </mat-toolbar-row>
-    </mat-toolbar>
-   <!-- <app-spinner></app-spinner> -->
-    <!-- WhatsApp Chat Added  -->
-   <a class="float_whatsapp"  href="https://wa.me/919429691484?text=Chat With Everse Sales & Tech Team" target="_blank">
-    <img width="50px" src="assets/img/social-media/whatsapp-logo.png" alt=" ">
-  </a>
+      </mat-toolbar>
+      <!-- <app-spinner></app-spinner> -->
+      <!-- WhatsApp Chat Added  -->
+      <a class="float_whatsapp" href="https://wa.me/919429691484?text=Chat With Everse Sales & Tech Team"
+        target="_blank">
+        <img width="50px" src="assets/img/social-media/whatsapp-logo.png" alt=" ">
+      </a>
 
       <!-- Add Content Here -->
     </mat-sidenav-content>
