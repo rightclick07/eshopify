@@ -1,0 +1,225 @@
+.login__container {
+    display: flex;
+    left: auto;
+    right: auto;
+    justify-content: center;
+    background-image: url(/assets/img/banners/login-banner.jpg);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+   
+  .login__container__mat__card {
+    margin: 30px 0px;
+    width: 400px;
+    height: auto;
+    display: flex;
+    border-radius: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+  }
+   
+  .login__container__img {
+    margin: 40px 0px 0px 0px;
+    width: 100px;
+  }
+   
+  .login__container__mat__card h1 {
+    margin: 0px 0px 50px 0px;
+    font-weight: bold;
+    font-size: 30px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+   
+  .login__container__mat__card p {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    word-spacing: 1.5px;
+    line-height: 1.5;
+    color: rgba(0, 0, 0, 0.676);
+   
+  }
+   
+  .login__container__mat__card p strong {
+    color: #8a57ea;
+    font-weight: bold;
+  }
+   
+  .login__container__mat__card button {
+    margin: 0px 0px 20px 0px;
+    width: 90%;
+    height: 50px;
+    background-color: #8a57ea;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    word-spacing: 1px;
+    color: white;
+    border-radius: 10px;
+    transition: background-color 0.5s;
+  }
+   
+  .login__container__mat__card button:hover {
+    background-color: yellow;
+    color: black;
+  }
+   
+   
+  .login__container__mat__card button div {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+  }
+   
+  .login__container__mat__card button div img {
+    width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: white;
+   
+  }
+   
+  .login__hr__tag {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+   
+  }
+   
+  .login__hr__tag hr {
+    width: 40%;
+  }
+   
+  .login__hr__tagspan span {
+    flex: 1;
+    text-align: center;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.676);
+  }
+   
+  .login__container__option {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    padding-bottom: 20px;
+  }
+   
+  .login__container__option div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+   
+  .login__container__option div img {
+    width: 25px;
+    width: 25px;
+    object-fit: cover;
+  }
+   
+  .login__container__option p {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    font-size: 16px;
+    word-spacing: 1.5px;
+    letter-spacing: 0.5px;
+    color: rgba(0, 0, 0, 0.676);
+    margin-top: 0px;
+  }
+   
+  .login__container__condition p {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: justify;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    color: rgba(0, 0, 0, 0.676);
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+   
+  }
+   
+  .login__container__condition p img {
+    height: 12px;
+    width: 12px;
+    object-fit: cover;
+  }
+   
+  .login__container__condition span {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* text-align: justify; */
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: rgba(0, 0, 0, 0.432);
+    display: inline-block;
+    padding-bottom: 20px;
+    font-weight: bold;
+  }
+   
+  @media screen and (max-width: 570px) {
+    .login__container__mat__card {
+      width: 350px;
+    }
+   
+    .login__container__img {
+      width: 80px;
+    }
+   
+    .login__container__mat__card h1 {
+      font-size: 20px;
+    }
+   
+    .login__container__mat__card p {
+      text-align: center;
+      font-size: 14px;
+    }
+   
+    .login__container__mat__card button {
+      width: 80%;
+      height: 50px;
+      font-size: 16px;
+    }
+   
+    .login__container__mat__card button div {
+      height: 25px;
+      width: 25px;
+    }
+   
+    .login__hr__tag {
+      width: 80%;
+    }
+   
+    .login__container__option div img {
+      width: 20px;
+      width: 20px;
+    }
+   
+    .login__container__option p {
+      font-size: 14px;
+    }
+   
+    .login__container__condition {
+      padding: 10px;
+    }
+   
+    .login__container__condition p {
+      font-size: 12px;
+    }
+   
+    .login__container__condition p img {
+      height: 10px;
+      width: 10px;
+    }
+   
+    .login__container__condition span {
+      font-size: 11px;
+    }
+   
+  }

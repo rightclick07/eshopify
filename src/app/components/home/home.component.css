@@ -366,9 +366,10 @@ p {
   display: flex;
   flex-direction: row;
   overflow-x: auto;
-  margin: 10px 30px;
-  margin-bottom: 0;
-  gap: 30px;
+}
+
+.series-card-container::-webkit-scrollbar {
+  display: none;
 }
 
 
@@ -376,6 +377,7 @@ p {
   flex: 0 0 auto;
   width: 200px;
   height: auto;
+  margin: 15px;
   border-radius: 15px;
 }
 

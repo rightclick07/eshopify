@@ -69,6 +69,8 @@ import { DroneTrainingFormComponent } from './components/drone-services-componen
 import { AccessoriesComponent } from './components/accessories/accessories.component';
 import { ShopByBrandsComponent } from './common/shop-by-brands/shop-by-brands.component';
 import { ExtendedFooterLinksComponent } from './common/extended-footer-links/extended-footer-links.component';
+import { MobileNumberLoginComponent } from './components/auth-component/mobile-number-login/mobile-number-login.component';
+import { ProductDetailComponent } from './common/product-detail/product-detail.component';
 
 
 
@@ -126,6 +128,8 @@ import { ExtendedFooterLinksComponent } from './common/extended-footer-links/ext
     ShopByBrandsComponent,
     ExtendedFooterLinksComponent,
     DroneTrainingFormComponent,
+    MobileNumberLoginComponent,
+    ProductDetailComponent,
 
   ],
   imports: [
