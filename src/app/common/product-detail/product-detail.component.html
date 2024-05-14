@@ -1,16 +1,16 @@
 
 <div *ngIf="isHandset$ | async">
-
+ Mobile View
 </div>
 <div *ngIf="!(isHandset$ | async)">
     <section id="Product__Detail__Section">
- 
+
         <p>Home>Smartwatches>Big Display Smart... ><strong>Wave Pro 47</strong></p>
-       
-       
+
+
         <div id="Product__Detail__div" [style.height.px]="getImageHeight()">
         <!-- <div id="Product__Detail__div"> -->
-       
+
           <div id="Product__Detail__image__div" [style.height.px]="getImageHeight()">
             <div id="Product__Detail__button__image" [style.height.px]="getImageHeight()">
               <div class="Product__Detail__button__image__div" *ngFor="let image of images">
@@ -32,50 +32,50 @@
                 </button>
               </div>
             </mat-card>
-       
+
           </div>
-       
-       
+
+
           <div id="Product__Detail__content__div">
-       
+
             <div class=" Product__Detail__rating">
               <div class=" Product__Detail__rating__caption">
                 <img src="https://everse-assets.s3.amazonaws.com/product-details/star-image.png" alt="image not found">
                 <span style="display: inline-block;">4.9 | 50 reviews</span>
                 <img src="https://everse-assets.s3.amazonaws.com/product-details/right-image-icon.png" alt="image not found" style="display: inline-block;">
               </div>
-       
+
               <span>Get a flat ₹300 OFF by using BIG300</span>
-       
+
               <div class="shre__image__icon" (mouseenter)="showPopup()" (mouseleave)="hidePopup()"
                 (mouseenter)="clearPopupTimeout()">
                 <img src="https://everse-assets.s3.amazonaws.com/product-details/share_icon_1.png" alt="">
                 <div class="popup" *ngIf="isPopupVisible">
-       
+
                   <a href="#">Facebook</a>
                   <a href="#">Twitter</a>
                   <a href="#">Gmail</a>
                 </div>
               </div>
-       
+
             </div>
-       
+
             <div class=" Product__Detail__name">
               <h2>Wave call</h2>
               <p>Bluetooth Calling Smartwatch with 1.69" (4.29 cm) HD Curved Display, 150+ Watch Faces, Heart Rate & SPO2
                 Monitoring</p>
             </div>
-       
+
             <div class="product__detail__price">
               <p>₹1,699<sup>00</sup> <span>₹ 7,990.00</span><strong> 79 % off</strong></p>
               <div class="offer__timer">
                 <p><img src="https://everse-assets.s3.amazonaws.com/product-details/lightning-fill.svg" alt=""> <span>Ending in &nbsp; :</span> <strong>{{ hours
                     }} hours</strong><strong>{{ minutes }} min </strong><strong>{{seconds}} sec</strong></p>
               </div>
-       
+
             </div>
-       
-       
+
+
             <div class="product__detail__color">
               <p><strong>Choose your colour :</strong> &nbsp; &nbsp; &nbsp; {{ selectedColor }}</p>
               <div class="product__detail__choose__color">
@@ -84,8 +84,8 @@
                 </div>
               </div>
             </div>
-       
-       
+
+
             <div class="product__detail_delivery">
               <p>Check Delivery</p>
               <div class="product__detail_delivery__input_box">
@@ -93,18 +93,18 @@
                   <input type="text" name="pin" ngModel placeholder="Enter Your Pin" required>
                   <button mat-button type="submit">Submit</button>
                 </form>
-       
+
                 <p class=" product__detail_delivery__param1"><strong><span>Free delivery </span>| By Monday, 13 May</strong>
                 </p>
                 <p class=" product__detail_delivery__param2">If ordered within <span>18 hrs 21 mins</span></p>
               </div>
-       
+
             </div>
-       
-       
+
+
             <div class="product__deatail__user">
               <p>Users' Love</p>
-       
+
               <div class="product__deatail__user__tittle">
                 <div class="product__deatail__user__image__div">
                   <img src="https://everse-assets.s3.amazonaws.com/product-details/amazon__logo_icon.png" alt="image not found">
@@ -116,16 +116,16 @@
                 </div>
               </div>
             </div>
-       
-       
+
+
           </div>
-       
+
         </div>
-       
-       
-       
-       
-       
-       
+
+
+
+
+
+
       </section>
 </div>
