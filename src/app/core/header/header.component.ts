@@ -34,119 +34,130 @@ export class HeaderComponent implements OnInit {
 
   toggleSearch: boolean = false;
   id:any;
-  category=[
-  {
-    title: "Drone",
-    subCategory: [
-      {
-        id:1,
-        title:"Consumer Drone",
-        icon:"",
-      },
-      {
-        id:2,
-        title:"Enterprise Drone",
-        icon:"",
-      },
-      {
-        id:3,
-        title:"Agricultural Drone",
-        icon:"",
-      },
-      {
-        id:4,
-        title:"Thermal Drone",
-        icon:"",
-      },
-      {
-        id:5,
-        title:"Toy Drone",
-        icon:""
-      }
-    ]
-  },
-  {
-    title:"Services",
-    url:"assets/img/utility/drone-service.png",
-    subCategory:[
-      {
-        id:1,
-        title:"Rent a Drone",
-        icon:"",
-        routeurl:"/drone-rent",
-        products:[]
-      },
-      {
-        id:2,
-        title:"Drone Repair",
-        icon:"",
-        routeurl:"/drone-repair",
-        products:[]
-      },
-      {
-        id:3,
-        title:"Drone Training",
-        icon:"",
-        routeurl:"/drone-training",
-      },
-      {
-        id:4,
-        title:"Get Your UIN",
-        icon:"",
-        routeurl:"/drone-piolet-license"
-
-      },
-      {
-        id:4,
-        title:"Drone Piolet License",
-        icon:"",
-        routeurl:"/drone-get-uin"
-      }
-    ]
+  category = [
+    {
+      title: "Drone",
+      subCategory: [
+        {
+          id: 1,
+          title: "Consumer Drone",
+          icon: "",
+          routeurl: "",
+        },
+        {
+          id: 2,
+          title: "Enterprise Drone",
+          icon: "",
+          routeurl: "",
+        },
+        {
+          id: 3,
+          title: "Agricultural Drone",
+          icon: "",
+          routeurl: "",
+        },
+        {
+          id: 4,
+          title: "Thermal Drone",
+          icon: "",
+          routeurl: "",
+        },
+        {
+          id: 5,
+          title: "Toy Drone",
+          icon: "",
+          routeurl: "",
+        }
+      ]
     },
     {
-      title:"Camera",
-      url:"assets/img/utility/camera.png",
-      subCategory:[
+      title: "Services",
+      url: "assets/img/utility/drone-service.png",
+      subCategory: [
         {
-          id:1,
-          title:"Action Camera",
-          icon:"",
+          id: 1,
+          title: "Rent a Drone",
+          icon: "",
+          routeurl: "/drone-rent",
+          products: []
         },
         {
-          id:2,
-          title:"DSLR",
-          icon:""
+          id: 2,
+          title: "Drone Repair",
+          icon: "",
+          routeurl: "/drone-repair",
+          products: []
         },
         {
-          id:3,
-          title:"Gimbles",
-          icon:""
+          id: 3,
+          title: "Drone Training",
+          icon: "",
+          routeurl: "/drone-training",
+        },
+        {
+          id: 4,
+          title: "Get Your UIN",
+          icon: "",
+          routeurl: "/drone-get-uin"
+ 
+        },
+        {
+          id: 5,
+          title: "Drone Piolet License",
+          icon: "",
+          routeurl: "/drone-piolet-license"
+        }
+      ]
+    },
+    {
+      title: "Camera",
+      url: "assets/img/utility/camera.png",
+      subCategory: [
+        {
+          id: 1,
+          title: "Action Camera",
+          icon: "",
+          routeurl: "",
+        },
+        {
+          id: 2,
+          title: "DSLR",
+          icon: "",
+          routeurl: "",
+        },
+        {
+          id: 3,
+          title: "Gimbles",
+          icon: "",
+          routeurl: "",
         },
       ]
-      },
-
-      {
-      title:"Gaming",
-      url:"assets/img/utility/gaming.png",
-      subCategory:[
+    },
+ 
+    {
+      title: "Gaming",
+      url: "assets/img/utility/gaming.png",
+      subCategory: [
         {
-          id:1,
-          title:"XBOX",
-          icon:""
+          id: 1,
+          title: "XBOX",
+          icon: "",
+          routeurl: "",
         },
         {
-          id:2,
-          title:"VR Headsets",
-          icon:""
+          id: 2,
+          title: "VR Headsets",
+          icon: "",
+          routeurl: "",
         },
         {
-          id:3,
-          title:"Play Stations",
-          icon:""
+          id: 3,
+          title: "Play Stations",
+          icon: "",
+          routeurl: "",
         },
       ]
-      },
+    },
   ]
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -471,5 +482,9 @@ onClickCategory(searchString:string){
     }else{
       this.toolbarService.setShowMainToolbar(true);
     }
+  }
+
+  onClickServices(routeurl: string) {
+    this.router.navigate([routeurl])
   }
 }

@@ -82,7 +82,7 @@
             <button mat-button [matMenuTriggerFor]="menu1">Services</button>
             <mat-menu #menu1="matMenu">
               <button mat-menu-item *ngFor="let subItem of category[1].subCategory">
-                <span (click)="onClickCategory(subItem.title)">
+                <span (click)="onClickServices(subItem.routeurl)">
                   {{ subItem.title }}
                 </span>
               </button>

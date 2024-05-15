@@ -26,6 +26,7 @@ import { DroneTrainingComponent } from './components/drone-services-component/dr
 import { DronePioletLicenseComponent } from './components/drone-services-component/drone-piolet-license/drone-piolet-license.component';
 import { DroneGetUinComponent } from './components/drone-services-component/drone-get-uin/drone-get-uin.component';
 import { DroneTrainingFormComponent } from './components/drone-services-component/drone-training/drone-training-form/drone-training-form.component';
+import { ProductDetailComponent } from './common/product-detail/product-detail.component';
 
 
 const routes: Routes = [
@@ -48,7 +49,7 @@ const routes: Routes = [
     // {path:"checkout",component:CheckoutComponent},
     {path:"content",component:BlogContentComponent},
     {path:"search",component:GlobalSearchComponent},
-    {path:"product-details/:id",component:ProductComponent},
+    {path:"product-details/:id",component:ProductDetailComponent},
     {path:"series/:id",component:SeriesComponent},
     {path:"drone-repair",component:DroneRepairComponent},
     {path:"drone-rent",component:DroneRentComponent},
