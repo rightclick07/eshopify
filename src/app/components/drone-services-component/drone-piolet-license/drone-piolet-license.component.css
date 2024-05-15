@@ -1,0 +1,373 @@
+section {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin-top: 50px;
+}
+
+.drone_piolet_main_div {
+  position: relative;
+}
+
+.drone_piolet_img_div {
+  width: auto;
+  height: 500px;
+}
+
+.drone_piolet_img_div img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.drone_piolet_img_text_div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 280px;
+  text-align: center;
+
+}
+
+.drone_piolet_img_text_div h1 {
+  font-size: 35px;
+  letter-spacing: 2px;
+  word-spacing: 5px;
+  line-height: 55px;
+  margin: 15px;
+  color: white;
+}
+
+.drone_piolet_img_text_div h5 {
+  font-size: 25px;
+  margin: 30px;
+  color: white;
+}
+
+.drone_piolet_img_text_div>button {
+  font-size: 18px;
+  margin: 15px;
+  width: 300px;
+  min-height: 50px;
+  border-radius: 30px;
+  background-color: yellow;
+  position: relative;
+}
+
+.drone_piolet_img_text_div>button:hover {
+  background-color: black;
+  color: white;
+}
+
+
+#formContainer {
+  border-radius: 50px;
+  margin-top: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+}
+
+#droneTrainingForm {
+  width: 480px;
+  height: 480px;
+
+}
+
+.mat_icon_div {
+  flex-direction: column;
+  display: flex;
+}
+
+mat-icon {
+  align-self: flex-end;
+  font-size: 30px;
+  font-weight: 999;
+  margin-right: 20px;
+
+}
+
+.form_heading {
+  font-size: 30px;
+  color: rgba(0, 0, 0, 0.443);
+  font-weight: 999;
+  text-align: center;
+}
+
+#droneTrainingForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.example-full-width {
+  width: 80%;
+  margin-bottom: 15px;
+
+}
+mat-error {
+  color: red;
+}
+
+#droneTrainingForm button {
+margin: 10px;
+width: 150px;
+height: 50px;
+border-radius: 25px;
+background-color: yellow;
+color: black;
+
+}
+#droneTrainingForm button:hover {
+background-color:black;
+color:white;
+
+}
+
+
+
+
+/* #registerButton:focus+#formContainer,
+#formContainer:focus-within {
+  display: block;
+} */
+
+
+
+
+
+
+
+
+.drone_piolet_second_div {
+  margin: 0px 150px;
+  padding: 50px 0px;
+}
+
+
+
+
+.drone_piolet_course-main_div h2 {
+  font-size: 35px;
+}
+
+.drone_piolet_course_div {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.drone_piolet_course_img_card {
+  /* background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%); */
+  border-radius: 20px;
+  width: 350px;
+  height: auto;
+  margin: 25px;
+  padding: 0px;
+}
+
+.drone_piolet_course_img_div {
+  width: 350px;
+  height: 230px;
+}
+
+.drone_piolet_course_img_div img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+.drone_piolet_course_text_div {
+  padding: .625rem;
+}
+
+.drone_piolet_course_text_div h3 {
+  font-size: 22px;
+}
+
+.drone_piolet_course_text_div p {
+  font-size: 16px;
+  line-height: 2;
+}
+
+
+
+
+
+.drone_piolet_why_everse-main_div h2 {
+  font-size: 35px;
+  margin: 50px 0px;
+}
+
+.drone_piolet_why_everse_div {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.drone_piolet_why_everse_content_div {
+  /* background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%); */
+  width: 350px;
+  height: auto;
+  margin: 25px;
+  padding: 0px;
+}
+
+.drone_piolet_why_everse_img_div {
+  width: 350px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.drone_piolet_why_everse_img_div img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.drone_piolet_why_everse_text_div {
+  padding: .625rem;
+  text-align: center;
+}
+
+.drone_piolet_why_everse_text_div h3 {
+  font-size: 22px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.drone_piolet_why_everse_text_div p {
+  font-size: 16px;
+  line-height: 2;
+  text-align: center;
+}
+
+
+
+.drone_piolet_tittle {
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+
+}
+
+.drone_piolet_tittle_row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.drone_piolet_tittle_image_div {
+  height: 360px;
+  width: 555px;
+}
+
+.drone_piolet_tittle_image_div img {
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+  vertical-align: top;
+}
+
+.drone_piolet_tittle_image_div h3 {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.drone_piolet_tittle_image_div p {
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.568);
+}
+
+.drone_piolet_tittle_image_div button {
+  font-size: 20px;
+  width: 150px;
+  height: 50px;
+  border-radius: 35px;
+  background-color: rgba(84, 200, 232, 1);
+}
+
+.drone_piolet_tittle_image_div button:hover {
+  background-color: rgba(232, 84, 84, 0.349);
+
+}
+
+
+
+.faq_ashked_question_main_div {
+  background: rgba(245, 247, 250, 1);
+  margin-bottom: 0px;
+}
+
+.faq_ashked_question_div {
+  margin: 0px 150px;
+  padding: 50px 0px;
+}
+
+.faq_ashked_question_div h3 {
+  font-size: 30px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.445);
+}
+
+
+.mat-expansion-panel {
+  margin-bottom: 20px;
+}
+
+.mat-expansion-panel-header {
+  font-size: 18px;
+  color: black;
+}
+
+.mat-expansion-panel p {
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.66);
+  line-height: 1.2;
+
+}
+
+
+@media (max-width: 768px) {
+
+  .drone_piolet_img_text_div {
+    width: 100%;
+  }
+
+  .drone_piolet_img_text_div h1 {
+    font-size: 22px;
+    line-height: 1;
+    margin: 5px;
+  }
+
+  .drone_piolet_img_text_div h5 {
+    font-size: 16px;
+    margin: 5px;
+  }
+
+  .drone_piolet_img_text_div button {
+    font-size: 16px;
+    margin: 5px;
+    width: 200px;
+  }
+
+  .drone_piolet_second_div {
+    margin: 0px 5px;
+    padding: 5px 0px;
+  }
+
+
+  .faq_ashked_question_div {
+    margin: 0px 10px;
+    padding: 10px 0px;
+  }
+
+
+}

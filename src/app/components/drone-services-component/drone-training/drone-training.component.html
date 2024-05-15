@@ -1,1 +1,66 @@
-<p>drone-training works!</p>
+<section class="drone_training_section">
+
+  <div class="drone_training_section_image_main_div">
+    <div class="drone_training_section_image_div">
+      <img src="\assets\img\banners\drone_image_training.jpg" alt="">
+    </div>
+
+    <div class="drone_training_section_image_text">
+      <h5>We'll help you reach the sky</h5>
+      <h1>Ready To Take Your First Lesson?</h1>
+      <h5>Enroll now in the Best Drone Training Program</h5>
+      <p>or contact us at +91 9380433237</p>
+      <button mat-raised-button routerLink="/drone-training-form">Register Now</button>
+
+    </div>
+  </div>
+
+
+
+  <div class="drone_training_section_tittle">
+
+    <h2>What to expect from our drone training program ?</h2>
+
+    <ul>
+      <li *ngFor="let training of droneTrainingData">
+        <mat-card>
+          <h3>{{ training.title }}</h3>
+          <p>{{ training.paragraph1 }}</p>
+          <p>{{ training.paragraph2 }}</p>
+        </mat-card>
+      </li>
+    </ul>
+
+  </div>
+
+  <div class="drone_training_section_tittle_expanssion">
+    <h3>Drone Pilot Training Course Highlights</h3>
+    <p>The course deals with the explanation of technical aspects of drone, regulations, simulation and drone pilot
+      training.</p>
+    <h4>Syllabus Covered</h4>
+
+
+    <div class="mat_accordion_mobile_viewe">
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let day of daysData; let isFirst = first" [expanded]="isFirst">
+          <mat-expansion-panel-header class="custom-header">
+            <span class="custom-day">{{ day.day }}</span>
+          </mat-expansion-panel-header>
+          <p *ngFor="let topic of day.topics">{{ topic }}</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+
+    <div class="Certificate_div">
+      <h3>Certificate</h3>
+      <p>At the end of the Training Course, a certificate will be presented to the participants who have attended all
+        the
+        sessions of the Training Course. The certificate will be titled,<strong>“Diploma in Drone Technology for
+          completing
+          ‘MULTIROTOR DRONE/UAV PILOT COURSE”</strong> </p>
+    </div>
+
+
+  </div>
+</section>

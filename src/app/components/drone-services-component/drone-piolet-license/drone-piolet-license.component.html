@@ -1,1 +1,154 @@
-<p>drone-piolet-license works!</p>
+<section>
+  <div class="drone_piolet_main_div">
+    <div class="drone_piolet_img_div">
+      <img src="\assets\img\banners\drone_image_trainig_4.jpg" alt="">
+    </div>
+    <div class="drone_piolet_img_text_div">
+      <h1>Get Trained with the Pioneers of Drone Industry!</h1>
+      <h5>Become market ready by enrolling in our industry-oriented courses</h5>
+      <h5>contact us at +91 9380433237 or</h5>
+
+      <button id="registerButton" mat-raised-button (click)="toggleForm()"> Register Your Request</button>
+
+      <mat-card id="formContainer" [style.display]="showForm ? 'block' : 'none'">
+        <div class="mat_icon_div">
+          <mat-icon (click)="cancelForm()">close</mat-icon>
+        </div>
+        <h3 class="form_heading"> Register your interest</h3>
+        <form id="droneTrainingForm" [formGroup]="dronePioletLicenseForm" (ngSubmit)="submitForm()">
+
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Enter Your Name</mat-label>
+            <input matInput formControlName="fullName">
+            <mat-error
+              *ngIf="dronePioletLicenseForm.get('fullName')?.errors?.['required'] && dronePioletLicenseForm.get('fullName')?.touched">
+              Full Name is required
+            </mat-error>
+            <mat-error *ngIf="dronePioletLicenseForm.get('fullName')?.errors?.['minlength']">
+              Full Name must be at least 2 characters long
+            </mat-error>
+            <mat-error *ngIf="dronePioletLicenseForm.get('fullName')?.errors?.['maxlength']">
+              Full Name cannot exceed 50 characters
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Mobile Number</mat-label>
+            <input matInput formControlName="mobileNumber" pattern="^((\+91-?)|0)?[0-9]{10}$">
+            <mat-error *ngIf="dronePioletLicenseForm.get('mobileNumber')?.errors?.['required']">
+              Mobile Number is required
+            </mat-error>
+            <mat-error *ngIf="dronePioletLicenseForm.get('mobileNumber')?.errors?.['pattern']">
+              Invalid Mobile Number format
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email">
+            <mat-error *ngIf="dronePioletLicenseForm.get('email')?.errors?.['required']">
+              Email is required
+            </mat-error>
+            <mat-error *ngIf="dronePioletLicenseForm.get('email')?.errors?.['email']">
+              Invalid Email format
+            </mat-error>
+            <mat-error *ngIf="dronePioletLicenseForm.get('email')?.errors?.['maxlength']">
+              Email cannot exceed 40 characters
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Message</mat-label>
+            <textarea matInput formControlName="message"></textarea>
+            <mat-error *ngIf="dronePioletLicenseForm.get('message')?.errors?.['required']">
+              Message is required
+            </mat-error>
+            <mat-error *ngIf="dronePioletLicenseForm.get('message')?.errors?.['minlength']">
+              Message must be at least 10 characters long
+            </mat-error>
+            <mat-error *ngIf="dronePioletLicenseForm.get('message')?.errors?.['maxlength']">
+              Message cannot exceed 500 characters
+            </mat-error>
+          </mat-form-field>
+
+          <button mat-raised-button type="submit">Post Comment</button>
+
+        </form>
+
+      </mat-card>
+
+
+
+    </div>
+  </div>
+
+  <div class="drone_piolet_second_div ">
+
+
+    <div class="drone_piolet_course-main_div">
+      <h2>Courses</h2>
+      <div class="drone_piolet_course_div">
+        <mat-card *ngFor="let course of courses" class="drone_piolet_course_img_card">
+          <div class="drone_piolet_course_img_div">
+            <img [src]="course.imageUrl" alt="Course Image not found">
+          </div>
+          <div class="drone_piolet_course_text_div">
+            <h3>{{ course.title }}</h3>
+            <p>{{ course.description }}</p>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+
+
+
+    <div class="drone_piolet_why_everse-main_div">
+      <h2> Why Everse</h2>
+      <div class="drone_piolet_why_everse_div">
+        <div *ngFor="let list of everselist" class="drone_piolet_why_everse_content_div">
+          <div class="drone_piolet_why_everse_img_div">
+            <img [src]="list.imageUrl" alt="Course Image not found">
+          </div>
+          <div class="drone_piolet_why_everse_text_div">
+            <h3>{{ list.title }}</h3>
+            <p>{{ list.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div *ngFor="let course of eversecontent" class="drone_piolet_tittle">
+      <div class="drone_piolet_tittle_row">
+        <div class="drone_piolet_tittle_image_div">
+          <img [src]="course.imagePath" alt="image not found">
+        </div>
+        <div class="drone_piolet_tittle_image_div">
+          <h3>{{ course.title }}</h3>
+          <p>{{ course.description }}</p>
+          <button mat-button> Learn More</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="faq_ashked_question_main_div">
+    <div class="faq_ashked_question_div">
+      <h3>Frequently asked questions</h3>
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let faqItem of faqItems; let isFirst = first" [expanded]="isFirst">
+          <mat-expansion-panel-header>
+            {{ faqItem.question }}
+          </mat-expansion-panel-header>
+          <p>{{ faqItem.answer }}</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+
+
+
+
+
+</section>
