@@ -12,7 +12,7 @@ import { SpinnerService } from 'src/app/shared/services/spinner-service/spinner.
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
-export class ProductComponent implements OnInit,OnChanges {
+export class ProductComponent implements OnInit, OnChanges {
   isSmallScreen$: Observable<boolean> | undefined;
   selectedImage!: string;
   isZoomed: boolean = false;
@@ -21,23 +21,22 @@ export class ProductComponent implements OnInit,OnChanges {
   offsetX: number = 0;
   offsetY: number = 0;
   selectedProduct: any;
-   cartItemsArray: any[] = [];
+  cartItemsArray: any[] = [];
   constructor(private route: ActivatedRoute,
-    private productService:ProductService,
+    private productService: ProductService,
     private breakpointObserver: BreakpointObserver,
-    private router:Router,
-    private cartService:CartService,
-    private spinnerService:SpinnerService) {}
+    private router: Router,
+    private cartService: CartService,
+    private spinnerService: SpinnerService) { }
 
-  
 
-  productdetails:any
+  productdetails: any
   ngOnInit(): void {
 
-    this.isSmallScreen$ = this.breakpointObserver.observe([Breakpoints.Handset,Breakpoints.Small, Breakpoints.XSmall])
-    .pipe(
-      map(result => result.matches)
-    );
+    this.isSmallScreen$ = this.breakpointObserver.observe([Breakpoints.Handset, Breakpoints.Small, Breakpoints.XSmall])
+      .pipe(
+        map(result => result.matches)
+      );
 
     this.route.params.subscribe(params => {
       const id = params['id']; // Retrieve the ID parameter from the route URL
@@ -45,54 +44,55 @@ export class ProductComponent implements OnInit,OnChanges {
       this.getProductById(id) // Display the ID in the console or perform further actions with it
       this.selectedImage = this.productdetails?.images[0];
     });
-    
-    console.log("this.productdetails",this.productdetails);
-    
-    console.log("this.selectedImage"+this.selectedImage);
-    
+
+    console.log("this.productdetails", this.productdetails);
+
+    console.log("this.selectedImage" + this.selectedImage);
+
   }
 
-  getProductById(id:number){
+  getProductById(id: number) {
     this.spinnerService.show();
-      this.productService.getproductById(id).subscribe((res:any)=>{
-        if(res){
-          this.spinnerService.hide();
-          this.productdetails=res?.payload;
-          console.log(this.productdetails);
-          let imgString=this.productdetails.images;
-          let imageList=this.createListFromString(imgString);
-          this.productdetails.images=imageList
-          console.log(this.productdetails);
-          this.selectedImage = this.productdetails?.images[0];
-        }
-          
-      })
+    this.productService.getproductById(id).subscribe((res: any) => {
+      if (res) {
+        this.spinnerService.hide();
+        this.productdetails = res?.payload;
+        console.log(this.productdetails);
+        let imgString = this.productdetails.images;
+        let imageList = this.createListFromString(imgString);
+        this.productdetails.images = imageList
+        console.log(this.productdetails);
+        this.selectedImage = this.productdetails?.images[0];
+      }
+
+    })
   }
+
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
     console.log(this.productdetails?.images);
-    
+
     if (this.productdetails?.images && this.productdetails?.images.length > 0) {
       this.selectedImage = this.productdetails?.images[0];
-      console.log("this.selectedImage",this.selectedImage);
-      
+      console.log("this.selectedImage", this.selectedImage);
+
     }
   }
-   // Initialize with the first image
+ 
 
   changeImage(image: string): void {
     this.selectedImage = image;
   }
 
-  addToCart(productDetails:any): void {
-    if(localStorage.getItem("token")){
-        // Implement your logic for adding the product to the cart
-       console.log('Product added to cart');
-       this.cartService.addToCart(productDetails)
-    }else{
-       this.router.navigate(["/login"])
+  addToCart(productDetails: any): void {
+    if (localStorage.getItem("token")) {
+      // Implement your logic for adding the product to the cart
+      console.log('Product added to cart');
+      this.cartService.addToCart(productDetails)
+    } else {
+      this.router.navigate(["/login"])
     }
-  
+
   }
 
 
@@ -120,7 +120,7 @@ export class ProductComponent implements OnInit,OnChanges {
     }
   }
 
-  createListFromString(imgString:string){
+  createListFromString(imgString: string) {
     const arrayOfElements = imgString.split(',');
     return arrayOfElements;
   }
@@ -138,12 +138,12 @@ export class ProductComponent implements OnInit,OnChanges {
     return convertedText;
   }
 
- checkout(productDetails:any){
-    if(localStorage.getItem("token")){
+  checkout(productDetails: any) {
+    if (localStorage.getItem("token")) {
 
       this.cartService.addToCart(productDetails);
       this.router.navigate(["/checkout"])
-    }else{
+    } else {
       this.router.navigate(["/login"])
     }
   }
