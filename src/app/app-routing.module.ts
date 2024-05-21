@@ -27,13 +27,14 @@ import { DronePioletLicenseComponent } from './components/drone-services-compone
 import { DroneGetUinComponent } from './components/drone-services-component/drone-get-uin/drone-get-uin.component';
 import { DroneTrainingFormComponent } from './components/drone-services-component/drone-training/drone-training-form/drone-training-form.component';
 import { ProductDetailComponent } from './common/product-detail/product-detail.component';
+import { MobileNumberLoginComponent } from './components/auth-component/mobile-number-login/mobile-number-login.component';
 
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'home', component: HomeComponent},
     {path: 'signup', component: SignupComponent},
-    {path: 'login', component: LoginComponent,canActivate: [LoginGuard]},
+    {path: 'login', component: MobileNumberLoginComponent,canActivate: [LoginGuard]},
     {path: 'forget-password', component: ForgetPasswordComponent},
     {path:"blogs/:id",component:BlogContentComponent},
     {path:"blogs",component:BlogsComponent},

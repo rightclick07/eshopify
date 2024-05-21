@@ -223,3 +223,27 @@
     }
    
   }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .otp-form {
+    width: 50px; /* Adjust width as per your design */
+    margin: 5px; /* Adjust margins as per your design */
+  }
+  .flag-icon {
+    width: 24px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 5px; /* Adjust margin as needed */
+  }
+  
+  .country-code {
+    font-size: 14px; /* Adjust font size as needed */
+   position: relative;
+    top:-5px;
+    margin-right: 5px;
+  }
+  

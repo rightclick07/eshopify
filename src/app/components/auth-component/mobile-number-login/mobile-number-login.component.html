@@ -6,29 +6,81 @@
         </mat-card-title>
       </mat-card-header>
       <h1>Log in</h1>
-      <p>Embark on a magical AI journey with your browser and receive <strong>30 Free </strong>queries every day.</p>
-      <button mat-raised-button>
-        <div>
-          <img src="assets/img/banners/google-icon.png">
-        </div>
-        Login with Google
-      </button>
-      <div class="login__hr__tag">
-        <hr><span>OR</span>
-        <hr>
-      </div>
+      <p>Book Your Drone Adventure with Us and Enjoy <strong>Free Delivery</strong> to Dive into Everse's Tech World</p>
+      <ng-container *ngIf="!isLoginFormEnabled">
+        <button mat-raised-button>
+            <div>
+              <img src="assets/img/banners/google-icon.png">
+            </div>
+            Login with Google
+          </button>
+          <div class="login__hr__tag">
+            <hr><span>OR</span>
+            <hr>
+          </div>
+      </ng-container>
+      
    
-      <div class="login__container__option">
+      <div class="login__container__option" *ngIf="!isLoginFormEnabled">
         <!-- <div>
           <img src="\assets\img\banners\apple.svg" alt="">
           <p>Apple</p>
         </div> -->
         <div>
-          <img src="https://everse-assets.s3.amazonaws.com/mobile-login-images/phone-fill.svg" alt="">
-          <p>Phone Number</p>
+            <a style="text-align: center;cursor: pointer;text-decoration: none;" (click)="onClickOfLoginWithMobile()">
+                <img src="https://everse-assets.s3.amazonaws.com/mobile-login-images/phone-fill.svg" alt="">
+                <p>Phone Number</p>
+            </a>
+        
         </div>
       </div>
-   
+    <!-- login.component.html -->
+        <div class="login__container__option_login_form" *ngIf="isLoginFormEnabled">
+            <div class="form-container">
+              <form [formGroup]="mobileLoginForm" (ngSubmit)="onSubmitMobileNumber()" *ngIf="isMobileinputEnabled">
+                <mat-form-field appearance="outline">
+                  <!-- Indian National Flag Icon and Country Code inside mat-form-field -->
+                  <span matPrefix>
+                    <img src="https://everse-assets.s3.amazonaws.com/assets/indian_flag.png" width="25px" alt="Indian Flag" class="flag-icon">
+                    <span class="country-code">+91 </span>
+                  </span>
+                  
+                  <!-- Mobile Number Input -->
+                  <mat-label>Mobile Number</mat-label>
+                  <input matInput formControlName="mobileNumber" placeholder="Enter your mobile number" type="tel" maxlength="10">
+                  <mat-error *ngIf="mobileNumber?.invalid && mobileNumber?.touched">
+                    Please enter a valid mobile number.
+                  </mat-error>
+                </mat-form-field>
+                
+                <!-- Submit Button -->
+                <button mat-raised-button color="primary" type="submit" [disabled]="mobileLoginForm.invalid">Get OTP</button>
+              </form>
+              
+            <form [formGroup]="otpForm" (ngSubmit)="onSubmitOtp()" *ngIf="isOtpInputEnabled">
+              <mat-form-field appearance="fill" class="otp-form">
+                <input matInput  formControlName="input1"  maxlength="1" (keydown)="restrictToSingleDigit($event)" />
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="otp-form">
+                <input matInput  formControlName="input2" maxlength="1" (keydown)="restrictToSingleDigit($event)" />
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="otp-form">
+                <input matInput  formControlName="input3" maxlength="1" (keydown)="restrictToSingleDigit($event)"/>
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="otp-form">
+                <input matInput formControlName="input4"  maxlength="1" (keydown)="restrictToSingleDigit($event)" />
+              </mat-form-field>
+            
+              <!-- Global Error Message -->
+              <mat-error *ngIf="globalError" class="global-error">{{ globalError }}</mat-error>
+              <br>
+              <!-- Submit Button -->
+              <button mat-raised-button color="primary" type="submit" [disabled]="otpForm.invalid">Verify OTP</button>
+            </form>
+            
+            </div>
+        </div>
+  
    
    
       <div class="login__container__condition">
