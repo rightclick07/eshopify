@@ -1,131 +1,605 @@
-
 <div *ngIf="isHandset$ | async">
- Mobile View
-</div>
-<div *ngIf="!(isHandset$ | async)">
-    <section id="Product__Detail__Section">
-
-        <p>Home>Smartwatches>Big Display Smart... ><strong>Wave Pro 47</strong></p>
+  <section class="product__detail__mobile__view__section">
 
 
-        <div id="Product__Detail__div" [style.height.px]="getImageHeight()">
-        <!-- <div id="Product__Detail__div"> -->
+    <div class="product__detail__mobile__view__banner__div">
+      <img src="\assets\img\banners\mobile-view-banner.jpg" alt="image not found">
+    </div>
 
-          <div id="Product__Detail__image__div" [style.height.px]="getImageHeight()">
-            <div id="Product__Detail__button__image" [style.height.px]="getImageHeight()">
-              <div class="Product__Detail__button__image__div" *ngFor="let image of images">
-                <img [src]="image" alt="image not found" (mouseenter)="updateSelectedImage(image)">
-              </div>
-            </div>
-            <mat-card id="Product__Detail__show__image">
-              <div class="slider-main">
-                <div class="items" *ngFor="let image of images;" [style.height.px]="getImageHeight()">
-                  <img [src]="selectedImage ? selectedImage : image" alt="image not found">
-                </div>
-              </div>
-              <div class="button-area-org">
-                <button mat-icon-button class="prev-org  " (click)="updateSelectedImage('prev')">
-                  <mat-icon>keyboard_arrow_left</mat-icon>
-                </button>
-                <button mat-icon-button class="next-org  " (click)="updateSelectedImage('next')">
-                  <mat-icon>keyboard_arrow_right</mat-icon>
-                </button>
-              </div>
-            </mat-card>
+    <div class="product__detail__mobile__view__naming__div">
+      <h1>{{productdetails?.name}}</h1>
+      <p>{{productdetails?.inTheBox}}</p>
+    </div>
+
+
+    <div class="mobile__view__Product__Detail__rating">
+      <div class="mobile__view__Product__Detail__rating__caption">
+        <img src="https://everse-assets.s3.amazonaws.com/product-details/star-image.png" alt="image not found">
+        <span>4.9 | 50 reviews</span>
+        <img src="https://everse-assets.s3.amazonaws.com/product-details/right-image-icon.png" alt="image not found"
+          style="display: inline-block;">
+      </div>
+
+      <span>Get a flat ₹500 OFF</span>
+
+      <div class="mobile__view__shre__image__icon" (mouseenter)="showPopup()" (mouseleave)="hidePopup()"
+        (mouseenter)="clearPopupTimeout()">
+        <img src="https://everse-assets.s3.amazonaws.com/product-details/share_icon_1.png" alt="">
+
+
+
+
+        <div class="mobile__view__popup" *ngIf="isPopupVisible">
+
+          <a class="share-link" (click)="share('facebook')">
+            <img src="/assets/img/social-media/facebook-logo.png" alt="image not found">Facebook
+          </a>
+          <a class="share-link" (click)="share('whatsapp')">
+            <img src="/assets/img/social-media/whatsapp-logo.png" alt="image not found">WhatsApp
+          </a>
+          <a class="share-link" (click)="share('twitter')">
+            <img src="/assets/img/social-media/twitter-logo.png" alt="image not found">Twitter
+          </a>
+          <a class="share-link" (click)="copyUrlToClipboard()">
+            <img src="\assets\img\social-media\Copy-Link-logo.avif" alt="image not fond"> Copy URL</a>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="slider-container"
+    (mousedown)="startDrag($event)"
+    (mousemove)="onDrag($event)"
+    (mouseup)="endDrag()"
+    (mouseleave)="endDrag()"
+    (touchstart)="startDrag($event)"
+    (touchmove)="onDrag($event)"
+    (touchend)="endDrag()">
+      <div class="slides" [ngStyle]="{'transform': getTransform(), 'transition-duration': transitionDuration}">
+        <div class="slide" *ngFor="let image of productdetails?.images">
+          <img [src]="image" alt="Slide Image">
+        </div>
+      </div>
+      <div class="indicators">
+        <span *ngFor="let image of images; let i = index" [class.active]="currentIndex === i" (click)="goToSlide(i)">
+        </span>
+      </div>
+    </div>
+
+
+
+    <div class="mobile__view__offer__timer">
+      <p><img src="https://everse-assets.s3.amazonaws.com/product-details/lightning-fill.svg" alt=""> <span>Ending
+          in &nbsp; :</span> <strong>{{ hours
+          }} hours</strong><strong>{{ minutes }} min </strong><strong>{{seconds}} sec</strong></p>
+    </div>
+
+
+    <div class="product__detail__Mobile__view__price">
+      <p>
+        ₹{{productdetails?.compareAtPrice}}<sup>00</sup>
+        <span>₹{{productdetails?.price}}</span>
+        <strong>
+          {{ calculateDiscountPercentage(productdetails?.compareAtPrice, productdetails?.price) }}% off
+        </strong>
+      </p>
+    </div>
+
+
+
+    <div class="product__deatail__mobile__view__user">
+      <p>Users' Love</p>
+
+      <div class="product__deatail__mobile__view__user__tittle">
+        <div class="product__deatail__mobile__view__user__image__div">
+          <img src="https://everse-assets.s3.amazonaws.com/product-details/amazon__logo_icon.png" alt="image not found">
+        </div>
+        <div class="product__deatail__mobile__view__user_param">
+          <p class="product__deatail__mobile__view__user__param1"> <strong>1.5Lacs+ units sold on Amazon</strong></p>
+          <p class="product__deatail__mobile__view__user__param2"><strong>16k+ 5 ⭐ reviews</strong></p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="product__deatail__mobile__view__Active__Offers">
+      <p>Active Offers</p>
+
+      <div class="product__deatail__mobile__view__Active__Offers__div">
+        <div class="product__deatail__mobile__view__Active__Offers_tiittle">
+          <p>More than 2 items</p>
+          <div>
+            <span>Get 5% off</span>
+            <h5>₹{{ calculateFivePercentDiscountPrice(productdetails?.compareAtPrice) }}<span>/item</span></h5>
+          </div>
+
+          <div class="product__deatail__mobile__view__popular__Offers_tiittle">
+            <p id="most__mobile__view__popular__offer">MOST&nbsp; &nbsp;POPULAR</p>
+          </div>
+        </div>
+
+        <div class="product__deatail__mobile__view__Active__Offers_tiittle">
+          <p>More than 5 items</p>
+          <div>
+            <span>Get 7% off</span>
+            <h5>₹{{ calculateSevenPercentDiscountPrice(productdetails?.compareAtPrice)}}<span>/item</span></h5>
 
           </div>
 
+          <div class="product__deatail__mobile__view__popular__Offers_tiittle">
+            <p>BEST&nbsp; &nbsp;VALUE</p>
+          </div>
+        </div>
 
-          <div id="Product__Detail__content__div">
+        <div class="product__deatail__mobile__view__Active__Offers_tiittle">
+          <p>Corporate Deal</p>
 
-            <div class=" Product__Detail__rating">
-              <div class=" Product__Detail__rating__caption">
-                <img src="https://everse-assets.s3.amazonaws.com/product-details/star-image.png" alt="image not found">
-                <span style="display: inline-block;">4.9 | 50 reviews</span>
-                <img src="https://everse-assets.s3.amazonaws.com/product-details/right-image-icon.png" alt="image not found" style="display: inline-block;">
+          <div>
+            <h5 id="bulk__deal"> <a href="">Click To Enquire</a> </h5>
+          </div>
+
+
+          <div class="product__deatail__mobile__view__popular__Offers_tiittle">
+            <p>BULK &nbsp; &nbsp;ORDER</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="Add__Cart__mobile__view__button__div" (click)="addToCart(productdetails)">
+      <button mat-button>Add To Cart</button>
+    </div>
+
+
+
+
+
+    <div class="mobile__view__expanssion__pannel__container">
+      <div class="mobile__view__expansion__panel__product__Detail">
+        <mat-accordion>
+          <mat-expansion-panel expanded>
+            <mat-expansion-panel-header class="mobile__view__expansion__panel_header">
+              <p> Description</p>
+            </mat-expansion-panel-header>
+            <div [innerHTML]="convertToPointers(productdetails?.description)" class="pointer-text"></div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+
+
+
+    <div class="mobile__view__expanssion__pannel__container">
+      <div class="mobile__view__expansion__panel__product__Detail">
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="mobile__view__expansion__panel_header">
+              <p>Specification</p>
+            </mat-expansion-panel-header>
+            <div [innerHTML]="convertToPointers(productdetails?.shortDescription)" class="mobile__view__pointer-text">
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+      </div>
+    </div>
+
+
+    <div class="mobile__view__expanssion__pannel__container">
+      <div class="mobile__view__expansion__panel__product__Detail">
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="mobile__view__expansion__panel_header">
+              <p> Shipping Policy</p>
+            </mat-expansion-panel-header>
+            <div class="mobile__view__bullet_list">
+              <p class="mobile__view__pointer-text__param">We can ship to virtually any address in the world...</p>
+              <p class="mobile__view__pointer-text__param">When you place an order, we will estimate shipping...</p>
+              <p class="mobile__view__pointer-text__param">Please also note that the shipping rates for many items...
+              </p>
+              <p class="mobile__view__pointer-text__param">All conditions for shipping can be found on the <a
+                  href="/delivery-shipping-policy">Shipping Policy</a>.
+              </p>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+      </div>
+    </div>
+
+
+
+    <div class="mobile__view__expanssion__pannel__container">
+      <div class="mobile__view__expansion__panel__product__Detail">
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="mobile__view__expansion__panel_header">
+              <p>Returns Policy</p>
+            </mat-expansion-panel-header>
+            <div class="mobile__view__bullet_list">
+              <p class="mobile__view__pointer-text__param">Replacement of 7 days is covered for manufacturing defect
+                only.</p>
+              <p class="mobile__view__pointer-text__param">You should expect to receive your refund within...</p>
+              <p class="mobile__view__pointer-text__param">If you need to return an item, simply login to your
+                account...</p>
+              <p class="mobile__view__pointer-text__param">All terms of returns & refunds can be found on the <a
+                  href="/shipping-return-policy">Return Policy</a>.</p>
+              <p class="mobile__view__pointer-text__param">Drones & Robots cover no warranty, returns or replacement...
+              </p>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+      </div>
+    </div>
+
+
+
+    <section style="margin-top: 15px; width: 100%;">
+      <div class="alt__container">
+        <h2 style="margin:2px; font-family:sans-serif;font-weight:500 ;">
+          <mat-icon>business_center</mat-icon>
+          WHAT WE <b>PROVIDE</b>
+        </h2>
+      </div>
+      <app-what-we-provide></app-what-we-provide>
+    </section>
+
+  </section>
+
+
+  <div class="mobile_view__high__lighted_product">
+
+    <div id="mobile_view__high__lighted_produt__id">
+      <h4>Quick</h4>
+      <h4><strong>Product Highlights</strong></h4>
+    </div>
+
+
+    <div class="mobile_high__lighted_product__image1">
+
+      <div class="mobile_high__lighted_product__image2">
+        <img [src]="imageList[0]" alt="image not found">
+      </div>
+
+      <div class="mobile_high__lighted_product__image3">
+
+        <div class="mobile_high__lighted_product__image4">
+
+          <div class="mobile_high__lighted_product__image5">
+            <img [src]="imageList[1]" alt="image not found">
+          </div>
+
+          <div class="mobile_high__lighted_product__image6">
+            <img [src]="imageList[1]" alt="image not found">
+          </div>
+
+        </div>
+
+        <div class="mobile_high__lighted_product__image7">
+          <img [src]="imageList[3]" alt="image not found">
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</div>
+
+
+
+
+
+<!-- desktop view code started from here if any querry in this view please visit this code -->
+
+<div *ngIf="!(isHandset$ | async)">
+
+  <section id="Product__Detail__Section">
+
+    <div id="Product__Detail__div">
+
+      <div *ngIf="productdetails" id="Product__Detail__image__div" [style.height.px]="getImageHeight()">
+        <div id="Product__Detail__button__image" [style.height.px]="getImageHeight()">
+          <div class="Product__Detail__button__image__div" *ngFor="let image of productdetails?.images">
+            <img [src]="image" alt="image not found" (mouseenter)="updateSelectedImage(image)">
+          </div>
+        </div>
+        <div id="Product__Detail__show__image">
+          <div class="slider-main">
+            <div class="items" *ngFor="let image of productdetails.images" [style.height.px]="getImageHeight()">
+              <img [src]="selectedImage ? selectedImage : image" alt="image not found">
+            </div>
+          </div>
+          <div class="button-area-org">
+            <button mat-icon-button class="prev-org" (click)="updateSelectedImage('prev')">
+              <mat-icon>keyboard_arrow_left</mat-icon>
+            </button>
+            <button mat-icon-button class="next-org" (click)="updateSelectedImage('next')">
+              <mat-icon>keyboard_arrow_right</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div id="Product__Detail__content__div">
+
+        <div class=" Product__Detail__rating">
+          <div class=" Product__Detail__rating__caption">
+            <img src="https://everse-assets.s3.amazonaws.com/product-details/star-image.png" alt="image not found">
+            <span style="display: inline-block;">4.9 | 50 reviews</span>
+            <img src="https://everse-assets.s3.amazonaws.com/product-details/right-image-icon.png" alt="image not found"
+              style="display: inline-block;">
+          </div>
+
+          <span>Get a flat ₹500 OFF</span>
+
+          <div class="shre__image__icon" (mouseenter)="showPopup()" (mouseleave)="hidePopup()"
+            (mouseenter)="clearPopupTimeout()">
+            <img src="https://everse-assets.s3.amazonaws.com/product-details/share_icon_1.png" alt="">
+
+            <div class="popup" *ngIf="isPopupVisible">
+
+              <a class="share-link" (click)="share('facebook')">
+                <img src="/assets/img/social-media/facebook-logo.png" alt="image not found">Facebook
+              </a>
+              <a class="share-link" (click)="share('whatsapp')">
+                <img src="/assets/img/social-media/whatsapp-logo.png" alt="image not found">WhatsApp
+              </a>
+              <a class="share-link" (click)="share('twitter')">
+                <img src="/assets/img/social-media/twitter-logo.png" alt="image not found">Twitter
+              </a>
+              <a class="share-link" (click)="copyUrlToClipboard()">
+                <img src="\assets\img\social-media\Copy-Link-logo.avif" alt="image not fond"> Copy URL</a>
+            </div>
+          </div>
+        </div>
+
+        <div class=" Product__Detail__name">
+          <h2>{{productdetails?.name}}</h2>
+          <p>{{productdetails?.inTheBox}}</p>
+        </div>
+
+        <div class="product__detail__price">
+          <p>
+            ₹{{productdetails?.compareAtPrice}}<sup>00</sup>
+            <span>₹{{productdetails?.price}}</span>
+            <strong>
+              {{ calculateDiscountPercentage(productdetails?.compareAtPrice, productdetails?.price) }}% off
+            </strong>
+          </p>
+
+          <div class="offer__timer">
+            <p><img src="https://everse-assets.s3.amazonaws.com/product-details/lightning-fill.svg" alt=""> <span>Ending
+                in &nbsp; :</span> <strong>{{ hours
+                }} hours</strong><strong>{{ minutes }} min </strong><strong>{{seconds}} sec</strong></p>
+          </div>
+
+        </div>
+
+
+        <!-- <div class="product__detail__color">
+          <p><strong>Choose your colour :</strong> &nbsp; &nbsp; &nbsp; {{ selectedColor }}</p>
+          <div class="product__detail__choose__color">
+            <div *ngFor="let color of colors; let i = index" [style.background-color]="color"
+              [class.active]="isSelected(i)" (click)="setActiveColor(color, i)">
+            </div>
+          </div>
+        </div> -->
+
+
+        <!-- <div class="product__detail_delivery">
+          <p>Check Delivery</p>
+          <div class="product__detail_delivery__input_box">
+            <form class="drone_check__delivery_form" #deliveryForm="ngForm" (ngSubmit)="handleSubmit(deliveryForm)">
+              <input type="text" name="pin" ngModel placeholder="Enter Your Pin" required>
+              <button mat-button type="submit">Submit</button>
+            </form>
+
+            <p class=" product__detail_delivery__param1"><strong><span>Free delivery </span>| By Monday, 13 May</strong>
+            </p>
+            <p class=" product__detail_delivery__param2">If ordered within <span>18 hrs 21 mins</span></p>
+          </div>
+
+        </div> -->
+
+
+        <div class="product__deatail__user">
+          <p>Users' Love</p>
+
+          <div class="product__deatail__user__tittle">
+            <div class="product__deatail__user__image__div">
+              <img src="https://everse-assets.s3.amazonaws.com/product-details/amazon__logo_icon.png"
+                alt="image not found">
+            </div>
+            <div class="product__deatail__user_param">
+              <p class="product__deatail__user__param1"> <strong>1.5Lacs+ units sold on Amazon</strong></p>
+              <p class="product__deatail__user__param2"><strong>16k+ 5 ⭐ reviews</strong></p>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="product__deatail__Active__Offers">
+          <p>Active Offers</p>
+
+          <div class="product__deatail__Active__Offers__div">
+            <div class="product__deatail__Active__Offers_tiittle">
+              <p>More than 2 items</p>
+              <span>Get 5% off</span>
+              <h5>₹{{ calculateFivePercentDiscountPrice(productdetails?.compareAtPrice) }}<span>/item</span></h5>
+              <div>
+                <p id="most__popular__offer">MOST&nbsp; &nbsp;POPULAR</p>
               </div>
-
-              <span>Get a flat ₹300 OFF by using BIG300</span>
-
-              <div class="shre__image__icon" (mouseenter)="showPopup()" (mouseleave)="hidePopup()"
-                (mouseenter)="clearPopupTimeout()">
-                <img src="https://everse-assets.s3.amazonaws.com/product-details/share_icon_1.png" alt="">
-                <div class="popup" *ngIf="isPopupVisible">
-
-                  <a href="#">Facebook</a>
-                  <a href="#">Twitter</a>
-                  <a href="#">Gmail</a>
-                </div>
-              </div>
-
             </div>
 
-            <div class=" Product__Detail__name">
-              <h2>Wave call</h2>
-              <p>Bluetooth Calling Smartwatch with 1.69" (4.29 cm) HD Curved Display, 150+ Watch Faces, Heart Rate & SPO2
-                Monitoring</p>
-            </div>
-
-            <div class="product__detail__price">
-              <p>₹1,699<sup>00</sup> <span>₹ 7,990.00</span><strong> 79 % off</strong></p>
-              <div class="offer__timer">
-                <p><img src="https://everse-assets.s3.amazonaws.com/product-details/lightning-fill.svg" alt=""> <span>Ending in &nbsp; :</span> <strong>{{ hours
-                    }} hours</strong><strong>{{ minutes }} min </strong><strong>{{seconds}} sec</strong></p>
-              </div>
-
-            </div>
-
-
-            <div class="product__detail__color">
-              <p><strong>Choose your colour :</strong> &nbsp; &nbsp; &nbsp; {{ selectedColor }}</p>
-              <div class="product__detail__choose__color">
-                <div *ngFor="let color of colors; let i = index" [style.background-color]="color"
-                  [class.active]="isSelected(i)" (click)="setActiveColor(color, i)">
-                </div>
+            <div class="product__deatail__Active__Offers_tiittle">
+              <p>More than 5 items</p>
+              <span>Get 7% off</span>
+              <h5>₹{{ calculateSevenPercentDiscountPrice(productdetails?.compareAtPrice)}}<span>/item</span></h5>
+              <div>
+                <p>BEST&nbsp; &nbsp;VALUE</p>
               </div>
             </div>
 
-
-            <div class="product__detail_delivery">
-              <p>Check Delivery</p>
-              <div class="product__detail_delivery__input_box">
-                <form class="drone_check__delivery_form" #deliveryForm="ngForm" (ngSubmit)="handleSubmit(deliveryForm)">
-                  <input type="text" name="pin" ngModel placeholder="Enter Your Pin" required>
-                  <button mat-button type="submit">Submit</button>
-                </form>
-
-                <p class=" product__detail_delivery__param1"><strong><span>Free delivery </span>| By Monday, 13 May</strong>
-                </p>
-                <p class=" product__detail_delivery__param2">If ordered within <span>18 hrs 21 mins</span></p>
-              </div>
-
-            </div>
-
-
-            <div class="product__deatail__user">
-              <p>Users' Love</p>
-
-              <div class="product__deatail__user__tittle">
-                <div class="product__deatail__user__image__div">
-                  <img src="https://everse-assets.s3.amazonaws.com/product-details/amazon__logo_icon.png" alt="image not found">
-                </div>
-                <div class="product__deatail__user_param">
-                  <p class="product__deatail__user__param1"> <strong>1.5Lacs+ units sold on Amazon</strong></p>
-                  <!-- <hr class="dotted-hr"> -->
-                  <p class="product__deatail__user__param2"><strong>16k+ 5 ⭐ reviews</strong></p>
-                </div>
+            <div class="product__deatail__Active__Offers_tiittle">
+              <p>Corporate Deal</p>
+              <h5 id="Corporate__deal"><a href="">Click to Enquire</a></h5>
+              <div>
+                <p>BULK &nbsp; &nbsp;ORDER</p>
               </div>
             </div>
-
 
           </div>
 
         </div>
 
 
+        <div class="Add__Cart__button__div" (click)="addToCart(productdetails)">
+          <button mat-button>Add To Cart</button>
+        </div>
+
+      </div>
+
+    </div>
 
 
 
 
+    <div class="expanssion__pannel__container">
+      <div class="expansion__panel__product__Detail">
+        <mat-accordion>
+          <mat-expansion-panel expanded>
+            <mat-expansion-panel-header class="expansion__panel_header">
+              <p> Description</p>
+            </mat-expansion-panel-header>
+            <div [innerHTML]="convertToPointers(productdetails?.description)" class="pointer-text"></div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+
+
+
+    <div class="expanssion__pannel__container">
+      <div class="expansion__panel__product__Detail">
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="expansion__panel_header">
+              <p>Specification</p>
+            </mat-expansion-panel-header>
+            <div [innerHTML]="convertToPointers(productdetails?.shortDescription)" class="pointer-text"></div>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+      </div>
+    </div>
+
+
+    <div class="expanssion__pannel__container">
+      <div class="expansion__panel__product__Detail">
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="expansion__panel_header">
+              <p> Shipping Policy</p>
+            </mat-expansion-panel-header>
+            <div class="bullet_list">
+              <p class="pointer-text-param2">We can ship to virtually any address in the world...</p>
+              <p class="pointer-text-param2">When you place an order, we will estimate shipping...</p>
+              <p class="pointer-text-param2">Please also note that the shipping rates for many items...</p>
+              <p class="pointer-text-param2">All conditions for shipping can be found on the <a
+                  href="/delivery-shipping-policy">Shipping Policy</a>.
+              </p>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+      </div>
+    </div>
+
+
+
+    <div class="expanssion__pannel__container">
+      <div class="expansion__panel__product__Detail">
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="expansion__panel_header">
+              <p>Returns Policy</p>
+            </mat-expansion-panel-header>
+            <div class="bullet_list">
+              <p class="pointer-text-param2">Replacement of 7 days is covered for manufacturing defect only.</p>
+              <p class="pointer-text-param2">You should expect to receive your refund within...</p>
+              <p class="pointer-text-param2">If you need to return an item, simply login to your account...</p>
+              <p class="pointer-text-param2">All terms of returns & refunds can be found on the <a
+                  href="/shipping-return-policy">Return Policy</a>.</p>
+              <p class="pointer-text-param2">Drones & Robots cover no warranty, returns or replacement...</p>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+      </div>
+    </div>
+
+
+    <div style="display: flex; justify-content: center; align-items: center;">
+      <!-- <section style="margin-bottom: 1%; margin-top: 3%; width: 85%;"> -->
+      <section style="margin-bottom: 1%; margin-top: 3%; width:100%;">
+        <div class="alt__container">
+          <h2 style="margin:2px; font-family:sans-serif;font-weight:500 ;">
+            <mat-icon>business_center</mat-icon>
+            WHAT WE <b>PROVIDE</b>
+          </h2>
+        </div>
+        <app-what-we-provide></app-what-we-provide>
       </section>
+
+    </div>
+
+
+
+
+  </section>
+
+  <div class="high__lighted_product">
+    <h4>Quick <strong>Product Highlights</strong></h4>
+
+    <div class="high__lighted_produc1">
+      <div class="high__lighted_produc2">
+        <div class="high__lighted_produc4">
+          <img [src]="imageList[0]" alt="image not found">
+        </div>
+        <div class="high__lighted_produc5">
+          <div class="high__lighted_produc6">
+            <img [src]="imageList[1]" alt="image not found">
+          </div>
+          <div class="high__lighted_produc7">
+            <img [src]="imageList[2]" alt="image not found">
+          </div>
+        </div>
+      </div>
+      <div class="high__lighted_produc3">
+        <img [src]="imageList[3]" alt="image not found">
+      </div>
+    </div>
+
+  </div>
+
 </div>
