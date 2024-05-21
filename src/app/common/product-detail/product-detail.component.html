@@ -48,14 +48,8 @@
 
 
 
-    <div class="slider-container"
-    (mousedown)="startDrag($event)"
-    (mousemove)="onDrag($event)"
-    (mouseup)="endDrag()"
-    (mouseleave)="endDrag()"
-    (touchstart)="startDrag($event)"
-    (touchmove)="onDrag($event)"
-    (touchend)="endDrag()">
+    <div class="slider-container" (mousedown)="startDrag($event)" (mousemove)="onDrag($event)" (mouseup)="endDrag()"
+      (mouseleave)="endDrag()" (touchstart)="startDrag($event)" (touchmove)="onDrag($event)" (touchend)="endDrag()">
       <div class="slides" [ngStyle]="{'transform': getTransform(), 'transition-duration': transitionDuration}">
         <div class="slide" *ngFor="let image of productdetails?.images">
           <img [src]="image" alt="Slide Image">
@@ -239,15 +233,9 @@
 
 
 
-    <section style="margin-top: 15px; width: 100%;">
-      <div class="alt__container">
-        <h2 style="margin:2px; font-family:sans-serif;font-weight:500 ;">
-          <mat-icon>business_center</mat-icon>
-          WHAT WE <b>PROVIDE</b>
-        </h2>
-      </div>
-      <app-what-we-provide></app-what-we-provide>
-    </section>
+
+    <app-what-we-provide></app-what-we-provide>
+
 
   </section>
 
@@ -559,19 +547,11 @@
     </div>
 
 
-    <div style="display: flex; justify-content: center; align-items: center;">
-      <!-- <section style="margin-bottom: 1%; margin-top: 3%; width: 85%;"> -->
-      <section style="margin-bottom: 1%; margin-top: 3%; width:100%;">
-        <div class="alt__container">
-          <h2 style="margin:2px; font-family:sans-serif;font-weight:500 ;">
-            <mat-icon>business_center</mat-icon>
-            WHAT WE <b>PROVIDE</b>
-          </h2>
-        </div>
-        <app-what-we-provide></app-what-we-provide>
-      </section>
 
-    </div>
+
+    <app-what-we-provide></app-what-we-provide>
+
+
 
 
 
