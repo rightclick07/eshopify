@@ -16,7 +16,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
 }
 
 .image-container img {
@@ -29,7 +29,7 @@
 @media screen and (max-width: 600px) {
   .image-container {
     height: 300px;
-  
+
   }
 }
 
@@ -241,6 +241,7 @@ body {
   margin-bottom: 20px;
 }
 
+
 .pointer-text {
   font-size: 16px;
   color: #333;
@@ -309,5 +310,5 @@ body {
 
 .review-button:hover {
   background-color: #27a39d;
-  
+
 }

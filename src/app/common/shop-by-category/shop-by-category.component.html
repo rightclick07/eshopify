@@ -1,16 +1,32 @@
-<div>
-  <h2 style="margin: 2px;font-family:sans-serif;font-weight:500 ;">
-    <mat-icon>stars</mat-icon>
-    SHOP BY <b>CATEGORIES</b>
-  </h2>
-  <div class="shop_by_categories_main_div">
-    <div class="shop_by_categories_card" *ngFor="let drone of drones_list">
-      <div class="shop_by_categories_Image" (click)="navigateToProductDetails(drone.name)">
-        <img [src]="drone.images">
+<section class="alt__container">
+  <div class="alt__sectionHeading">
+    <div class="alt__sectionHeadingBox">
+      <div class="alt__sectionHeadingIcon">
+        <mat-icon>stars</mat-icon>
       </div>
-      <div class="shop_by_categories_Tittle">
-        <p>{{drone.name}}</p>
+      <div class="alt__sectionHeadingText">
+        Shop By<strong class="alt__sectionHeadingStrong">Categories</strong>
+      </div>
+    </div>
+    <div class="alt__sectionHeadingViewAll">
+      <a href="#">View All</a>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right"
+        viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+      </svg>
+    </div>
+  </div>
+  <div>
+    <div class="shop_by_categories_main_div">
+      <div class="shop_by_categories_card" *ngFor="let drone of drones_list">
+        <div class="shop_by_categories_Image" (click)="navigateToProductDetails(drone.name)">
+          <img [src]="drone.images">
+        </div>
+        <div class="shop_by_categories_Tittle">
+          <p>{{drone.name}}</p>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</section>

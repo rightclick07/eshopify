@@ -1,0 +1,347 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+/* FONT FAMILY-----------------------------------FONT FAMILY */
+.roboto-thin {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.roboto-light {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.roboto-medium {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.roboto-bold {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.roboto-black {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.roboto-thin-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.roboto-light-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.roboto-regular-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.roboto-medium-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.roboto-bold-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.roboto-black-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+/*END FONT FAMILY----------------------------END FONT FAMILY */
+
+/* CSS RESET---------------------------------------CSS RESET */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/*END CSS RESET--------------------------------END CSS RESET */
+
+/* CUSTOM CSS-------------------------------------CUSTOM CSS */
+body {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+.alt__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.special__product {
+  box-sizing: border-box;
+  background: linear-gradient(
+    to top right,
+    var(--gradient-aqua),
+    var(--gradient-gray)
+  );
+}
+.alt__title {
+  padding: 68px 20px 0 20px;
+  display: flex;
+  align-items: center;
+}
+.alt__title > h2 {
+  color: var(--text-dark);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  word-spacing: 0.2em;
+  line-height: 1.05em;
+  font-size: 1.6em;
+  margin: 0 0.3em;
+}
+.alt__specialProduct {
+  padding: 60px 50px 100px 50px;
+  display: flex;
+  align-items: center;
+}
+.alt__col50 {
+  flex: 0 0 50%;
+}
+.alt__productImgContainer {
+  text-align: center;
+}
+.alt__productText {
+  padding: 50px 0 20px 0;
+}
+.alt__productText p:nth-child(1) {
+  font-size: 4.7em;
+  line-height: 1.5em;
+}
+.alt__productText p:nth-child(2) {
+  font-size: 4.07em;
+}
+/* END CUSTOM CSS-----------------------------END CUSTOM CSS */
+
+/* IMAGE BOX CSS--------------------------------IMAGE BOX CSS */
+.alt__imgBox_1 {
+  max-width: 700px;
+}
+.alt__imgBox_1 > img {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.alt__specialProductButtons {
+  margin: 55px 0;
+  display: flex;
+}
+/*END IMAGE BOX CSS------------------------END IMAGE BOX CSS */
+
+/* BUTTON CSS------------------------------- BUTTON CSS */
+.alt__specialProductButtons > a {
+  display: inline-block;
+  text-decoration: none;
+  color: #191919;
+  font-size: 1.3em;
+  padding: 19.5px 55px;
+  border-radius: 30px;
+}
+.alt__specialProductButtons a:nth-child(1) {
+  background-color: #fff;
+  margin-right: 30px;
+}
+.alt__specialProductButtons a:nth-child(2) {
+  background: rgba(255, 255, 255, 0.3);
+}
+/*END BUTTON CSS-------------------------END BUTTON CSS */
+
+/*END MEDIA QUERY---------------------------MEDIA QUERY */
+@media (max-width: 1399.98px) {
+}
+@media (max-width: 1199.98px) {
+  .alt__productText p:nth-child(1) {
+    font-size: 3.7em;
+  }
+  .alt__productText p:nth-child(2) {
+    font-size: 3.2em;
+  }
+}
+@media (max-width: 991.98px) {
+  .alt__col50 {
+    flex: 0 0 100%;
+  }
+  .alt__specialProduct {
+    flex-direction: column-reverse;
+  }
+
+  @media (max-width: 767.98px) {
+    .alt__title {
+      justify-content: center;
+    }
+  }
+}
+@media (max-width: 575.98px) {
+  .alt__productText p:nth-child(1) {
+    font-size: 2.7em;
+  }
+  .alt__productText p:nth-child(2) {
+    font-size: 2.36em;
+  }
+  .alt__productText {
+    text-align: center;
+  }
+  .alt__specialProductButtons {
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+  .alt__specialProductButtons a:nth-child(1) {
+    margin: 20px 0;
+    width: 270px;
+    padding: 19.5px 0;
+    text-align: center;
+  }
+  .alt__specialProductButtons a:nth-child(2) {
+    margin: 20px 0;
+    width: 270px;
+    padding: 19.5px 0;
+    text-align: center;
+  }
+  .alt__specialProduct {
+    padding-bottom: 40px;
+  }
+}
+/*END MEDIA QUERY---------------------------MEDIA QUERY */
