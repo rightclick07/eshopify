@@ -1,15 +1,28 @@
-<div class="banner-main_div"> 
-    <img src="https://everse-assets.s3.amazonaws.com/banner-image/everse-offer-banner.png" alt="image not found">
-   
-   
-   
-    <!-- Full-desktop banner_timer section -->
-    <div class="banner_timer full-desktop">
-      <p><b>Ending in</b> <span id="hours">{{ hours }}</span> Hours : <span id="minutes">{{ minutes }}</span> Min : <span id="seconds">{{ seconds }}</span> sec</p>
+<section class="alt__container">
+  <div class="alt__sectionHeading">
+    <div class="alt__sectionHeadingBox">
+      <div class="alt__sectionHeadingIcon">
+        <mat-icon>local_offer</mat-icon>
+      </div>
+      <div class="alt__sectionHeadingText">
+        Everse<strong class="alt__sectionHeadingStrong">Offers</strong>
+      </div>
     </div>
-   
-   
-    <!-- Smaller-screen banner_timer section -->
+    <div class="alt__sectionHeadingViewAll">
+      <a href="#">View All</a>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right"
+        viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+      </svg>
+    </div>
+  </div>
+  <div class="banner-main_div">
+    <img src="../../../assets/img/banners/everse-offer-banner.jpg" alt="image not found">
+    <div class="banner_timer full-desktop">
+      <p><b>Ending in</b> <span id="hours">{{ hours }}</span> Hours : <span id="minutes">{{ minutes }}</span> Min : <span
+          id="seconds">{{ seconds }}</span> sec</p>
+    </div>
     <div class="banner_timer smaller-screen">
       <p class="number_watch_text"><b>Ending in</b></p>
       <p>
@@ -22,6 +35,6 @@
         <span>Min</span>
         <span>Sec</span>
       </p>
-   
     </div>
   </div>
+</section>

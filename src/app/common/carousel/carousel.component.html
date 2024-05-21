@@ -1,0 +1,7 @@
+<section class="alt__container">
+    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+        <div ngxSlickItem *ngFor="let item of images">
+            <img width="auto" height="500px" [src]="item?.img" alt="img">
+        </div>
+    </ngx-slick-carousel>
+</section>

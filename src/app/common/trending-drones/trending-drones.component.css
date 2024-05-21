@@ -1,0 +1,38 @@
+.bestSellerDrone {
+    box-sizing: border-box;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-radius: 10px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .bestSellerDrone::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .bestSellerDroneCard {
+    height: auto;
+    width: 270px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    padding: 0;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .bestSellerDroneCard:hover {
+    transform: scale(1.03);
+  }
+
+  /* responsive */
+  @media only screen and (max-width: 768px) {
+    .bestSellerDroneCard {
+        width: 175px;
+      }
+    .bestSellerDrone {
+        gap:15px;
+      }
+  }

@@ -7,8 +7,10 @@
             <p>{{ name }}</p>
         </div>
         <div class="best_seller_drone_Shop_Button">
-            <p style="text-decoration: line-through; margin-right: 5px;" >₹{{ price }}</p>
-            <p style="font-weight: bold;">₹{{ compareAtPrice}}</p>
+            <div class="alt__priceSec">
+                <p style="text-decoration: line-through; margin-right: 5px;" >₹{{ price }}</p>
+                <p style="font-weight: bold;">₹{{ compareAtPrice}}</p>
+            </div>
             <a class="shop-now-button" mat-button routerLink="/product-details/{{id}}">SHOP NOW</a>
         </div>
     </div>

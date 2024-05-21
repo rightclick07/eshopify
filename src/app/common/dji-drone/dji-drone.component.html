@@ -2,10 +2,10 @@
     <div class="alt__sectionHeading">
         <div class="alt__sectionHeadingBox">
           <div class="alt__sectionHeadingIcon">
-            <mat-icon>business_center</mat-icon>
+            <mat-icon>flight_takeoff</mat-icon>
           </div>
           <div class="alt__sectionHeadingText">
-            What We<strong class="alt__sectionHeadingStrong">Provides</strong>
+            DJI<strong class="alt__sectionHeadingStrong">Drones</strong>
           </div>
         </div>
         <div class="alt__sectionHeadingViewAll">
@@ -17,19 +17,11 @@
           </svg>
         </div>
       </div>
-    <div class="alt__whatWeProvideSection">
-        <div class="alt__whatWeProvideContainer alt__container">
-            <div class="alt__whatWeProvideCard" *ngFor="let provided of provided_list">
-                <div class="alt__ImgArea">
-                    <img [src]="provided.logo">
-                </div>
-                <div class="alt__TitleArea">
-                    <h3>{{provided.title}}</h3>
-                </div>
-                <div class="alt__DiscriptionArea">
-                    <p>{{provided.discription}}</p>
-                </div>
-            </div>
+      <div class="series-card-container">
+        <div class="series-card" *ngFor="let image of djiSeriesimageList">
+          <a routerLink="/series/{{image.link}}">
+            <img [src]="image.src" [alt]="image.alt">
+          </a>
         </div>
-    </div>
+      </div>
 </section>
