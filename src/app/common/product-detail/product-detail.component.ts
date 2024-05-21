@@ -58,8 +58,14 @@ export class ProductDetailComponent {
   isSmallScreen$: Observable<boolean> | undefined;
   selectedProduct: any;
   cartItemsArray: any[] = [];
-  productdetails: any
-  activeImageIndex: number = 0;
+  productdetails: any;
+
+  currentIndex: number = 0;
+  startX: number | null = null;
+  currentTranslate: number = 0;
+  prevTranslate: number = 0;
+  isDragging: boolean = false;
+  transitionDuration: string = '0.5s';
 
 
   constructor(private route: ActivatedRoute,
@@ -70,11 +76,18 @@ export class ProductDetailComponent {
     private cartService: CartService,
     private spinnerService: SpinnerService) { }
 
-  setActiveImage(index: number) {
-    console.log('Clicked index:', index); // Debugging statement
-    this.activeImageIndex = index;
-    console.log('Active index:', this.activeImageIndex); // Debugging statement
-  }
+
+
+
+  images: string[] = [
+    "https://cdn.pixabay.com/photo/2017/12/15/13/51/polynesia-3021072_1280.jpg",
+
+    "https://cdn.pixabay.com/photo/2014/08/15/11/29/beach-418742_1280.jpg",
+
+    'https://cdn.pixabay.com/photo/2017/12/10/20/56/feather-3010848_1280.jpg'
+  ];
+
+
 
   ngOnInit() {
     // this.manageAutoSlide('start');
@@ -176,8 +189,71 @@ export class ProductDetailComponent {
   }
 
 
+  // image slider code for mobile view starts from here
 
 
+  getTransform(): string {
+    return `translateX(${this.currentTranslate}px)`;
+  }
+
+  startDrag(event: MouseEvent | TouchEvent): void {
+    this.isDragging = true;
+    this.transitionDuration = '0s'; // Disable transition during drag
+    this.startX = this.getPositionX(event);
+    this.prevTranslate = this.currentTranslate;
+  }
+
+  onDrag(event: MouseEvent | TouchEvent): void {
+    if (!this.isDragging) return;
+    const currentPosition = this.getPositionX(event);
+    this.currentTranslate = this.prevTranslate + currentPosition - (this.startX ?? 0);
+  }
+
+  endDrag(): void {
+    this.isDragging = false;
+    this.transitionDuration = '0.5s';
+    const movedBy = this.currentTranslate - this.prevTranslate;
+
+    if (movedBy < -50) {
+      if (this.currentIndex === this.images.length - 1) {
+        this.currentTranslate = -this.currentIndex * 350;
+        setTimeout(() => {
+          this.transitionDuration = '0s';
+          this.currentIndex = 0;
+          this.currentTranslate = 0;
+        }, 500);
+      } else {
+        this.currentIndex = (this.currentIndex + 1) % this.images.length;
+        this.currentTranslate = -this.currentIndex * 350;
+      }
+    }
+
+    if (movedBy > 50) {
+      if (this.currentIndex === 0) {
+        this.currentTranslate = 0;
+        setTimeout(() => {
+          this.transitionDuration = '0s';
+          this.currentIndex = this.images.length - 1;
+          this.currentTranslate = -this.currentIndex * 350;
+        }, 500);
+      } else {
+        this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+        this.currentTranslate = -this.currentIndex * 350;
+      }
+    }
+  }
+
+  getPositionX(event: MouseEvent | TouchEvent): number {
+    return event instanceof MouseEvent ? event.clientX : event.touches[0].clientX;
+  }
+
+  goToSlide(index: number): void {
+    this.currentIndex = index;
+    this.currentTranslate = -this.currentIndex * 350;
+  }
+
+
+  // image slider code starts for desktop view starts from here
   getImageHeight(): number {
     const containerWidth = document.getElementById('Product__Detail__show__image')?.offsetWidth || 0;
     return containerWidth;

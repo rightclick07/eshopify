@@ -9,7 +9,7 @@
       <img [src]="selectedImage" alt="Selected Image">
     </div>
     <mat-chip-list class="chip-list">
-      <mat-chip *ngFor="let image of this.productdetails?.images" (click)="changeImage(image)">
+      <mat-chip *ngFor="let image of this.productdetails?.images" (click)z="changeImage(image)">
         <img [src]="image" alt="Selected Image" width="50px" height="auto" >
       </mat-chip>
     </mat-chip-list>

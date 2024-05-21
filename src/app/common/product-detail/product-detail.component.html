@@ -47,20 +47,26 @@
     </div>
 
 
-    <div>
-      <div class="product__detail__mobile__view__main__image__div">
-        <div class="product__detail__mobile__view__primary__image__div"
-          *ngFor="let image of productdetails?.images; let i = index" (click)="setActiveImage(i)">
-          <div class="product__detail__mobile__view__image__div">
-            <img [src]="image" alt="">
-          </div>
+
+    <div class="slider-container"
+    (mousedown)="startDrag($event)"
+    (mousemove)="onDrag($event)"
+    (mouseup)="endDrag()"
+    (mouseleave)="endDrag()"
+    (touchstart)="startDrag($event)"
+    (touchmove)="onDrag($event)"
+    (touchend)="endDrag()">
+      <div class="slides" [ngStyle]="{'transform': getTransform(), 'transition-duration': transitionDuration}">
+        <div class="slide" *ngFor="let image of productdetails?.images">
+          <img [src]="image" alt="Slide Image">
         </div>
       </div>
-      <div class="circle__container">
-        <div *ngFor="let image of productdetails?.images; let i = index" class="circle"
-          [class.active]="i === activeImageIndex"></div>
+      <div class="indicators">
+        <span *ngFor="let image of images; let i = index" [class.active]="currentIndex === i" (click)="goToSlide(i)">
+        </span>
       </div>
     </div>
+
 
 
     <div class="mobile__view__offer__timer">
@@ -148,15 +154,7 @@
       <button mat-button>Add To Cart</button>
     </div>
 
-    <section style="margin-top: 15px; width: 100%;">
-      <div class="alt__container">
-        <h2 style="margin:2px; font-family:sans-serif;font-weight:500 ;">
-          <mat-icon>business_center</mat-icon>
-          WHAT WE <b>PROVIDE</b>
-        </h2>
-      </div>
-      <app-what-we-provide></app-what-we-provide>
-    </section>
+
 
 
 
@@ -201,7 +199,8 @@
             <div class="mobile__view__bullet_list">
               <p class="mobile__view__pointer-text__param">We can ship to virtually any address in the world...</p>
               <p class="mobile__view__pointer-text__param">When you place an order, we will estimate shipping...</p>
-              <p class="mobile__view__pointer-text__param">Please also note that the shipping rates for many items...</p>
+              <p class="mobile__view__pointer-text__param">Please also note that the shipping rates for many items...
+              </p>
               <p class="mobile__view__pointer-text__param">All conditions for shipping can be found on the <a
                   href="/delivery-shipping-policy">Shipping Policy</a>.
               </p>
@@ -222,18 +221,33 @@
               <p>Returns Policy</p>
             </mat-expansion-panel-header>
             <div class="mobile__view__bullet_list">
-              <p class="mobile__view__pointer-text__param">Replacement of 7 days is covered for manufacturing defect only.</p>
+              <p class="mobile__view__pointer-text__param">Replacement of 7 days is covered for manufacturing defect
+                only.</p>
               <p class="mobile__view__pointer-text__param">You should expect to receive your refund within...</p>
-              <p class="mobile__view__pointer-text__param">If you need to return an item, simply login to your account...</p>
+              <p class="mobile__view__pointer-text__param">If you need to return an item, simply login to your
+                account...</p>
               <p class="mobile__view__pointer-text__param">All terms of returns & refunds can be found on the <a
                   href="/shipping-return-policy">Return Policy</a>.</p>
-              <p class="mobile__view__pointer-text__param">Drones & Robots cover no warranty, returns or replacement...</p>
+              <p class="mobile__view__pointer-text__param">Drones & Robots cover no warranty, returns or replacement...
+              </p>
             </div>
           </mat-expansion-panel>
         </mat-accordion>
 
       </div>
     </div>
+
+
+
+    <section style="margin-top: 15px; width: 100%;">
+      <div class="alt__container">
+        <h2 style="margin:2px; font-family:sans-serif;font-weight:500 ;">
+          <mat-icon>business_center</mat-icon>
+          WHAT WE <b>PROVIDE</b>
+        </h2>
+      </div>
+      <app-what-we-provide></app-what-we-provide>
+    </section>
 
   </section>
 
