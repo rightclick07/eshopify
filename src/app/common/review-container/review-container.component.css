@@ -1,19 +1,8 @@
-.review-container>h2 {
-    font-family: sans-serif;
-    letter-spacing: 1;
-    word-spacing: 3px;
-}
-
 .review-container_main_div {
     display: flex;
     flex-direction: row;
     overflow-x: auto;
-}
-
-mat-icon {
-    font-size: 20px;
-    vertical-align: middle;
-    color: #ffc107;
+    gap: 20px;
 }
 
 .review-container_main_div::-webkit-scrollbar {
@@ -22,9 +11,9 @@ mat-icon {
 
 .review-container_card {
     flex: 0 0 auto;
+    margin: 5px 2px;
     height: auto;
-    width: 280px;
-    margin: 20px;
+    width: 303px;
     border-radius: 15px;
     padding: 20px;
 }

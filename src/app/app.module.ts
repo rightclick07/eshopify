@@ -71,6 +71,12 @@ import { ShopByBrandsComponent } from './common/shop-by-brands/shop-by-brands.co
 import { ExtendedFooterLinksComponent } from './common/extended-footer-links/extended-footer-links.component';
 import { MobileNumberLoginComponent } from './components/auth-component/mobile-number-login/mobile-number-login.component';
 import { ProductDetailComponent } from './common/product-detail/product-detail.component';
+import { MainBannerComponent } from './common/main-banner/main-banner.component';
+import { BestsellerComponent } from './common/bestseller/bestseller.component';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { CarouselComponent } from './common/carousel/carousel.component';
+import { DjiDroneComponent } from './common/dji-drone/dji-drone.component';
+import { TrendingDronesComponent } from './common/trending-drones/trending-drones.component';
 
 
 
@@ -123,6 +129,11 @@ import { ProductDetailComponent } from './common/product-detail/product-detail.c
     DroneTrainingComponent,
     DronePioletLicenseComponent,
     DroneGetUinComponent,
+    AccessoriesComponent,
+    ShopByBrandsComponent,
+    ExtendedFooterLinksComponent,
+    DroneTrainingFormComponent,
+
 
     AccessoriesComponent,
     ShopByBrandsComponent,
@@ -130,6 +141,11 @@ import { ProductDetailComponent } from './common/product-detail/product-detail.c
     DroneTrainingFormComponent,
     MobileNumberLoginComponent,
     ProductDetailComponent,
+    MainBannerComponent,
+    BestsellerComponent,
+    CarouselComponent,
+    DjiDroneComponent,
+    TrendingDronesComponent,
 
   ],
   imports: [
@@ -141,7 +157,8 @@ import { ProductDetailComponent } from './common/product-detail/product-detail.c
     ReactiveFormsModule,
     HttpClientModule,
     SocialLoginModule,
-    HighchartsChartModule
+    HighchartsChartModule,
+    SlickCarouselModule,
   ],
   providers: [CartDataResolverResolver, DatePipe, FilterPipe,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

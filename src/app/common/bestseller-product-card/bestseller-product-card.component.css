@@ -1,10 +1,7 @@
 .best_Seller_Drone_Image {
     box-sizing: border-box;
-   
-    height: 200px;
-    width: 310px;
-    margin: 0;
-    padding: 0;
+    height: 170px;
+    width: 270px;
   }
    
   .best_Seller_Drone_Image>img {
@@ -12,20 +9,21 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
   }
    
    
   .best_Seller_Drone_Tittle {
     display: flex;
-    justify-content: space-between;
-    align-items: last baseline;
-    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
-    /* margin: 0px -16px -16px -16px; */
-    height: 100px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    align-items: center;
+    background: linear-gradient(
+      to top right,
+      var(--gradient-aqua),
+      var(--gradient-gray)
+    );
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
    
   .best_seller_drone_name {
@@ -34,17 +32,22 @@
   }
 
   .best_seller_drone_name p {
-    font-size: 17px;
+    font-size: 16px;
+    font-weight: 500;
     line-height: 1;
+    height: 30px;
   }
    
   .best_seller_drone_Shop_Button {
     display: flex;
-    place-items: center;
+    align-items: center;
+    justify-content: space-between;
     margin: 10px 15px;
   }
+  .alt__priceSec{
+    display: flex;
+  }
   .shop-now-button{
-    left: 30%;
     z-index: 1;
     border-radius: 10px !important;
     font-size: 12px;
@@ -52,3 +55,26 @@
     color: #000;
     letter-spacing: -0.48px;
   }
+
+  /* responsive */
+
+  @media only screen and (max-width: 768px) {
+    .best_Seller_Drone_Image {
+      height: 110px;
+      width: 175px;
+    }
+    .shop-now-button{
+      display: none;
+    }
+    .best_seller_drone_name p {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1;
+    }
+    .best_seller_drone_name{
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  

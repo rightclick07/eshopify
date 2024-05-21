@@ -2,10 +2,10 @@
   <div class="alt__sectionHeading">
     <div class="alt__sectionHeadingBox">
       <div class="alt__sectionHeadingIcon">
-        <mat-icon>stars</mat-icon>
+        <mat-icon>favorite</mat-icon>
       </div>
       <div class="alt__sectionHeadingText">
-        Shop By<strong class="alt__sectionHeadingStrong">Categories</strong>
+        Explore<strong class="alt__sectionHeadingStrong">Bestsellers</strong>
       </div>
     </div>
     <div class="alt__sectionHeadingViewAll">
@@ -17,16 +17,14 @@
       </svg>
     </div>
   </div>
+
   <div>
-    <div class="shop_by_categories_main_div">
-      <div class="shop_by_categories_card" *ngFor="let drone of drones_list">
-        <div class="shop_by_categories_Image" (click)="navigateToProductDetails(drone.name)">
-          <img [src]="drone.images">
-        </div>
-        <div class="shop_by_categories_Tittle">
-          <p>{{drone.name}}</p>
-        </div>
-      </div>
+    <div class="bestSellerDrone">
+      <mat-card class="bestSellerDroneCard" *ngFor="let key of productList">
+        <app-bestseller-product-card [images]="key.images" [name]="key.name" [price]="key.price"
+          [discount]="key.discount" [compareAtPrice]="key.compareAtPrice" [id]="key.id">
+        </app-bestseller-product-card>
+      </mat-card>
     </div>
   </div>
 </section>

@@ -1,0 +1,42 @@
+.series-card-container {
+    box-sizing: border-box;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-radius: 10px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .series-card-container::-webkit-scrollbar {
+    display: none;
+  }
+  
+  
+  .series-card {
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    width: 180px;
+    height: 180px;
+    border-radius: 10px;
+  }
+  
+  .series-card img {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .series-card {
+        width: 175px;
+        height: 175px;
+      }
+      .series-card-container {
+        gap: 15px;
+      }
+  }

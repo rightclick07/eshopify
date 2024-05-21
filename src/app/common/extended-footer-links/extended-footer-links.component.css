@@ -81,7 +81,7 @@ ul {
     cursor: pointer;
     background: white;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     gap: 8px;
     transition: background-color 0.25s, color 0.25s;
 }

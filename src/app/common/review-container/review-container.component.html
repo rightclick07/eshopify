@@ -1,23 +1,39 @@
-<div>
-    <h2>
-        <mat-icon>person_outline</mat-icon>
-        CUSTOMER <b>REVIEWS</b>
-    </h2>
-    <div class="review-container_main_div">
-        <div class="review-container_card mat-elevation-z1" *ngFor="let review of review_list">
-            <div class="platform-title">
-                <img [src]="review.imageUrl">
-                {{ review.name }}
+<section class="alt__container">
+    <div>
+        <div class="alt__sectionHeading">
+            <div class="alt__sectionHeadingBox">
+              <div class="alt__sectionHeadingIcon">
+                <mat-icon>person_outline</mat-icon>
+              </div>
+              <div class="alt__sectionHeadingText">
+                Customer<strong class="alt__sectionHeadingStrong">Reviews</strong>
+              </div>
             </div>
-            <div class="stars">
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
+            <div class="alt__sectionHeadingViewAll">
+              <a href="#">View All</a>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right"
+                viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+              </svg>
             </div>
-            <p class="review-comment" [ngClass]="{'expandable': isCommentExpanded}">{{ review.reviewComment }}
-            </p>
+          </div>
+        <div class="review-container_main_div">
+            <div class="review-container_card mat-elevation-z1" *ngFor="let review of review_list">
+                <div class="platform-title">
+                    <img [src]="review.imageUrl">
+                    {{ review.name }}
+                </div>
+                <div class="stars">
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                </div>
+                <p class="review-comment" [ngClass]="{'expandable': isCommentExpanded}">{{ review.reviewComment }}
+                </p>
+            </div>
         </div>
     </div>
-</div>
+</section>
