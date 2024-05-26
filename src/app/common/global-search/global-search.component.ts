@@ -47,7 +47,11 @@ createListFromString(imgString:string){
 }
 
   searchClose() {
+    if(this.searchText == ''){
+      this.router.navigate(['/']);
+    }
     this.searchText = '';
+    
   }
   navigateToProduct(id:any){
     this.router.navigate(["/product-details",id])

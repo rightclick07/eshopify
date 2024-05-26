@@ -17,12 +17,27 @@
   .series-card {
     box-sizing: border-box;
     flex: 0 0 auto;
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
     border-radius: 10px;
+    background: linear-gradient(
+      to top right,
+      var(--gradient-aqua),
+      var(--gradient-gray)
+    );
+    text-align: center;
+  }
+  .series-card>a{
+    display: inline-block;
+    box-sizing: border-box;
+    height: 80%;
+  }
+  .series-card>h2{
+    height: 20%;
+    font-size: 15px;
   }
   
-  .series-card img {
+  .series-card>a>img {
     box-sizing: border-box;
     width: 100%;
     height: 100%;
