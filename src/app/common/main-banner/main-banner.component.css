@@ -164,6 +164,7 @@ video {
   font: inherit;
   vertical-align: baseline;
 }
+
 article,
 aside,
 details,
@@ -177,17 +178,21 @@ nav,
 section {
   display: block;
 }
+
 body {
   line-height: 1;
 }
+
 ol,
 ul {
   list-style: none;
 }
+
 blockquote,
 q {
   quotes: none;
 }
+
 blockquote:before,
 blockquote:after,
 q:before,
@@ -195,10 +200,12 @@ q:after {
   content: "";
   content: none;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
 /*END CSS RESET--------------------------------END CSS RESET */
 
 /* CUSTOM CSS-------------------------------------CUSTOM CSS */
@@ -206,24 +213,25 @@ body {
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+
 .alt__container {
   max-width: 1200px;
   margin: 0 auto;
 }
+
 .special__product {
   box-sizing: border-box;
-  background: linear-gradient(
-    to top right,
-    var(--gradient-aqua),
-    var(--gradient-gray)
-  );
+  background: rgb(255, 255, 255);
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(176, 251, 247, 1) 100%);
 }
+
 .alt__title {
   padding: 68px 20px 0 20px;
   display: flex;
   align-items: center;
 }
-.alt__title > h2 {
+
+.alt__title>h2 {
   color: var(--text-dark);
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -232,47 +240,57 @@ body {
   font-size: 1.6em;
   margin: 0 0.3em;
 }
+
 .alt__specialProduct {
   padding: 60px 50px 100px 50px;
   display: flex;
   align-items: center;
 }
+
 .alt__col50 {
   flex: 0 0 50%;
 }
+
 .alt__productImgContainer {
   text-align: center;
 }
+
 .alt__productText {
   padding: 50px 0 20px 0;
 }
+
 .alt__productText p:nth-child(1) {
   font-size: 4.7em;
   line-height: 1.5em;
 }
+
 .alt__productText p:nth-child(2) {
   font-size: 4.07em;
 }
+
 /* END CUSTOM CSS-----------------------------END CUSTOM CSS */
 
 /* IMAGE BOX CSS--------------------------------IMAGE BOX CSS */
 .alt__imgBox_1 {
   max-width: 700px;
 }
-.alt__imgBox_1 > img {
+
+.alt__imgBox_1>img {
   display: block;
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
+
 .alt__specialProductButtons {
   margin: 55px 0;
   display: flex;
 }
+
 /*END IMAGE BOX CSS------------------------END IMAGE BOX CSS */
 
 /* BUTTON CSS------------------------------- BUTTON CSS */
-.alt__specialProductButtons > a {
+.alt__specialProductButtons>a {
   display: inline-block;
   text-decoration: none;
   color: #191919;
@@ -280,30 +298,36 @@ body {
   padding: 19.5px 55px;
   border-radius: 30px;
 }
+
 .alt__specialProductButtons a:nth-child(1) {
   background-color: #fff;
   margin-right: 30px;
 }
+
 .alt__specialProductButtons a:nth-child(2) {
   background: rgba(255, 255, 255, 0.3);
 }
+
 /*END BUTTON CSS-------------------------END BUTTON CSS */
 
 /*END MEDIA QUERY---------------------------MEDIA QUERY */
-@media (max-width: 1399.98px) {
-}
+@media (max-width: 1399.98px) {}
+
 @media (max-width: 1199.98px) {
   .alt__productText p:nth-child(1) {
     font-size: 3.7em;
   }
+
   .alt__productText p:nth-child(2) {
     font-size: 3.2em;
   }
 }
+
 @media (max-width: 991.98px) {
   .alt__col50 {
     flex: 0 0 100%;
   }
+
   .alt__specialProduct {
     flex-direction: column-reverse;
   }
@@ -314,34 +338,42 @@ body {
     }
   }
 }
+
 @media (max-width: 575.98px) {
   .alt__productText p:nth-child(1) {
     font-size: 2.7em;
   }
+
   .alt__productText p:nth-child(2) {
     font-size: 2.36em;
   }
+
   .alt__productText {
     text-align: center;
   }
+
   .alt__specialProductButtons {
     flex-direction: column;
     margin-bottom: 0;
   }
+
   .alt__specialProductButtons a:nth-child(1) {
     margin: 20px 0;
     width: 270px;
     padding: 19.5px 0;
     text-align: center;
   }
+
   .alt__specialProductButtons a:nth-child(2) {
     margin: 20px 0;
     width: 270px;
     padding: 19.5px 0;
     text-align: center;
   }
+
   .alt__specialProduct {
     padding-bottom: 40px;
   }
 }
+
 /*END MEDIA QUERY---------------------------MEDIA QUERY */

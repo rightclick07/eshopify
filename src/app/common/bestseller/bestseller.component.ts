@@ -31,7 +31,6 @@ export class BestsellerComponent implements OnInit, AfterViewInit {
           let k = this.createListFromString(img.toString()) 
           p.images = k;
         }
-
       }
 
     })
