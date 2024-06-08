@@ -179,7 +179,7 @@ export class HeaderComponent implements OnInit {
 ) {
   this.authService.isLoggedIn.subscribe(res=>{
     this.isUserLoggedIn=res;
-    console.log(res);
+    console.log(res,"response");
   })
  this.togglemaintoolbar();
 

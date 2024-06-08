@@ -1,4 +1,5 @@
 import { Component} from '@angular/core';
+import { ToolbarService } from 'src/app/shared/services/toolbar/toolbar.service';
 
 @Component({
   selector: 'app-home',
@@ -6,5 +7,9 @@ import { Component} from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent{
- 
+   
+constructor(private toolbarService:ToolbarService){
+  this.toolbarService.setShowMainToolbar(true);
+}
+
 }

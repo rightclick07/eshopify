@@ -2,12 +2,12 @@
     <mat-card class="login__container__mat__card">
       <mat-card-header>
         <mat-card-title>
-          <img class="login__container__img" src="assets/img/everse-logo.png">
+          <img class="login__container__img" src="assets/img/name.png">
         </mat-card-title>
       </mat-card-header>
       <h1>Log in</h1>
       <p>Book Your Drone Adventure with Us and Enjoy <strong>Free Delivery</strong> to Dive into Everse's Tech World</p>
-      <ng-container *ngIf="!isLoginFormEnabled">
+      <!-- <ng-container *ngIf="!isLoginFormEnabled">
         <button mat-raised-button>
             <div>
               <img src="assets/img/banners/google-icon.png">
@@ -18,7 +18,7 @@
             <hr><span>OR</span>
             <hr>
           </div>
-      </ng-container>
+      </ng-container> -->
       
    
       <div class="login__container__option" *ngIf="!isLoginFormEnabled">
@@ -59,16 +59,16 @@
               
             <form [formGroup]="otpForm" (ngSubmit)="onSubmitOtp()" *ngIf="isOtpInputEnabled">
               <mat-form-field appearance="fill" class="otp-form">
-                <input matInput  formControlName="input1"  maxlength="1" (keydown)="restrictToSingleDigit($event)" />
+                <input matInput #otpInput  formControlName="input1"  maxlength="1" (keydown)="restrictToSingleDigit($event,0)" />
               </mat-form-field>
               <mat-form-field appearance="fill" class="otp-form">
-                <input matInput  formControlName="input2" maxlength="1" (keydown)="restrictToSingleDigit($event)" />
+                <input matInput #otpInput   formControlName="input2" maxlength="1" (keydown)="restrictToSingleDigit($event,1)" />
               </mat-form-field>
               <mat-form-field appearance="fill" class="otp-form">
-                <input matInput  formControlName="input3" maxlength="1" (keydown)="restrictToSingleDigit($event)"/>
+                <input matInput #otpInput  formControlName="input3" maxlength="1" (keydown)="restrictToSingleDigit($event,2)"/>
               </mat-form-field>
               <mat-form-field appearance="fill" class="otp-form">
-                <input matInput formControlName="input4"  maxlength="1" (keydown)="restrictToSingleDigit($event)" />
+                <input matInput #otpInput formControlName="input4"  maxlength="1" (keydown)="restrictToSingleDigit($event,3)" />
               </mat-form-field>
             
               <!-- Global Error Message -->
@@ -76,6 +76,33 @@
               <br>
               <!-- Submit Button -->
               <button mat-raised-button color="primary" type="submit" [disabled]="otpForm.invalid">Verify OTP</button>
+            </form>
+            <form [formGroup]="userForm" (ngSubmit)="onSubmitUserForm()" *ngIf="isUserEnabled">
+              <mat-form-field appearance="outline">
+                <span matPrefix>
+                  <mat-icon style="vertical-align: middle;">mail_outline</mat-icon>
+                </span>
+                <mat-label>Email Id</mat-label>
+                <input matInput formControlName="emailId" placeholder="Enter your Email Id" type="text">
+                <mat-error *ngIf="emailId?.invalid && (emailId?.dirty || emailId?.touched)">
+                  <ng-container *ngIf="emailId?.errors?.['required']">Email is required.</ng-container>
+                  <ng-container *ngIf="emailId?.errors?.['pattern']">Please enter a valid email address.</ng-container>
+                </mat-error>
+              </mat-form-field>
+            
+              <mat-form-field appearance="outline">
+                <span matPrefix>
+                  <mat-icon style="vertical-align: middle;">person</mat-icon>
+                </span>
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" placeholder="Enter your Name" type="text">
+                <mat-error *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+                  <ng-container *ngIf="name?.errors?.['required']">Name is required.</ng-container>
+                  <ng-container *ngIf="name?.errors?.['minlength']">Name must be at least 2 characters long.</ng-container>
+                </mat-error>
+              </mat-form-field>
+            
+              <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid">Continue</button>
             </form>
             
             </div>

@@ -7,6 +7,7 @@ import { Product } from 'src/app/shared/model/product';
 import { CartService } from 'src/app/shared/services/cart-service/cart.service';
 import { ProductService } from 'src/app/shared/services/product-service/product.service';
 import { SpinnerService } from 'src/app/shared/services/spinner-service/spinner.service';
+import { ToastService } from 'src/app/shared/services/toast-service/toast.service';
 
 
 @Component({
@@ -74,7 +75,8 @@ export class ProductDetailComponent {
     private breakpointObserver: BreakpointObserver,
     private router: Router,
     private cartService: CartService,
-    private spinnerService: SpinnerService) { }
+    private spinnerService: SpinnerService,
+    private toasterService:ToastService) { }
 
 
 
@@ -369,9 +371,10 @@ export class ProductDetailComponent {
 
 
   addToCart(productDetails: any): void {
-    if (localStorage.getItem("token")) {
+    if (localStorage.getItem("username")) {
       // Implement your logic for adding the product to the cart
       console.log('Product added to cart');
+      this.toasterService.showSuccess("Product Added to cart ")
       this.cartService.addToCart(productDetails)
     } else {
       this.router.navigate(["/login"])

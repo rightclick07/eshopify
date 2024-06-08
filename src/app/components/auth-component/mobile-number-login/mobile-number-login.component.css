@@ -21,7 +21,7 @@
    
   .login__container__img {
     margin: 40px 0px 0px 0px;
-    width: 100px;
+    width: 200px;
   }
    
   .login__container__mat__card h1 {
@@ -169,7 +169,7 @@
     }
    
     .login__container__img {
-      width: 80px;
+      width: 200px;
     }
    
     .login__container__mat__card h1 {
