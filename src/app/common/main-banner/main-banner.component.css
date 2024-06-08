@@ -222,7 +222,7 @@ body {
 .special__product {
   box-sizing: border-box;
   background: rgb(255, 255, 255);
-  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(176, 251, 247, 1) 100%);
+  background: linear-gradient(to top right, #6ce9e5, #faebe4);
 }
 
 .alt__title {

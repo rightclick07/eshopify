@@ -32,7 +32,6 @@ export class BestsellerComponent implements OnInit, AfterViewInit {
           p.images = k;
         }
       }
-
     })
   }
 
