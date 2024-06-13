@@ -85,7 +85,7 @@ export class ProductComponent implements OnInit, OnChanges {
   }
 
   addToCart(productDetails: any): void {
-    if (localStorage.getItem("token")) {
+    if (localStorage.getItem("username")) {
       // Implement your logic for adding the product to the cart
       console.log('Product added to cart');
       this.cartService.addToCart(productDetails)
@@ -139,7 +139,7 @@ export class ProductComponent implements OnInit, OnChanges {
   }
 
   checkout(productDetails: any) {
-    if (localStorage.getItem("token")) {
+    if (localStorage.getItem("username")) {
 
       this.cartService.addToCart(productDetails);
       this.router.navigate(["/checkout"])

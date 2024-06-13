@@ -32,6 +32,14 @@ export class CheckoutComponent implements OnInit {
   userId: any;
   minAmount = 1; // Minimum payment amount
   maxAmount = 1000000; // Maximum payment amount
+  payeeName: any;
+  paymentMobileNumber: any;
+  applicationFee: any;
+  pgName: any;
+  razorpayOrderId: any;
+  secretId: any;
+  secretKey: any;
+  paymentStatus: any;
 
   @HostListener('window:resize', ['$event'])
   onResize(event:any) {
@@ -120,7 +128,7 @@ export class CheckoutComponent implements OnInit {
 
   }
 
-  placeOfflineOrder(){
+  placeOrder(){
     console.log(this.addressFormGroup);
     let custId=parseInt(localStorage.getItem("userId")!)
     const orderObj:Order={
@@ -189,37 +197,87 @@ export class CheckoutComponent implements OnInit {
     
   }
   payNow() {
-    const RozarpayOptions = {
-      description: 'Sample Razorpay demo',
-      currency: 'INR',
-      amount: 100000,
-      name: 'Ravi',
-      key: 'rzp_test_wm6DKIKnevLEU8',
-      image: 'https://i.imgur.com/FApqk3D.jpeg',
-      prefill: {
-        name: 'sai kumar',
-        email: 'sai@gmail.com',
-        phone: '9898989898'
-      },
-      theme: {
-        color: '#6466e3'
-      },
-      modal: {
-        ondismiss:  () => {
-          console.log('dismissed')
+    const username=localStorage.getItem("username");
+    const useid=localStorage.getItem("userId");
+    const amount=this.paymentForm?.value?.amount;
+    this.authService.getUserById().subscribe(
+      res=>{
+        if(res){
+          this.authService.getUserById().subscribe(
+            res=>{
+              this.payeeName=res?.payload?.name;
+              this.paymentMobileNumber=res?.payload?.mobileNumber
+            }
+          )
         }
+      },error=>{}
+    )
+    const paymentRequest={
+      customerName:this.payeeName,
+      email:username,
+      phoneNumber:this.paymentMobileNumber,
+      amount:this.paymentForm?.value?.amount
+    }
+
+    this.paymentService.createTransaction(paymentRequest).subscribe(res=>{
+      if(res){
+        console.log(res);
+         this.applicationFee=res?.payload?.applicationFee;
+         this.pgName=res?.payload?.pgName;
+         this.razorpayOrderId=res?.payload?.razorpayOrderId;
+         this.secretId=res?.payload?.secretId;
+         this.secretKey=res?.payload?.secretKey; 
+         const RozarpayOptions = {
+          order_id:this.razorpayOrderId,
+          description: 'Razorpay Payment To Everse',
+          currency: 'INR',
+          amount: amount,
+          name: this.payeeName,
+          key: this.secretId,
+          image: 'https://i.imgur.com/FApqk3D.jpeg',
+          handler:(response:any)=>{
+            if(response && response?.razorpay_order_id){
+              this.processResponse(response)
+              this.paymentStatus="success";
+            }else{
+               this.paymentStatus="failure";
+              this.toastService.showError("payment failed");
+
+            }
+          },
+          prefill: {
+            name: this.payeeName,
+            email: username,
+            phone: this.paymentMobileNumber
+          },
+          theme: {
+            color: '#6466e3'
+          },
+          modal: {
+            ondismiss:  () => {
+              console.log('dismissed')
+            }
+          }
+        }
+         const razorpayObject=new Razorpay(RozarpayOptions);
+         razorpayObject.open();
       }
-    }
+      
+      
+    },
+  error=>{
+    console.log(error);
+    
+  })
 
-    const successCallback = (paymentid: any) => {
-      console.log(paymentid);
-    }
+   
+    
+  }
 
-    const failureCallback = (e: any) => {
-      console.log(e);
-    }
-
-    Razorpay.open(RozarpayOptions,successCallback, failureCallback)
+  processResponse(response:any){
+    console.log(response);
+    this.placeOrder();
+    
   }
   placeOnlineOrder(){
     // Generate merchantTransactionId and merchantUserId
@@ -312,7 +370,7 @@ export class CheckoutComponent implements OnInit {
     if (this.selectedPaymentMethod === 'online') {
       paymentMethod="online";
     } else if (this.selectedPaymentMethod === 'cod') {
-      paymentMethod="offline";
+      paymentMethod="online";
     }
     return paymentMethod;
   }
@@ -356,12 +414,10 @@ export class CheckoutComponent implements OnInit {
 
 
   getPaymentStatus(){
-    let paymentStatus="";
-    if(this.selectedPaymentMethod === 'cod'){
-        paymentStatus="pending";
-    }
-    
-    return paymentStatus;
+    if(this.paymentStatus){
+      return this.paymentStatus;
+    } else
+      return "pending"
   }
 
   calculateTax(total:number): number {
@@ -380,10 +436,9 @@ export class CheckoutComponent implements OnInit {
     if (this.selectedPaymentMethod === 'online') {
       // Handle online payment submission
       this.payNow();
-      alert('Processing online payment...');
     } else if (this.selectedPaymentMethod === 'cod') {
       // Handle offline payment submission
-      this.placeOfflineOrder();
+      this.payNow();
     } else {
       alert('Please select a payment method.');
     }

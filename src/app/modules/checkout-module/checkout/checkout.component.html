@@ -209,13 +209,13 @@
             <h1>Payment Page</h1>
             
             <mat-radio-group [(ngModel)]="selectedPaymentMethod">
-              <mat-radio-button value="online">Online Payment</mat-radio-button>
+              <mat-radio-button value="online">Pay ₹ 1000 & Book Your Drone</mat-radio-button>
               <br>
-              <mat-radio-button value="cod">Cash On Delivery</mat-radio-button>
+              <mat-radio-button value="cod">Pay Full Amount</mat-radio-button>
             </mat-radio-group>
             <br>
             
-            <div *ngIf="selectedPaymentMethod === 'online'">
+            <div *ngIf="selectedPaymentMethod === 'online' || selectedPaymentMethod === 'cod'">
               <!-- Online Payment Options -->
               <h2>Online Payment Options:</h2>
               <form [formGroup]="paymentForm" (ngSubmit)="submitPayment()">
@@ -237,10 +237,10 @@
             <br>
             
             <!-- Place Order button only appears if "offline" is selected -->
-            <button mat-button class="click-to-continue-button" *ngIf="selectedPaymentMethod === 'cod'" (click)="submitPayment()">
+            <!-- <button mat-button class="click-to-continue-button" *ngIf="selectedPaymentMethod === 'cod'" (click)="submitPayment()">
               Place Order
               <mat-icon style="vertical-align: middle;">trending_flat</mat-icon>
-            </button>
+            </button> -->
         </mat-card>
           
           

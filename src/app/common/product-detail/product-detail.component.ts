@@ -404,7 +404,7 @@ export class ProductDetailComponent {
 
 
   checkout(productDetails: any) {
-    if (localStorage.getItem("token")) {
+    if (localStorage.getItem("username")) {
 
       this.cartService.addToCart(productDetails);
       this.router.navigate(["/checkout"])

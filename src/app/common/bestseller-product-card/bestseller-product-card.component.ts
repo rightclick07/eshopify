@@ -47,7 +47,7 @@ export class BestsellerProductCardComponent implements OnInit {
   }
 
   addToCart(id:number): void {
-    if(localStorage.getItem("token")){
+    if(localStorage.getItem("username")){
       // Implement your logic for adding the product to the cart
       this.spinnerService.show();
       this.productService.getproductById(id).subscribe((res:any)=>{

@@ -17,7 +17,10 @@ export class PaymentService {
      
   }
 
- 
+ createTransaction(paymentRequest:any){
+  const url=environment.baseUrl +"/createOrder"
+  return this.http.post<any>(url,paymentRequest);
+ }
 
 
 }

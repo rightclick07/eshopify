@@ -51,7 +51,7 @@ export class ProductCardComponent implements OnInit,OnChanges {
   }
 
   addToCart(id:number): void {
-    if(localStorage.getItem("token")){
+    if(localStorage.getItem("username")){
       // Implement your logic for adding the product to the cart
       this.spinnerService.show();
       this.productService.getproductById(id).subscribe((res:any)=>{
@@ -99,7 +99,7 @@ export class ProductCardComponent implements OnInit,OnChanges {
     this.quantity = quantity;
   }
   checkout(id:number){
-    if(localStorage.getItem("token")){
+    if(localStorage.getItem("username")){
       this.spinnerService.show();
       this.productService.getproductById(id).subscribe((res:any)=>{
         if(res){

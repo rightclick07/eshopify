@@ -275,9 +275,11 @@ export class MobileNumberLoginComponent implements OnInit {
                 console.error('Error fetching user data', error);
               }
             );
+              
               this.toastService.showSuccess("Logged In SuccessFully")
-              this.router.navigate(['/home'])
-              location.reload();
+              this.router.navigate(['/home']);
+              //location.reload();
+             
           }else if(response?.payload=='NOT VERIFIED & MOBILE NUMBER ALREADY EXISTS'){
             this.isLoginFormEnabled=true;
             this.isMobileinputEnabled=false;

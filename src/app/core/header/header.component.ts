@@ -235,7 +235,7 @@ export class HeaderComponent implements OnInit {
   initial:string="";
   ngOnInit() {
     this.togglemaintoolbar();
-    if(localStorage.getItem("token")){
+    if(localStorage.getItem("username")){
       this.isUserLoggedIn=true
       this.getUserDetail();
     }
