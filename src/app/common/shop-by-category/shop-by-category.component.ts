@@ -12,25 +12,25 @@ export class ShopByCategoryComponent {
   drones_list = [
     {
       name: 'Consumer Drone',
-      images: "https://everse-assets.s3.amazonaws.com/shop-by-categoty/consumer-drone.jpg",
+      images: "https://everse-assets.s3.amazonaws.com/shop-by-categoty/consumer-drone.png",
       imageBanner:"https://everse-assets.s3.amazonaws.com/shop-by-categoty/agricultural-drone-banner.png",
       routeUrl: 'consumer-drone'
     },
     {
       name: 'Enterprise Drone',
-      images: "https://everse-assets.s3.amazonaws.com/shop-by-categoty/enterprise-drone.jpg",
+      images: "https://everse-assets.s3.amazonaws.com/shop-by-categoty/enterprise-drone.png",
       imageBanner:"https://everse-assets.s3.amazonaws.com/shop-by-categoty/enterprise-drone-banner.png",
       routeUrl: 'enterprise-drone'
     },
     {
       name: 'Agricultural Drone',
-      images: "https://everse-assets.s3.amazonaws.com/shop-by-categoty/agriculture-drone.jpg",
+      images: "https://everse-assets.s3.amazonaws.com/shop-by-categoty/agriculture-drone.png",
       imageBanner:"https://everse-assets.s3.amazonaws.com/shop-by-categoty/agricultural-drone-banner.png",
       routeUrl: 'agricultural-drone'
     },
     {
       name: 'Thermal Drone',
-      images: "https://everse-assets.s3.amazonaws.com/shop-by-categoty/thermal-drone.jpg",
+      images: "https://everse-assets.s3.amazonaws.com/shop-by-categoty/thermal-drone.png",
       imageBanner:"https://everse-assets.s3.amazonaws.com/shop-by-categoty/thermal-drone-banner.png",
       routeUrl: 'thermal-drone'
     },
@@ -41,29 +41,11 @@ export class ShopByCategoryComponent {
       routeUrl: 'toy-drone'
     },
     {
-      name: 'Consumer Drone',
-      images: "https://everse-assets.s3.amazonaws.com/shop-by-categoty/consumer-drone.jpg",
+      name: 'Adventure Drone',
+      images: "https://everse-assets.s3.amazonaws.com/shop-by-categoty/adventure-drone.png",
       imageBanner:"https://everse-assets.s3.amazonaws.com/shop-by-categoty/agricultural-drone-banner.png",
-      routeUrl: 'consumer-drone'
-    },
-    {
-      name: 'Enterprise Drone',
-      images: "https://everse-assets.s3.amazonaws.com/shop-by-categoty/enterprise-drone.jpg",
-      imageBanner:"https://everse-assets.s3.amazonaws.com/shop-by-categoty/enterprise-drone-banner.png",
-      routeUrl: 'enterprise-drone'
-    },
-    {
-      name: 'Agricultural Drone',
-      images: "https://everse-assets.s3.amazonaws.com/shop-by-categoty/agriculture-drone.jpg",
-      imageBanner:"https://everse-assets.s3.amazonaws.com/shop-by-categoty/agricultural-drone-banner.png",
-      routeUrl: 'agricultural-drone'
-    },
-    {
-      name: 'Thermal Drone',
-      images: "https://everse-assets.s3.amazonaws.com/shop-by-categoty/thermal-drone.jpg",
-      imageBanner:"https://everse-assets.s3.amazonaws.com/shop-by-categoty/thermal-drone-banner.png",
-      routeUrl: 'thermal-drone'
-    },
+      routeUrl: 'adventure-drone'
+    }, 
   ]
 
   navigateToProductDetails(id:any){

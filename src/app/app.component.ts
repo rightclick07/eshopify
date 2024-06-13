@@ -36,9 +36,7 @@ export class AppComponent implements OnInit{
   }
 
   logout() {
-    // Implement your logout logic here.
     localStorage.clear();
     this.router.navigate(["/login"])
-    // For example, you can clear session data and redirect to the login page.
   }
 }

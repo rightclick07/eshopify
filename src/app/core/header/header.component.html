@@ -1,4 +1,4 @@
-<div>
+<header>
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #drawer class="sidenav" [ngClass]="{hidden:!(isHandset$ | async)===true}" fixedInViewport="false"
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
@@ -100,26 +100,27 @@
                <mat-icon style="vertical-align: middle;">chrome_reader_mode</mat-icon>
                   Admin</a>
            </button> -->
-          <!-- <button mat-button [matMenuTriggerFor]="companyMenu"  *ngIf="isHandset$ | async" >
-              <mat-icon style="vertical-align: middle;margin-right: 5px;">business</mat-icon>
-                 Company
-            </button>
-              <mat-menu #companyMenu="matMenu">
-                  <div *ngFor="let menu of companyMenuList">
-                      <button routerLink="{{menu.routeUrl}}" mat-menu-item>
-                          <mat-icon style="vertical-align: middle;margin-right: 5px;color:#A020F0;">{{menu.icon}}</mat-icon>
-                          {{menu.title}}</button>
-                  </div>
-              </mat-menu>
-              -->
+          <button mat-button [matMenuTriggerFor]="companyMenu" *ngIf="isHandset$ | async">
+            <mat-icon style="vertical-align: middle;margin-right: 5px;">business</mat-icon>
+            Company
+          </button>
+          <mat-menu #companyMenu="matMenu">
+            <div *ngFor="let menu of companyMenuList">
+              <button routerLink="{{menu.routeUrl}}" mat-menu-item>
+                <mat-icon style="vertical-align: middle;margin-right: 5px;color:#A020F0;">{{menu.icon}}</mat-icon>
+                {{menu.title}}</button>
+            </div>
+          </mat-menu>
+
           <!-- <div *ngIf="!(isHandset$ | async)">
-                <input type="search" placeholder="Search" class="mat-elevation-z2" [matAutocomplete]="auto" [formControl]="myControl">
-                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
-                  <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                    {{option}}
-                  </mat-option>
-                </mat-autocomplete>
-              </div> -->
+            <input type="search" placeholder="Search" class="mat-elevation-z2" [matAutocomplete]="auto"
+              [formControl]="myControl">
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+          </div> -->
           <div>
             <button mat-button (click)="goToSearchPage()">
               <mat-icon>
@@ -173,4 +174,4 @@
     </mat-sidenav-content>
   </mat-sidenav-container>
 
-</div>
+</header>
