@@ -10,47 +10,50 @@ import { ToolbarService } from 'src/app/shared/services/toolbar/toolbar.service'
   styleUrls: ['./global-search.component.css']
 })
 export class GlobalSearchComponent implements OnInit {
-  productList:Product[]=[]
+  productList: Product[] = []
   @ViewChild('searchbar') searchbar!: ElementRef;
   searchText = '';
 
-  constructor(private productService:ProductService,private router:Router,public toolbarService:ToolbarService){}
+  constructor(private productService: ProductService, private router: Router, public toolbarService: ToolbarService) { }
 
   ngOnInit(): void {
     this.toolbarService.setShowMainToolbar(false);
     this.toolbarService.setShowSearchToolbar(true);
     this.getProductList();
-    
+
   }
 
-  
-getProductList(){
-  this.productService.getAllProductList().subscribe((res:any)=>{
-     if(res){
-      this.productList=res?.payload
-       console.log(this.productList);
-       for(let p of this.productList){
-         let img=p.images
-         let k=this.createListFromString(img.toString())
-         p.images=k;
-       }
-       
-     }
-      
-  })
-}
+
+  getProductList() {
+    this.productService.getAllProductList().subscribe((res: any) => {
+      if (res) {
+        this.productList = res?.payload
+        console.log(this.productList);
+        for (let p of this.productList) {
+          let img = p.images
+          let k = this.createListFromString(img.toString())
+          p.images = k;
+        }
+      }
+
+    })
+  }
 
 
-createListFromString(imgString:string){
-  const arrayOfElements = imgString.split(',');
-  return arrayOfElements;
-}
+  createListFromString(imgString: string) {
+    const arrayOfElements = imgString.split(',');
+    return arrayOfElements;
+  }
 
   searchClose() {
+    if (this.searchText == '') {
+      this.router.navigate(['/']);
+    }
     this.searchText = '';
+
   }
-  navigateToProduct(id:any){
-    this.router.navigate(["/product-details",id])
+  navigateToProduct(id: any) {
+    this.router.navigate(["/product-details", id])
     this.toolbarService.setShowMainToolbar(true);
     this.toolbarService.setShowSearchToolbar(false);
   }

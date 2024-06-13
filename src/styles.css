@@ -2,24 +2,43 @@
 
 /* VARIABLE CSS---------------------------------VARIABLE CSS */
 :root {
-    --gradient-gray: #faebe4;
-    --gradient-dark-gray: #8cb5b5;
-    --gradient-aqua: #6ce9e5;
-    --text-dark: #191919;
-  }
-  /* END VARIABLE CSS-------------------------END VARIABLE CSS */
+  --gradient-gray: #faebe4;
+  --gradient-dark-gray: #8cb5b5;
+  --gradient-aqua: #b0fbf7;
+  --text-dark: #191919;
+}
+
+/* END VARIABLE CSS-------------------------END VARIABLE CSS */
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
-    height: 100%;
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+body::-webkit-scrollbar {
+  width: 0.3em;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
 }
 
 /* customise css */
 .alt__container {
-    max-width: 1450px;
-    margin: 0 auto;
+  max-width: 1450px;
+  margin: 0 auto;
 }
+
 /* SECTION HEADING CSS */
 .alt__sectionHeading {
   display: flex;
@@ -36,12 +55,14 @@ body {
   display: inline-block;
   vertical-align: middle;
 }
-.material-icons{
+
+.material-icons {
   font-size: 18px;
   height: 18px;
   vertical-align: middle;
   color: #ffc107;
-   }
+}
+
 .alt__sectionHeadingText {
   font-size: 16px;
   color: var(--text-dark);
@@ -49,44 +70,44 @@ body {
   align-items: center;
 }
 
-.alt__sectionHeadingText > strong {
+.alt__sectionHeadingText>strong {
   margin: 0 10px;
   position: relative;
 }
 
-.alt__sectionHeadingText > strong::after {
+.alt__sectionHeadingText>strong::after {
   content: '';
   display: block;
   height: 3px;
   width: 50px;
-  background: linear-gradient(
-      to top right,
+  background: linear-gradient(to top right,
       var(--gradient-aqua),
-      var(--gradient-gray)
-  );
+      var(--gradient-gray));
   position: absolute;
   bottom: -3px;
   right: 0;
 }
 
-.alt__sectionHeadingViewAll{
+.alt__sectionHeadingViewAll {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.alt__sectionHeadingViewAll>a{
+
+.alt__sectionHeadingViewAll>a {
   text-decoration: none;
   font-weight: 600;
 }
-.alt__sectionHeadingViewAll>svg{
+
+.alt__sectionHeadingViewAll>svg {
   fill: #ffc107;
 }
 
 /*END SECTION HEADING CSS */
 
-  /* GLOBAL MEDIA QUERY  */
-  @media (max-width: 600px) {
-    .alt__container {
-        margin: 0 10px;
-    }
+/* GLOBAL MEDIA QUERY  */
+@media (max-width: 600px) {
+  .alt__container {
+    margin: 0 10px;
   }
+}
