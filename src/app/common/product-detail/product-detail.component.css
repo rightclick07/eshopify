@@ -53,7 +53,7 @@
   border-radius: 5px;
   gap: 10px;
   position: absolute;
-  top: 50px;
+  top: 70px;
   z-index: 100;
 
 }
@@ -76,7 +76,7 @@
   color: white;
   border-radius: 15px;
   padding: 0px 15px;
-  margin-right: 170px;
+  /* margin-right: 110px; */
 }
 
 .mobile__view__shre__image__icon {
@@ -129,6 +129,7 @@
   width: 20px;
   object-fit: cover;
 }
+
 
 
 

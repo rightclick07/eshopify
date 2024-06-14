@@ -56,10 +56,12 @@
         </div>
       </div>
       <div class="indicators">
-        <span *ngFor="let image of images; let i = index" [class.active]="currentIndex === i" (click)="goToSlide(i)">
+        <span *ngFor="let image of productdetails?.images; let i = index" [class.active]="currentIndex === i"
+          (click)="goToSlide(i)">
         </span>
       </div>
     </div>
+
 
 
 
@@ -274,13 +276,6 @@
       </div>
 
     </div>
-
-
-
-
-
-
-
 
 
 

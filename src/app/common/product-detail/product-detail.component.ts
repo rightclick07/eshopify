@@ -198,7 +198,7 @@ export class ProductDetailComponent {
 
   startDrag(event: MouseEvent | TouchEvent): void {
     this.isDragging = true;
-    this.transitionDuration = '0s'; // Disable transition during drag
+    this.transitionDuration = '0s';
     this.startX = this.getPositionX(event);
     this.prevTranslate = this.currentTranslate;
   }
@@ -213,18 +213,19 @@ export class ProductDetailComponent {
     this.isDragging = false;
     this.transitionDuration = '0.5s';
     const movedBy = this.currentTranslate - this.prevTranslate;
+    const slideWidth = 350; // Assuming each slide has a width of 350 pixels
 
     if (movedBy < -50) {
-      if (this.currentIndex === this.images.length - 1) {
-        this.currentTranslate = -this.currentIndex * 350;
+      if (this.currentIndex === this.productdetails.images.length - 1) {
+        this.currentTranslate = -this.currentIndex * slideWidth;
         setTimeout(() => {
           this.transitionDuration = '0s';
           this.currentIndex = 0;
           this.currentTranslate = 0;
         }, 500);
       } else {
-        this.currentIndex = (this.currentIndex + 1) % this.images.length;
-        this.currentTranslate = -this.currentIndex * 350;
+        this.currentIndex = (this.currentIndex + 1) % this.productdetails.images.length;
+        this.currentTranslate = -this.currentIndex * slideWidth;
       }
     }
 
@@ -233,12 +234,12 @@ export class ProductDetailComponent {
         this.currentTranslate = 0;
         setTimeout(() => {
           this.transitionDuration = '0s';
-          this.currentIndex = this.images.length - 1;
-          this.currentTranslate = -this.currentIndex * 350;
+          this.currentIndex = this.productdetails.images.length - 1;
+          this.currentTranslate = -this.currentIndex * slideWidth;
         }, 500);
       } else {
-        this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
-        this.currentTranslate = -this.currentIndex * 350;
+        this.currentIndex = (this.currentIndex - 1 + this.productdetails.images.length) % this.productdetails.images.length;
+        this.currentTranslate = -this.currentIndex * slideWidth;
       }
     }
   }
@@ -249,9 +250,9 @@ export class ProductDetailComponent {
 
   goToSlide(index: number): void {
     this.currentIndex = index;
-    this.currentTranslate = -this.currentIndex * 350;
+    const slideWidth = 350; // Assuming each slide has a width of 350 pixels
+    this.currentTranslate = -this.currentIndex * slideWidth;
   }
-
 
   // image slider code starts for desktop view starts from here
   getImageHeight(): number {
